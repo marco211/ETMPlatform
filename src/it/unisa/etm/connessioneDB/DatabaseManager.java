@@ -11,7 +11,7 @@ public class DatabaseManager {
 		
 	}
 	
-	public static synchronized DatabaseManager getIstance() throws SQLException {
+	public static synchronized DatabaseManager getInstance() throws SQLException {
 		if(istanza==null) {
 			istanza=new DatabaseManager();
 			connection=createConnection();
@@ -19,7 +19,7 @@ public class DatabaseManager {
 		return istanza;
 	}
 	
-	public synchronized Connection getConnection() {
+	public Connection getConnection() {
 		return connection;
 	}
 	
