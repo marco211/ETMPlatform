@@ -1,4 +1,4 @@
-package test;
+package it.unisa.etm.connessioneDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
