@@ -1,4 +1,4 @@
-package it.unisa.etm.database;
+package it.unisa.etm.connessioneDB;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DatabaseManager {
 		
 	}
 	
-	public static synchronized DatabaseManager getInstance() throws SQLException {
+	public static synchronized DatabaseManager getIstance() throws SQLException {
 		if(istanza==null) {
 			istanza=new DatabaseManager();
 			connection=createConnection();
@@ -19,7 +19,7 @@ public class DatabaseManager {
 		return istanza;
 	}
 	
-	public Connection getConnection() {
+	public synchronized Connection getConnection() {
 		return connection;
 	}
 	
