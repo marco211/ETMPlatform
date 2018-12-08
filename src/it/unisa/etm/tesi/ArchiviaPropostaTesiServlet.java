@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class ArchiviaPropostaTesiServlet
+ * Estende la classe HttpServlet ed offre all'utente registrato come docente la possibilità di archiviare una propria proposta di tesi.
  */
 @WebServlet("/ArchiviaPropostaTesiServlet")
 public class ArchiviaPropostaTesiServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class ArchiviaPropostaTesiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Archivia la proposta di tesi scelta dall'utente registrato come docente, aggiungendola alla lista di quelle archiviate.
+	 * @param tesi rappresenta la proposta di tesi scelta dall'utente registrato come docente.
+	 * @return boolean true se l'archiviazione è avvenuta con successo;
+	 * <p>
+	 * false in caso di fallimento.
+	 */
+	private boolean archiviaPropostaTesi(PropostaTesi tesi){
+		return false;
+		
+	}
 }

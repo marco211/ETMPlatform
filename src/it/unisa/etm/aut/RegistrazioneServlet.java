@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class RegistrazioneServlet
+ * Estende HttpServlet e fornisce la funzionalità di registrazione.
  */
 @WebServlet("/RegistrazioneServlet")
 public class RegistrazioneServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class RegistrazioneServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Effettua la registrazione di un utente.
+	 * @param utente non ancora registrato, ma che ha inserito già i parametri si registrazione.
+	 * @return boolean true se la registrazione è andata a buono fine;
+	 * <p>
+	 * false in caso di insuccesso.
+	 */
+	private boolean RegistrazioneControl(Utente utente){
+		return false;
+		
+	}
 }

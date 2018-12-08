@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class AggiungiPropostaTesiServlet
+ * Estende la classe HttpServlet e fonisce all'utente registrato come docente la possibilità di aggiungere una nuova proposta di tesi.
  */
 @WebServlet("/AggiungiPropostaTesiServlet")
 public class AggiungiPropostaTesiServlet extends HttpServlet {
@@ -36,6 +38,18 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	/**
+	 * Aggiunge alla lista delle proposte di tesi, una nuova proposta creata dal docente.
+	 * @param tesi rappresenta la proposta di tesi che il docente vuole aggiungere
+	 * @return boolean true se l'aggiunta è avvenuta con successo;
+	 * <p>
+	 * false in caso contrario.
+	 */
+	private boolean aggiungiPropostatesi(PropostaTesi tesi){
+		return false;
+		
 	}
 
 }

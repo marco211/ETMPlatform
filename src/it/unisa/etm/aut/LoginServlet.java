@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class LoginServlet
+ * Estende la classe HttpServlet e fonisce la funzionalità di login.
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -38,4 +40,16 @@ public class LoginServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Permette il login
+	 * @param email dell'utente che vuole effettuare il login;
+	 * @param password dell'utente che vuole effettuare il login;
+	 * @return L'Utente registrato se il login è andato a buon fine;
+	 * <p>
+	 * null se il login è fallito.
+	 */
+	private Utente login(String email, String password){
+		return null;
+		
+	}
 }

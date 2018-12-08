@@ -1,14 +1,19 @@
 package it.unisa.etm.area;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class VisualizzaStoricoServlet
+ * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
  */
 @WebServlet("/VisualizzaStoricoServlet")
 public class VisualizzaStoricoServlet extends HttpServlet {
@@ -38,4 +43,15 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Torna all'utente la lista delle attività effettuate dall'utente stesso.
+	 * @param utente registrato;
+	 * @return lista di attivita effettuate dall'utente;
+	 * <p>
+	 * null se non vi sono attivita effettuate.
+	 */
+	private List<Attivita> getStorico(Utente utente){
+		return null;
+		
+	}
 }

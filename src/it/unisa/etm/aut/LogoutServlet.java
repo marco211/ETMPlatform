@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class LogoutServlet
+ * Estende la classe HttpServlet ed offre la funzionalità di poter effettuare il logout
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
@@ -36,6 +38,17 @@ public class LogoutServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	/**
+	 * Effettua il logout di un determinato utente.
+	 * @param utente che vuole effettuare il logout (oggetto della classe Utente)
+	 * @return boolean true se il logout è avvenuto con successo;
+	 * <p>
+	 * false in caso di insuccesso.
+	 */
+	private boolean logout(Utente utente){
+		return false;
 	}
 
 }

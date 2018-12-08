@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class CercaProposteTesiAttiveServlet
+ * Estende la classe HttpServlet e fornisce all'utente la funzionalità di poter cercare proposte tesi.
  */
 @WebServlet("/CercaProposteTesiAttiveServlet")
 public class CercaProposteTesiAttiveServlet extends HttpServlet {
@@ -36,6 +38,18 @@ public class CercaProposteTesiAttiveServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	/**
+	 * Torna all'utente la proposta tesi cercata accettando come input il titolo digitato
+	 * @param titolo rappresenta il titolo della proposta tesi digitato dall'utente.
+	 * @return PropostaTesi null se la proposta tesi cercata non c'è;
+	 * <p>
+	 * altrimenti ritorna la proposta tesi cercata.
+	 */
+	private PropostaTesi ricercaPropostaTesi(String titolo){
+		return null;
+		
 	}
 
 }

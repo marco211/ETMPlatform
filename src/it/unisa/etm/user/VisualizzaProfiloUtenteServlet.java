@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class VisualizzaProfiloUtenteServlet
+ * Estende la classe HttpServlet e fornisce all'utente la funzionalità di poter visualizzare il proprio profilo.
  */
 @WebServlet("/VisualizzaProfiloUtenteServlet")
 public class VisualizzaProfiloUtenteServlet extends HttpServlet {
@@ -38,4 +40,12 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Torna il profilo con lo username selezionato dall'utente.
+	 * @param username strigna che rappresenta lo username dell'utente cercato.
+	 * @return Utente l'utente cercato.
+	 */
+	private Utente getUtente(String username){
+		return null;
+	}
 }

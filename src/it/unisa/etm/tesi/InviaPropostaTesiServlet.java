@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class InviaPropostaTesiServlet
+ * Estende la classe HttpServlet ed offre all'utente registrato come studente la funzionalità di poter inviare all'utente registrato come docente una richiesta di tesi per una determinata proposta tesi.
  */
 @WebServlet("/InviaPropostaTesiServlet")
 public class InviaPropostaTesiServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Invia al docente la richiesta di proposta tesi fatta dall'utente registrato come studente e passata come input al metodo.
+	 * @param richiesta rappresenta la richesta per la proposta di tesi effettuata dall'utente registrato come studente.
+	 * @return boolean true se l'invio è avvenuto con successo;
+	 * <p>
+	 * false se non è avvenuto con successo.
+	 */
+	private boolean inviaRichiestaPropostaTesi(PropostaTesi richiesta){
+		return false;
+		
+	}
 }

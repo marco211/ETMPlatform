@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.File;
+
 /**
- * Servlet implementation class ScaricaFileServlet
+ * Estende HttpServlet e fornisce all'utente la funzionalità di poter scaricare un file presente nell'area privata condivisa.
  */
 @WebServlet("/ScaricaFileServlet")
 public class ScaricaFileServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class ScaricaFileServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Permette il download di un file preso in input.
+	 * @param file da scaricare
+	 * @return boolean true se il download è avvenuto con successo;
+	 * <p>
+	 * false in caso di insuccesso.
+	 */
+	private boolean ScaricaFileServlet(File file){
+		return false;
+		
+	}
 }

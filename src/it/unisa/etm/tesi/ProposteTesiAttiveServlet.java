@@ -1,14 +1,18 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class ProposteTesiAttiveServlet
+ * Estende HttpServlet ed offre all'utente la funzionalità di poter visualizzare le proposte tesi attive.
  */
 @WebServlet("/ProposteTesiAttiveServlet")
 public class ProposteTesiAttiveServlet extends HttpServlet {
@@ -38,4 +42,12 @@ public class ProposteTesiAttiveServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Torna all'utente registato le proposte tesi attive.
+	 * @return Lista di proposte tesi attive che assume il valore null qualora non vi fossero tesi attive in quel momento.
+	 */
+	private List<PropostaTesi> visualizzaPropostaTesiAttive(){
+		return null;
+		
+	}
 }

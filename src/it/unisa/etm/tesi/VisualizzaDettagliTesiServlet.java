@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class VisualizzaDettagliTesiServlet
+ * Estende la classe HttpServlet ed offre all'utente la possibilità di visualizzare i dettagli di una determinata proposta di tesi.
  */
 @WebServlet("/VisualizzaDettagliTesiServlet")
 public class VisualizzaDettagliTesiServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Torna i dettagli di una determinata PropostaTesi presa come input.
+	 * @param tesi oggetto della classe PropostaTesi, che rappresenta la tesi scelta per conoscere le info.
+	 * @return String con i dettagli della proposta di tesi presa come input;
+	 * <p>
+	 * null se non vi sono dettagli della proposta di tesi.
+	 */
+	private String visualizzaDettagliPropostaTesi(PropostaTesi tesi){
+		return null;
+		
+	}
 }

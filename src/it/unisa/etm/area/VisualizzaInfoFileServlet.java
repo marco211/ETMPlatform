@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.File;
+
 /**
- * Servlet implementation class VisualizzaInfoFileServlet
+ * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare le informazioni di un file presente nell'area privata condivisa
  */
 @WebServlet("/VisualizzaInfoFileServlet")
 public class VisualizzaInfoFileServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
+	 * @param file presente nell'area condivisa e del quale si vogliono conoscere le informazioni.
+	 * @return String contentente le informazioni del file preso in input;
+	 * <p>
+	 * la stringa è nulla se non si hanno informazioni del file.
+	 */
+	private String getInfo(File file){
+		return null;
+		
+	}
 }

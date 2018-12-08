@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.File;
+
 /**
- * Servlet implementation class ValutaFileServlet
+ * Estende HttpServlet, fornisce all'utente registrato come docente la funzionalità di poter valutare un file presente nell'area privata condivisa
  */
 @WebServlet("/ValutaFileServlet")
 public class ValutaFileServlet extends HttpServlet {
@@ -38,4 +40,28 @@ public class ValutaFileServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Esegue il controllo sui parametri di valutazione che deve ricevere un file presente nell'area privata condivisa.
+	 * @param valutazione intero che rappresenta il voto che deve ricevere un file.
+	 * @param descrizione stringa che rappresenta la descrizione che deve ricevere un file.
+	 * @return boolean true se la valutazione è stata data ed è tra 1 e 10;
+	 * <p>
+	 * false se la valutazione non rispetta i parametri.
+	 */
+	private boolean isValid(int valutazione, String descrizione){
+		return false;
+		
+	}
+	
+	/**
+	 * Torna la valutazione di un determinato file presente nell'area privata condivisa e preso in input.
+	 * @param file presente nell'area condivisa.
+	 * @return int che rappresenta la valutazione del file
+	 * <p>
+	 * 0 se il file non è stato valutato.
+	 */
+	private int getValutazione(File file){
+		return 0;
+		
+	}
 }

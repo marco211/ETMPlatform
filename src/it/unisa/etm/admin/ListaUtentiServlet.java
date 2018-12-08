@@ -1,14 +1,18 @@
 package it.unisa.etm.admin;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class ListaUtentiServlet
+ * Estende HttpServlet fornisce all'amministratore la funzionalità di visualizzare gli utenti registrati.
  */
 @WebServlet("/ListaUtentiServlet")
 public class ListaUtentiServlet extends HttpServlet {
@@ -37,5 +41,14 @@ public class ListaUtentiServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
+	/**
+	 * Torna la lista di tutti gli utenti registrati 
+	 * @return lista di utenti registrati
+	 * <p>
+	 * null se non vi sono utenti registrati
+	 */
+	private List<Utente> getListaUtenti(){
+		return null;
+	}
 }

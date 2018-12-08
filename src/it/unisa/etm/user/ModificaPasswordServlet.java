@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class ModificaPasswordServlet
+ * Estende a classe HttpServlet e fornisce all'utente la funzionalità di poter modificare la password precedente.
  */
 @WebServlet("/ModificaPasswordServlet")
 public class ModificaPasswordServlet extends HttpServlet {
@@ -38,4 +38,14 @@ public class ModificaPasswordServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Modifica la password precedentemente settata con quella nuova digitata dall'utente.
+	 * @param password stringa che rappresenta la password digitata dall'utente
+	 * @return boolean true se la modifica è andata a buon fine;
+	 * <p>
+	 * false in caso contrario.
+	 */
+	private boolean setPassword(String password){
+		return false;
+	}
 }

@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.File;
+
 /**
- * Servlet implementation class CaricaFileServlet
+ * Estende HttpServlet fornisce la funzionalità di caricare un file nell'area privata condivisa.
  */
 @WebServlet("/CaricaFileServlet")
 public class CaricaFileServlet extends HttpServlet {
@@ -38,4 +40,14 @@ public class CaricaFileServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Aggiunge un file all'area privata condivisa
+	 * @param file caricato dall'utente 
+	 * @return boolean true se il caricamento è avvenuto con successo;
+	 * <p>
+	 * false in caso di insuccesso.
+	 */
+	private boolean UploadFileControl(File file){
+		return false;
+	}
 }

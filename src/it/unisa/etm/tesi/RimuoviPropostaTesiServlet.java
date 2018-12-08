@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class RimuoviPropostaTesiServlet
+ * Estende HttpServlet ed offre all'utente registrato come docente la funzionalità di poter eliminare una proposta di tesi caricata da lui precedentemente.
  */
 @WebServlet("/RimuoviPropostaTesiServlet")
 public class RimuoviPropostaTesiServlet extends HttpServlet {
@@ -38,4 +40,15 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Rimuove la proposta di tesi individuata dal utente registrato come docente e passata come input al metodo.
+	 * @param tesi rappresenta la proposta di tesi da rimuovere;
+	 * @return boolean true se la proposta di tesi è stata rimossa correttamente;
+	 * <p>
+	 * false se la rimozione non è riuscita.
+	 */
+	private boolean rimuoviPropostaTesi(PropostaTesi tesi){
+		return false;
+		
+	}
 }

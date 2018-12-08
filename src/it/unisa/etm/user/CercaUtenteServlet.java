@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+
 /**
- * Servlet implementation class CercaUtenteServlet
+ * Estende la classe HttpServlet e fornisce ad un utente la funzionalità di poter cercare un altro utente.
  */
 @WebServlet("/CercaUtenteServlet")
 public class CercaUtenteServlet extends HttpServlet {
@@ -36,6 +38,16 @@ public class CercaUtenteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doGet(request, response);
+	}
+	
+	/**
+	 * Torna all'utente (che cerca) il profilo dell'utente cercato tramite lo username digitato.
+	 * @param username stringa che rappresenta lo username digitato dall'utente per la ricerca.
+	 * @return Utente che rappresenta l'utente cercato, altrimenti null qualora questo non esistesse.
+	 */
+	private Utente cercaUtente(String username){
+		return null;
+		
 	}
 
 }

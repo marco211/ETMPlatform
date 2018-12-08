@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InviaEmailServlet
+ * Estende la classe HttpServlet e si occupa dell'invio di una mail all'utente in caso di iscrizione e recupero password/dati.
  */
 @WebServlet("/InviaEmailServlet")
 public class InviaEmailServlet extends HttpServlet {

@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.PropostaTesi;
+
 /**
- * Servlet implementation class ComunicaEsitoServlet
+ * Estende la classe HttpServlet ed offre all'utente registrato come docente la funzionalità di comunicare ad un utente registrato come studente l'esito della richiesta di proposta di tesi-
  */
 @WebServlet("/ComunicaEsitoServlet")
 public class ComunicaEsitoServlet extends HttpServlet {
@@ -38,4 +40,18 @@ public class ComunicaEsitoServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Comunica allo studente la scelta presa dall'utente registrato come docente per la richiesta di proposta di tesi.
+	 * @param richiesta proposta dall'utente registrato come studente per una determinata Proposta di tesi;
+	 * @param scelta rappresenta la scelta del docente, true l'utente registrato come docente ha accettato;
+	 * <p>
+	 * false l'utente registrato come docente non ha accettato.
+	 * @return boolean true richiesta approvata;
+	 * <p>
+	 * false richiesta non approvata.
+	 */
+	private boolean comunicaEsitoRichiestaPropostaTesi(PropostaTesi richiesta, boolean scelta){
+		return false;
+		
+	}
 }
