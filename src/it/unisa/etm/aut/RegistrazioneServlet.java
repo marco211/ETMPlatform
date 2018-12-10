@@ -1,6 +1,9 @@
 package it.unisa.etm.aut;
 
 import java.io.IOException;
+import java.sql.Date;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,15 +24,36 @@ public class RegistrazioneServlet extends HttpServlet {
      */
     public RegistrazioneServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String email=request.getParameter("email");
+		String nome=request.getParameter("nome");
+		String cognome=request.getParameter("cognome");
+		String password=request.getParameter("password");
+		int anno=Integer.parseInt(request.getParameter("anno"));
+		int mese=Integer.parseInt(request.getParameter("mese"));
+		int giorno=Integer.parseInt(request.getParameter("giorno"));
+		@SuppressWarnings("deprecation")
+		Date data=new Date(anno-1900,mese-1,giorno);
+		char tipo=request.getParameter("tipo").charAt(0);
+		Utente utente;
+		if(tipo=='0')
+		{
+			long matricola=Long.parseLong(request.getParameter("matricola"));
+			utente = new Utente(email, nome, cognome, password, data, tipo, matricola);
+
+		}
+		else
+		{
+			String ufficio=request.getParameter("ufficio");
+			utente = new Utente(email, nome, cognome, password, data, tipo, ufficio);
+		}
+		//il nome è di Scala
+		RegistrazioneControl(utente);
 	}
 
 	/**
@@ -48,7 +72,8 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * false in caso di insuccesso.
 	 */
 	private boolean RegistrazioneControl(Utente utente){
-		return false;
-		
+		 	//to do expception
+			Utente.aggiungiUtente(utente);
+			return true;
 	}
 }
