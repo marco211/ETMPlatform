@@ -3,9 +3,10 @@ package it.unisa.etm.model;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PropostaTesiModel<T> {
+public interface ConsegnaModelInterface<T> {
 	public ArrayList<T> doRetriveAll() throws SQLException;
-	public ArrayList<T> doRetriveById(int id) throws SQLException;
-	public void doSave(T propostaTesi) throws SQLException;
+	public T doRetriveById(int id) throws SQLException;
+	public void doSave(T consegna) throws SQLException;
 	public void doDelete(int id) throws SQLException;
+	
 }

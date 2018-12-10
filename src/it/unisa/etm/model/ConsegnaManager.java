@@ -9,13 +9,11 @@ import java.util.ArrayList;
 import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.database.DatabaseManager;
 
-public class ConsegnaModelDM implements ConsegnaModel<Consegna> {
-
-	public ConsegnaModelDM() {
+public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
+	public ConsegnaManager() {
 		
 	}
 	
-	@Override
 	public ArrayList doRetriveAll() throws SQLException {
 		ArrayList<Consegna> list=new ArrayList<Consegna>();
 		String selectSQL="SELECT * FROM Consegna";
