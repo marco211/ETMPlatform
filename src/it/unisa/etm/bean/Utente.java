@@ -1,6 +1,7 @@
 package it.unisa.etm.bean;
 
 import java.io.Serializable;
+import java.sql.Date;
 
 public class Utente implements Serializable	 {
 	
@@ -8,8 +9,20 @@ public class Utente implements Serializable	 {
 		
 	}
 	
+	
 
-	public Utente(String cognome, String dataDiNascita, String matricola, String ufficio, String tipo, String nome,
+	public Utente(String cognome, Date dataDiNascita, String nome, String email,String password) {
+		super();
+		this.cognome = cognome;
+		this.dataDiNascita = dataDiNascita;
+		this.nome = nome;
+		this.email = email;
+		this.password = password;
+	}
+
+
+
+	public Utente(String cognome, Date dataDiNascita, String matricola, String ufficio, String tipo, String nome,
 			String email, String password) {
 		super();
 		this.cognome = cognome;
@@ -33,12 +46,12 @@ public class Utente implements Serializable	 {
 	}
 
 
-	public String getDataDiNascita() {
+	public Date getDataDiNascita() {
 		return dataDiNascita;
 	}
 
 
-	public void setDataDiNascita(String dataDiNascita) {
+	public void setDataDiNascita(Date dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 
@@ -102,9 +115,12 @@ public class Utente implements Serializable	 {
 		this.password = password;
 	}
 
+	public static Utente loginUtente(String email, String password) {
+		return null;
+	}
 
 	private String cognome;
-	private String dataDiNascita;
+	private Date dataDiNascita;
 	private String matricola;
 	private String ufficio;
 	private String tipo;

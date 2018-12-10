@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.Utente;
 
 /**
- * Estende HttpServlet e fornisce la funzionalità di registrazione.
+ * Estende HttpServlet e fornisce la funzionalitï¿½ di registrazione.
  */
 @WebServlet("/RegistrazioneServlet")
 public class RegistrazioneServlet extends HttpServlet {
@@ -44,15 +44,15 @@ public class RegistrazioneServlet extends HttpServlet {
 		if(tipo=='0')
 		{
 			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente = new Utente(email, nome, cognome, password, data, tipo, matricola);
+			utente = new Utente(cognome, data,nome,email,password);
 
 		}
 		else
 		{
 			String ufficio=request.getParameter("ufficio");
-			utente = new Utente(email, nome, cognome, password, data, tipo, ufficio);
+			utente = new Utente();
 		}
-		//il nome è di Scala
+		//il nome ï¿½ di Scala
 		RegistrazioneControl(utente);
 	}
 
@@ -66,14 +66,13 @@ public class RegistrazioneServlet extends HttpServlet {
 
 	/**
 	 * Effettua la registrazione di un utente.
-	 * @param utente non ancora registrato, ma che ha inserito già i parametri si registrazione.
-	 * @return boolean true se la registrazione è andata a buono fine;
+	 * @param utente non ancora registrato, ma che ha inserito giï¿½ i parametri si registrazione.
+	 * @return boolean true se la registrazione ï¿½ andata a buono fine;
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
 	private boolean RegistrazioneControl(Utente utente){
-		 	//to do expception
-			Utente.aggiungiUtente(utente);
+			
 			return true;
 	}
 }
