@@ -3,75 +3,72 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Header</title>
-<link rel="stylesheet" href="css/stili.css">
-<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-</head>
+
+ 	<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Hello, world!</title>
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  
+  </head>
+
+	
 <body>
 
-<style>
-.no-padding1{
-    padding-right: 0px;
-    width: 65px;
-}
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
 
-.no-padding2{
-	padding-right: 0px;
-}
-</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">
+    <img src="img/logo.png" width="30" height="30" alt="">
+    ETM Platform
+  </a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-<div id="flipkart-navbar">
-        <div class="row" style="border-style: solid;border-width: 1">
-        
-        	<div class="col-sm-1 no-padding1">
-            	<img src="img/logo.png" class="img-circle" alt="Logo" width="60" height="60">
-            </div>
-        
-            <div class="col-sm-2">
-                <h3>Etm Platform</h3>
-            </div>
-            
-            <div class="col-sm-7">
-               <div id="custom-search-input">
-                            <div class="input-group col-md-12">
-                                <input type="text" class="  search-query form-control" placeholder="Search" />
-                                <span class="input-group-btn">
-                                    <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-            </div>
-            
-            <div class="col-sm-1">
-       				<div >
-	            		<h6>Benvenuto, (nome)</h6>
-	            		<a href="#"><h6>Vai al profilo</h6></a>
-            		</div>
-            </div>
-            
-            <div class="col-sm-1" style="margin-top: 1%">
-            	<span>
-	            	<a href="#">
-			            <img alt="load" src="img/exit.png">
-			            Logout
-	            	</a>
-            	</span>
-            </div>
-                
-		</div>
-		
-		
-</div>
-            
- <div style="height: 1000px; background-color: orange;">
  
- </div>           
-
+    
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Area proposte tesi</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Area amministratore</a>
+      </li>
+     
+    
+    </ul>
+     	<form class="form-inline my-2 my-lg-0">
+      		<input class="form-control mr-sm-2" type="search" placeholder="Cerca proposta tesi" aria-label="Cerca">
+      		<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      	</form>
+    
+  </div>
+  
+ 
+    
+     <li class="nav-item dropdown">
+      
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Benvenuto, Utente
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Vai al profilo</a>
+          <a class="dropdown-item" href="#">Proposta tesi</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Logout</a>
+        </div>
+      </li>
+</nav>
 </body>
 </html>
