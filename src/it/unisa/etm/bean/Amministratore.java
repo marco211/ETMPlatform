@@ -1,7 +1,6 @@
 package it.unisa.etm.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
 
 public class Amministratore implements Serializable	 {
 	
@@ -9,7 +8,7 @@ public class Amministratore implements Serializable	 {
 		
 	}
 
-	public Amministratore(String cognome, Date dataDiNascita, String nome, String email,String password) {
+	public Amministratore(String cognome,  String nome, String email,String password) {
 		super();
 		this.cognome = cognome;
 		this.nome = nome;
