@@ -118,6 +118,10 @@ public class Utente implements Serializable	 {
 	public static Utente loginUtente(String email, String password) {
 		return null;
 	}
+	
+	public static void aggiungiUtente(Utente utente) {
+		
+	}
 
 	private String cognome;
 	private Date dataDiNascita;

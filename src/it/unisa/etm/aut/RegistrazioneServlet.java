@@ -72,7 +72,7 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * false in caso di insuccesso.
 	 */
 	private boolean RegistrazioneControl(Utente utente){
-			
+			Utente.aggiungiUtente(utente);
 			return true;
 	}
 }
