@@ -2,10 +2,10 @@ package it.unisa.etm.aut;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
 
 /**
  * Estende la classe HttpServlet e si occupa dell'invio di una mail all'utente in caso di iscrizione e recupero password/dati.
@@ -19,7 +19,6 @@ public class InviaEmailServlet extends HttpServlet {
      */
     public InviaEmailServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**

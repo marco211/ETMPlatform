@@ -2,15 +2,15 @@ package it.unisa.etm.aut;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
 
 import it.unisa.etm.bean.Utente;
 
 /**
- * Estende la classe HttpServlet ed offre la funzionalità di poter effettuare il logout
+ * Offre la funzionalità di poter effettuare il logout
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {
