@@ -1,4 +1,4 @@
-package it.unisa.etm.prova;
+package it.unisa.etm.model;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

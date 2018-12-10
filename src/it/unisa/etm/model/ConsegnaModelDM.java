@@ -1,4 +1,4 @@
-package it.unisa.etm.prova;
+package it.unisa.etm.model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.database.DatabaseManager;
 
 public class ConsegnaModelDM implements ConsegnaModel<Consegna> {
