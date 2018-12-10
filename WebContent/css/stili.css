@@ -5,10 +5,6 @@
     color: #000000;
 }
 
-.header_area{
-	border-style: solid; 
-	border-width: 1;
-}
 
 header_area a {
 	text-decoration: underline;

@@ -5,7 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Header</title>
-<link rel="stylesheet" href="test.css">
+<link rel="stylesheet" href="css/stili.css">
 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
@@ -25,10 +25,10 @@
 </style>
 
 <div id="flipkart-navbar">
-        <div class="row" style="width: 100%">
+        <div class="row" style="border-style: solid;border-width: 1">
         
         	<div class="col-sm-1 no-padding1">
-            	<img src="logo.png" class="img-circle" alt="Logo" width="60" height="60">
+            	<img src="img/logo.png" class="img-circle" alt="Logo" width="60" height="60">
             </div>
         
             <div class="col-sm-2">
@@ -48,12 +48,22 @@
                         </div>
             </div>
             
-            <div class="col-sm-2">
-       				<div class="header_area">
-            		<h6>Benvenuto, (nome)</h6>
-            		<a href="#"><h6>Vai al profilo</h6></a>
-            	</div>
-            </div>    
+            <div class="col-sm-1">
+       				<div >
+	            		<h6>Benvenuto, (nome)</h6>
+	            		<a href="#"><h6>Vai al profilo</h6></a>
+            		</div>
+            </div>
+            
+            <div class="col-sm-1" style="margin-top: 1%">
+            	<span>
+	            	<a href="#">
+			            <img alt="load" src="img/exit.png">
+			            Logout
+	            	</a>
+            	</span>
+            </div>
+                
 		</div>
 		
 		
