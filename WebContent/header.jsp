@@ -5,102 +5,63 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Header</title>
+<link rel="stylesheet" href="test.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-     
-     <div class="container" 
-     id="page_container">
-  <div id="accordion_search_bar_container">
-      <input type="search" 
-         id="accordion_search_bar" 
-         placeholder="Search"/>
-  </div>
-  <div class="panel-group" 
-       id="accordion" 
-       role="tablist" 
-       aria-multiselectable="true">
-    <div class="panel panel-success" 
-         id="collapseOne_container">
-      <div class="panel-heading" 
-           role="tab" 
-           id="headingOne">
-        <h4 class="panel-title">
-          <a role="button" 
-             data-toggle="collapse" 
-             data-parent="#accordion" 
-             href="#collapseOne" 
-             aria-expanded="true" 
-             aria-controls="collapseOne">
-            One
-          </a>
-        </h4>
-      </div>
-      <div id="collapseOne" 
-           class="panel-collapse collapse in" 
-           role="tabpanel" 
-           aria-labelledby="headingOne">
-        <div class="panel-body">
-          <p>Pellentesque convallis dolor</p>
-          <p>Enim at tincidunt magna dapibus vitae</p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-primary" 
-         id="collapseTwo_Container">
-      <div class="panel-heading" 
-           role="tab" 
-           id="headingTwo">
-        <h4 class="panel-title">
-          <a class="collapsed" 
-             role="button" 
-             data-toggle="collapse" 
-             data-parent="#accordion" 
-             href="#collapseTwo" 
-             aria-expanded="false" 
-             aria-controls="collapseTwo">
-            Two
-          </a>
-        </h4>
-      </div>
-      <div id="collapseTwo" 
-           class="panel-collapse collapse in" 
-           role="tabpanel" 
-           aria-labelledby="headingTwo">
-        <div class="panel-body">
-          <p>Vestibulum in laoreet nisi</p>
-          <p>Sit amet placerat massa</p>
-        </div>
-      </div>
-    </div>
-    <div class="panel panel-danger" 
-         id="collapseThree_Container">
-      <div class="panel-heading" 
-           role="tab" 
-           id="headingThree">
-        <h4 class="panel-title">
-          <a class="collapsed" 
-             role="button" 
-             data-toggle="collapse" 
-             data-parent="#accordion" 
-             href="#collapseThree" 
-             aria-expanded="false" 
-             aria-controls="collapseThree">
-            Three
-          </a>
-        </h4>
-      </div>
-      <div id="collapseThree" 
-           class="panel-collapse collapse in" 
-           role="tabpanel" 
-           aria-labelledby="headingThree">
-        <div class="panel-body">
-          <p>Curabitur sem eros tempor sit</p>
-          <p>Amet nunc eget, gravida mollis</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
+<style>
+.no-padding1{
+    padding-right: 0px;
+    width: 65px;
+}
+
+.no-padding2{
+	padding-right: 0px;
+}
+</style>
+
+<div id="flipkart-navbar">
+        <div class="row" style="width: 100%">
+        
+        	<div class="col-sm-1 no-padding1">
+            	<img src="logo.png" class="img-circle" alt="Logo" width="60" height="60">
+            </div>
+        
+            <div class="col-sm-2">
+                <h3>Etm Platform</h3>
+            </div>
+            
+            <div class="col-sm-7">
+               <div id="custom-search-input">
+                            <div class="input-group col-md-12">
+                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-danger" type="button">
+                                        <span class=" glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+            </div>
+            
+            <div class="col-sm-2">
+       				<div class="header_area">
+            		<h6>Benvenuto, (nome)</h6>
+            		<a href="#"><h6>Vai al profilo</h6></a>
+            	</div>
+            </div>    
+		</div>
+		
+		
 </div>
+            
+ <div style="height: 1000px; background-color: orange;">
+ 
+ </div>           
 
 </body>
 </html>

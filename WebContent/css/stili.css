@@ -1,3 +1,148 @@
 @charset "UTF-8";
 
+#flipkart-navbar {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+.header_area{
+	border-style: solid; 
+	border-width: 1;
+}
+
+header_area a {
+	text-decoration: underline;
+}
+
+.col-sm-1 {
+   padding-right: 0 !important;
+   margin-right: 0 !important;
+   width="50";
+   height="50";
+}
+
+.col-sm-1 h3{
+	margin-top: 1%;
+	padding-top: 1%;
+}
+
+
+#custom-search-input {
+        margin:0;
+        margin-top: 10px;
+        padding: 0;
+    }
+ 
+    #custom-search-input .search-query {
+        padding-right: 3px;
+        padding-right: 4px \9;
+        padding-left: 3px;
+        padding-left: 4px \9;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+ 
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+ 
+    #custom-search-input button {
+        border: 0;
+        background: none;
+        /** belows styles are working good */
+        padding: 2px 5px;
+        margin-top: 2px;
+        position: relative;
+        left: -28px;
+        /* IE7-8 doesn't have border-radius, so don't indent the padding */
+        margin-bottom: 0;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        color:#D9230F;
+    }
+    
+        .search-query:focus + button {
+        z-index: 3;   
+    }
+
+.row1 {
+    padding-top: 0px;
+}
+
+.row{
+    padding-bottom: 0px;
+}
+
+.flipkart-navbar-input {
+    /*padding: 0px 16px;*/
+    border-radius: 2px 0 0 2px;
+    border: 0 none;
+    outline: 0 none;
+    font-size: 15px;
+}
+
+.flipkart-navbar-button {
+    background-color: #ffe11b;
+    border: 1px solid #ffe11b;
+    border-radius: 0 2px 2px 0;
+    color: #565656;
+    padding: 10px 0;
+    height: 43px;
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    .largenav {
+        display: block;
+    }
+    .smallnav{
+        display: none;
+    }
+    .smallsearch{
+        margin: 0px;
+    }
+}
+
+/*Sidenav*/
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    box-shadow: 0 4px 8px -3px #555454;
+    padding-top: 0px;
+}
+
+.sidenav a {
+    padding: 0px 0px 0px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: #fff;        
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav a {font-size: 18px;}
+}
+
+.sidenav-heading{
+    font-size: 36px;
+    color: #fff;
+}
 
