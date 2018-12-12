@@ -8,26 +8,17 @@ public class File implements Serializable	 {
 		
 	}
 
-	public File(String nome, int propostatesi_id, String descrizione, int voto, String descrizione_voto, String email) {
+	public File(String nome, int propostaId, String descrizione, int voto, String descrizioneVoto, String email) {
 		super();
-		this.propostatesi_id = propostatesi_id;
+		
 		this.nome = nome;
 		this.email = email;
 		this.descrizione = descrizione;
-		this.descrizione_voto = descrizione_voto;
+		this.descrizioneVoto = descrizioneVoto;
 		this.voto = voto;
+		this.setPropostaTesiId(propostaId);
 	}
-
-
-	public int getPropostatesi_id() {
-		return propostatesi_id;
-	}
-
-
-	public void setPropostatesi_id(int propostatesi_id) {
-		this.propostatesi_id = propostatesi_id;
-		
-	}
+	
 
 	
 	public String getNome() {
@@ -68,16 +59,24 @@ public class File implements Serializable	 {
 		this.descrizione = descrizione;
 	}
 
-	public String getDescrizione_voto() {
-		return descrizione_voto;
+	public String getDescrizioneVoto() {
+		return descrizioneVoto;
 	}
 
-	public void setDescrizione_voto(String descrizione_voto) {
-		this.descrizione_voto = descrizione_voto;
+	public void setDescrizioneVoto(String descrizioneVoto) {
+		this.descrizioneVoto = descrizioneVoto;
+	}
+	
+	public int getPropostaTesiId() {
+		return propostaTesiId;
+	}
+
+	public void setPropostaTesiId(int propostaTesiId) {
+		this.propostaTesiId = propostaTesiId;
 	}
 	private int voto;
-	private int propostatesi_id;
-	private String descrizione_voto;
+	private int propostaTesiId;
+	private String descrizioneVoto;
 	private String descrizione;
 	private String email;
 	private String nome;

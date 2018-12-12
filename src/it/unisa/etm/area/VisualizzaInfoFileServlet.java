@@ -42,12 +42,10 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 
 	/**
 	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
-	 * @param file presente nell'area condivisa e del quale si vogliono conoscere le informazioni.
-	 * @return String contentente le informazioni del file preso in input;
-	 * <p>
-	 * la stringa è nulla se non si hanno informazioni del file.
+	 * @param nome stringa che rappresenza il nome del file;
+	 * @return un oggetto file il cui nome è quello passato come parametro.
 	 */
-	private String getInfo(File file){
+	private File getInfo(String nome){
 		return null;
 		
 	}
