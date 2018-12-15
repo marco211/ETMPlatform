@@ -1,4 +1,4 @@
-package it.unisa.etm.area;
+package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

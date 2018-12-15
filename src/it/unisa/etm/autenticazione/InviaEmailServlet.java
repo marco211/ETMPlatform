@@ -1,4 +1,4 @@
-package it.unisa.etm.aut;
+package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
 import javax.servlet.ServletException;

@@ -1,4 +1,4 @@
-package it.unisa.etm.area;
+package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -10,16 +10,16 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.File;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di poter scaricare un file presente nell'area privata condivisa.
+ * Estende HttpServlet fornisce la funzionalità di caricare un file nell'area privata condivisa.
  */
-@WebServlet("/ScaricaFileServlet")
-public class ScaricaFileServlet extends HttpServlet {
+@WebServlet("/CaricaFileServlet")
+public class CaricaFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ScaricaFileServlet() {
+    public CaricaFileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,14 +41,13 @@ public class ScaricaFileServlet extends HttpServlet {
 	}
 
 	/**
-	 * Permette il download di un file preso in input.
-	 * @param file da scaricare
-	 * @return boolean true se il download è avvenuto con successo;
+	 * Aggiunge un file all'area privata condivisa
+	 * @param file caricato dall'utente 
+	 * @return boolean true se il caricamento è avvenuto con successo;
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean ScaricaFileServlet(File file){
+	private boolean UploadFileControl(File file){
 		return false;
-		
 	}
 }

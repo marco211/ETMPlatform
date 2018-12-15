@@ -1,28 +1,25 @@
-package it.unisa.etm.area;
+package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.Utente;
+import it.unisa.etm.bean.File;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
+ * Estende HttpServlet e fornisce all'utente la funzionalità di poter scaricare un file presente nell'area privata condivisa.
  */
-@WebServlet("/VisualizzaStoricoServlet")
-public class VisualizzaStoricoServlet extends HttpServlet {
+@WebServlet("/ScaricaFileServlet")
+public class ScaricaFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VisualizzaStoricoServlet() {
+    public ScaricaFileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -44,14 +41,14 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	}
 
 	/**
-	 * Torna all'utente la lista delle attività effettuate dall'utente stesso.
-	 * @param utente registrato;
-	 * @return lista di attivita effettuate dall'utente;
+	 * Permette il download di un file preso in input.
+	 * @param file da scaricare
+	 * @return boolean true se il download è avvenuto con successo;
 	 * <p>
-	 * null se non vi sono attivita effettuate.
+	 * false in caso di insuccesso.
 	 */
-	private List<Attivita> getStorico(Utente utente){
-		return null;
+	private boolean ScaricaFileServlet(File file){
+		return false;
 		
 	}
 }

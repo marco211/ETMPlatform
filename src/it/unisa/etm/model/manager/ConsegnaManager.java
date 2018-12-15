@@ -1,4 +1,4 @@
-package it.unisa.etm.model;
+package it.unisa.etm.model.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.database.DatabaseManager;
+import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 
 public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
 	public ConsegnaManager() {

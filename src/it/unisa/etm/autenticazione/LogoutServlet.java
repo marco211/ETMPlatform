@@ -1,25 +1,25 @@
-package it.unisa.etm.area;
+package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.annotation.WebServlet;
 
-import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.Utente;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di poter eliminare un file dall'area privata condivisa.
+ * Offre la funzionalità di poter effettuare il logout
  */
-@WebServlet("/EliminaFileServlet")
-public class EliminaFileServlet extends HttpServlet {
+@WebServlet("/LogoutServlet")
+public class LogoutServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EliminaFileServlet() {
+    public LogoutServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -39,16 +39,16 @@ public class EliminaFileServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 	/**
-	 * Fornisce la funzionalità di elimiazione di un file dall'area privata condivisa
-	 * @param file presente nell'area privata condivisa
-	 * @return boolean true se l'elimiazione è terminata con successo;
+	 * Effettua il logout di un determinato utente.
+	 * @param utente che vuole effettuare il logout (oggetto della classe Utente)
+	 * @return boolean true se il logout è avvenuto con successo;
 	 * <p>
-	 * false se non è andata a buon fine.
+	 * false in caso di insuccesso.
 	 */
-	private boolean deleteFileBean(File file){
+	private boolean logout(Utente utente){
 		return false;
-		
 	}
+
 }

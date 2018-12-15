@@ -1,6 +1,8 @@
-package it.unisa.etm.model;
+package it.unisa.etm.model.manager;
 
 import java.util.ArrayList;
+
+import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 
 public class PropostaTesiManager implements PropostaTesiModelInterface {
 

@@ -1,4 +1,4 @@
-package it.unisa.etm.model;
+package it.unisa.etm.model.interfaces;
 
 import java.sql.SQLException;
 import java.util.ArrayList;

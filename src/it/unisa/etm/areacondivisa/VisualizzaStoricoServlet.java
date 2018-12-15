@@ -1,25 +1,28 @@
-package it.unisa.etm.area;
+package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.Utente;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare le informazioni di un file presente nell'area privata condivisa
+ * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
  */
-@WebServlet("/VisualizzaInfoFileServlet")
-public class VisualizzaInfoFileServlet extends HttpServlet {
+@WebServlet("/VisualizzaStoricoServlet")
+public class VisualizzaStoricoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VisualizzaInfoFileServlet() {
+    public VisualizzaStoricoServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,11 +44,13 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	}
 
 	/**
-	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
-	 * @param nome stringa che rappresenza il nome del file;
-	 * @return un oggetto file il cui nome è quello passato come parametro.
+	 * Torna all'utente la lista delle attività effettuate dall'utente stesso.
+	 * @param utente registrato;
+	 * @return lista di attivita effettuate dall'utente;
+	 * <p>
+	 * null se non vi sono attivita effettuate.
 	 */
-	private File getInfo(String nome){
+	private List<Attivita> getStorico(Utente utente){
 		return null;
 		
 	}

@@ -1,4 +1,4 @@
-package it.unisa.etm.aut;
+package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,17 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.File;
+
 /**
- * Estende la classe HttpServlet e fornisce all'utente la funzionalità di poter recuperare la sua password.
+ * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare le informazioni di un file presente nell'area privata condivisa
  */
-@WebServlet("/RecuperaPasswordServlet")
-public class RecuperaPasswordServlet extends HttpServlet {
+@WebServlet("/VisualizzaInfoFileServlet")
+public class VisualizzaInfoFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public RecuperaPasswordServlet() {
+    public VisualizzaInfoFileServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -37,16 +39,14 @@ public class RecuperaPasswordServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
+
 	/**
-	 * Permette il reset della password dell'utente prendendo in input la mail di quest'ultimo
-	 * @param email dell'utente registrato
-	 * @return boolean true se il rest è riuscito;
-	 * <p>
-	 * false se non è riusito.
+	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
+	 * @param nome stringa che rappresenza il nome del file;
+	 * @return un oggetto file il cui nome è quello passato come parametro.
 	 */
-	private boolean resetPassword(String email){
-		return false;
+	private File getInfo(String nome){
+		return null;
 		
 	}
 }

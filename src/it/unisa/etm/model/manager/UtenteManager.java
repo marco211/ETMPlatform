@@ -1,4 +1,6 @@
-package it.unisa.etm.model;
+package it.unisa.etm.model.manager;
+
+import it.unisa.etm.model.interfaces.UtenteModelInterface;
 
 public class UtenteManager implements UtenteModelInterface{
 
