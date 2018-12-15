@@ -1,16 +1,20 @@
 package it.unisa.etm.model.manager;
 
-import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
+import java.sql.SQLException;
+import java.util.List;
 
+import it.unisa.etm.bean.Utente;
+import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
+import it.unisa.etm.database.DatabaseManager;
 public class AmministratoreManager implements AmministratoreModelInterface{
 
 	public AmministratoreManager() {
 		
 	}
-	
+
 	@Override
-	public Object visualizzaListaUtenti(String username) {
-		// TODO Auto-generated method stub
+	public List<Utente> getListaUtenti() throws SQLException {
+		DatabaseManager.getIstance();
 		return null;
 	}
 
@@ -19,11 +23,8 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 		// TODO Auto-generated method stub
 		return false;
 	}
+	
 
-	@Override
-	public Object visualizzaProfiloUtente(String username) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 
 }

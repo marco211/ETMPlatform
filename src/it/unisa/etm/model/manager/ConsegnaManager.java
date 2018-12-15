@@ -10,65 +10,15 @@ import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 
-public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
+public class ConsegnaManager implements ConsegnaModelInterface {
 	public ConsegnaManager() {
 		
 	}
 	
-	public ArrayList doRetriveAll() throws SQLException {
-		ArrayList<Consegna> list=new ArrayList<Consegna>();
-		String selectSQL="SELECT * FROM Consegna";
-		try {
-		connection = DatabaseManager.getIstance();
-		prepared=connection.prepareStatement(selectSQL);
-		ResultSet rs=prepared.executeQuery();
-		while(rs.next()) {
-			Consegna consegna=new Consegna();
-			consegna.setDescrzione(rs.getString("DESCRIZIONE"));
-			consegna.setId(rs.getInt("ID"));
-			consegna.setNome(rs.getString("NOME"));
-			consegna.setScadenza(rs.getString("SCADENZA"));
-			consegna.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
-			list.add(consegna);
-		}
-	}finally{
-		
-			if(prepared!=null) {
-				prepared.close();
-			}
-		}
-		return list;
-	}
-
-	@Override
-	public Consegna doRetriveById(int id) throws SQLException {
-		String selectSQL="SELECT * FROM Consegna WHERE id=?";
-		Consegna consegna=new Consegna();
-		try {
-		connection = DatabaseManager.getIstance();
-		prepared=connection.prepareStatement(selectSQL);
-		prepared.setInt(1, id);
-		ResultSet rs=prepared.executeQuery();
-		while(rs.next()) {
-			consegna.setDescrzione(rs.getString("DESCRIZIONE"));
-			consegna.setId(rs.getInt("ID"));
-			consegna.setNome(rs.getString("NOME"));
-			consegna.setScadenza(rs.getString("SCADENZA"));
-			consegna.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
-		}
-	}finally{
-		
-			if(prepared!=null) {
-				prepared.close();
-				connection.close();
-			}
-		}
-		return consegna;
-		
-	}
+	
 
 	
-	public void doSave(Consegna consegna) throws SQLException {
+	public boolean aggiungiConsegna(Consegna consegna) throws SQLException {
 		String selectSQL="INSERT INTO Consegna(ID,SCANDENZA,NOME,DESCRIZIONE,PROPOSTATESI_ID) VALUES(?,?,?,?,?)";
 		try {
 			connection=DatabaseManager.getIstance();
@@ -80,6 +30,10 @@ public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
 			prepared.setInt(5, consegna.getId());
 			prepared.executeUpdate();
 			connection.commit();
+			
+			return true;
+		} catch (Exception e) {
+			return false;
 		} finally {
 			if(prepared!=null) {
 				prepared.close();
@@ -90,9 +44,15 @@ public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
 		
 	}
 
+	@Override
+	public boolean modificaConsegna(Consegna c) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 	
-	public void doDelete(int id) throws SQLException {
+	@Override
+	public boolean eliminaConsegna(int id) throws SQLException {
 		String selectSQL="DELETE FROM Consegna WHERE ID=?";
 		try {
 			connection=DatabaseManager.getIstance();
@@ -100,7 +60,12 @@ public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
 			prepared.setInt(1, id);			
 			prepared.executeUpdate();
 			connection.commit();
+			return true;
+		} catch (Exception e){
+			return false;
+		
 		} finally {
+		
 			if(prepared!=null) {
 				prepared.close();
 				connection.close();
@@ -108,6 +73,14 @@ public class ConsegnaManager implements ConsegnaModelInterface<Consegna> {
 		}
 	}
 	
+	@Override
+	public Consegna getConsegna(int id) throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 	private Connection connection=null;
 	private PreparedStatement prepared=null;
+
+
 }

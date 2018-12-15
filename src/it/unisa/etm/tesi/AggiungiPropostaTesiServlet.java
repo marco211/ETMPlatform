@@ -1,6 +1,7 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
+import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

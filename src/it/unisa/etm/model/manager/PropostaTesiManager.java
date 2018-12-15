@@ -1,7 +1,11 @@
 package it.unisa.etm.model.manager;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 
+import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 
 public class PropostaTesiManager implements PropostaTesiModelInterface {
@@ -9,62 +13,46 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	public PropostaTesiManager() {
 		
 	}
-	@Override
-	public void aggiungiPropostaTesi(Object propostaTesi) {
-		// TODO Auto-generated method stub
-		
-	}
 
-	@Override
-	public void archiviaPropostaTesi(Object propostaTesi) {
-		// TODO Auto-generated method stub
-		
-	}
 
+	
 	@Override
-	public Object cercaPropostaTesi(String titolo) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean inserisciRichiestaPropostaTesi(String titoloProposta, String emailUtente) throws SQLException{
+		DatabaseManager.getIstance();
+		return false;
 	}
-
 	@Override
-	public void chiudiPropostaTesi(Object propostaTesi) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public boolean comunicaEsito(Object propostaTesi) {
+	public boolean inserisciPropostaTesi(PropostaTesi p) throws SQLException {
 		// TODO Auto-generated method stub
 		return false;
 	}
-
 	@Override
-	public void inviaPropostaTesi(Object propostaTesi) {
+	public boolean archiviaPropostaTesi(String titoloProposta) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
-
 	@Override
-	public void modificaPropostaTesi(Object propostaTesi) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public ArrayList proposteTesiAttive() {
+	public PropostaTesi getPropostaTesi(String titolo) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
 	@Override
-	public void rimuoviPropostaTesi(Object propostaTesi) {
+	public boolean chiudiPropostaTesi(String titoloProposta) throws SQLException {
 		// TODO Auto-generated method stub
-		
+		return false;
 	}
-
 	@Override
-	public String visualizzaDettagliPropostaTesi(Object propostaTesi) {
+	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+	@Override
+	public List<PropostaTesi> getProposteTesiAttive() throws SQLException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException {
 		// TODO Auto-generated method stub
 		return null;
 	}
