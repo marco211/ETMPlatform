@@ -1,8 +1,9 @@
 it.unisa.etm.admin
-it.unisa.etm.area
-it.unisa.etm.aut
+it.unisa.etm.areacondivisa
+it.unisa.etm.autenticazione
 it.unisa.etm.bean
 it.unisa.etm.database
-it.unisa.etm.model
+it.unisa.etm.model.interfaces
+it.unisa.etm.model.manager
 it.unisa.etm.tesi
 it.unisa.etm.user
