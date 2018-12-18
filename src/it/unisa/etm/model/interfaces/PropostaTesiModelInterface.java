@@ -1,19 +1,20 @@
 package it.unisa.etm.model.interfaces;
 
+import java.util.List;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public interface PropostaTesiModelInterface<T> {
+import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.PropostaTesi;
+
+public interface PropostaTesiModelInterface {
 	
-	public void aggiungiPropostaTesi(T propostaTesi)  throws SQLException;
-	public void archiviaPropostaTesi(T propostaTesi)  throws SQLException;
-	public T cercaPropostaTesi(String titolo)  throws SQLException;
-	public void chiudiPropostaTesi(T propostaTesi)  throws SQLException;
-	public boolean comunicaEsito(T propostaTesi)  throws SQLException;
-	public void inviaPropostaTesi(T propostaTesi)  throws SQLException;
-	public void modificaPropostaTesi(T propostaTesi)  throws SQLException;
-	public ArrayList<T> proposteTesiAttive()  throws SQLException;
-	public void rimuoviPropostaTesi(T propostaTesi)  throws SQLException;
-	public String visualizzaDettagliPropostaTesi(T propostaTesi)  throws SQLException;
-	
+	public boolean inserisciRichiestaPropostaTesi(String titoloProposta, String emailUtente) throws SQLException;
+	public boolean inserisciPropostaTesi(PropostaTesi p)  throws SQLException;
+	public boolean archiviaPropostaTesi(String titoloProposta)  throws SQLException;
+	public PropostaTesi getPropostaTesi(String titolo)  throws SQLException;
+	public boolean chiudiPropostaTesi(String titoloProposta)  throws SQLException;
+	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException;
+	public List<PropostaTesi> getProposteTesiAttive()  throws SQLException;
+	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
 }

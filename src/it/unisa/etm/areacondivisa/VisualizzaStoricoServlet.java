@@ -1,6 +1,7 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,12 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
  */
 @WebServlet("/VisualizzaStoricoServlet")
 public class VisualizzaStoricoServlet extends HttpServlet {
+	AreaCondivisaManager m = new AreaCondivisaManager();
+	
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -49,8 +53,10 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	 * @return lista di attivita effettuate dall'utente;
 	 * <p>
 	 * null se non vi sono attivita effettuate.
+	 * @throws SQLException 
 	 */
-	private List<Attivita> getStorico(Utente utente){
+	private List<Attivita> getStorico(Utente utente) throws SQLException{
+		m.getFile(1);
 		return null;
 		
 	}

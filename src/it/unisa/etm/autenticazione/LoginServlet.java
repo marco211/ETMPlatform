@@ -1,6 +1,7 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
+import it.unisa.etm.model.manager.AutenticazioneManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
