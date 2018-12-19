@@ -9,33 +9,36 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/stile.css">)
+    <link rel="stylesheet" href="css/stile.css">
     <title>ETM Platform - Home</title>
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 <main role="main" class="container">
       <div class="row">
-        <div class="card col-md-8 blog-main card">
+        <div class="col-md-8">
         <div class="card mb-3">
+        <div class="card-body">
+  			<div class="card circle">
   			<img class="side-crop" src="https://static-www.leccenews24.it/wp-content/uploads/2017/07/31175818/1023615tesitania-994x400.jpg" alt="Card image cap">
- 			<div class="card-body">
+  			</div>
+ 			
    			 <h5 class="card-title">Descrizione del Sito</h5>
     		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
-   			 <p class="card-text"><small class="text-muted">Ultima modifica 1:07</small></p>
+   			 <p class="card-text"><small class="text-muted">Ultima modifica.</small></p>
  		    </div>
 </div>
          
         </div><!-- /.blog-main -->
 
-        <aside class="col-md-4 blog-sidebar card">
+        <aside class="col-md-4">
           <div class="p-3 mb-3 bg-light rounded text-center card">
             <h4 class="font-italic">Area Utente</h4>
             <p class="mb-0">Area nella quale si vialualizza qualcosa che non so cosa.</p>
           </div>
 
-          <div class="p-3">
+          <div class="p-3 card">
             <h4 class="font-italic">Archivio Proposte Tesi</h4>
             <ol class="list-unstyled mb-0">
               <li><a href="#">Proposte tesi Attive</a></li>
