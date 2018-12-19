@@ -15,43 +15,20 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-<main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-        <div class="card mb-3">
-        <div class="card-body">
-  			<div class="card circle">
-  			<img class="side-crop" src="https://static-www.leccenews24.it/wp-content/uploads/2017/07/31175818/1023615tesitania-994x400.jpg" alt="Card image cap">
-  			</div>
- 			
-   			 <h5 class="card-title">Descrizione del Sito</h5>
-    		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
-   			 <p class="card-text"><small class="text-muted">Ultima modifica.</small></p>
- 		    </div>
+
+<div style="background-color: #FF9C08">
+<div class="container-fluid">
+	<div class="row">
+	<div class="col border border-dark mr-2 ml-5 my-4" style="background-color: #FFFFFF">
+	test
+	<div class="row" style="border-top: 1px solid; color: black"> riga </div>
+	</div>
+	<div class="col border border-dark ml-2 mr-5 my-4" style="background-color: #FFFFFF">test</div>
+	</div>
+	
 </div>
-         
-        </div><!-- /.blog-main -->
-
-        <aside class="col-md-4">
-          <div class="p-3 mb-3 bg-light rounded text-center card">
-            <h4 class="font-italic">Area Utente</h4>
-            <p class="mb-0">Area nella quale si vialualizza qualcosa che non so cosa.</p>
-          </div>
-
-          <div class="p-3 card">
-            <h4 class="font-italic">Archivio Proposte Tesi</h4>
-            <ol class="list-unstyled mb-0">
-              <li><a href="#">Proposte tesi Attive</a></li>
-              <li><a href="#">Proposte tesi Chiuse</a></li>
-              <li><a href="#">Proposte tesi Archiviate</a></li>
-            </ol>
-          </div>
-   
-        </aside><!-- /.blog-sidebar -->
-
-      </div><!-- /.row -->
-
-    </main>
+</div>
+    
 <jsp:include page="footer.jsp" />
 </body>
 </html>
