@@ -1,0 +1,5 @@
+aside { 
+  display: block;
+}
+.side-crop { max-width: 375px; overflow: hidden; }
+.side-crop img { max-width: initial; /* Maybe optional. See note below */ }
