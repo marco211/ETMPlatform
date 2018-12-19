@@ -18,8 +18,8 @@
         <div class="card-body">
   				
  			
-   			 <h5 class="card-title">Profilo Utente</h5>
-    		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
+   			 <h5 class="card-title">Informazioni Personali</h5>
+    		 <!-- Umberto carica qui -->
  		    </div>
 </div>
          
@@ -28,7 +28,7 @@
         <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
-            <h4 class="font-italic">Nome sezione</h4>
+            <h4 class="font-italic">Informazioni Generali</h4>
             <ol class="list-unstyled mb-0">
               <li><a href="#">Primo elemento</a></li>
               <li><a href="#">Secondo elemento</a></li>
