@@ -4,16 +4,17 @@
 <html lang="en">
 <head>
 
- 	<!-- Required meta tags -->
+ <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+	
     <title>ETM Platform</title>
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  
+  	
   </head>
 
 	
@@ -44,13 +45,16 @@
         <a class="nav-link text-dark" href="#">Logout</a>
       </li>
     </ul>
+    
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2 border-dark" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <div class="container">
+      <input class="form-control mr-sm-2 border-dark" type="search" placeholder="Cerca" aria-label="Cerca">
+      <button type="button" class="btn btn-inline my-2 my-sm-0 bg-warning " id="exampleButton1"><span class="fa fa-search"></span></button>
+    </div>
     </form>
     <ul class="navbar-nav">
-    <li class="nav-item d-none d-lg-block" >
-       <a class="nav-link" href="#"><img alt="load" src="img/exit.png"></a>
+    <li class="nav-item" >
+       <button class="btn btn-inline my-2 my-sm-0 bg-warning" type="submit"><span class="fas fa-sign-out-alt form-control-feedback"></span></button>
       </li>
     
     </ul>
