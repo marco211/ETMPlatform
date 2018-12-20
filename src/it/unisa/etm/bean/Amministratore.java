@@ -1,12 +1,23 @@
 package it.unisa.etm.bean;
 
+import java.io.Serializable;
+
 /**
  * Classe bean dell'amministratore, che rappresenta l'amministratore presente nel database
  *
  */
 
-public class Amministratore {
+public class Amministratore implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	public Amministratore() {
+		
+	}
+	
 	public Amministratore(String nome, String cognome, String email) {
 		this.nome = nome;
 		this.cognome = cognome;
