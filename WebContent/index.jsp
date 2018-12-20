@@ -82,7 +82,7 @@
       	</div>
     </div>
     <div class="col my-4 mx-4">
-    	<form>
+    	<form action="RegistrazioneServlet" method="post">
     		<h1>Iscriviti</h1>
     		<h6>Gestisci facilmente la tua tesi</h6>
     		
@@ -124,7 +124,7 @@
 		    <input type="text" class="form-control" name="insegnamento" placeholder="Insegnamento" required>
 		  </div>
 		  
-		  <div class="form-group d-none" id="ufficioID" hidden>
+		  <div class="form-group d-none" id="ufficioID">
 		    <label for="inputUfficio">Ufficio</label>
 		    <input type="text" class="form-control" name="ufficio" placeholder="Ufficio" required>
 		  </div>
