@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Dettagli Proposta Tesi</title>
+<title>Area Privata Condivisa</title>
 </head>
 <body>
 
@@ -18,24 +18,26 @@
         <div class="card-body">
   				
  			
-   			 <h5 class="card-title">Proposta Tesi</h5>
-    		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
+   			 <h5 class="card-title" style="border-bottom: 1px solid">Area privata condivisa</h5>
+    		 <ol class="list-unstyled mb-0">
+              <li>Lorem ipsum dolor</li>
+            </ol>
  		    </div>
 </div>
          
         </div>
 
         <aside class="col-md-4 my-4">
-
-          <div class="p-3 card">
-            <h4 class="font-italic">Richieste Proposta Tesi</h4>
-            <ol class="list-unstyled mb-0">
-              <li><a href="#">Primo elemento</a></li>
-              <li><a href="#">Secondo elemento</a></li>
-              <li><a href="#">Terzo elemento</a></li>
-            </ol>
+        <div class="p-3 card">
+            <h4 class="font-italic">To Do List</h4>
+             <ul class="list-group list-group-flush">
+  			  <li class="list-group-item">Cosa da fare 1</li>
+  			  <li class="list-group-item">Cosa da fare 2</li>
+ 			  <li class="list-group-item">Cosa da fare 3</li>
+ 			  <li class="list-group-item">Cosa da fare 4</li>
+			  <li class="list-group-item">Cosa da fare 5</li>
+			</ul>
           </div>
-   
         </aside>
 
       </div>

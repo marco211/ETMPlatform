@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Profilo Utente</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
 </head>
@@ -35,6 +35,7 @@
     		 			insegnamento utente
     		 		
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
+    		 			
     		 			<p>
     		 				<button type="button" class="btn btn-primary mx-2">Modifica profilo</button>
     		 				<button type="button" class="btn btn-primary mx-2">Modifica password</button>
@@ -50,6 +51,7 @@
           <div class="p-3 card">
             <h4 class="font-italic">Le mie proposte tesi attive</h4>
             <ol class="list-unstyled mb-0">
+            <div class="row" style="border-bottom: 1px solid;"></div>
             <div class="card my-2" style="border: 1px solid;">
               <li><a href="#">Proposta tesi 1 <span class="fas fa-exclamation-circle"></span></a></li>
              </div>
