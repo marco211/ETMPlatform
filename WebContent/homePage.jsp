@@ -4,11 +4,11 @@ Utente utente =(Utente)session.getAttribute("utente");
 Amministratore admin=(Amministratore)session.getAttribute("admin");
 if (utente == null)
 {	
-    response.sendRedirect("./registrazione.jsp");
+    response.sendRedirect("./index.jsp");
     return;
 }
 else if(admin==null){
-	response.sendRedirect("./registrazione.jsp");
+	response.sendRedirect("./index.jsp");
     return;
 }
 %>
