@@ -64,6 +64,12 @@ public class UtenteManager implements UtenteModelInterface{
 			utente.setDataDiNascita(rs.getDate("DATE"));
 			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
+			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
+			pr1.setString(1, email);
+			ResultSet rs1=pr1.executeQuery();
+			while(rs1.next()) {
+				utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+			}
 		}
 		return utente;
 	}
