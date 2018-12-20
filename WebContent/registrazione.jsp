@@ -28,7 +28,7 @@
   <h3>ETM Platform</h3>
   <ul class="nav justify-content-center">
 	  <li class="nav-item d-none d-lg-block">
-		<form class="form-inline" action="#" method="post">
+		<form class="form-inline" action="LoginServlet" method="post">
 			<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
 			<div class="input-group mb-2 mr-sm-2">
 				<div class="input-group-prepend">
@@ -46,7 +46,7 @@
 		    	Effettua il login 
 		  </button>
 		
-			<form class="dropdown-menu p-4" action="#" method="post">
+			<form class="dropdown-menu p-4" action="LoginServlet" method="post">
 	  			<div class="form-group">
 			    <label for="exampleDropdownFormEmail2">E-mail</label>
 			    <input type="email" class="form-control" name="emailLogin" placeholder="E-mail" required>
@@ -104,7 +104,7 @@
 		    </div>
 		    
 		    <div class="form-group col-md-6">
-		      <label for="inputCognome4">Password</label>
+		      <label for="inputCognome4">Cognome</label>
 		      <input type="text" class="form-control" name="cognome" placeholder="Cognome" required>
 		    </div>
 		  </div>
