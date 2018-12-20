@@ -47,7 +47,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		if(tipo=='s')
 		{
 			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente = new Utente(cognome,data,nome,email,password);
+			utente=new Utente(cognome, date, nome, tipo, email, password, matricola);
 		}
 		else
 		{
