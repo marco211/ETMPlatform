@@ -1,5 +1,10 @@
 package it.unisa.etm.bean;
 
+/**
+ * Classe bean dell'amministratore, che rappresenta l'amministratore presente nel database
+ *
+ */
+
 public class Amministratore {
 
 	public Amministratore(String nome, String cognome, String email) {
