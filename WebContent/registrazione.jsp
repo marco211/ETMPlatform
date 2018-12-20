@@ -87,11 +87,11 @@
     		<h6>Gestisci facilmente la tua tesi</h6>
     		
 	    	<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="studente" checked="checked" onclick="cambiaStudente()">
+				  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="s" checked="checked" onclick="cambiaStudente()">
 				  <label class="form-check-label" for="inlineRadio1">Studente</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="inlineRadioOptions" value="docente" onclick="cambiaDocente()">
+				<input class="form-check-input" type="radio" name="inlineRadioOptions" value="d" onclick="cambiaDocente()">
 				<label class="form-check-label" for="inlineRadio2">Docente</label>
 			</div>
 	
