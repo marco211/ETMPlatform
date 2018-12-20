@@ -11,18 +11,18 @@ public class Utente implements Serializable	 {
 	}
 	
 	
-
-	public Utente(String cognome, Date dataDiNascita, String nome, String email, String password, String matricola) {
+	//studente
+	public Utente(String cognome, Date dataDiNascita, String nome, char tipo, String email, String password, String matricola) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.nome = nome;
+		this.tipo = tipo;
 		this.email = email;
 		this.password = password;
 		this.matricola = matricola;
 	}
 
-
-
+	//docente
 	public Utente(String cognome, Date dataDiNascita, String ufficio, char tipo, String nome,
 			String email, String password, ArrayList<String> insegnamento) {
 		this.cognome = cognome;
