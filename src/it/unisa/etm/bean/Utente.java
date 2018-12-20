@@ -23,7 +23,7 @@ public class Utente implements Serializable	 {
 
 
 
-	public Utente(String cognome, Date dataDiNascita, String ufficio, String tipo, String nome,
+	public Utente(String cognome, Date dataDiNascita, String ufficio, char tipo, String nome,
 			String email, String password, ArrayList<String> insegnamento) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
@@ -114,9 +114,6 @@ public class Utente implements Serializable	 {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-<<<<<<< HEAD
-=======
 	
 	
 	public ArrayList<String> getInsegnamento() {
@@ -139,7 +136,7 @@ public class Utente implements Serializable	 {
 		
 	}
 
->>>>>>> a0ed1316c624eb141f4fc664fa7e7155e94da8f1
+
 	private String cognome;
 	private Date dataDiNascita;
 	private String matricola;
