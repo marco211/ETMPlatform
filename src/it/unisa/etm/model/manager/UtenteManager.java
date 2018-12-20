@@ -37,7 +37,7 @@ public class UtenteManager implements UtenteModelInterface{
 		}
 		else
 		{
-			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo) "
 					+ "values(?,?,?,?,?,?,?);";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getEmail());
@@ -45,7 +45,7 @@ public class UtenteManager implements UtenteModelInterface{
 			ps.setString(3, utente.getCognome());
 			ps.setString(4, utente.getPassword());
 			ps.setString(5, utente.getDataDiNascita());
-			ps.setLong(6, utente.getMatricola());
+			ps.setString(6, utente.getUfficio());
 			ps.setString(7, String.valueOf(utente.getTipo()));
 			ps.executeUpdate();
 		}

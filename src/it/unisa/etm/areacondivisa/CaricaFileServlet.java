@@ -8,6 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.File;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.UtenteManager;
 
 /**
  * Estende HttpServlet fornisce la funzionalità di caricare un file nell'area privata condivisa.
@@ -29,8 +32,8 @@ public class CaricaFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		File file = new File();
+		boolean uploaded = uploadFileControl(file);
 	}
 
 	/**
@@ -40,7 +43,10 @@ public class CaricaFileServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean UploadFileControl(File file){
-		return false;
+	private boolean uploadFileControl(File file){
+		ManagerFactory mf=new ManagerFactory();
+		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
+
+		return true;
 	}
 }

@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.File;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalità di poter scaricare un file presente nell'area privata condivisa.
@@ -24,20 +26,13 @@ public class ScaricaFileServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		File file = new File();
+		boolean deleted = scaricaFile(file);
 	}
 
 	/**
@@ -47,8 +42,11 @@ public class ScaricaFileServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean ScaricaFileServlet(File file){
-		return false;
+	private boolean scaricaFile(File file){
+		ManagerFactory mf=new ManagerFactory();
+		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
+
+		return true;
 		
 	}
 }
