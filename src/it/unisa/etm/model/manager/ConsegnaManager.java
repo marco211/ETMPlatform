@@ -46,8 +46,31 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 
 	@Override
 	public boolean modificaConsegna(Consegna c) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String selectSQL="UPDATE Consegna SET ID = ?,"
+						+ "SCADENZA = ?,"
+						+ "NOME = ?,"
+						+ "DESCRIZIONE = ?"
+						+ "WHERE PROPOSTATESI_ID = ?";
+		
+		try {
+			connection=DatabaseManager.getIstance();
+			prepared=connection.prepareStatement(selectSQL);
+			prepared.setInt(1, c.getId());
+			prepared.setString(2, c.getScadenza());
+			prepared.setString(3, c.getNome());
+			prepared.setString(4, c.getDescrzione());
+			prepared.setInt(5, c.getId());
+			prepared.executeUpdate();
+			connection.commit();
+			
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			if(prepared!=null) {
+				prepared.close();
+			}
+		}
 	}
 
 	
