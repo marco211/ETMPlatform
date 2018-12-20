@@ -5,34 +5,60 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
+
 <div style="background-color: #FF9C08">
 <main role="main" class="container">
-      <div class="row">  
+      <div class="row" >  
         <div class="col-md-8 my-4">
         <div class="card mb-3">
         <div class="card-body">
   				
  			
-   			 <h5 class="card-title">Informazioni Personali</h5>
-    		 <!-- Umberto carica qui -->
+   			 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
+   			 	<div class="row" style="border-bottom: 1px solid;"></div>
+    		 		<h4>Nome:</h4>
+    		 			nome utente
+    		 		<h4>Cognome:</h4>
+    		 			cognome utente
+    		 		<h4>Email:</h4>
+    		 			emailutente@email.it
+    		 		<h4>Ufficio</h4>
+    		 			ufficio utente
+    		 		<h4>Insegnamento:</h4>
+    		 			insegnamento utente
+    		 		
+    		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
+    		 			<p>
+    		 				<button type="button" class="btn btn-primary mx-2">Modifica profilo</button>
+    		 				<button type="button" class="btn btn-primary mx-2">Modifica password</button>
+    		 			</p>
+    		 		</div>
  		    </div>
-</div>
+	</div>
          
         </div>
 
         <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
-            <h4 class="font-italic">Informazioni Generali</h4>
+            <h4 class="font-italic">Le mie proposte tesi attive</h4>
             <ol class="list-unstyled mb-0">
-              <li><a href="#">Primo elemento</a></li>
-              <li><a href="#">Secondo elemento</a></li>
-              <li><a href="#">Terzo elemento</a></li>
+            <div class="card my-2" style="border: 1px solid;">
+              <li><a href="#">Proposta tesi 1 <span class="fas fa-exclamation-circle"></span></a></li>
+             </div>
+             <div class="card my-2" style="border: 1px solid;">
+              <li><a href="#">Proposta tesi 2</a></li>
+             </div>
+             <div class="card my-2" style="border: 1px solid;">
+              <li><a href="#">Proposta tesi 3 <span class="fas fa-exclamation-circle" onmouseover="visualizzaMessaggio()"></span></a></li>
+             </div>
             </ol>
           </div>
    
