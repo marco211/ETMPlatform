@@ -24,7 +24,7 @@ public class Utente implements Serializable	 {
 
 	//docente
 	public Utente(String cognome, Date dataDiNascita, String ufficio, char tipo, String nome,
-			String email, String password, ArrayList<String> insegnamento) {
+			String email, String password, String insegnamento) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.ufficio = ufficio;
@@ -32,7 +32,7 @@ public class Utente implements Serializable	 {
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
-		this.insegnamento = insegnamento;
+		this.insegnamento.add(insegnamento);
 	}
 
 
