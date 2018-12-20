@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.UtenteManager;
 
 /**
  * Estende HttpServlet e fornisce la funzionalit� di registrazione.
@@ -34,25 +36,25 @@ public class RegistrazioneServlet extends HttpServlet {
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
 		String password=request.getParameter("password");
-		int anno=Integer.parseInt(request.getParameter("anno"));
-		int mese=Integer.parseInt(request.getParameter("mese"));
-		int giorno=Integer.parseInt(request.getParameter("giorno"));
+		String data=request.getParameter("data");
+		int giorno=Integer.parseInt(data.substring(0, 1));
+		int mese=Integer.parseInt(data.substring(3, 4));
+		int anno=Integer.parseInt(data.substring(6, 9));
 		@SuppressWarnings("deprecation")
-		Date data=new Date(anno-1900,mese-1,giorno);
+		Date date=new Date(anno-1900,mese-1,giorno);
 		char tipo=request.getParameter("tipo").charAt(0);
 		Utente utente;
-		if(tipo=='0')
+		if(tipo=='s')
 		{
 			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente = new Utente(cognome, data,nome,email,password);
-
+			utente = new Utente(cognome,data,nome,email,password);
 		}
 		else
 		{
+			String insegnamento=request.getParameter("insegnamento");
 			String ufficio=request.getParameter("ufficio");
 			utente = new Utente();
 		}
-		//il nome � di Scala
 		RegistrazioneControl(utente);
 	}
 
@@ -72,7 +74,13 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * false in caso di insuccesso.
 	 */
 	private boolean RegistrazioneControl(Utente utente){
-			Utente.aggiungiUtente(utente);
-			return true;
+		ManagerFactory mf=new ManagerFactory();
+		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		try {
+			return um.registraUtente(utente);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
 	}
 }
