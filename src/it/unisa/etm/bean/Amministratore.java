@@ -7,17 +7,13 @@ import java.io.Serializable;
  *
  */
 
-<<<<<<< HEAD
-public class Amministratore{
-=======
 public class Amministratore implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
->>>>>>> 8cb8593a571857cbb5154132ff47c1ecabaa624a
-
+	
 	public Amministratore() {
 		
 	}
