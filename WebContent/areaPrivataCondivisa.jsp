@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area proposte tesi</title>
+<title>Area Privata Condivisa</title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
         <div class="card-body">
   				
  			
-   			 <h5 class="card-title" style="border-bottom: 1px solid">Descrizione proposta tesi</h5>
+   			 <h5 class="card-title" style="border-bottom: 1px solid">Area privata condivisa</h5>
     		 <ol class="list-unstyled mb-0">
               <li>Lorem ipsum dolor</li>
             </ol>
@@ -28,18 +28,16 @@
         </div>
 
         <aside class="col-md-4 my-4">
-
-          <div class="p-3 card">
-            <h4 class="font-italic">Lista proposte tesi</h4>
-             <div class="list-group">
-  				<button type="button" class="list-group-item list-group-item-action active">Cras justo odio</button>
-  				<button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-  				<button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-  				<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  				<button type="button" class="list-group-item list-group-item-action" disabled>Vestibulum at eros</button>
-			</div>
+        <div class="p-3 card">
+            <h4 class="font-italic">To Do List</h4>
+             <ul class="list-group list-group-flush">
+  			  <li class="list-group-item">Cosa da fare 1</li>
+  			  <li class="list-group-item">Cosa da fare 2</li>
+ 			  <li class="list-group-item">Cosa da fare 3</li>
+ 			  <li class="list-group-item">Cosa da fare 4</li>
+			  <li class="list-group-item">Cosa da fare 5</li>
+			</ul>
           </div>
-   
         </aside>
 
       </div>
