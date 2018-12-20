@@ -52,7 +52,7 @@ public class UtenteManager implements UtenteModelInterface{
 		if(rs.getString("TIPO").equals("s")){
 		utente.setNome(rs.getString("NOME"));
 		utente.setCognome(rs.getString("COGNOME"));
-		utente.setMatricola(rs.getString("MATRICOLA"));
+		utente.setMatricola(rs.getLong("MATRICOLA"));
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getDate("DATE"));
 		utente.setPassword(rs.getString("PASSWORD"));
