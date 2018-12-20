@@ -82,15 +82,17 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setNome(rs.getString("NOME"));
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
+		utente.setTipo(rs.getString("TIPO").charAt(0));
 		utente.setEmail(rs.getString("EMAIL"));
-		utente.setDataDiNascita(rs.getDate("DATE"));
+		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 		utente.setPassword(rs.getString("PASSWORD"));
 		}
 		else if(rs.getString("TIPO").equals("d")) {
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
 			utente.setEmail(rs.getString("EMAIL"));
-			utente.setDataDiNascita(rs.getDate("DATE"));
+			utente.setTipo(rs.getString("TIPO").charAt(0));
+			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
 			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
