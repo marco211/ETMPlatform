@@ -28,7 +28,7 @@
   <h3>ETM Platform</h3>
   <ul class="nav justify-content-center">
 	  <li class="nav-item d-none d-lg-block">
-		<form class="form-inline" action="#" method="post">
+		<form class="form-inline" action="LoginServlet" method="post">
 			<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
 			<div class="input-group mb-2 mr-sm-2">
 				<div class="input-group-prepend">
@@ -46,7 +46,7 @@
 		    	Effettua il login 
 		  </button>
 		
-			<form class="dropdown-menu p-4" action="#" method="post">
+			<form class="dropdown-menu p-4" action="LoginServlet" method="post">
 	  			<div class="form-group">
 			    <label for="exampleDropdownFormEmail2">E-mail</label>
 			    <input type="email" class="form-control" name="emailLogin" placeholder="E-mail" required>
@@ -87,11 +87,11 @@
     		<h6>Gestisci facilmente la tua tesi</h6>
     		
 	    	<div class="form-check form-check-inline">
-				  <input class="form-check-input" type="radio" name="inlineRadioOptions" value="s" checked="checked" onclick="cambiaStudente()">
+				  <input class="form-check-input" type="radio" name="tipo" value="s" checked="checked" onclick="cambiaStudente()">
 				  <label class="form-check-label" for="inlineRadio1">Studente</label>
 			</div>
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="radio" name="inlineRadioOptions" value="d" onclick="cambiaDocente()">
+				<input class="form-check-input" type="radio" name="tipo" value="d" onclick="cambiaDocente()">
 				<label class="form-check-label" for="inlineRadio2">Docente</label>
 			</div>
 	

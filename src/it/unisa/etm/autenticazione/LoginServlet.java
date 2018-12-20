@@ -31,29 +31,18 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		login(email, password);
 		
-		
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String password=request.getParameter("passwordLogin");
+		String email=request.getParameter("emailLogin");
+		
+		
 	}
 
-	/**
-	 * Permette il login
-	 * @param email dell'utente che vuole effettuare il login;
-	 * @param password dell'utente che vuole effettuare il login;
-	 * @return L'Utente registrato se il login � andato a buon fine;
-	 * <p>
-	 * null se il login � fallito.
-	 */
-	private Utente login(String email, String password){
-		return Utente.loginUtente(email, password);
-	}
 }

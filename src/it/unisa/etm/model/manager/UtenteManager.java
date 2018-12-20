@@ -1,5 +1,8 @@
 package it.unisa.etm.model.manager;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -26,12 +29,6 @@ public class UtenteManager implements UtenteModelInterface{
 	}
 
 	@Override
-	public Utente getUtente(String email) throws SQLException{
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public boolean modificaPassword(Utente u) throws SQLException{
 		// TODO Auto-generated method stub
 		return false;
@@ -41,6 +38,34 @@ public class UtenteManager implements UtenteModelInterface{
 	public boolean modificaUtente(Utente u) throws SQLException{
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+	@Override
+	public Utente getUtente(String email, String password) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT * FROM UTENTE WHERE EMAIL=? AND PASSWORD=?");
+		pr.setString(1, email);
+		pr.setString(2, password);
+		ResultSet rs=pr.executeQuery();
+		rs.next();
+		Utente utente=new Utente();
+		if(rs.getString("TIPO").equals("s")){
+		utente.setNome(rs.getString("NOME"));
+		utente.setCognome(rs.getString("COGNOME"));
+		utente.setMatricola(rs.getString("MATRICOLA"));
+		utente.setEmail(rs.getString("EMAIL"));
+		utente.setDataDiNascita(rs.getDate("DATE"));
+		utente.setPassword(rs.getString("PASSWORD"));
+		}
+		else if(rs.getString("TIPO").equals("d")) {
+			utente.setNome(rs.getString("NOME"));
+			utente.setCognome(rs.getString("COGNOME"));
+			utente.setEmail(rs.getString("EMAIL"));
+			utente.setDataDiNascita(rs.getDate("DATE"));
+			utente.setPassword(rs.getString("PASSWORD"));
+			utente.setUfficio(rs.getString("UFFICIO"));
+		}
+		return utente;
 	}
 	
 	
