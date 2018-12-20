@@ -30,7 +30,7 @@
         <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
-            <h4 class="font-italic">Statistiche</h4>
+            <h4 class="font-italic">Lista proposte tesi</h4>
              <div class="list-group">
   				<button type="button" class="list-group-item list-group-item-action active">Cras justo odio</button>
   				<button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
