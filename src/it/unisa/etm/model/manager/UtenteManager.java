@@ -12,6 +12,12 @@ public class UtenteManager implements UtenteModelInterface{
 	public UtenteManager() {
 		
 	}
+	
+	@Override
+	public Boolean registraUtente(Utente utente) throws SQLException{
+		//to do
+		return true;
+	}
 
 	@Override
 	public List<Utente> getUtenti(String name) throws SQLException{

@@ -76,12 +76,12 @@ public class Utente implements Serializable	 {
 	}
 
 
-	public String getTipo() {
+	public char getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(char tipo) {
 		this.tipo = tipo;
 	}
 
@@ -115,19 +115,11 @@ public class Utente implements Serializable	 {
 		this.password = password;
 	}
 
-	public static Utente loginUtente(String email, String password) {
-		return null;
-	}
-	
-	public static void aggiungiUtente(Utente utente) {
-		
-	}
-
 	private String cognome;
 	private Date dataDiNascita;
 	private String matricola;
 	private String ufficio;
-	private String tipo;
+	private char tipo;
 	private String nome;
 	private String email;
 	private String password;

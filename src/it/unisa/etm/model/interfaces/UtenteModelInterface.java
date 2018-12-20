@@ -6,6 +6,7 @@ import java.util.List;
 import it.unisa.etm.bean.Utente;
 
 public interface UtenteModelInterface {
+	public Boolean registraUtente(Utente utente) throws SQLException;
 	public List<Utente> getUtenti(String name) throws SQLException;
 	public Utente getUtente(String email) throws SQLException;
 	public boolean modificaPassword(Utente u) throws SQLException;
