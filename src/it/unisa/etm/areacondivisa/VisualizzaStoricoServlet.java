@@ -2,6 +2,7 @@ package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -31,20 +32,14 @@ public class VisualizzaStoricoServlet extends HttpServlet {
         // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
+	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Utente utente = null;
+		ArrayList<Attivita> attivita = (ArrayList<Attivita>) getStorico(utente);
 	}
 
 	/**
@@ -55,9 +50,13 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	 * null se non vi sono attivita effettuate.
 	 * @throws SQLException 
 	 */
-	private List<Attivita> getStorico(Utente utente) throws SQLException{
-		m.getFile(1);
-		return null;
+	private List<Attivita> getStorico(Utente utente) {
+		try {
+			m.getFile(1);
+			return null;
+		}catch(SQLException e) {
+			return null;
+		}
 		
 	}
 }

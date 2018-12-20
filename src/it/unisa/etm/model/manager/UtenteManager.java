@@ -17,9 +17,38 @@ public class UtenteManager implements UtenteModelInterface{
 	}
 	
 	@Override
-	public Boolean registraUtente(Utente utente) throws SQLException{
-		//to do
-		return true;
+	public void registraUtente(Utente utente) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String insertSQL=null;
+		if(utente.getTipo()=='s')
+		{
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
+					+ "values(?,?,?,?,?,?,?);";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, utente.getEmail());
+			ps.setString(2, utente.getNome());;
+			ps.setString(3, utente.getCognome());
+			ps.setString(4, utente.getPassword());
+			ps.setString(5, utente.getDataDiNascita());
+			ps.setLong(6, utente.getMatricola());
+			ps.setString(7, String.valueOf(utente.getTipo()));
+			ps.executeUpdate();
+		}
+		else
+		{
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
+					+ "values(?,?,?,?,?,?,?);";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, utente.getEmail());
+			ps.setString(2, utente.getNome());;
+			ps.setString(3, utente.getCognome());
+			ps.setString(4, utente.getPassword());
+			ps.setString(5, utente.getDataDiNascita());
+			ps.setLong(6, utente.getMatricola());
+			ps.setString(7, String.valueOf(utente.getTipo()));
+			ps.executeUpdate();
+		}
 	}
 
 	@Override
