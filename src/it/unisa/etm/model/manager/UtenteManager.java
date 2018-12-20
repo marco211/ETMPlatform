@@ -37,7 +37,7 @@ public class UtenteManager implements UtenteModelInterface{
 		}
 		else
 		{
-			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo) "
 					+ "values(?,?,?,?,?,?,?);";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getEmail());
@@ -45,7 +45,7 @@ public class UtenteManager implements UtenteModelInterface{
 			ps.setString(3, utente.getCognome());
 			ps.setString(4, utente.getPassword());
 			ps.setString(5, utente.getDataDiNascita());
-			ps.setLong(6, utente.getMatricola());
+			ps.setString(6, utente.getUfficio());
 			ps.setString(7, String.valueOf(utente.getTipo()));
 			ps.executeUpdate();
 		}
@@ -82,15 +82,17 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setNome(rs.getString("NOME"));
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
+		utente.setTipo(rs.getString("TIPO").charAt(0));
 		utente.setEmail(rs.getString("EMAIL"));
-		utente.setDataDiNascita(rs.getDate("DATE"));
+		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 		utente.setPassword(rs.getString("PASSWORD"));
 		}
 		else if(rs.getString("TIPO").equals("d")) {
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
 			utente.setEmail(rs.getString("EMAIL"));
-			utente.setDataDiNascita(rs.getDate("DATE"));
+			utente.setTipo(rs.getString("TIPO").charAt(0));
+			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
 			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
