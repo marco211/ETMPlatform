@@ -123,8 +123,8 @@ public class Utente implements Serializable	 {
 
 
 
-	public void setInsegnamento(ArrayList<String> insegnamento) {
-		this.insegnamento = insegnamento;
+	public void setInsegnamento(String insegnamento) {
+		this.insegnamento.add(insegnamento);
 	}
 
 
