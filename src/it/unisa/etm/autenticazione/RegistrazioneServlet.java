@@ -55,7 +55,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, date, ufficio, tipo, nome, email, password, insegnamento);
 		}
-		RegistrazioneControl(utente);
+		registrazioneControl(utente);
 	}
 
 	/**
@@ -73,7 +73,7 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean RegistrazioneControl(Utente utente){
+	private boolean registrazioneControl(Utente utente){
 		ManagerFactory mf=new ManagerFactory();
 		UtenteManager um=(UtenteManager) mf.createUtenteManager();
 		try {

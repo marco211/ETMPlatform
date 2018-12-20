@@ -5,7 +5,7 @@ package it.unisa.etm.bean;
  *
  */
 
-public class Amministratore {
+public class Amministratore{
 
 	public Amministratore(String nome, String cognome, String email) {
 		this.nome = nome;
