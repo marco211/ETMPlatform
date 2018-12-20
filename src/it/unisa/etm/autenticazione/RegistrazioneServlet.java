@@ -58,6 +58,17 @@ public class RegistrazioneServlet extends HttpServlet {
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
 		registrazioneControl(utente);
+<<<<<<< HEAD
+=======
+	}
+
+	/**
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 */
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+>>>>>>> da8eed95082e4969c23387e550225d0d3d00e36f
 	}
 
 	/**
