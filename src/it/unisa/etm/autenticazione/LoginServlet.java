@@ -1,7 +1,10 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import it.unisa.etm.model.manager.AutenticazioneManager;
+import it.unisa.etm.model.manager.UtenteManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
 
 
 
@@ -41,7 +45,21 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String password=request.getParameter("passwordLogin");
 		String email=request.getParameter("emailLogin");
-		
+		ManagerFactory em = new ManagerFactory();
+		UtenteManager um = (UtenteManager) em.createUtenteManager();
+		try {
+			Utente utente=um.getUtente(email, password);
+			if(utente!=null) {
+				request.getSession().setAttribute("utente", utente);
+				request.getRequestDispatcher("homePage.jsp").forward(request, response);
+			}
+			else {
+				request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+		}
 		
 	}
 
