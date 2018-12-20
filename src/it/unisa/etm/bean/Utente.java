@@ -2,6 +2,7 @@ package it.unisa.etm.bean;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.ArrayList;
 
 public class Utente implements Serializable	 {
 	
@@ -23,7 +24,7 @@ public class Utente implements Serializable	 {
 
 
 	public Utente(String cognome, Date dataDiNascita, String ufficio, String tipo, String nome,
-			String email, String password, String insegnamento) {
+			String email, String password, ArrayList<String> insegnamento) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.ufficio = ufficio;
@@ -118,13 +119,13 @@ public class Utente implements Serializable	 {
 =======
 	
 	
-	public String getInsegnamento() {
+	public ArrayList<String> getInsegnamento() {
 		return insegnamento;
 	}
 
 
 
-	public void setInsegnamento(String insegnamento) {
+	public void setInsegnamento(ArrayList<String> insegnamento) {
 		this.insegnamento = insegnamento;
 	}
 
@@ -147,5 +148,5 @@ public class Utente implements Serializable	 {
 	private String nome;
 	private String email;
 	private String password;
-	private String insegnamento;
+	private ArrayList<String> insegnamento;
 }
