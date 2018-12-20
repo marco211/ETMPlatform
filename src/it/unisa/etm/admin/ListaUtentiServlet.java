@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
  * Estende HttpServlet fornisce all'amministratore la funzionalità di visualizzare gli utenti registrati.
@@ -49,6 +51,9 @@ public class ListaUtentiServlet extends HttpServlet {
 	 * null se non vi sono utenti registrati
 	 */
 	private List<Utente> getListaUtenti(){
+		ManagerFactory mf=new ManagerFactory();
+		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
+
 		return null;
 	}
 }
