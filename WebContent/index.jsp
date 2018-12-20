@@ -95,9 +95,7 @@
 				<label class="form-check-label" for="inlineRadio2">Docente</label>
 			</div>
 	
-		  
-    	
-		  	<div class="form-row">
+		  <div class="form-row">
 		    	<div class="form-group col-md-6">
 		      		<label for="inputNome4">Nome</label>
 		      		<input type="text" class="form-control" name="nome" placeholder="Nome" required>
@@ -114,19 +112,19 @@
 			  <input type="email" class="form-control" name="email" placeholder="E-mail" required>
 		  </div>
 		  
-		   <div class="form-group" id="matricolaID">
+		  <div class="form-group" id="matricolaID">
 			  <label for="inputMatricola">Matricola</label>
-			  <input type="text" class="form-control" name="matricola" placeholder="Matricola" required>
+			  <input type="text" class="form-control" name="matricola" placeholder="Matricola" >
 		  </div>
 		  
 		  <div class="form-group d-none" id="insegnamentoID">
 		    <label for="inputInsegnamento">Insegnamento</label>
-		    <input type="text" class="form-control" name="insegnamento" placeholder="Insegnamento" required>
+		    <input type="text" class="form-control" name="insegnamento" placeholder="Insegnamento">
 		  </div>
 		  
 		  <div class="form-group d-none" id="ufficioID">
 		    <label for="inputUfficio">Ufficio</label>
-		    <input type="text" class="form-control" name="ufficio" placeholder="Ufficio" required>
+		    <input type="text" class="form-control" name="ufficio" placeholder="Ufficio">
 		  </div>
 		  
 		  <div class="form-group">
@@ -147,7 +145,8 @@
 		      </label>
 		    </div>
 		  </div>
-		  <button type="submit" class="btn btn-primary">Sign in</button>
+			
+		  <input type="submit" class="btn btn-primary" value="Registrati">
 		</form>
     </div>
   </div>
