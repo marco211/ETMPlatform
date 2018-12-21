@@ -1,6 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*"%>
 <%
-String tipo =(String)session.getAttribute("tipo");
+Utente tipo =(Utente)session.getAttribute("utente");
 if(tipo==null){
 	response.sendRedirect("./index.jsp");
     return;
