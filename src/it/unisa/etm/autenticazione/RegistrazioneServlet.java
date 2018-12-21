@@ -57,7 +57,11 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
-		registrazioneControl(utente);
+		if(registrazioneControl(utente))
+		{
+			
+		}
+		
 
 	}
 
