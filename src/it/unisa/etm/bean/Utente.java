@@ -134,6 +134,16 @@ public class Utente implements Serializable	 {
 
 
 
+	public int getPropostaTesi_ID() {
+		return PropostaTesi_ID;
+	}
+
+
+	public void setPropostaTesi_ID(int propostaTesi_ID) {
+		PropostaTesi_ID = propostaTesi_ID;
+	}
+
+
 	public static Utente loginUtente(String email, String password) {
 		return null;
 	}
@@ -151,5 +161,6 @@ public class Utente implements Serializable	 {
 	private String nome;
 	private String email;
 	private String password;
+	private int PropostaTesi_ID;
 	private ArrayList<String> insegnamento;
 }

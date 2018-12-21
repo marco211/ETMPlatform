@@ -102,6 +102,8 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
 		utente.setTipo(rs.getString("TIPO"));
+		if(rs.getInt("PROPOSTATESI_ID")==0)
+		utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 		utente.setPassword(rs.getString("PASSWORD"));
