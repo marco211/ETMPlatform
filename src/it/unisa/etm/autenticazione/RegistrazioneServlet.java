@@ -57,16 +57,15 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
-<<<<<<< HEAD
+
 		if(registrazioneControl(utente))
 		{
 			
 		}
 		
-=======
 		registrazioneControl(utente);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
->>>>>>> 5882c2cccb380dbc93d1f1058fa86a117757b7ab
+
 
 	}
 

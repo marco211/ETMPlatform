@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-				request.getSession().setAttribute("tipo", utente.getTipo()+"");
+				request.getSession().setAttribute("tipo", utente.getTipo());
 				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {
