@@ -43,7 +43,7 @@
 		<ul class="nav justify-content-center">
 			<li class="nav-item d-none d-lg-block">
 
-				<form action="LoginServlet">
+				<form action="LoginServlet" method="post">
 					<div class="form-row">
 						<div class="col">
 							<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
@@ -110,7 +110,7 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-				<form>
+				<form action="RegistrazioneServlet" method="post">
 					<h1>Iscriviti</h1>
 					<h6>Gestisci facilmente la tua tesi</h6>
 
