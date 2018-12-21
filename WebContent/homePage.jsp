@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 String tipo =(String)session.getAttribute("tipo");
-if((tipo==null)||(!tipo.equals("s"))){
+if((tipo==null)||(!tipo.equalsIgnoreCase("s"))){
 	response.sendRedirect("./index.jsp");
     return;
 }
-else if((tipo==null)||(!tipo.equals("d"))){
+else if((tipo==null)||(!tipo.equalsIgnoreCase("d"))){
 	response.sendRedirect("./index.jsp");
     return;
 }
-else if((tipo==null)||(!tipo.equals("a"))){
+else if((tipo==null)||(!tipo.equalsIgnoreCase("a"))){
 	response.sendRedirect("./index.jsp");
     return;
 }
