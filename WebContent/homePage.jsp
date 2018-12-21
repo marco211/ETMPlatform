@@ -1,16 +1,9 @@
-<<<<<<< HEAD
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
-Utente utente=(Utente)session.getAttribute("utente");
+Utente utente =(Utente)session.getAttribute("utente");
 if(utente==null){
-=======
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*"%>
-<%
-Utente tipo =(Utente)session.getAttribute("utente");
-if(tipo==null){
->>>>>>> 9250a0f257f102b146b105ea3b29c0dd0676325e
 	response.sendRedirect("./index.jsp");
     return;
 }
