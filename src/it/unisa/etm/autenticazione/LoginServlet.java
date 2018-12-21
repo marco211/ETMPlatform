@@ -54,11 +54,11 @@ public class LoginServlet extends HttpServlet {
 				request.getRequestDispatcher("homePage.jsp").forward(request, response);
 			}
 			else {
-				request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			request.getRequestDispatcher("registrazione.jsp").forward(request, response);
+			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 		
 	}

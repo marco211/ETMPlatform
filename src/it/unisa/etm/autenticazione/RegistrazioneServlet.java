@@ -58,6 +58,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
 		registrazioneControl(utente);
+		request.getRequestDispatcher("index.jsp.jsp").forward(request, response);
 
 	}
 
