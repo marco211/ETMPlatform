@@ -44,9 +44,9 @@ public class RegistrazioneServlet extends HttpServlet {
 		String cognome=request.getParameter("cognome");
 		String password=request.getParameter("password");
 		String data=request.getParameter("data");
-		char tipo=request.getParameter("tipo").charAt(0);
+		String tipo=request.getParameter("tipo");
 		Utente utente;
-		if(tipo=='s')
+		if(tipo.equals("s"))
 		{
 			long matricola=Long.parseLong(request.getParameter("matricola"));
 			utente=new Utente(cognome, data, nome, tipo, email, password, matricola);

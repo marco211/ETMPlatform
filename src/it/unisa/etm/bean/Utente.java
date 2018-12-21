@@ -17,7 +17,7 @@ public class Utente implements Serializable	 {
 	
 	
 	//studente
-	public Utente(String cognome, String dataDiNascita, String nome, char tipo, String email, String password, long matricola2) {
+	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.nome = nome;
@@ -28,7 +28,7 @@ public class Utente implements Serializable	 {
 	}
 
 	//docente
-	public Utente(String cognome, String dataDiNascita, String ufficio, char tipo, String nome,
+	public Utente(String cognome, String dataDiNascita, String ufficio, String tipo, String nome,
 			String email, String password, String insegnamento) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
@@ -81,12 +81,12 @@ public class Utente implements Serializable	 {
 	}
 
 
-	public char getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 
 
-	public void setTipo(char tipo) {
+	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
@@ -146,7 +146,7 @@ public class Utente implements Serializable	 {
 	private String dataDiNascita;
 	private long matricola;
 	private String ufficio;
-	private char tipo;
+	private String tipo;
 	private String nome;
 	private String email;
 	private String password;

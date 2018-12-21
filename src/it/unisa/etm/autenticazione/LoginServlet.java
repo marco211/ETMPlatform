@@ -50,15 +50,15 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-				request.getSession().setAttribute("utente", utente);
-				request.getRequestDispatcher("homePage.jsp").forward(request, response);
+				request.getSession().setAttribute("tipo", utente.getTipo()+"");
+				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				response.sendRedirect(request.getContextPath()+"/index.jsp");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		}
 		
 	}
