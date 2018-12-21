@@ -1,7 +1,6 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -57,17 +57,12 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
-<<<<<<< HEAD
 		if(registrazioneControl(utente))
 		{
-			
+			HttpSession session=request.getSession();
+			session.setAttribute("utente", utente);
 		}
-		
-=======
-		registrazioneControl(utente);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
->>>>>>> 5882c2cccb380dbc93d1f1058fa86a117757b7ab
-
 	}
 
 
