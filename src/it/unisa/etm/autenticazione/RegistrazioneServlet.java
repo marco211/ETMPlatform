@@ -53,17 +53,17 @@ public class RegistrazioneServlet extends HttpServlet {
 		}
 		else
 		{
-			String insegnamento=request.getParameter("insegnamento");
+			String insegnamento=request.getParameter("insegnamento").toLowerCase();
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
-
 		if(registrazioneControl(utente))
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("utente", utente);
+			
 		}
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
 
 

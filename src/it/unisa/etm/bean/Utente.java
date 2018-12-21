@@ -37,6 +37,7 @@ public class Utente implements Serializable	 {
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
+		this.insegnamento=new ArrayList<String>();
 		this.insegnamento.add(insegnamento);
 	}
 

@@ -1,5 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@ page import="it.unisa.etm.bean.* "%>
+	
+<%
+Utente utente=(Utente)session.getAttribute("utente");
+if(utente!=null){
+	response.sendRedirect("./homePage.jsp");
+    return;
+}
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,10 +29,14 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
 
+
+
 </head>
 
 
 <body>
+
+
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"

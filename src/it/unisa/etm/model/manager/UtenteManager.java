@@ -48,9 +48,28 @@ public class UtenteManager implements UtenteModelInterface{
 			ps.setString(6, utente.getUfficio());
 			ps.setString(7, String.valueOf(utente.getTipo()));
 			ps.executeUpdate();
+			
+			String SQL = "select nome from insegnamento where nome='" + utente.getInsegnamento().get(0) + "';";
+			PreparedStatement preparedStatement=istance.prepareStatement(SQL);
+			ResultSet rs=preparedStatement.executeQuery(SQL);
+			if(!rs.next())
+			{
+				String insertSQL1="insert into insegnamento (nome) values(?);";
+				PreparedStatement ps1=istance.prepareStatement(insertSQL1);
+				ps1.setString(1, utente.getInsegnamento().get(0));
+				ps1.executeUpdate();
+			}
+			String insertSQL2="insert into insegna (utente_email, insegnamento_nome) values(?,?);";			
+			PreparedStatement ps2=istance.prepareStatement(insertSQL2);
+			ps2.setString(1, utente.getEmail());
+			ps2.setString(2, utente.getInsegnamento().get(0));
+			ps2.executeUpdate();
 		}
 	}
 
+	
+
+	
 	@Override
 	public List<Utente> getUtenti(String name) throws SQLException{
 		DatabaseManager.getIstance();

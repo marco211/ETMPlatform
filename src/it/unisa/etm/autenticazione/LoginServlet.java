@@ -11,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -50,7 +51,8 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-				request.getSession().setAttribute("tipo", utente.getTipo());
+				HttpSession session=request.getSession();
+				session.setAttribute("utente", utente);
 				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {
