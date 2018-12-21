@@ -1,7 +1,6 @@
 package it.unisa.etm.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.util.ArrayList;
 
 public class Utente implements Serializable	 {
