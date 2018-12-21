@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.File;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
  * Estende HttpServlet, fornisce all'utente registrato come docente la funzionalità di poter valutare un file presente nell'area privata condivisa
@@ -36,10 +38,19 @@ public class ValutaFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		int voto = 0;
+		String descrizione = "";
+		
+		boolean inserted = inserisciValutazione(voto, descrizione);
 	}
 
+	private boolean inserisciValutazione(int voto, String descrizione) {
+		ManagerFactory mf=new ManagerFactory();
+		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
+		return true;
+		
+	}
+	
 	/**
 	 * Esegue il controllo sui parametri di valutazione che deve ricevere un file presente nell'area privata condivisa.
 	 * @param valutazione intero che rappresenta il voto che deve ricevere un file.
