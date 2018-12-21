@@ -3,7 +3,7 @@ package it.unisa.etm.autenticazione;
 import java.io.IOException;
 import java.sql.SQLException;
 
-import it.unisa.etm.model.manager.AutenticazioneManager;
+
 import it.unisa.etm.model.manager.UtenteManager;
 
 import javax.servlet.ServletException;
@@ -51,12 +51,8 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-<<<<<<< HEAD
 				HttpSession session=request.getSession();
 				session.setAttribute("utente", utente);
-=======
-				request.getSession().setAttribute("utente", utente);
->>>>>>> 9250a0f257f102b146b105ea3b29c0dd0676325e
 				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {
