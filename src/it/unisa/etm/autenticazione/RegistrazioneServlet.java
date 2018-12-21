@@ -63,15 +63,7 @@ public class RegistrazioneServlet extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("utente", utente);
 		}
-
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-
-		
-		registrazioneControl(utente);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
-
-
-
 	}
 
 
