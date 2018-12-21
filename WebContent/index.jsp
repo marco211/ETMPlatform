@@ -148,23 +148,23 @@
 					<div class="form-group" id="matricolaID">
 						<label for="inputMatricola">Matricola</label> <input type="text"
 							class="form-control" name="matricola" placeholder="Matricola"
-							required>
+							>
 					</div>
 
 					<div class="form-group d-none" id="insegnamentoID">
 						<label for="inputInsegnamento">Insegnamento</label> <input
 							type="text" class="form-control" name="insegnamento"
-							placeholder="Insegnamento" required>
+							placeholder="Insegnamento">
 					</div>
 
 					<div class="form-group d-none" id="ufficioID" hidden>
 						<label for="inputUfficio">Ufficio</label> <input type="text"
 							class="form-control" name="ufficio" placeholder="Ufficio"
-							required>
+							>
 					</div>
 
 					<div class="form-group">
-						<label for="inputPassword">Password</label> <input type="text"
+						<label for="inputPassword">Password</label> <input type="password"
 							class="form-control" name="password" placeholder="Password"
 							required>
 					</div>
