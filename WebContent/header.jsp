@@ -40,8 +40,8 @@
       </li>
       <li class="nav-item">
       <%
-      Utente tipo =(Utente)session.getAttribute("utente");
-      if(tipo.getPropostaTesi_ID()==0){
+      Utente utente =(Utente)session.getAttribute("utente");
+      if(utente.getPropostaTesi_ID()==0){
       %>
         <a class="nav-link text-dark">Area privata condivisa</a>
         <%}else{ %>
@@ -61,7 +61,9 @@
     </form>
     <ul class="navbar-nav">
     <li class="nav-item" >
+       <form action="LogoutServlet" method="post">
        <button class="btn btn-inline my-2 my-sm-0 bg-warning" type="submit"><span class="fas fa-sign-out-alt form-control-feedback"></span></button>
+      </form>
       </li>
     
     </ul>
