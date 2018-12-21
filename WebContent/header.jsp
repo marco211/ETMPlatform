@@ -39,7 +39,7 @@
         <a class="nav-link text-dark" href="#">Area proposta tesi</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link text-dark" href="#">Area privata condivisa</a>
+        <a class="nav-link text-dark" href="areaPrivataCondivisa.jsp">Area privata condivisa</a>
       </li>
       <li class="nav-item d-lg-none">
         <a class="nav-link text-dark" href="#">Logout</a>
