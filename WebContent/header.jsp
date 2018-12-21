@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -39,7 +39,14 @@
         <a class="nav-link text-dark" href="#">Area proposta tesi</a>
       </li>
       <li class="nav-item">
+      <%
+      Utente tipo =(Utente)session.getAttribute("utente");
+      if(tipo.getPropostaTesi_ID()==0){
+      %>
+        <a class="nav-link text-dark">Area privata condivisa</a>
+        <%}else{ %>
         <a class="nav-link text-dark" href="areaPrivataCondivisa.jsp">Area privata condivisa</a>
+        <%} %>
       </li>
       <li class="nav-item d-lg-none">
         <a class="nav-link text-dark" href="#">Logout</a>
