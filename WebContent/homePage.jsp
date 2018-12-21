@@ -1,18 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
 String tipo =(String)session.getAttribute("tipo");
-if((tipo==null)||(!tipo.equalsIgnoreCase("s"))){
+if(tipo==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
-else if((tipo==null)||(!tipo.equalsIgnoreCase("d"))){
-	response.sendRedirect("./index.jsp");
-    return;
-}
-else if((tipo==null)||(!tipo.equalsIgnoreCase("a"))){
-	response.sendRedirect("./index.jsp");
-    return;
-}
+
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
