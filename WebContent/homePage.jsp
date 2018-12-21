@@ -1,13 +1,15 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%
-Utente utente =(Utente)session.getAttribute("utente");
-Amministratore admin=(Amministratore)session.getAttribute("admin");
-if (utente == null)
-{	
-    response.sendRedirect("./index.jsp");
+String tipo =(String)session.getAttribute("tipo");
+if((tipo==null)||(!tipo.equalsIgnoreCase("s"))){
+	response.sendRedirect("./index.jsp");
     return;
 }
-else if(admin==null){
+else if((tipo==null)||(!tipo.equalsIgnoreCase("d"))){
+	response.sendRedirect("./index.jsp");
+    return;
+}
+else if((tipo==null)||(!tipo.equalsIgnoreCase("a"))){
 	response.sendRedirect("./index.jsp");
     return;
 }

@@ -44,9 +44,9 @@ public class RegistrazioneServlet extends HttpServlet {
 		String cognome=request.getParameter("cognome");
 		String password=request.getParameter("password");
 		String data=request.getParameter("data");
-		char tipo=request.getParameter("tipo").charAt(0);
+		String tipo=request.getParameter("tipo");
 		Utente utente;
-		if(tipo=='s')
+		if(tipo.equals("s"))
 		{
 			long matricola=Long.parseLong(request.getParameter("matricola"));
 			utente=new Utente(cognome, data, nome, tipo, email, password, matricola);
@@ -57,12 +57,24 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
+<<<<<<< HEAD
+=======
+
+>>>>>>> d728697bef334e6036c7190986d1dd97816f6c6b
 		if(registrazioneControl(utente))
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("utente", utente);
 		}
+<<<<<<< HEAD
 		request.getRequestDispatcher("index.jsp").forward(request, response);
+=======
+		
+		registrazioneControl(utente);
+		request.getRequestDispatcher("index.jsp").forward(request, response);
+
+
+>>>>>>> d728697bef334e6036c7190986d1dd97816f6c6b
 	}
 
 

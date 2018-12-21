@@ -21,7 +21,7 @@ public class UtenteManager implements UtenteModelInterface{
 		Connection istance=DatabaseManager.getIstance();
 		PreparedStatement ps=null;
 		String insertSQL=null;
-		if(utente.getTipo()=='s')
+		if(utente.getTipo().equals("s"))
 		{
 			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
 					+ "values(?,?,?,?,?,?,?);";
@@ -82,7 +82,7 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setNome(rs.getString("NOME"));
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
-		utente.setTipo(rs.getString("TIPO").charAt(0));
+		utente.setTipo(rs.getString("TIPO"));
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 		utente.setPassword(rs.getString("PASSWORD"));
@@ -91,7 +91,7 @@ public class UtenteManager implements UtenteModelInterface{
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
 			utente.setEmail(rs.getString("EMAIL"));
-			utente.setTipo(rs.getString("TIPO").charAt(0));
+			utente.setTipo(rs.getString("TIPO"));
 			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
