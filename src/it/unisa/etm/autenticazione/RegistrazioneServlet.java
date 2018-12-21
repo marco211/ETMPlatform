@@ -57,24 +57,21 @@ public class RegistrazioneServlet extends HttpServlet {
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
 		}
-<<<<<<< HEAD
-=======
 
->>>>>>> d728697bef334e6036c7190986d1dd97816f6c6b
 		if(registrazioneControl(utente))
 		{
 			HttpSession session=request.getSession();
 			session.setAttribute("utente", utente);
 		}
-<<<<<<< HEAD
+
 		request.getRequestDispatcher("index.jsp").forward(request, response);
-=======
+
 		
 		registrazioneControl(utente);
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 
 
->>>>>>> d728697bef334e6036c7190986d1dd97816f6c6b
+
 	}
 
 
