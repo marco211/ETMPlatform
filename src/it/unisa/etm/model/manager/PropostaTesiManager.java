@@ -28,12 +28,16 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		String insertSQL=null;
 		insertSQL = "insert into RichiestaPartecipazione (Data, PropostaTesi_Id, Utente_Email) "
 					+ "values(?,?,?);";
+		try {
 			ps=istance.prepareStatement(insertSQL); 
-		//	LocalDate today = LocalDate.now(); passare in Servlet--------------------------------+++++++++++---------
 			ps.setDate(1, java.sql.Date.valueOf(richiestaPartecipazione.getData()));			
 			ps.setInt(2, richiestaPartecipazione.getPropostatesi_id());			
 			ps.setString(3, richiestaPartecipazione.getUtente_mail());								
 			ps.executeUpdate();
+		}finally {
+			if (ps != null)
+				ps.close();
+		}
 	}
 	
 	@Override

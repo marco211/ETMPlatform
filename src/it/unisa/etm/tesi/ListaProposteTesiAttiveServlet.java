@@ -17,7 +17,7 @@ import it.unisa.etm.bean.PropostaTesi;
 /**
  * Servlet implementation class ListaProposteTesiAttive
  */
-@WebServlet("/ListaProposteTesiAttive")
+@WebServlet("/ListaProposteTesiAttiveServlet")
 public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private PropostaTesiManager  propostamanager;

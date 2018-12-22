@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-
+<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.* "%>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Area Proposta Tesi</title>
 
 </head>
 <body>
@@ -26,9 +26,14 @@
    			</form>
 			
     		 <ol class="list-unstyled mb-0">
-              <li><a href="#">Proposta tesi 1</a></li>
-              <li><a href="#">Proposta tesi 2</a></li>
-              <li><a href="#">Proposta tesi 3</a></li>
+    		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
+		   			for(PropostaTesi p : proposte)
+		 			  {
+					%>
+		              <li><a href="#"><%= p.getTitolo() %></a><a href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>				
+		              </li>
+					<%} %>
+      
             </ol>
  		    </div>
 </div>
@@ -40,9 +45,8 @@
           <div class="p-3 card">
             <h4 class="font-italic">Statistiche</h4>
             <ol class="list-unstyled mb-0">
-              <li><a href="#">Primo elemento</a></li>
-              <li><a href="#">Secondo elemento</a></li>
-              <li><a href="#">Terzo elemento</a></li>
+
+              <li><a href="#">Statistica uno</a></li>
             </ol>
           </div>
    

@@ -7,9 +7,8 @@ public class RichiestaPartecipazione {
 	public RichiestaPartecipazione() {
 		
 	}
-	public RichiestaPartecipazione(int id, LocalDate data, int propostatesi_id, String utente_mail) {
+	public RichiestaPartecipazione(LocalDate data, int propostatesi_id, String utente_mail) {
 		super();
-		this.id = id;
 		this.data = data;
 		this.propostatesi_id = propostatesi_id;
 		this.utente_mail = utente_mail;

@@ -1,6 +1,7 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
+
 import java.sql.SQLException;
 import java.time.LocalDate;
 
@@ -15,6 +16,7 @@ import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import it.unisa.etm.model.manager.UtenteManager;
 
@@ -24,6 +26,7 @@ import it.unisa.etm.model.manager.UtenteManager;
 @WebServlet("/InviaPropostaTesiServlet")
 public class InviaPropostaTesiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private PropostaTesiModelInterface  propostamanager;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -37,20 +40,25 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int id=Integer.parseInt(request.getParameter("id_richiesta"));
-		LocalDate data=LocalDate.parse(request.getParameter("data"));
-		int propostatesi_id=Integer.parseInt(request.getParameter("propostatesi_id"));
-		String utente_mail=request.getParameter("utente_mail");
+		HttpSession session=request.getSession();
+		synchronized(session) {
+			LocalDate data = LocalDate.now();
+			int propostatesi_id=Integer.parseInt(request.getParameter("propostatesi_id"));
+			Utente utente = (Utente) session.getAttribute("utente");
+			String utente_mail=utente.getEmail();
+			propostamanager = new PropostaTesiManager();
+
+			RichiestaPartecipazione richiesta = new RichiestaPartecipazione(data, propostatesi_id, utente_mail);
+			
 		
-		RichiestaPartecipazione richiesta = new RichiestaPartecipazione(id, data, propostatesi_id, utente_mail);
-		
-		if(inviaRichiestaPropostaTesi(richiesta));
-		{
-			HttpSession session=request.getSession();
-			session.setAttribute("richiesta", richiesta);
+			if(this.inviaRichiestaPropostaTesi(richiesta));
+			{
+				session.setAttribute("richiesta", richiesta);
+				request.getRequestDispatcher("index.jsp").forward(request, response);
+			}
+			//request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
-		//request.getRequestDispatcher("index.jsp").forward(request, response);
-	}
+ 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
