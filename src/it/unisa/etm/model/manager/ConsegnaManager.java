@@ -46,8 +46,31 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 
 	@Override
 	public boolean modificaConsegna(Consegna c) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		String selectSQL="UPDATE Consegna SET ID = ?,"
+						+ "SCADENZA = ?,"
+						+ "NOME = ?,"
+						+ "DESCRIZIONE = ?"
+						+ "WHERE PROPOSTATESI_ID = ?";
+		
+		try {
+			connection=DatabaseManager.getIstance();
+			prepared=connection.prepareStatement(selectSQL);
+			prepared.setInt(1, c.getId());
+			prepared.setString(2, c.getScadenza());
+			prepared.setString(3, c.getNome());
+			prepared.setString(4, c.getDescrzione());
+			prepared.setInt(5, c.getId());
+			prepared.executeUpdate();
+			connection.commit();
+			
+			return true;
+		} catch (Exception e) {
+			return false;
+		} finally {
+			if(prepared!=null) {
+				prepared.close();
+			}
+		}
 	}
 
 	
@@ -75,12 +98,49 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	
 	@Override
 	public Consegna getConsegna(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
+		String selectSQL="SELECT * FROM CONSEGNA WHERE ID=?";
+		connection=DatabaseManager.getIstance();
+		prepared=connection.prepareStatement(selectSQL);
+		prepared.setInt(1, id);
+		rs=prepared.executeQuery();
+		
+			Consegna consegna = new Consegna();
+			consegna.setNome(rs.getString("NOME"));
+			consegna.setDescrzione(rs.getString("DESCRIZIONE"));
+			consegna.setId(rs.getInt("ID"));
+			consegna.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
+			consegna.setScadenza(rs.getString("SCADENZA"));	
+
+		prepared.close();
+		rs.close();
+		
+		return consegna;
 	}
 	
+	@Override
+	public ArrayList<Consegna> getListaConsegne(int propostaTesiId) throws SQLException {
+		String selectSQL="SELECT * FROM CONSEGNA WHERE PROPOSTATESI_ID=?";
+			connection=DatabaseManager.getIstance();
+			prepared=connection.prepareStatement(selectSQL);
+			prepared.setInt(1, propostaTesiId);
+			rs=prepared.executeQuery();
+			ArrayList<Consegna> list = new ArrayList<Consegna>();
+			while(rs.next()) {
+				Consegna consegna = new Consegna();
+				consegna.setNome(rs.getString("NOME"));
+				consegna.setDescrzione(rs.getString("DESCRIZIONE"));
+				consegna.setId(rs.getInt("ID"));
+				consegna.setPropostaTesiId(propostaTesiId);
+				consegna.setScadenza(rs.getString("SCADENZA"));	
+				list.add(consegna);
+			}
+			prepared.close();
+			rs.close();
+			
+			return list;	
+	}
+
+	private ResultSet rs;
 	private Connection connection=null;
 	private PreparedStatement prepared=null;
-
-
 }

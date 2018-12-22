@@ -1,38 +1,43 @@
 package it.unisa.etm.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
+import java.util.ArrayList;
 
 public class Utente implements Serializable	 {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	public Utente() {
-		
+		this.insegnamento=new ArrayList<String>();
 	}
 	
 	
-
-	public Utente(String cognome, Date dataDiNascita, String nome, String email,String password) {
-		super();
+	//studente
+	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.nome = nome;
+		this.tipo = tipo;
 		this.email = email;
 		this.password = password;
+		this.matricola = matricola2;
 	}
 
-
-
-	public Utente(String cognome, Date dataDiNascita, String matricola, String ufficio, String tipo, String nome,
-			String email, String password) {
-		super();
+	//docente
+	public Utente(String cognome, String dataDiNascita, String ufficio, String tipo, String nome,
+			String email, String password, String insegnamento) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
-		this.matricola = matricola;
 		this.ufficio = ufficio;
 		this.tipo = tipo;
 		this.nome = nome;
 		this.email = email;
 		this.password = password;
+		this.insegnamento=new ArrayList<String>();
+		this.insegnamento.add(insegnamento);
 	}
 
 
@@ -46,22 +51,22 @@ public class Utente implements Serializable	 {
 	}
 
 
-	public Date getDataDiNascita() {
+	public String getDataDiNascita() {
 		return dataDiNascita;
 	}
 
 
-	public void setDataDiNascita(Date dataDiNascita) {
+	public void setDataDiNascita(String dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 
 
-	public String getMatricola() {
+	public long getMatricola() {
 		return matricola;
 	}
 
 
-	public void setMatricola(String matricola) {
+	public void setMatricola(long matricola) {
 		this.matricola = matricola;
 	}
 
@@ -114,6 +119,29 @@ public class Utente implements Serializable	 {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	
+	public ArrayList<String> getInsegnamento() {
+		return insegnamento;
+	}
+
+
+
+	public void setInsegnamento(String insegnamento) {
+		this.insegnamento.add(insegnamento);
+	}
+
+
+
+	public int getPropostaTesi_ID() {
+		return PropostaTesi_ID;
+	}
+
+
+	public void setPropostaTesi_ID(int propostaTesi_ID) {
+		PropostaTesi_ID = propostaTesi_ID;
+	}
+
 
 	public static Utente loginUtente(String email, String password) {
 		return null;
@@ -123,12 +151,15 @@ public class Utente implements Serializable	 {
 		
 	}
 
+
 	private String cognome;
-	private Date dataDiNascita;
-	private String matricola;
+	private String dataDiNascita;
+	private long matricola;
 	private String ufficio;
 	private String tipo;
 	private String nome;
 	private String email;
 	private String password;
+	private int PropostaTesi_ID;
+	private ArrayList<String> insegnamento;
 }

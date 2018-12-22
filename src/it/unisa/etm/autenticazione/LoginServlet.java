@@ -1,15 +1,20 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-import it.unisa.etm.model.manager.AutenticazioneManager;
+import java.sql.SQLException;
+
+
+import it.unisa.etm.model.manager.UtenteManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
 
 
 
@@ -31,29 +36,33 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String password=request.getParameter("password");
-		String email=request.getParameter("email");
-		login(email, password);
 		
-		
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
+		String password=request.getParameter("passwordLogin");
+		String email=request.getParameter("emailLogin");
+		ManagerFactory em = new ManagerFactory();
+		UtenteManager um = (UtenteManager) em.createUtenteManager();
+		try {
+			Utente utente=um.getUtente(email, password);
+			if(utente!=null) {
+				HttpSession session=request.getSession();
+				session.setAttribute("utente", utente);
+				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+			}
+			else {
+				response.sendRedirect(request.getContextPath()+"/index.jsp");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
+		}
+		
 	}
 
-	/**
-	 * Permette il login
-	 * @param email dell'utente che vuole effettuare il login;
-	 * @param password dell'utente che vuole effettuare il login;
-	 * @return L'Utente registrato se il login � andato a buon fine;
-	 * <p>
-	 * null se il login � fallito.
-	 */
-	private Utente login(String email, String password){
-		return Utente.loginUtente(email, password);
-	}
 }

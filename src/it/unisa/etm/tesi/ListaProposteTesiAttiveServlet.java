@@ -1,29 +1,31 @@
-package it.unisa.etm.admin;
+package it.unisa.etm.tesi;
 
 import java.io.IOException;
-import java.util.List;
+
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.interfaces.*;
+import it.unisa.etm.model.manager.*;
+import it.unisa.etm.bean.PropostaTesi;
 
 /**
- * Estende HttpServlet fornisce all'amministratore la funzionalità di visualizzare gli utenti registrati.
+ * Servlet implementation class ListaProposteTesiAttive
  */
-@WebServlet("/ListaUtentiServlet")
-public class ListaUtentiServlet extends HttpServlet {
+@WebServlet("/ListaProposteTesiAttiveServlet")
+public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private PropostaTesiManager  propostamanager;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ListaUtentiServlet() {
+    public ListaProposteTesiAttiveServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,7 +35,16 @@ public class ListaUtentiServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try {
+			System.out.println("Mammt");
+			propostamanager = new PropostaTesiManager();
+			ArrayList<PropostaTesi> proposte = propostamanager.getProposteTesiAttive();
+			request.setAttribute("proposte", proposte);
+			request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
+		}catch(SQLException e){
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			e.printStackTrace();
+		}
 	}
 
 	/**
@@ -43,17 +54,5 @@ public class ListaUtentiServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-	
-	/**
-	 * Torna la lista di tutti gli utenti registrati 
-	 * @return lista di utenti registrati
-	 * <p>
-	 * null se non vi sono utenti registrati
-	 */
-	private List<Utente> getListaUtenti(){
-		ManagerFactory mf=new ManagerFactory();
-		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
 
-		return null;
-	}
 }

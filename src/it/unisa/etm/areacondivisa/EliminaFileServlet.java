@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.File;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalità di poter eliminare un file dall'area privata condivisa.
@@ -25,19 +27,11 @@ public class EliminaFileServlet extends HttpServlet {
     }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		File file = new File();
+		boolean deleted = deleteFile(file);
 	}
 
 	/**
@@ -47,8 +41,11 @@ public class EliminaFileServlet extends HttpServlet {
 	 * <p>
 	 * false se non è andata a buon fine.
 	 */
-	private boolean deleteFileBean(File file){
-		return false;
+	private boolean deleteFile(File file){
+		ManagerFactory mf=new ManagerFactory();
+		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
+
+		return true;
 		
 	}
 }

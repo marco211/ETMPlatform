@@ -1,7 +1,6 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.servlet.ServletException;
@@ -9,8 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.UtenteManager;
 
 /**
  * Estende HttpServlet e fornisce la funzionalit� di registrazione.
@@ -30,39 +32,41 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email=request.getParameter("email");
-		String nome=request.getParameter("nome");
-		String cognome=request.getParameter("cognome");
-		String password=request.getParameter("password");
-		int anno=Integer.parseInt(request.getParameter("anno"));
-		int mese=Integer.parseInt(request.getParameter("mese"));
-		int giorno=Integer.parseInt(request.getParameter("giorno"));
-		@SuppressWarnings("deprecation")
-		Date data=new Date(anno-1900,mese-1,giorno);
-		char tipo=request.getParameter("tipo").charAt(0);
-		Utente utente;
-		if(tipo=='0')
-		{
-			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente = new Utente(cognome, data,nome,email,password);
-
-		}
-		else
-		{
-			String ufficio=request.getParameter("ufficio");
-			utente = new Utente();
-		}
-		//il nome � di Scala
-		RegistrazioneControl(utente);
+		doPost(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email=request.getParameter("email");
+		String nome=request.getParameter("nome");
+		String cognome=request.getParameter("cognome");
+		String password=request.getParameter("password");
+		String data=request.getParameter("data");
+		String tipo=request.getParameter("tipo");
+		Utente utente;
+		if(tipo.equals("s"))
+		{
+			long matricola=Long.parseLong(request.getParameter("matricola"));
+			utente=new Utente(cognome, data, nome, tipo, email, password, matricola);
+		}
+		else
+		{
+			String insegnamento=request.getParameter("insegnamento").toLowerCase();
+			String ufficio=request.getParameter("ufficio");
+			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
+		}
+		if(registrazioneControl(utente))
+		{
+			HttpSession session=request.getSession();
+			session.setAttribute("utente", utente);
+			
+		}
+		response.sendRedirect(request.getContextPath()+"/index.jsp");
 	}
+
+
 
 	/**
 	 * Effettua la registrazione di un utente.
@@ -71,8 +75,15 @@ public class RegistrazioneServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean RegistrazioneControl(Utente utente){
-			Utente.aggiungiUtente(utente);
-			return true;
+	private boolean registrazioneControl(Utente utente){
+		ManagerFactory mf=new ManagerFactory();
+		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		try {
+			um.registraUtente(utente);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
 }

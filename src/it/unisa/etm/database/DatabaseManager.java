@@ -5,27 +5,39 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-public class DatabaseManager {
 	
-	private DatabaseManager(){
-		log = Logger.getLogger("log");
-	}
-	
-	public static Connection getIstance() throws SQLException {
-		if(connection==null) createConnection();
-		return connection;
-	}
-	
-
-	
-	private static void createConnection() throws SQLException {
+	public class DatabaseManager {
+		private static Connection connection=null;
+		private DatabaseManager(){
+			
+		}
 		
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?zeroDateTimeBehavior=convertToNull", username, password);
-		log.info("**** Connessione creata con successo ****\"\n");		
+		public static Connection getIstance() throws SQLException {
+			if(connection==null) {
+				try {
+					createConnection();
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			return connection;
+		}
+		
+
+		
+		private static void createConnection() throws SQLException, ClassNotFoundException {
+			Class.forName("com.mysql.jdbc.Driver");
+			String username = "root";//inserite la vostra username
+<<<<<<< HEAD
+			String password = "root";//inserite la vostra password
+			
+
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
+=======
+			String password = "admin";//inserite la vostra password
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?zeroDateTimeBehavior=convertToNull", username, password);
+>>>>>>> 769bd61c9d03d74bc1dd2ee754cab4e85bc8386d
+			Logger.getLogger("global").info("**** Connessione creata con successo **** " + connection.toString() + "\n");		
+		}
 	}
-	
-	private static Connection connection = null;
-	private static String username = "etm";//inserite la vostra username
-	private static String password = "Etm1";//inserite la vostra password
-	private static Logger log;
-}

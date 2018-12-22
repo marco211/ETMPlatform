@@ -1,8 +1,14 @@
 package it.unisa.etm.bean;
 
+import java.io.InputStream;
 import java.io.Serializable;
 
 public class File implements Serializable	 {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	public File() {
 		
@@ -74,11 +80,23 @@ public class File implements Serializable	 {
 	public void setPropostaTesiId(int propostaTesiId) {
 		this.propostaTesiId = propostaTesiId;
 	}
+	
+	
+	public InputStream getStream() {
+		return stream;
+	}
+
+	public void setStream(InputStream stream) {
+		this.stream = stream;
+	}
+
+
 	private int voto;
 	private int propostaTesiId;
 	private String descrizioneVoto;
 	private String descrizione;
 	private String email;
 	private String nome;
+	private InputStream stream;
 	
 }
