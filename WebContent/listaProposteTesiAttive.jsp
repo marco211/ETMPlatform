@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.* "%>  
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%
+	Utente utente = (Utente) session.getAttribute("utente");
+%>
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -22,8 +25,12 @@
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
       			<input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
 				<button type="button" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="CercaProposta"><span class="fa fa-search"></span> </button>
-				<button type="button" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddProposta"><i class="fas fa-plus-circle"></i></button>				
-   			</form>
+					<% 
+					if (utente.getTipo().equals("d")) {
+					%>
+					<a href="aggiungiPropostaTesi.jsp" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddProposta"><i class="fas fa-plus-circle"></i></a>				
+				 <% }%>
+			</form>
 			
     		 <ol class="list-unstyled mb-0">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
