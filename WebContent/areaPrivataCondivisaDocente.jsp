@@ -32,7 +32,7 @@
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
 					<div class="card-body ">
-						<form action="#" method="post" class="form-inline mb-3 pb-3"
+						<form action="CaricaFileServlet" method="post" class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<button type="button"
