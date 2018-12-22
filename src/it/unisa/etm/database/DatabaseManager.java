@@ -24,13 +24,16 @@ import java.util.logging.Logger;
 			return connection;
 		}
 		
-
-		
 		private static void createConnection() throws SQLException, ClassNotFoundException {
 			Class.forName("com.mysql.jdbc.Driver");
 			String username = "root";//inserite la vostra username
+<<<<<<< HEAD
+			String password = "admin";//inserite la vostra password
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?zeroDateTimeBehavior=convertToNull", username, password);
+=======
 			String password = "854621abC";//inserite la vostra password
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
+>>>>>>> 50138269b2168cc8fe4a5d68e5f6f6230f04f5a0
 			Logger.getLogger("global").info("**** Connessione creata con successo **** " + connection.toString() + "\n");		
 		}
 	}
