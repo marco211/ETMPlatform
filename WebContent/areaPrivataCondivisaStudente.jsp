@@ -6,7 +6,10 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-
+	if(utente.getTipo().equals("d")){
+		response.sendRedirect("./areaPrivataCondivisaDocente.jsp");
+		return;
+	}
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
