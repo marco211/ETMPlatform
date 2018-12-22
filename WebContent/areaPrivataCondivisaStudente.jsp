@@ -57,13 +57,13 @@
 							</button>
 							
 						</form>
-						<form action="VisualizzaInfoFileServlet" method="post">
+						
 						<ul class="list-group list-group-flush">
 							<%
 								if (file != null) {
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<li class="list-group-item"><a href="visualizzaInfoFile.jsp"> <%=
+							<li class="list-group-item"><a href="VisualizzaInfoFileServlet?idTesi=<%=file.get(i).getPropostaTesiId()%>&nomeFile<%=file.get(i).getNome()%>"> <%=
 										file.get(i).getNome()
 									%>
 							</a></li>
@@ -72,7 +72,7 @@
 								}
 							%>
 						</ul>
-						</form>
+						
 					</div>
 				</div>
 

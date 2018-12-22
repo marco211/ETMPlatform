@@ -15,7 +15,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare le informazioni di un file presente nell'area privata condivisa
+ * Estende HttpServlet e fornisce all'utente la funzionalitï¿½ di visualizzare le informazioni di un file presente nell'area privata condivisa
  */
 @WebServlet("/VisualizzaInfoFileServlet")
 public class VisualizzaInfoFileServlet extends HttpServlet {
@@ -34,11 +34,11 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
-		String email=request.getParameter("emailUtente");
+		String nomeFile=request.getParameter("nomeFile");
 		ManagerFactory em = new ManagerFactory();
 		FileManager um = (FileManager) em.createFileManager();
 		try {
-			File file=um.getFile(id, email);
+			File file=um.getFile(id, nomeFile);
 			request.getSession().setAttribute("infoFile", file);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -59,7 +59,7 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	/**
 	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
 	 * @param nome stringa che rappresenza il nome del file;
-	 * @return un oggetto file il cui nome è quello passato come parametro.
+	 * @return un oggetto file il cui nome ï¿½ quello passato come parametro.
 	 */
 	private File getInfo(String nome){
 		return null;
