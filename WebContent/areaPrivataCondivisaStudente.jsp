@@ -10,6 +10,9 @@
 		response.sendRedirect("./areaPrivataCondivisaDocente.jsp");
 		return;
 	}
+	//File f = new File("Primo", 1, "eurofilo", 5,"", "f@unisa.it");
+	//ArrayList<File> file = new ArrayList<File>();
+	//file.add(f);
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
@@ -33,9 +36,9 @@
 						<form action="CaricaFileServlet" method="post" enctype="multipart/form-data" class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<button type="button"
+							<button type="submit"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="VisualizzaArchivio">
+								id="VisualizzaArchivio" onclick="form.action='VisualizzaStoricoServlet'">
 								<span class="fa fa-archive"></span>
 							</button>
 					
@@ -54,12 +57,13 @@
 							</button>
 							
 						</form>
+						<form action="VisualizzaInfoFileServlet" method="post">
 						<ul class="list-group list-group-flush">
 							<%
 								if (file != null) {
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<li class="list-group-item"><a href="#"> <%=
+							<li class="list-group-item"><a href="visualizzaInfoFile.jsp"> <%=
 										file.get(i).getNome()
 									%>
 							</a></li>
@@ -68,6 +72,7 @@
 								}
 							%>
 						</ul>
+						</form>
 					</div>
 				</div>
 

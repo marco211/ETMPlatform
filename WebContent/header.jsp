@@ -55,8 +55,8 @@
 			style="color: orange;">ETM Platform</span>
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item"><a class="nav-link text-dark" href="homePage.jsp">Home
-						<span class="sr-only"></span>
+				<li class="nav-item"><a class="nav-link text-dark"
+					href="homePage.jsp">Home <span class="sr-only"></span>
 				</a></li>
 				<li class="nav-item"><a class="nav-link text-dark" href="#">Area
 						proposta tesi</a></li>
@@ -67,9 +67,8 @@
 					href="areaPrivataCondivisaStudente.jsp">Area privata condivisa</a>
 					<%
 						} else if (utente.getTipo().equals("d")) {
-					%> <a
-					class="nav-link text-dark" href="areaPrivataCondivisaDocente.jsp">Area
-						privata condivisa</a> <%
+					%> <a class="nav-link text-dark"
+					href="areaPrivataCondivisaDocente.jsp">Area privata condivisa</a> <%
  	}
  %>
 				</li>
