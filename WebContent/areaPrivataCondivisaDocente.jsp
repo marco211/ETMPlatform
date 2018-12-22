@@ -32,45 +32,45 @@
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
 					<div class="card-body ">
-						<form action="CaricaFileServlet" method="post" class="form-inline mb-3 pb-3"
-							style="border-bottom: 1px solid">
+						<form action="CaricaFileServlet" method="post"
+							class="form-inline mb-3 pb-3" style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<button type="button"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 								id="VisualizzaArchivio">
 								<span class="fa fa-archive"></span>
 							</button>
-					
+
 							<button type="button" onclick="click=carica(click)"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 								id="AddFile">
 								<i class="fas fa-plus-circle"></i>
 							</button>
-							
-							<input class="d-none" type="file" id="uploadFile" style="width: 40%">
-							
+
+							<input class="d-none" type="file" id="uploadFile"
+								style="width: 40%">
+
 							<button type="submit"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning d-none"
 								id="inviaFile">
 								<span class="fa fa-paper-plane"></span>
 							</button>
-							
+
 						</form>
 						<form action="VisualizzaInfoFileServlet" method="post">
-						<ul class="list-group list-group-flush">
-							<%
-								if (file != null) {
-									for (int i = 0; i < file.size(); i++) {
-							%>
-							<li class="list-group-item"><a href="visualizzaInfoFile.jsp"> <%=
-										file.get(i).getNome()
-									%>
-							</a></li>
-							<%
-								}
-								}
-							%>
-						</ul>
+							<ul class="list-group list-group-flush">
+								<%
+									if (file != null) {
+										for (int i = 0; i < file.size(); i++) {
+								%>
+								<li class="list-group-item"><a
+									href="visualizzaInfoFile.jsp"> <%=file.get(i).getNome()%>
+								</a></li>
+								<%
+									}
+									}
+								%>
+							</ul>
 						</form>
 					</div>
 				</div>
@@ -86,7 +86,8 @@
 						if (partecipazioni != null) {
 							for (int i = 0; i < partecipazioni.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"><label><%=partecipazioni.get(i).getPropostaTesiId() + " " + partecipazioni.get(i).getUtenteEmail()%></label></a></li>
+					<li class="list-group-item"><a
+						href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><label><%=partecipazioni.get(i).getPropostaTesiId() + " " + partecipazioni.get(i).getUtenteEmail()%></label></a></li>
 					<%
 						}
 						}
