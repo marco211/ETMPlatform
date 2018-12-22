@@ -9,3 +9,4 @@ function cambiaStudente(){
 	document.getElementById("matricolaID").className = "form-group d-block";
 	document.getElementById("ufficioID").className = "form-group d-none";
 }
+
