@@ -75,3 +75,6 @@ ArrayList<Consegna> consegne = (ArrayList<Consegna>)  session.getAttribute("list
 </div>
 
 <jsp:include page="footer.jsp" />
+
+</body>
+</html>
