@@ -13,12 +13,14 @@
 	}
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	boolean click = false;
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Area Privata Condivisa</title>
+<script type="text/javascript" src="js/UploadFile.js"></script>
 </head>
 <body>
 
@@ -29,20 +31,30 @@
 		<div class="row">
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
-					<div class="card-body">
+					<div class="card-body ">
 						<form class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<button type="button"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="CercaProposta">
+								id="VisualizzaArchivio">
 								<span class="fa fa-archive"></span>
 							</button>
-							<button type="button"
+					
+							<button type="button" onclick="click=carica(click)"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="AddProposta">
+								id="AddFile">
 								<i class="fas fa-plus-circle"></i>
 							</button>
+							
+							<input class="d-none" type="file" id="uploadFile" style="width: 40%">
+							
+							<button type="submit"
+								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning d-none"
+								id="inviaFile">
+								<span class="fa fa-paper-plane"></span>
+							</button>
+							
 						</form>
 						<ul class="list-group list-group-flush">
 							<%

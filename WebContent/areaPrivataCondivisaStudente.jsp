@@ -18,6 +18,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Area Privata Condivisa</title>
+<script type="text/javascript" src="js/UploadFile.js"></script>
 </head>
 <body>
 
@@ -34,14 +35,24 @@
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<button type="button"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="CercaProposta">
+								id="VisualizzaArchivio">
 								<span class="fa fa-archive"></span>
 							</button>
-							<button type="button"
+					
+							<button type="button" onclick="click=carica(click)"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="AddProposta">
+								id="AddFile">
 								<i class="fas fa-plus-circle"></i>
 							</button>
+							
+							<input class="d-none" type="file" id="uploadFile" style="width: 40%">
+							
+							<button type="submit"
+								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning d-none"
+								id="inviaFile">
+								<span class="fa fa-paper-plane"></span>
+							</button>
+							
 						</form>
 						<ul class="list-group list-group-flush">
 							<%
