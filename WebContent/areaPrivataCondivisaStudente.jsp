@@ -48,9 +48,8 @@
 								if (file != null) {
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<li class="list-group-item"><a href="#">
-									<%
-										file.get(i).getNome();
+							<li class="list-group-item"><a href="#"> <%=
+										file.get(i).getNome()
 									%>
 							</a></li>
 							<%
@@ -73,9 +72,8 @@
 						if (consegne != null) {
 							for (int i = 0; i < consegne.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#">
-							<%
-								consegne.get(i).getNome();
+					<li class="list-group-item"><a href="#"> <%=
+								consegne.get(i).getNome()
 							%>
 					</a></li>
 					<%

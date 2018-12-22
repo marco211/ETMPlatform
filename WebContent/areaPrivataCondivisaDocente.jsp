@@ -49,9 +49,7 @@
 								if (file != null) {
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<li class="list-group-item"><a href="#"> <%
- 	file.get(i).getNome();
- %>
+							<li class="list-group-item"><a href="#"> <%=file.get(i).getNome()%>
 							</a></li>
 							<%
 								}
