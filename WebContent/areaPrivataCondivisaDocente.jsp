@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*,java.util.*"%>
-<<<<<<< HEAD
+
 <% 
 Utente utente= (Utente)session.getAttribute("utente");
 if(utente==null){
@@ -13,21 +13,6 @@ if(utente.getTipo().equals("s")){
 }
 ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>)  session.getAttribute("listaPartecipazione");
-=======
-<%
-	Utente utente = (Utente) session.getAttribute("utente");
-	if (utente == null) {
-		response.sendRedirect("./index.jsp");
-		return;
-	}
-	if (utente.getTipo().equals("s")) {
-		response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
-		return;
-	}
-	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
->>>>>>> 29d709d7da1bcd3ebcc7d55e5c744491340bb0a4
-
-	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -82,7 +67,6 @@ ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>)  session.getAttribu
 
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card">
-<<<<<<< HEAD
 					<h4 class="font-italic">Aree</h4>
 				<ul class="list-group list-group-flush">
 						<%
@@ -91,13 +75,6 @@ ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>)  session.getAttribu
 							<li class="list-group-item"><a href="#"><%partecipazioni.get(i).getPropostaTesiId();%> <%partecipazioni.get(i).getUtenteEmail();%></a></li>
 						<%}}%>
 						</ul>
-=======
-				<h4 class="font-italic">Impostazioni</h4>
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><a href="#">Visualizza storico
-							attivita'</a></li>
-				</ul>
->>>>>>> 29d709d7da1bcd3ebcc7d55e5c744491340bb0a4
 			</div>
 			</aside>
 		</div>
