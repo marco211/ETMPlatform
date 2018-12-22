@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*,java.util.*"%>
-<% 
-Utente utente= (Utente)session.getAttribute("utente");
-if(utente==null){
-	response.sendRedirect("./index.jsp");
-	return;
-}
-if(utente.getTipo().equals("s")){
-	response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
-	return;
-}
-ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+<%
+	Utente utente = (Utente) session.getAttribute("utente");
+	if (utente == null) {
+		response.sendRedirect("./index.jsp");
+		return;
+	}
+	if (utente.getTipo().equals("s")) {
+		response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
+		return;
+	}
+	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 
-ArrayList<Consegna> consegne = (ArrayList<Consegna>)  session.getAttribute("listaConsegne");
-
+	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -41,11 +40,19 @@ ArrayList<Consegna> consegne = (ArrayList<Consegna>)  session.getAttribute("list
 							</button>
 						</form>
 						<ul class="list-group list-group-flush">
-						<%
-							if(file!=null){
-						for(int i=0; i<file.size();i++){ %>
-							<li class="list-group-item"><a href="#"><%file.get(i).getNome();%></a></li>
-						<%}}%>
+							<%
+								if (file != null) {
+									for (int i = 0; i < file.size(); i++) {
+							%>
+							<li class="list-group-item"><a href="#">
+									<%
+										file.get(i).getNome();
+									%>
+							</a></li>
+							<%
+								}
+								}
+							%>
 						</ul>
 					</div>
 				</div>
@@ -55,16 +62,17 @@ ArrayList<Consegna> consegne = (ArrayList<Consegna>)  session.getAttribute("list
 
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card">
-					<h4 class="font-italic">Impostazioni</h4>
+				<h4 class="font-italic">Impostazioni</h4>
 				<ul class="list-group list-group-flush">
-					<li class="list-group-item"><a href="#">Visualizza storico attivita'</a></li>
+					<li class="list-group-item"><a href="#">Visualizza storico
+							attivita'</a></li>
 				</ul>
 			</div>
 			</aside>
-</div>
-</main>
-</div>
+		</div>
+		</main>
+	</div>
 
-<jsp:include page="footer.jsp" />
+	<jsp:include page="footer.jsp" />
 </body>
 </html>
