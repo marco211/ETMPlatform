@@ -16,7 +16,7 @@ public class PropostaTesi implements Serializable {
 	
 	
 	
-	public PropostaTesi(String titolo, String ambito, int tempoDiSviluppo, String materie, String decrizione, int id,
+	public PropostaTesi(String titolo, String ambito, int tempoDiSviluppo, String materie, String decrizione,
 			String utenteEmail, boolean chiuso, boolean archiviato) {
 		super();
 		this.titolo = titolo;
@@ -24,7 +24,6 @@ public class PropostaTesi implements Serializable {
 		this.tempoDiSviluppo = tempoDiSviluppo;
 		this.materie = materie;
 		this.decrizione = decrizione;
-		this.id = id;
 		this.utenteEmail = utenteEmail;
 		this.chiuso = chiuso;
 		this.archiviato = archiviato;

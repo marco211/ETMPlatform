@@ -48,43 +48,50 @@
 
 
 	<div class="container-fluid" style="background-color: #FF9C08">
+			
+				
 			<div class="col my-4 mx-4">
-				<form action="RegistrazioneServlet" method="post">
+				<form action="AggiungiPropostaTesiServlet" method="post" id="aggiungi">
 					<h1>Aggiungi una nuova proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
-						<div class="form-group">
-							<label for="inputNome4">Titolo</label> <input type="text"
+						<div class="form-group col-4">
+							<label for="inputTitolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" placeholder="Titolo" required>
 						</div>
 
-						<div class="form-group">
-							<label for="inputCognome4">Ambito</label> <input type="text"
+						<div class="form-group col-4">
+							<label for="inputAmbito">Ambito</label> <input type="text"
 								class="form-control" name="ambito" placeholder="Ambito"
 								required>
 						</div>
 
-					<div class="form-group">
-						<label for="inputEmail">Tempo</label> <input type="email"
+					<div class="form-group col-4">
+						<label for="inputTempo">Tempo</label> <input type="text"
 							class="form-control" name="tempo" placeholder="Tempo" required>
 					</div>
 
-					<div class="form-group" >
-						<label for="inputMatricola">Descrizione</label>
-							<textarea class="form-control" id="exampleTextarea" rows="3" placeholder="Descrizione"></textarea>
+					<div class="form-group col-6" >
+						<label for="inputDescrizione">Descrizione</label>
+							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
 					</div>
 
-					<div class="form-group">
-						<label for="inputUfficio">Materia</label> <input type="text"
+					<div class="form-group col-4">
+						<label for="inputMateria">Materia</label> <input type="text"
 							class="form-control" name="materia" placeholder="Materia"
 							>
 					</div>
+					
+					
+					<button type="submit" class="btn btn-primary col-2 my-2">Aggiungi</button>
 					</div>
-					<button type="submit" class="btn btn-primary">Aggiungi</button>
 				</form>
 			</div>
+			
 		</div>
+		
 	</div>
+	<jsp:include page="footer.jsp" />
 
 </body>
 </html>
