@@ -19,7 +19,7 @@
 </head>
 <body>
 
-	<jsp:include page="header.jsp"/>
+	<jsp:include page="header.jsp" />
 
 	<div style="background-color: #FF9C08">
 		<main role="main" class="container">
@@ -47,22 +47,10 @@
 							<div class="form-group">
 								<input type="file" id="uploadFile">
 							</div>
-							<button type="submit" class="btn btn-primary">Carica</button>
-						</form>
-						<form action="VisualizzaInfoFileServlet" method="post">
-							<ul class="list-group list-group-flush">
-								<%
-									if (file != null) {
-										for (int i = 0; i < file.size(); i++) {
-								%>
-								<li class="list-group-item"><a
-									href="visualizzaInfoFile.jsp"> <%=file.get(i).getNome()%>
-								</a></li>
-								<%
-									}
-									}
-								%>
-							</ul>
+							<div class="col text-center">
+								<button type="submit" id="caricaFile" name="caricaFile"
+									class="btn btn-primary">Carica</button>
+							</div>
 						</form>
 					</div>
 				</div>
