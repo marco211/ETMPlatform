@@ -18,4 +18,5 @@ public interface PropostaTesiModelInterface {
 	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException;
 	public ArrayList<PropostaTesi> getProposteTesiAttive()  throws SQLException;
 	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException;
 }
