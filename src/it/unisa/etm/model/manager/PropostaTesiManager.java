@@ -203,4 +203,42 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return allActivity;
 	}
 
+
+
+	@Override
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException {
+		String SQL = "SELECT * FROM PropostaTesi where Utente_Email=?";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ArrayList <PropostaTesi> proposte = null;
+		try {
+			connection =  DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			statement.setString(1, utenteEmail);
+			ResultSet rs = statement.executeQuery(SQL);
+			proposte = new ArrayList<PropostaTesi>();
+			while(rs.next()) {
+				PropostaTesi proposta = new PropostaTesi();
+				proposta.setId(rs.getInt(1));
+				proposta.setUtenteEmail(rs.getString(2));
+				proposta.setTitolo(rs.getString(3));
+				proposta.setChiuso(rs.getBoolean(4));
+				proposta.setAmbito(rs.getString(5));
+				proposta.setTempoDiSviluppo(rs.getInt(6));
+				proposta.setDecrizione(rs.getString(7));
+				proposta.setArchiviato(rs.getBoolean(8));
+				proposta.setMaterie(rs.getString(9));
+				proposte.add(proposta);
+			}
+		}finally {
+			if(statement!=null)
+				statement.close();
+		}
+		
+		return proposte;
+	}
+
+
+
+
 }

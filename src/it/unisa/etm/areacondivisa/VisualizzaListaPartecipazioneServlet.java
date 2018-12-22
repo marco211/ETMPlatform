@@ -13,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.bean.Partecipa;
+import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.ConsegnaManager;
-import it.unisa.etm.model.manager.PartecipaManager;
+import it.unisa.etm.model.manager.*;
 
 /**
  * Servlet implementation class VisualizzaListaPartecipazioneServlet
@@ -36,17 +37,22 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		ManagerFactory em = new ManagerFactory();
-		PartecipaManager partecipa = (PartecipaManager) em.createPartecipaManager();
-		ArrayList<Partecipa> partecipazioni;
+		PropostaTesiManager tesi=(PropostaTesiManager)em.createPropostaTesiManager();
+		ArrayList<PropostaTesi> list;
 		try {
-			partecipazioni = partecipa.getListaPartecipazione(propostaTesiId);
+			list = tesi.getProposteTesiDocente(utente.getEmail());
+			PartecipaManager partecipa = (PartecipaManager) em.createPartecipaManager();
+			ArrayList<Partecipa> partecipazioni;
+			partecipazioni = partecipa.getListaPartecipazione(list);
 			request.getSession().setAttribute("listaPartecipazione", partecipazioni);
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			e1.printStackTrace();
 		}
+		
+		
 		
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
 		requestDispatcher.forward(request, response);
