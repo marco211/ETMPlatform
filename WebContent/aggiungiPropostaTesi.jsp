@@ -55,7 +55,7 @@
 					<h1>Aggiungi una nuova proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
-						<div class="form-group col-4">
+						<div class="form-group col-4 pt-4">
 							<label for="inputTitolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" placeholder="Titolo" required>
 						</div>
@@ -67,11 +67,10 @@
 						</div>
 
 					<div class="form-group col-4">
-						<label for="inputTempo">Tempo</label> <input type="text"
-							class="form-control" name="tempo" placeholder="Tempo" required>
+                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="1">
 					</div>
 
-					<div class="form-group col-6" >
+					<div class="form-group col-5" >
 						<label for="inputDescrizione">Descrizione</label>
 							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
 					</div>

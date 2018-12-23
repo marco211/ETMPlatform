@@ -38,7 +38,7 @@
 		 			  {
 					%>
 					<div class="row">
-						<a class="col-3" href="#"><%= p.getTitolo() %></a>
+						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
 		              	<% 
 		              	if(utente.getTipo().equals("s")){

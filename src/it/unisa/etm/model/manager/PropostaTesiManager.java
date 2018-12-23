@@ -86,7 +86,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return false;
 	}
 	@Override
-	public ArrayList<PropostaTesi> getPropostaTesi(String titolo) throws SQLException {
+	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo) throws SQLException {
 		String SQL = "SELECT p FROM PropostaTesi WHERE p.titolo="+titolo+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -240,7 +240,35 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return proposte;
 	}
 
+	public PropostaTesi getPropostaTesi(int id) throws SQLException {
+		String SQL = "SELECT * FROM PropostaTesi WHERE id=" + id;
+		Connection connection = null;
+		PreparedStatement statement = null;
+		PropostaTesi proposta	 = null;
+		try {
+			connection =  DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			System.out.println("L'ID EEEEEEEEEEEEEE:" + id );			
+			ResultSet rs = statement.executeQuery(SQL);
+			rs.next();
 
+			proposta = new PropostaTesi();
+				proposta.setId(rs.getInt(1));
+				proposta.setUtenteEmail(rs.getString(2));
+				proposta.setTitolo(rs.getString(3));
+				proposta.setChiuso(rs.getBoolean(4));
+				proposta.setAmbito(rs.getString(5));
+				proposta.setTempoDiSviluppo(rs.getInt(6));
+				proposta.setDecrizione(rs.getString(7));
+				proposta.setArchiviato(rs.getBoolean(8));
+				proposta.setMaterie(rs.getString(9));
+		}finally {
+			if(statement!=null)
+				statement.close();
+		}
+		
+		return proposta;
+	}
 
 
 }
