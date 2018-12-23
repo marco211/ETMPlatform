@@ -1,13 +1,19 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.PropostaTesiManager;
+
 
 /**
  * Estende la classe HttpServlet ed offre all'utente la possibilità di visualizzare i dettagli di una determinata proposta di tesi.
@@ -28,27 +34,38 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		int id= Integer.parseInt(request.getParameter("propostatesi_id"));
+		PropostaTesi propostaTesi = (PropostaTesi) visualizzaDettagliPropostaTesi(id);
+		
+		HttpSession session=request.getSession();
+		session.setAttribute("propostatesi", propostaTesi);
+		request.getRequestDispatcher("visualizzaDettagliPropostaTesi.jsp").forward(request, response);
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
-	/**
+	/**-----------------+-+-+-+-+-+-+da cambiare
 	 * Torna i dettagli di una determinata PropostaTesi presa come input.
-	 * @param tesi oggetto della classe PropostaTesi, che rappresenta la tesi scelta per conoscere le info.
-	 * @return String con i dettagli della proposta di tesi presa come input;
+	 * @param id della PropostaTesi, che rappresenta la tesi scelta per conoscere le info.
+	 * @return proposta di tesi che ha l'id inserito come input;
 	 * <p>
 	 * null se non vi sono dettagli della proposta di tesi.
 	 */
-	private String visualizzaDettagliPropostaTesi(PropostaTesi tesi){
-		return null;
-		
+	private PropostaTesi visualizzaDettagliPropostaTesi(int id){
+		ManagerFactory em = new ManagerFactory();
+		PropostaTesiManager ptm = (PropostaTesiManager) em.createPropostaTesiManager();
+		PropostaTesi propostaTesi;
+		try {
+			propostaTesi=ptm.getPropostaTesi(id);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return propostaTesi;	
 	}
 }
