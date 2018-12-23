@@ -13,14 +13,12 @@
 	}
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
-	boolean click = false;
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Area Privata Condivisa</title>
-<script type="text/javascript" src="js/UploadFile.js"></script>
 </head>
 <body>
 
@@ -41,10 +39,10 @@
 								<span class="fa fa-archive"></span>
 							</button>
 
-							<button type="button" onclick="click=carica(click)"
+							<button type="button"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 								id="AddFile">
-								<i class="fas fa-plus-circle"></i>
+								<a href="caricaFile.jsp"><i class="fas fa-plus-circle"></i></a>
 							</button>
 
 							<input class="d-none" type="file" id="uploadFile"

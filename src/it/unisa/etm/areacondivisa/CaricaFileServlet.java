@@ -52,7 +52,7 @@ public class CaricaFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		getServletContext().getRequestDispatcher("./areaPrivataCondivisaStudente.jsp").forward(request, response);
+		getServletContext().getRequestDispatcher("./caricaFile.jsp").forward(request, response);
 	}
 
 	/**
