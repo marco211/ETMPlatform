@@ -1,4 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="java.util.*, it.unisa.etm.user.*,  it.unisa.etm.bean.* "%>  
+<%
+Utente utente = (Utente) session.getAttribute("utente");
+if(utente==null){
+	response.sendRedirect("./index.jsp");
+    return;
+}
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -18,27 +26,32 @@
       <div class="row" >  
         <div class="col-md-8 my-4">
         <div class="card mb-3">
-        <div class="card-body">
-  				
- 			
+        <div class="card-body"> 			
    			 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
     		 		<h4>Nome:</h4>
-    		 			nome utente
+    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?nome=<%=utente.getNome() %>"></a>
     		 		<h4>Cognome:</h4>
-    		 			cognome utente
+    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?cognome=<%=utente.getCognome() %>"></a>
     		 		<h4>Email:</h4>
-    		 			emailutente@email.it
-    		 		<h4>Ufficio</h4>
-    		 			ufficio utente
-    		 		<h4>Insegnamento:</h4>
-    		 			insegnamento utente
-    		 		
+    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?email=<%=utente.getEmail() %>"></a>
+    		 		<h4>Matricola</h4>
+    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?matricola=<%=utente.getMatricola() %>"></a>
+    		 			<%if(utente.getTipo().equals("d")){%>
+		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?ufficio=<%=utente.getUfficio() %>"></a>				
+		              	<% }%>
+		              	</div>
+		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			
     		 			<p>
-    		 				<button type="button" class="btn btn-primary mx-2">Modifica profilo</button>
-    		 				<button type="button" class="btn btn-primary mx-2">Modifica password</button>
+    		 			<form action="ModificaProfiloUtenteServlet">
+    		 				<button type="button" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
+    		 				</button>
+    		 			</form>
+    		 			<form action="ModificaPasswordServlet">
+    		 				<button type="button" class="btn btn-primary mx-2">Modifica password
+    		 				</button>
+    		 			</form>
     		 			</p>
     		 		</div>
  		    </div>

@@ -10,5 +10,6 @@ public interface AmministratoreModelInterface{
 	
 	public List<Utente> getListaUtenti() throws SQLException;
 	public boolean eliminaUtente(String email) throws SQLException;
+	public Utente getUtente(String email) throws SQLException;
 
 }

@@ -66,7 +66,9 @@
 					<%
 						} else if (utente.getTipo().equals("d")) {
 					%> <a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a> <%
+					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a> 
+					<a class="nav-link text-dark"
+					href="ListaUtentiServlet">Area Admin</a><%
 						}
  					%>
 				</li>
