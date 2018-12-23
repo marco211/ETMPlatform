@@ -23,8 +23,8 @@ public class UtenteManager implements UtenteModelInterface{
 		String insertSQL=null;
 		if(utente.getTipo().equals("s"))
 		{
-			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo) "
-					+ "values(?,?,?,?,?,?,?);";
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, matricola, tipo, validazione) "
+					+ "values(?,?,?,?,?,?,?,?);";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getEmail());
 			ps.setString(2, utente.getNome());;
@@ -33,12 +33,13 @@ public class UtenteManager implements UtenteModelInterface{
 			ps.setString(5, utente.getDataDiNascita());
 			ps.setLong(6, utente.getMatricola());
 			ps.setString(7, String.valueOf(utente.getTipo()));
+			ps.setString(8, utente.getValidazione());
 			ps.executeUpdate();
 		}
 		else
 		{
-			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo) "
-					+ "values(?,?,?,?,?,?,?);";
+			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo, validazione) "
+					+ "values(?,?,?,?,?,?,?,?;";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getEmail());
 			ps.setString(2, utente.getNome());;
@@ -47,6 +48,7 @@ public class UtenteManager implements UtenteModelInterface{
 			ps.setString(5, utente.getDataDiNascita());
 			ps.setString(6, utente.getUfficio());
 			ps.setString(7, String.valueOf(utente.getTipo()));
+			ps.setString(8, utente.getValidazione());
 			ps.executeUpdate();
 			
 			String SQL = "select nome from insegnamento where nome='" + utente.getInsegnamento().get(0) + "';";
@@ -107,6 +109,7 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 		utente.setPassword(rs.getString("PASSWORD"));
+		utente.setValidazione(rs.getString("VALIDAZIONE"));
 		}
 		else if(rs.getString("TIPO").equals("d")) {
 			utente.setNome(rs.getString("NOME"));
@@ -116,6 +119,7 @@ public class UtenteManager implements UtenteModelInterface{
 			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
+			utente.setValidazione(rs.getString("VALIDAZIONE"));
 			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
 			pr1.setString(1, email);
 			ResultSet rs1=pr1.executeQuery();
@@ -136,6 +140,27 @@ public class UtenteManager implements UtenteModelInterface{
 			return rs.getString("password");
 		}
 		return null;
+	}
+	
+	public boolean setValidazione(String validazione) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT VALIDAZIONE FROM UTENTE WHERE VALIDAZIONE=?");
+		pr.setString(1, validazione);
+		ResultSet rs=pr.executeQuery();
+		if(rs.next())
+		{
+			PreparedStatement ps1=null;
+			String updateSQL = "update utente set validazione=? where validazione=?;";
+			ps1=istance.prepareStatement(updateSQL);
+			ps1.setString(1, "valido");
+			ps1.setString(2, validazione);;
+			ps1.executeUpdate();
+		}
+		else
+		{
+			return false;
+		}
+		return true;
 	}
 	
 }
