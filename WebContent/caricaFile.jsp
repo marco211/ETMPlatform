@@ -48,14 +48,6 @@
 							<div class="form-group">
 								<input type="file" name="uploadFile">
 							</div>
-							<%
-								if(utente.getTipo().equals("d")){
-							%>
-								<input type="hidden" name="numeroTesiDocente" value="<%=request.getParameter("numeroTesiDocente")%>">
-							
-							<%
-								}
-							%>
 							<div class="col text-center">
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary">Carica</button>

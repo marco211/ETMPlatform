@@ -42,7 +42,6 @@
 								</button>
 							</form>
 							<form action="caricaFile.jsp">
-								<input type="hidden" name="numeroTesiDocente" value="<%=file.get(0).getPropostaTesiId()%>">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">

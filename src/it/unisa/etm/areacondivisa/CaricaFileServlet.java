@@ -49,7 +49,8 @@ public class CaricaFileServlet extends HttpServlet {
 			file.setPropostaTesiId(utente.getPropostaTesi_ID());
 		}
 		else {
-			file.setPropostaTesiId(Integer.parseInt(request.getParameter("numeroTesiDocente")));
+			
+			file.setPropostaTesiId((int)request.getSession().getAttribute("numeroTesiDocente"));
 		}
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();
