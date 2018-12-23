@@ -70,20 +70,20 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	
 	@Override
 	public boolean archiviaPropostaTesi(int id) throws SQLException {
-		String SQL = "UPDATE PropostaTesi SET Archiviato = true WHERE p.id="+id+";";
+		String SQL = "UPDATE PropostaTesi SET Archiviato =1 WHERE id="+id+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;
 		try {
 			connection =  DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
-			statement.executeQuery(SQL);
+			statement.executeUpdate();
 			b = true;
 		}finally {
 			if(statement!=null)
 				statement.close();
 		}
-		return false;
+		return b;
 	}
 	@Override
 	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo) throws SQLException {
@@ -116,21 +116,21 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return proposte;
 	}
 	@Override
-	public boolean chiudiPropostaTesi(String titoloProposta) throws SQLException {
-		String SQL = "UPDATE PropostaTesi SET Chiuso = true WHERE p.titolo="+titoloProposta+";";
+	public boolean chiudiPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
+		String SQL = "UPDATE PropostaTesi SET Chiuso =1 WHERE id="+id+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;
 		try {
 			connection =  DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
-			statement.executeQuery(SQL);
+			statement.executeUpdate();
 			b = true;
 		}finally {
 			if(statement!=null)
 				statement.close();
 		}
-		return false;
+		return b;
 	}
 	@Override
 	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException {

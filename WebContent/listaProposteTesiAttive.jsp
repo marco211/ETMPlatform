@@ -40,6 +40,14 @@
 					<div class="row">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
+		               <% 
+					if (utente.getTipo().equals("d")) {
+						if(p.isArchiviato()){
+					%>
+				 
+				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="ArchiviaProposta"><i class="fas fa-archive"></i></p>				
+				 <%} %>
+				 <%} %>
 		              	<% 
 		              	if(utente.getTipo().equals("s")){
 		              	%>

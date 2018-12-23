@@ -39,10 +39,17 @@ if(utente==null){
   		<div class="container">
     		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
     		<p class="lead"><%=propostatesi.getDecrizione()%></p>
-    			<% if(utente.getEmail().equals(propostatesi.getUtenteEmail())){%>
-    			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>				
+    			<% if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
+    			if(!propostatesi.isChiuso()){%>
+    			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>
+    			<%} %>
+    			<%if(propostatesi.isChiuso()){%>
+    			<p>la proposta di tesi è chiusa</p>
+    			<%} %>
+    			<%if(!propostatesi.isArchiviato()){ %>				
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
     			<% }%>
+    			<%} %>
   		</div>
 	</div>	
  

@@ -15,7 +15,7 @@ public interface PropostaTesiModelInterface {
 	public boolean inserisciPropostaTesi(PropostaTesi proposta)  throws SQLException;
 	public boolean archiviaPropostaTesi(int id)  throws SQLException;
 	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo)  throws SQLException;
-	public boolean chiudiPropostaTesi(String titoloProposta)  throws SQLException;
+	public boolean chiudiPropostaTesi(int id)  throws SQLException;//modificato con l'identificativo
 	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException;
 	public ArrayList<PropostaTesi> getProposteTesiAttive()  throws SQLException;
 	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
