@@ -21,7 +21,7 @@ import it.unisa.etm.model.manager.FileManager;
 import it.unisa.etm.model.manager.UtenteManager;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
+ * Estende HttpServlet e fornisce all'utente la funzionalitï¿½ di visualizzare lo storico delle attivitï¿½ effettuate.
  */
 @WebServlet("/VisualizzaStoricoServlet")
 public class VisualizzaStoricoServlet extends HttpServlet {
@@ -43,18 +43,30 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
+		String propostaTesiId;
+		if(utente.getTipo().equals("d")) {
+		propostaTesiId=(String)request.getSession().getAttribute("numeroTesiDocente");
+		}
+		else {
+		propostaTesiId =request.getParameter("propostaTesiId");
+		}
+		
+		if(propostaTesiId!=null) {
+		
 		ManagerFactory em = new ManagerFactory();
 		AttivitaManager attivita = (AttivitaManager) em.createAttivitaManager();
 		try {
-			ArrayList<Attivita> lista = (ArrayList<Attivita>) attivita.getListaAttivita(propostaTesiId);
+			ArrayList<Attivita> lista = (ArrayList<Attivita>) attivita.getListaAttivita(Integer.parseInt(propostaTesiId));
 			request.getSession().setAttribute("storico", lista);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		}
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaStoricoAttivita.jsp");
 		view.forward(request, response);
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
