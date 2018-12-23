@@ -11,6 +11,7 @@
 		response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
 		return;
 	}
+	
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 %>
@@ -64,7 +65,6 @@
 									}
 								%>
 							</ul>
-						
 					</div>
 				</div>
 
@@ -84,6 +84,7 @@
 					<%
 						}
 						}
+					
 					%>
 				</ul>
 			</div>

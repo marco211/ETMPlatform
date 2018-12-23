@@ -1,4 +1,4 @@
-package it.unisa.etm.model.manager;
+ package it.unisa.etm.model.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -36,9 +36,9 @@ public class PartecipaManager implements PartecipaModelInterface {
 	public ArrayList<Partecipa> getListaPartecipazione(ArrayList<PropostaTesi> list) throws SQLException {
 		String selectSQL="SELECT * FROM PARTECIPA WHERE PROPOSTATESI_ID=?";
 		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement(selectSQL);
 		ArrayList<Partecipa> lista = new ArrayList<Partecipa>();
 		for(int i=0;i<list.size();i++) {
+			prepared=connection.prepareStatement(selectSQL);
 			prepared.setInt(1, list.get(i).getId());
 			rs=prepared.executeQuery();
 			while(rs.next()) {
@@ -47,7 +47,8 @@ public class PartecipaManager implements PartecipaModelInterface {
 				partecipa.setUtenteEmail(rs.getString("UTENTE_EMAIL"));
 				lista.add(partecipa);
 			}
-		
+			prepared.close();
+			rs.close();
 		}
 		prepared.close();
 		rs.close();
