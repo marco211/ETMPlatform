@@ -65,7 +65,7 @@
 					<%
 						}
 					%>
-					<li><a href="#">Elimina file</a></li>
+					<li><a href="EliminaFileServlet?idTesi=<%=file.getPropostaTesiId()%>&nomeFile=<%=file.getNome()%>">Elimina file</a></li>
 				</ol>
 			</div>
 

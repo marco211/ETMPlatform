@@ -1,6 +1,7 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,9 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import javax.servlet.annotation.*;
+
+import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
 
@@ -50,23 +54,32 @@ public class CaricaFileServlet extends HttpServlet {
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
-		/*if(utente.getTipo().equals("s")) {
+		Attivita attivita=new Attivita();
+		attivita.setNomeFile(nome);
+		attivita.setTipo("c");
+		attivita.setUtente_Email(utente.getEmail());
+		attivita.setData(new Date(11,11,2011));
+		if(utente.getTipo().equals("s")) {
+			attivita.setId(utente.getPropostaTesi_ID());
 			file.setPropostaTesiId(utente.getPropostaTesi_ID());
-		}
+			System.out.println(utente.getPropostaTesi_ID());
+	}
 		else {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
-		}*/
-		file.setPropostaTesiId(1);
+		}
+		
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();
+		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
 		try {
 			fm.aggiungiFile(file);
+			am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
