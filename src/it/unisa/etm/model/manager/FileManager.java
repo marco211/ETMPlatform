@@ -1,6 +1,7 @@
 package it.unisa.etm.model.manager;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,13 +20,17 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public boolean aggiungiFile(File c, Part filePart) throws SQLException {
+	public boolean aggiungiFile(File c) throws SQLException {
 		connection=DatabaseManager.getIstance();
 		prepared=connection.prepareStatement("INSERT INTO FILE (NOME,PROPOSTATESI_ID,FILE,DESCRIZIONE,UTENTE_EMAIL) VALUES (?,?,?,?,?)");
-		prepared.setString(1, filePart.getName());
+		prepared.setString(1, c.getNome());
 		prepared.setInt(2, c.getPropostaTesiId());
 		try {
-			prepared.setBlob(3, filePart.getInputStream());
+			InputStream stream=c.getFilePart().getInputStream();
+			if (stream != null) 
+            {
+                prepared.setBinaryStream(3, stream, (int) c.getFilePart().getSize());
+            }
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -46,7 +46,7 @@
 								<label for="File"><b>File:</b></label>
 							</div>
 							<div class="form-group">
-								<input type="file" name="uploadFile">
+								<input type="file" name="uploadFile" id="uploadFile">
 							</div>
 							<div class="col text-center">
 								<button type="submit" id="caricaFile" name="caricaFile"

@@ -44,7 +44,7 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 			ArrayList<Consegna> consegne = consegna.getListaConsegne(propostaTesiId);
 			request.getSession().setAttribute("listaConsegne", consegne);
 		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()+"/AreaCondivisaStudente.jsp");
+			response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
 		}
 		response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
 		
