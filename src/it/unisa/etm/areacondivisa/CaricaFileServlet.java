@@ -11,8 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
 import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
+import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
 
 
 /**
@@ -35,15 +37,20 @@ public class CaricaFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String nome=request.getParameter("nomeFile");
+		String descrizione=request.getParameter("descrizioneFile");
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		File file=new File();
-		file.setDescrizione("mammt");
-		file.setEmail("a@unisa.it");
+		file.setDescrizione(descrizione);
+		file.setNome(nome);
+		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploafile");
-		if(filePart!=null) {
-			file.setNome(filePart.getName());
+		if(utente.getTipo().equals("s")) {
+			file.setPropostaTesiId(utente.getPropostaTesi_ID());
 		}
-		
-		file.setPropostaTesiId(1);
+		else {
+			file.setPropostaTesiId(Integer.parseInt(request.getParameter("numeroTesiDocente")));
+		}
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();
 		try {

@@ -32,22 +32,29 @@
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
 					<div class="card-body">
-						<form action="CaricaFileServlet" method="post" enctype="multipart/form-data" class="form-inline mb-3 pb-3"
+						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<button type="submit"
-								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="VisualizzaArchivio" onclick="form.action='VisualizzaStoricoServlet?propostaTesiId=<%=utente.getPropostaTesi_ID()%>'">
-								<span class="fa fa-archive"></span>
-							</button>
-					
-							<button type="button"
-								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="AddFile">
-								<i class="fas fa-plus-circle"></i>
-							</button>
-						</form>
-						
+							<form
+								action="VisualizzaStoricoServlet?propostaTesiId=<%=utente.getPropostaTesi_ID()%>">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="VisualizzaArchivio">
+									<span class="fa fa-archive"></span>
+								</button>
+							</form>
+							<form action="caricaFile.jsp">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fas fa-plus-circle"></i>
+								</button>
+							</form>
+
+						</div>
+
+
+
 						<ul class="list-group list-group-flush">
 							<%
 								if (file != null) {

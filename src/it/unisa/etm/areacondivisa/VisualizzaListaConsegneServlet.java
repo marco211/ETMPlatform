@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Consegna;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
@@ -36,6 +37,7 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		int propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		ManagerFactory em = new ManagerFactory();
 		ConsegnaManager consegna = (ConsegnaManager) em.createConsegnaManager();
 		try {
@@ -45,8 +47,8 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisa.jsp");
-		requestDispatcher.forward(request, response);
+		response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
+		
 	}
 
 	/**

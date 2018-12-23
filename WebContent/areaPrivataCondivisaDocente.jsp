@@ -30,46 +30,42 @@
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
 					<div class="card-body ">
-						<form action="CaricaFileServlet" method="post"
-							class="form-inline mb-3 pb-3" style="border-bottom: 1px solid">
+						<div class="form-inline mb-3 pb-3"
+							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<button type="button"
-								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="VisualizzaArchivio">
-								<span class="fa fa-archive"></span>
-							</button>
+							<form
+								action="VisualizzaStoricoServlet?propostaTesiId=<%=utente.getPropostaTesi_ID()%>">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="VisualizzaArchivio">
+									<span class="fa fa-archive"></span>
+								</button>
+							</form>
+							<form action="caricaFile.jsp">
+								<input type="hidden" name="numeroTesiDocente" value="<%=file.get(0).getPropostaTesiId()%>">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fas fa-plus-circle"></i>
+								</button>
+							</form>
 
-							<button type="button"
-								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="AddFile">
-								<a href="caricaFile.jsp"><i class="fas fa-plus-circle"></i></a>
-							</button>
+						</div>
 
-							<input class="d-none" type="file" id="uploadFile"
-								style="width: 40%">
-
-							<button type="submit"
-								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning d-none"
-								id="inviaFile">
-								<span class="fa fa-paper-plane"></span>
-							</button>
-
-						</form>
-						<form action="VisualizzaInfoFileServlet" method="post">
-							<ul class="list-group list-group-flush">
+						<ul class="list-group list-group-flush">
 								<%
 									if (file != null) {
 										for (int i = 0; i < file.size(); i++) {
 								%>
 								<li class="list-group-item"><a
-									href="visualizzaInfoFile.jsp"> <%=file.get(i).getNome()%>
+									href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>"> <%=file.get(i).getNome()%>
 								</a></li>
 								<%
 									}
 									}
 								%>
 							</ul>
-						</form>
+						
 					</div>
 				</div>
 

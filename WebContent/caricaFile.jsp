@@ -31,22 +31,31 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Carica File&nbsp;</h5>
 						</div>
-						<form action="CaricaFileServlet" method="post">
+						<form action="CaricaFileServlet" method="post"
+							enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="nome"><b>Nome File:</b></label> <input type="text"
 									class="form-control" name="nomeFile" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizione"><b>Descrizione:</b></label>
-								<textarea class="form-control" id="descrizioneFile" rows="4"
+								<textarea class="form-control" name="descrizioneFile" rows="4"
 									required></textarea>
 							</div>
 							<div>
 								<label for="File"><b>File:</b></label>
 							</div>
 							<div class="form-group">
-								<input type="file" id="uploadFile">
+								<input type="file" name="uploadFile">
 							</div>
+							<%
+								if(utente.getTipo().equals("d")){
+							%>
+								<input type="hidden" name="numeroTesiDocente" value="<%=request.getParameter("numeroTesiDocente")%>">
+							
+							<%
+								}
+							%>
 							<div class="col text-center">
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary">Carica</button>
@@ -68,7 +77,7 @@
 						if (partecipazioni != null) {
 								for (int i = 0; i < partecipazioni.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"><label><%=partecipazioni.get(i).getPropostaTesiId() + " "
+					<li class="list-group-item"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><label><%=partecipazioni.get(i).getPropostaTesiId() + " "
 								+ partecipazioni.get(i).getUtenteEmail()%></label></a></li>
 					<%
 						}

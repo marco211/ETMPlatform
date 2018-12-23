@@ -44,8 +44,8 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher view=getServletContext().getRequestDispatcher("/areaPrivataCondivisa.jsp");
-		view.forward(request, response);
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
