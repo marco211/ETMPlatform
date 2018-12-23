@@ -42,12 +42,13 @@
 		               <div>
 		               <% 
 					if (utente.getTipo().equals("d")) {
-						if(p.isArchiviato()){
+						if((p.isArchiviato())&&(!p.isChiuso())){
 					%>
 				 
-				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="ArchiviaProposta"><i class="fas fa-archive"></i></p>				
-				 <%} %>
-				 <%} %>
+				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " ><i class="fas fa-archive"></i></p>				
+				 <%}else if(p.isChiuso()){%>
+				 <p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "><i class="fas fa-door-closed"></i></p>				
+				 <%}} %>
 		              	<% 
 		              	if(utente.getTipo().equals("s")){
 		              	%>

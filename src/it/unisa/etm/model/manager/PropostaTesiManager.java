@@ -133,8 +133,8 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return b;
 	}
 	@Override
-	public boolean rimuoviPropostaTesi(String titoloProposta) throws SQLException {
-		String SQL = "Delete p FROM PropostaTesi WHERE p.titolo="+titoloProposta+";";
+	public boolean rimuoviPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
+		String SQL = "Delete FROM PropostaTesi WHERE id="+id+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;

@@ -50,6 +50,7 @@ if(utente==null){
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
     			<% }%>
     			<%} %>
+    			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="RimuoviProposta">Elimina</a>
   		</div>
 	</div>	
  
