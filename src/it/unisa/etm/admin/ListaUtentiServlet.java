@@ -1,6 +1,8 @@
 package it.unisa.etm.admin;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,9 +10,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
 
 /**
@@ -32,8 +36,16 @@ public class ListaUtentiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try{
+			AmministratoreManager am= new AmministratoreManager();
+			ArrayList<Utente> utenti= (ArrayList<Utente>) am.getListaUtenti();
+			request.setAttribute("utenti", utenti);
+			request.getRequestDispatcher("visualizzaListaUtenti.jsp").forward(request, response);
+		}catch(SQLException e) {
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			e.printStackTrace();
+		}
+		
 	}
 
 	/**
@@ -51,8 +63,6 @@ public class ListaUtentiServlet extends HttpServlet {
 	 * null se non vi sono utenti registrati
 	 */
 	private List<Utente> getListaUtenti(){
-		ManagerFactory mf=new ManagerFactory();
-		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
 
 		return null;
 	}
