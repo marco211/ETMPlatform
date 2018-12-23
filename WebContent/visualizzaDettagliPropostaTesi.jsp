@@ -7,6 +7,12 @@ if(propostatesi==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
+
+Utente utente = (Utente) session.getAttribute("utente");
+if(utente==null){
+	response.sendRedirect("./index.jsp");
+    return;
+}
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -33,9 +39,10 @@ if(propostatesi==null){
   		<div class="container">
     		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
     		<p class="lead"><%=propostatesi.getDecrizione()%></p>
-    		<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>				
-    	    <a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
-    		
+    			<% if(utente.getEmail().equals(propostatesi.getUtenteEmail())){%>
+    			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>				
+    	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
+    			<% }%>
   		</div>
 	</div>	
  
