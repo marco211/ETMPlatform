@@ -45,18 +45,20 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;
+		boolean chiuso = false;
+		boolean archivio = false;
 		String SQL = "insert into PropostaTesi (Utente_Email, Titolo, Chiuso, Ambito, Tempo, Descrizione, Archiviato, Materia) values(?,?,?,?,?,?,?,?)";
 		try {
 			connection = DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
-			statement.setString(2, proposta.getUtenteEmail());
-			statement.setString(3, proposta.getTitolo());
-			statement.setBoolean(4, false);
-			statement.setString(5, proposta.getAmbito());
-			statement.setInt(6, proposta.getTempoDiSviluppo());
-			statement.setString(7, proposta.getDecrizione());
-			statement.setBoolean(8, proposta.isArchiviato());
-			statement.setString(9, proposta.getMaterie());
+			statement.setString(1, proposta.getUtenteEmail());
+			statement.setString(2, proposta.getTitolo());
+			statement.setBoolean(3, chiuso);
+			statement.setString(4, proposta.getAmbito());
+			statement.setInt(5, proposta.getTempoDiSviluppo());
+			statement.setString(6, proposta.getDecrizione());
+			statement.setBoolean(7, archivio);
+			statement.setString(8, proposta.getMaterie());
 			statement.executeUpdate();
 			b=true;
 		}finally {

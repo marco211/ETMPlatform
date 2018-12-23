@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,7 +14,11 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.AttivitaManager;
+import it.unisa.etm.model.manager.FileManager;
+import it.unisa.etm.model.manager.UtenteManager;
 
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalità di visualizzare lo storico delle attività effettuate.
@@ -37,26 +42,23 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Utente utente = null;
-		ArrayList<Attivita> attivita = (ArrayList<Attivita>) getStorico(utente);
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
+		ManagerFactory em = new ManagerFactory();
+		AttivitaManager attivita = (AttivitaManager) em.createAttivitaManager();
+		try {
+			ArrayList<Attivita> lista = (ArrayList<Attivita>) attivita.getListaAttivita(propostaTesiId);
+			request.getSession().setAttribute("storico", lista);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaStoricoAttivita.jsp");
+		view.forward(request, response);
 	}
 
-	/**
-	 * Torna all'utente la lista delle attività effettuate dall'utente stesso.
-	 * @param utente registrato;
-	 * @return lista di attivita effettuate dall'utente;
-	 * <p>
-	 * null se non vi sono attivita effettuate.
-	 * @throws SQLException 
-	 */
-	private List<Attivita> getStorico(Utente utente) {
-		try {
-			m.getFile(1);
-			return null;
-		}catch(SQLException e) {
-			return null;
-		}
-		
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 }

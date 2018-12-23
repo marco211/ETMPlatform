@@ -32,16 +32,25 @@
 				 <% }%>
 			</form>
 			
-    		 <ol class="list-unstyled mb-0">
+    		 <div class="container">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
-		              <li><a href="#"><%= p.getTitolo() %></a><a href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>				
-		              </li>
+					<div class="row">
+						<a class="col-3" href="#"><%= p.getTitolo() %></a>
+		               <div>
+		              	<% 
+		              	if(utente.getTipo().equals("s")){
+		              	%>
+		              		<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>				
+		              	<% }%>
+		              	</div>
+		              	
+		              </div>
 					<%} %>
       
-            </ol>
+            </div>
  		    </div>
 </div>
          

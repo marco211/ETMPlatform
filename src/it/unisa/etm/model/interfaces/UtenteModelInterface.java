@@ -11,4 +11,5 @@ public interface UtenteModelInterface {
 	public Utente getUtente(String email,String password) throws SQLException;
 	public boolean modificaPassword(Utente u) throws SQLException;
 	public boolean modificaUtente(Utente u) throws SQLException;
+	public String getPassword(String email) throws SQLException;
 }
