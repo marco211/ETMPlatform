@@ -36,16 +36,15 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
+		int propostaTesiId =utente.getPropostaTesi_ID();
 		ManagerFactory em = new ManagerFactory();
 		ConsegnaManager consegna = (ConsegnaManager) em.createConsegnaManager();
 		try {
 			ArrayList<Consegna> consegne = consegna.getListaConsegne(propostaTesiId);
 			request.getSession().setAttribute("listaConsegne", consegne);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
 		}
 		response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
 		

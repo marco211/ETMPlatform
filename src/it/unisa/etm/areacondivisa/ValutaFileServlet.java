@@ -1,6 +1,9 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,9 +13,10 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.FileManager;
 
 /**
- * Estende HttpServlet, fornisce all'utente registrato come docente la funzionalità di poter valutare un file presente nell'area privata condivisa
+ * Estende HttpServlet, fornisce all'utente registrato come docente la funzionalitï¿½ di poter valutare un file presente nell'area privata condivisa
  */
 @WebServlet("/ValutaFileServlet")
 public class ValutaFileServlet extends HttpServlet {
@@ -29,9 +33,21 @@ public class ValutaFileServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int id=Integer.parseInt(request.getParameter("idTesi"));
+		String nomeFile=request.getParameter("nomeFile");
+		int voto=Integer.parseInt(request.getParameter("voto"));
+		String descrizione=request.getParameter("descrizione");
+		ManagerFactory em = new ManagerFactory();
+		FileManager um = (FileManager) em.createFileManager();
+		try {
+			um.modificaFile(id, nomeFile, voto, descrizione);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		RequestDispatcher view=getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
+		view.forward(request, response);
 	}
 
 	/**
@@ -55,7 +71,7 @@ public class ValutaFileServlet extends HttpServlet {
 	 * Esegue il controllo sui parametri di valutazione che deve ricevere un file presente nell'area privata condivisa.
 	 * @param valutazione intero che rappresenta il voto che deve ricevere un file.
 	 * @param descrizione stringa che rappresenta la descrizione che deve ricevere un file.
-	 * @return boolean true se la valutazione è stata data ed è tra 1 e 10;
+	 * @return boolean true se la valutazione ï¿½ stata data ed ï¿½ tra 1 e 10;
 	 * <p>
 	 * false se la valutazione non rispetta i parametri.
 	 */
@@ -69,7 +85,7 @@ public class ValutaFileServlet extends HttpServlet {
 	 * @param file presente nell'area condivisa.
 	 * @return int che rappresenta la valutazione del file
 	 * <p>
-	 * 0 se il file non è stato valutato.
+	 * 0 se il file non ï¿½ stato valutato.
 	 */
 	private int getValutazione(File file){
 		return 0;

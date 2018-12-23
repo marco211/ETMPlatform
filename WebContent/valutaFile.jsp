@@ -15,7 +15,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Carica File</title>
+<title>Valuta File</title>
 </head>
 <body>
 
@@ -29,28 +29,22 @@
 					<div class="card-body ">
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
-							<h5 class="card-title mb-1">Carica File&nbsp;</h5>
+							<h5 class="card-title mb-1">Valuta File&nbsp;</h5>
 						</div>
-						<form action="CaricaFileServlet" method="post"
+						<form action="ValutaFileServlet" method="post"
 							enctype="multipart/form-data">
 							<div class="form-group">
-								<label for="nome"><b>Nome File:</b></label> <input type="text"
-									class="form-control" name="nomeFile" required>
+								<label for="nome"><b>Voto File:</b></label> <input type="text"
+									class="form-control" name="voto" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizione"><b>Descrizione:</b></label>
-								<textarea class="form-control" name="descrizioneFile" rows="4"
+								<textarea class="form-control" name="descrizione" rows="4"
 									required></textarea>
 							</div>
-							<div>
-								<label for="File"><b>File:</b></label>
-							</div>
-							<div class="form-group">
-								<input type="file" name="uploadFile" id="uploadFile">
-							</div>
 							<div class="col text-center">
-								<button type="submit" id="caricaFile" name="caricaFile"
-									class="btn btn-primary">Carica</button>
+								<button type="submit" id="valutaFile" name="valutaFile"
+									class="btn btn-primary">Valuta</button>
 							</div>
 						</form>
 					</div>

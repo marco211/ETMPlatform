@@ -1,6 +1,7 @@
 package it.unisa.etm.model.manager;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -19,13 +20,17 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public boolean aggiungiFile(File c, Part filePart) throws SQLException {
+	public boolean aggiungiFile(File c) throws SQLException {
 		connection=DatabaseManager.getIstance();
 		prepared=connection.prepareStatement("INSERT INTO FILE (NOME,PROPOSTATESI_ID,FILE,DESCRIZIONE,UTENTE_EMAIL) VALUES (?,?,?,?,?)");
-		prepared.setString(1, filePart.getName());
+		prepared.setString(1, c.getNome());
 		prepared.setInt(2, c.getPropostaTesiId());
 		try {
-			prepared.setBlob(3, filePart.getInputStream());
+			InputStream stream=c.getFilePart().getInputStream();
+			if (stream != null) 
+            {
+                prepared.setBinaryStream(3, stream, (int) c.getFilePart().getSize());
+            }
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,15 +44,27 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public boolean modificaFile(File c) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modificaFile(int idTesi, String nomeFile, int voto, String descrizioneVoto) throws SQLException {
+		connection=DatabaseManager.getIstance();
+		prepared=connection.prepareStatement("UPDATE FILE SET Voto=?,Descrizione_Voto=?  Where Nome=? AND PropostaTesi_Id=?");
+		prepared.setInt(1, voto);
+		prepared.setString(2, descrizioneVoto);
+		prepared.setString(3, nomeFile);
+		prepared.setInt(4, idTesi);
+		prepared.executeUpdate();	
+		prepared.close();
+		return true;
 	}
-
+	
 	@Override
 	public boolean eliminaFile(int idTesi, String nomeFile) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+		connection=DatabaseManager.getIstance();
+		prepared=connection.prepareStatement("DELETE FROM FILE Where Nome=? AND PropostaTesi_Id=?");
+		prepared.setString(1, nomeFile);
+		prepared.setInt(2, idTesi);
+		prepared.executeUpdate();	
+		prepared.close();
+		return true;
 	}
 
 	@Override
@@ -57,6 +74,7 @@ public class FileManager implements FileModelInterface {
 		prepared.setInt(1, id);
 		prepared.setString(2, nomeFile);
 		rs=prepared.executeQuery();
+		rs.next();
 			File file=new File();
 			file.setNome(rs.getString("NOME"));
 			file.setEmail(rs.getString("UTENTE_EMAIL"));
@@ -70,11 +88,11 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public ArrayList<File> getListaFile(int idTesi,String email) throws SQLException {
+	public ArrayList<File> getListaFile(int idTesi) throws SQLException {
 		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE PROPOSTATESI_ID=? AND UTENTE_EMAIL=?");
+		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE PROPOSTATESI_ID=?");
 		prepared.setInt(1, idTesi);
-		prepared.setString(2, email);
+		
 		rs=prepared.executeQuery();
 		ArrayList<File> list=new ArrayList<File>();
 		while(rs.next()) {

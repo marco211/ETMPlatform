@@ -1,8 +1,8 @@
 package it.unisa.etm.bean;
 
-import java.io.InputStream;
+import java.io.*;
 import java.io.Serializable;
-
+import javax.servlet.http.*;
 public class File implements Serializable	 {
 	
 	/**
@@ -81,14 +81,15 @@ public class File implements Serializable	 {
 		this.propostaTesiId = propostaTesiId;
 	}
 	
-	
-	public InputStream getStream() {
-		return stream;
+	public Part getFilePart() {
+		return filePart;
 	}
 
-	public void setStream(InputStream stream) {
-		this.stream = stream;
+	public void setFilePart(Part filePart) {
+		this.filePart = filePart;
 	}
+
+
 
 
 	private int voto;
@@ -97,6 +98,6 @@ public class File implements Serializable	 {
 	private String descrizione;
 	private String email;
 	private String nome;
-	private InputStream stream;
+	private Part filePart;
 	
 }
