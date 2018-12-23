@@ -73,7 +73,7 @@ if(utente!=null){
 					<div class="form-row">
 						<div class="col-4"></div>
 						<div class="col">
-							<a>Password dimenticata?</a>
+							<a href="recuperaPassword.jsp">Password dimenticata?</a>
 						</div>
 						
 					</div>
