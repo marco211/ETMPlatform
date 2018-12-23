@@ -35,20 +35,19 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
-		String email=request.getParameter("utenteEmail");
+		String email=request.getParameter("emailUtente");
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		ManagerFactory em = new ManagerFactory();
 		FileManager um = (FileManager) em.createFileManager();
 		try {
-			ArrayList<File> lista=um.getListaFile(id, email);
+			ArrayList<File> lista=um.getListaFile(id);
 			request.getSession().setAttribute("listaFile", lista);
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		if(utente.getTipo().equals("d")) {
-			request.getSession().setAttribute("numeroTesiDocente", id);
-		}
+	
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
 		requestDispatcher.forward(request, response);
 	}

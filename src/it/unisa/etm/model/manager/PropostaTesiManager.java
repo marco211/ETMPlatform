@@ -217,7 +217,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			connection =  DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
 			statement.setString(1, utenteEmail);
-			ResultSet rs = statement.executeQuery(SQL);
+			ResultSet rs = statement.executeQuery();
 			proposte = new ArrayList<PropostaTesi>();
 			while(rs.next()) {
 				PropostaTesi proposta = new PropostaTesi();
