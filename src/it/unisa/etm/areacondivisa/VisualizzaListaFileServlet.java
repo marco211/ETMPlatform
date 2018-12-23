@@ -35,7 +35,7 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
-		String email=request.getParameter("emailUtente");
+		String email=request.getParameter("utenteEmail");
 		ManagerFactory em = new ManagerFactory();
 		FileManager um = (FileManager) em.createFileManager();
 		try {
