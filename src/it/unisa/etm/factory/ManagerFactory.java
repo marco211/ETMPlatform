@@ -2,6 +2,7 @@ package it.unisa.etm.factory;
 
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.model.interfaces.AreaCondivisaModelInterface;
+import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 import it.unisa.etm.model.interfaces.FileModelInterface;
@@ -10,6 +11,7 @@ import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
 import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 import it.unisa.etm.model.manager.ConsegnaManager;
 import it.unisa.etm.model.manager.FileManager;
@@ -59,4 +61,8 @@ public class ManagerFactory implements AbstractFactory{
 		return new PartecipaManager();
 	}
 
+	@Override
+	public AttivitaModelInterface createAttivitaManager() {
+		return new AttivitaManager();
+	}
 }

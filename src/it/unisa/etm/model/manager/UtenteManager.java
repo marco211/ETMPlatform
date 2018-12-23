@@ -126,5 +126,16 @@ public class UtenteManager implements UtenteModelInterface{
 		return utente;
 	}
 	
+	public String getPassword(String email) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT PASSWORD FROM UTENTE WHERE EMAIL=?");
+		pr.setString(1, email);
+		ResultSet rs=pr.executeQuery();
+		if(rs.next())
+		{
+			return rs.getString("password");
+		}
+		return null;
+	}
 	
 }

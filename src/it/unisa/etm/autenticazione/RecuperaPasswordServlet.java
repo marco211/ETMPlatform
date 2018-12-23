@@ -1,11 +1,26 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.UtenteManager;
+
 
 /**
  * Estende la classe HttpServlet e fornisce all'utente la funzionalità di poter recuperare la sua password.
@@ -26,27 +41,80 @@ public class RecuperaPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email=request.getParameter("email");
+		if(this.inviaPassword(email))
+		{
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
+		}
+		else
+		{
+			response.sendRedirect(request.getContextPath()+"/recuperaPassword.jsp");
+		}
 	}
 	
 	/**
-	 * Permette il reset della password dell'utente prendendo in input la mail di quest'ultimo
+	 * Permette il recupero della password dell'utente prendendo in input la mail di quest'ultimo
 	 * @param email dell'utente registrato
 	 * @return boolean true se il rest è riuscito;
 	 * <p>
 	 * false se non è riusito.
 	 */
-	private boolean resetPassword(String email){
-		return false;
-		
+	private boolean inviaPassword(String email){
+		ManagerFactory mf=new ManagerFactory();
+		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		try {
+			String password=um.getPassword(email);
+			if(password==null)
+				return false;
+			send(email, password);
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 	}
+	
+	public static void send(String ricevente, String testo) throws AddressException, MessagingException {
+        Properties prop = System.getProperties();
+        
+        prop.setProperty("mail.transport.protocol", "smtp");
+        prop.put("mail.smtp.auth", "true");
+		prop.put("mail.smtp.starttls.enable", "true");
+		prop.put("mail.smtp.host", "smtp.gmail.com");
+		prop.put("mail.smtp.port", "587");
+
+        Session session = Session.getDefaultInstance(prop, null);
+        Message msg = new MimeMessage(session);
+        InternetAddress addForm;
+		try {
+			addForm = new InternetAddress("emtplatform@gmail.com", "etm platform");
+			msg.setFrom(addForm);
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+        
+
+        InternetAddress addTo = new InternetAddress(ricevente);
+
+        msg.setRecipient(Message.RecipientType.TO, addTo);
+        msg.setSubject("Recupero password"); 
+        msg.setContent("Ciao, questa è la tua password: " + testo + ".", "text/plain"); 
+        
+        
+        Transport transport=session.getTransport();
+        transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234"); 
+        transport.sendMessage(msg, msg.getAllRecipients());
+    }
+	
 }

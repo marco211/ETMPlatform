@@ -2,6 +2,7 @@ package it.unisa.etm.factory;
 
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.model.interfaces.AreaCondivisaModelInterface;
+import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 import it.unisa.etm.model.interfaces.FileModelInterface;
@@ -18,4 +19,5 @@ public interface AbstractFactory {
 	public UtenteModelInterface createUtenteManager();
 	public FileModelInterface createFileManager();
 	public PartecipaModelInterface createPartecipaManager();
+	public AttivitaModelInterface createAttivitaManager();
 }
