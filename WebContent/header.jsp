@@ -62,11 +62,11 @@
 					<%
 						if (utente.getTipo().equals("s")) {
 					%> <a class="nav-link text-dark"
-					href="areaPrivataCondivisaStudente.jsp">Area privata condivisa</a>
+					href="VisualizzaListaConsegneServlet">Area privata condivisa</a>
 					<%
 						} else if (utente.getTipo().equals("d")) {
 					%> <a class="nav-link text-dark"
-					href="areaPrivataCondivisaDocente.jsp">Area privata condivisa</a> <%
+					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a> <%
 						}
  					%>
 				</li>

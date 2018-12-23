@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
 
@@ -44,8 +45,12 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher view=getServletContext().getRequestDispatcher("/areaPrivataCondivisa.jsp");
-		view.forward(request, response);
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
+		if(utente.getTipo().equals("d")) {
+			request.getSession().setAttribute("numeroTesiDocente", id);
+		}
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
+		requestDispatcher.forward(request, response);
 	}
 
 	/**
