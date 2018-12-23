@@ -16,7 +16,7 @@ public class Utente implements Serializable	 {
 	
 	
 	//studente
-	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2) {
+	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2, String validazione) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.nome = nome;
@@ -24,11 +24,12 @@ public class Utente implements Serializable	 {
 		this.email = email;
 		this.password = password;
 		this.matricola = matricola2;
+		this.validazione=validazione;
 	}
 
 	//docente
 	public Utente(String cognome, String dataDiNascita, String ufficio, String tipo, String nome,
-			String email, String password, String insegnamento) {
+			String email, String password, String insegnamento, String validazione) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.ufficio = ufficio;
@@ -38,6 +39,7 @@ public class Utente implements Serializable	 {
 		this.password = password;
 		this.insegnamento=new ArrayList<String>();
 		this.insegnamento.add(insegnamento);
+		this.validazione=validazione;
 	}
 
 
@@ -143,14 +145,15 @@ public class Utente implements Serializable	 {
 	}
 
 
-	public static Utente loginUtente(String email, String password) {
-		return null;
-	}
-	
-	public static void aggiungiUtente(Utente utente) {
-		
+	public void setValidazione(String validazione)
+	{
+		this.validazione=validazione;
 	}
 
+	public String getValidazione()
+	{
+		return validazione;
+	}
 
 	private String cognome;
 	private String dataDiNascita;
@@ -162,4 +165,5 @@ public class Utente implements Serializable	 {
 	private String password;
 	private int PropostaTesi_ID;
 	private ArrayList<String> insegnamento;
+	private String validazione;
 }

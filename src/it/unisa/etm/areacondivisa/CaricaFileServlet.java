@@ -49,7 +49,7 @@ public class CaricaFileServlet extends HttpServlet {
 		String descrizione=request.getParameter("descrizioneFile");
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		File file=new File();
-		file.setDescrizione("adhsjadgs");
+		file.setDescrizione(descrizione);
 		file.setNome(nome);
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");

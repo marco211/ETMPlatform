@@ -51,8 +51,11 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-				HttpSession session=request.getSession();
-				session.setAttribute("utente", utente);
+				if(utente.getValidazione().equals("valido"))
+				{
+					HttpSession session=request.getSession();
+					session.setAttribute("utente", utente);
+				}
 				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {

@@ -12,7 +12,6 @@
 		return;
 	}
 	
-	System.out.print(utente.getPropostaTesi_ID());
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 %>
@@ -66,7 +65,6 @@
 									}
 								%>
 							</ul>
-						
 					</div>
 				</div>
 
@@ -86,6 +84,7 @@
 					<%
 						}
 						}
+					
 					%>
 				</ul>
 			</div>

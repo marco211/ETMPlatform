@@ -88,11 +88,11 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public ArrayList<File> getListaFile(int idTesi,String email) throws SQLException {
+	public ArrayList<File> getListaFile(int idTesi) throws SQLException {
 		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE PROPOSTATESI_ID=? AND UTENTE_EMAIL=?");
+		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE PROPOSTATESI_ID=?");
 		prepared.setInt(1, idTesi);
-		prepared.setString(2, email);
+		
 		rs=prepared.executeQuery();
 		ArrayList<File> list=new ArrayList<File>();
 		while(rs.next()) {
