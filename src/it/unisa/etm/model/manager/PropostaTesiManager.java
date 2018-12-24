@@ -207,11 +207,26 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	@Override
 	public boolean rimuoviPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
 		String SQL = "Delete FROM PropostaTesi WHERE id="+id+";";
+		String SQL2 = "Select * FROM RichiestaPartecipazione";
 		Connection connection = null;
+		PreparedStatement statement1 = null;
 		PreparedStatement statement = null;
 		boolean b;
 		try {
 			connection = DatabaseManager.getIstance();
+			statement1 = connection.prepareStatement(SQL);
+			statement1.executeQuery(SQL2);
+			ResultSet rs = statement1.getResultSet();
+			while(rs.next()) {
+				int id_proposta = rs.getInt(3);
+				if(id_proposta==id) {
+					System.out.println("sono nell'if");
+					String SQL3 = "Delete FROM RichiestaPartecipazione WHERE id="+id_proposta+";";
+					PreparedStatement statement2 = connection.prepareStatement(SQL3);
+					statement2.executeUpdate();
+					System.out.println("ho eliminato la richiesta");
+				}
+			}
 			statement = connection.prepareStatement(SQL);
 			statement.executeUpdate();
 			b=true;

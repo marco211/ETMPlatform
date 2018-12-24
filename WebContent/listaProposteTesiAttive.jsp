@@ -11,7 +11,7 @@
 
 </head>
 <body>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <jsp:include page="header.jsp"/>
 
 <div style="background-color: #FF9C08">
@@ -23,7 +23,7 @@
         <div class="card-body">
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
-      			<input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
+      			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
 				<button type="button" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="CercaProposta"><span class="fa fa-search"></span> </button>
 					<% 
 					if (utente.getTipo().equals("d")) {
@@ -37,7 +37,7 @@
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
-					<div class="row">
+					<div class="row" id="lista">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
 		               <% 
@@ -97,7 +97,16 @@
 
     </main>
 </div>
-    
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#lista *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 <jsp:include page="footer.jsp" />
 
 </body>
