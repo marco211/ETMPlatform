@@ -54,10 +54,8 @@ public class ValutaFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int voto = 0;
-		String descrizione = "";
 		
-		boolean inserted = inserisciValutazione(voto, descrizione);
+		doGet(request, response);
 	}
 
 	private boolean inserisciValutazione(int voto, String descrizione) {

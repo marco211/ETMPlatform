@@ -40,6 +40,15 @@
 					<div class="row">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
+		               <% 
+					if (utente.getTipo().equals("d")) {
+						if((p.isArchiviato())&&(!p.isChiuso())){
+					%>
+				 
+				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " ><i class="fas fa-archive"></i></p>				
+				 <%}else if(p.isChiuso()){%>
+				 <p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "><i class="fas fa-door-closed"></i></p>				
+				 <%}} %>
 		              	<% 
 		              	if(utente.getTipo().equals("s")){
 		              	%>
@@ -55,8 +64,22 @@
 </div>
          
         </div>
-
+		<% if(utente.getTipo().equals("d")){ %>
         <aside class="col-md-4 my-4">
+          <div class="p-3 card">
+            <h4 class="font-italic">Richieste ricevute</h4>
+            		<% ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste");
+		   			for(RichiestaPartecipazione r : richieste)
+		 			  {
+					%>
+					<div class="row">Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%></div>
+					<%} %>
+            </ol>
+          </div>
+   
+        </aside>
+		<% }else{ %>
+		 <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
             <h4 class="font-italic">Statistiche</h4>
@@ -67,7 +90,7 @@
           </div>
    
         </aside>
-
+		<% }%>
       </div>
 
     </main>

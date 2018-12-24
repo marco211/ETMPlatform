@@ -2,14 +2,14 @@
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
-PropostaTesi propostatesi = (PropostaTesi) session.getAttribute("propostatesi");
-if(propostatesi==null){
+Utente utente = (Utente) session.getAttribute("utenteemail");
+if(utente==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
 
-Utente utente = (Utente) session.getAttribute("utente");
-if(utente==null){
+Utente ut = (Utente) session.getAttribute("utente");
+if(ut==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
@@ -37,20 +37,26 @@ if(utente==null){
  			
  	<div class="jumbotron jumbotron-fluid">
   		<div class="container">
-    		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
-    		<p class="lead"><%=propostatesi.getDecrizione()%></p>
-    			<% if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
-    			if(!propostatesi.isChiuso()){%>
-    			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>
-    			<%} %>
-    			<%if(propostatesi.isChiuso()){%>
-    			<p>la proposta di tesi è chiusa</p>
-    			<%} %>
-    			<%if(!propostatesi.isArchiviato()){ %>				
-    	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
-    			<% }%>
-    			<%} %>
-    			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="RimuoviProposta">Elimina</a>
+    		 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
+   			 	<div class="row" style="border-bottom: 1px solid;"></div>
+    		 		<h4>Nome:</h4>
+    		 			<%utente.getNome(); %>
+    		 		<h4>Cognome:</h4>
+    		 			<%utente.getCognome();%>
+    		 		<h4>Email:</h4>
+    		 			<%utente.getEmail();%>
+    		 		<%if(utente.getTipo().equalsIgnoreCase("d")){ %>
+    		 		<h4>Ufficio</h4>
+    		 			<%utente.getUfficio(); %>
+    		 		<h4>Insegnamento:</h4>
+    		 			<%utente.getInsegnamento(); %>
+    		 		<%} %>
+    		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
+    		 			
+    		 			<p>
+    		 				<button type="button" class="btn btn-primary mx-2">Elimina Utente</button>
+    		 				
+    		 			</p>
   		</div>
 	</div>	
  
