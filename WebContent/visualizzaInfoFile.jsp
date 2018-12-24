@@ -6,7 +6,6 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-	//File file = new File("Primo", 1, "eurofilo", 0,"", "f@unisa.it"); 
 	File file = (File) session.getAttribute("infoFile");
 %>
 
@@ -57,11 +56,11 @@
 				<h4 class="font-italic">Impostazioni</h4>
 				<ol class="list-unstyled mb-0">
 					<div class="row" style="border-bottom: 1px solid;"></div>
-					<li><a href="#">Scarica file</a></li>
+					<li><a href="ScaricaFileServlet?nomeFile=<%=file.getNome()%>&tesiID=<%=file.getPropostaTesiId()%>">Scarica file</a></li>
 					<%
 						if (utente.getTipo().equals("d")) {
 					%>
-					<li><a href="#">Valuta file</a></li>
+					<li><a href="valutaFile.jsp">Valuta file</a></li>
 					<%
 						}
 					%>

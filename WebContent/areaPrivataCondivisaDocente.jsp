@@ -43,11 +43,13 @@
 								</button>
 							</form>
 							<form action="caricaFile.jsp">
+							<% if(partecipazioni.size()>0){%>
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">
 									<i class="fas fa-plus-circle"></i>
 								</button>
+							<%} %>
 							</form>
 
 						</div>

@@ -39,7 +39,7 @@ public class UtenteManager implements UtenteModelInterface{
 		else
 		{
 			insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo, validazione) "
-					+ "values(?,?,?,?,?,?,?,?;";
+					+ "values(?,?,?,?,?,?,?,?);";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getEmail());
 			ps.setString(2, utente.getNome());;
@@ -73,22 +73,59 @@ public class UtenteManager implements UtenteModelInterface{
 
 	
 	@Override
-	public List<Utente> getUtenti(String name) throws SQLException{
-		DatabaseManager.getIstance();
+	public List<Utente> getUtenti(String nome) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String SQL = "SELECT * FROM UTENTE WHERE NOME='"+nome+"';";
+		ps=istance.prepareStatement(SQL);
 		return null;
 	}
 
 	@Override
-	public boolean modificaPassword(Utente u) throws SQLException{
-		// TODO Auto-generated method stub
-		return false;
+	public boolean modificaPassword(Utente utente) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String insertSQL=null;
+		insertSQL = "UPDATE Utente SET password "
+				+ "values(?)  WHERE EMAIL='"+ utente.getEmail()+"' AND MATRICOLA='"+ utente.getMatricola() +"';";
+		ps=istance.prepareStatement(insertSQL);
+		ps.setString(1, utente.getPassword());
+		return true;
 	}
 
 	@Override
-	public boolean modificaUtente(Utente u) throws SQLException{
-		// TODO Auto-generated method stub
-		return false;
-	}
+	public boolean modificaUtente(Utente utente) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String insertSQL=null;
+		if(utente.getTipo().equals("s"))
+		{
+			insertSQL = "UPDATE Utente SET (nome, cognome, data_nascita, matricola) "
+					+ "values(?,?,?,?)  WHERE EMAIL='"+ utente.getEmail()+"' AND PASSWORD='"+ utente.getPassword() +"';";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, utente.getEmail());
+			ps.setString(2, utente.getNome());;
+			ps.setString(3, utente.getCognome());
+			ps.setString(4, utente.getPassword());
+			ps.setString(5, utente.getDataDiNascita());
+			ps.setLong(6, utente.getMatricola());
+			ps.executeUpdate();
+		}
+		else
+		{
+			insertSQL = "UPDATE Utente SET (nome, cognome, password, data_nascita, ufficio) "
+					+ "values(?,?,?,?,?,?) WHERE EMAIL='"+ utente.getEmail()+"' AND PASSWORD='"+ utente.getPassword() +"';";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, utente.getEmail());
+			ps.setString(2, utente.getNome());;
+			ps.setString(3, utente.getCognome());
+			ps.setString(4, utente.getPassword());
+			ps.setString(5, utente.getDataDiNascita());
+			ps.setString(6, utente.getUfficio());
+			ps.executeUpdate();
+		}
+	return true; }
+
 
 	@Override
 	public Utente getUtente(String email, String password) throws SQLException {
@@ -104,7 +141,7 @@ public class UtenteManager implements UtenteModelInterface{
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
 		utente.setTipo(rs.getString("TIPO"));
-		if(rs.getInt("PROPOSTATESI_ID")==0)
+		if(rs.getInt("PROPOSTATESI_ID")!=0)
 		utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));

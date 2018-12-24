@@ -13,4 +13,5 @@ public interface FileModelInterface {
 	public boolean eliminaFile(int idTesi, String nomeFile) throws SQLException;
 	public File getFile(int id,String nomeFile) throws SQLException;
 	public ArrayList<File> getListaFile(int idTesi) throws SQLException;
+	public File scaricaFile(int idTesi, String nomeFile) throws SQLException;
 }

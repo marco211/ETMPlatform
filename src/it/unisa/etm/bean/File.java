@@ -89,6 +89,13 @@ public class File implements Serializable	 {
 		this.filePart = filePart;
 	}
 
+	public InputStream getInputStream() {
+		return stream;
+	}
+
+	public void setInputStream(InputStream stream) {
+		this.stream = stream;
+	}
 
 
 
@@ -99,5 +106,6 @@ public class File implements Serializable	 {
 	private String email;
 	private String nome;
 	private Part filePart;
+	private InputStream stream;
 	
 }
