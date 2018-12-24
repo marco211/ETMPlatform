@@ -35,20 +35,25 @@ if(utente==null){
     		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?cognome=<%=utente.getCognome() %>"></a>
     		 		<h4>Email:</h4>
     		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?email=<%=utente.getEmail() %>"></a>
+    		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>
     		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?matricola=<%=utente.getMatricola() %>"></a>
+    		 			<% }%>
     		 			<%if(utente.getTipo().equals("d")){%>
-		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?ufficio=<%=utente.getUfficio() %>"></a>				
+    		 			<h4>Ufficio</h4>
+		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?ufficio=<%=utente.getUfficio() %>"></a>	
+		              	<h4>Insegnamento</h4>
+		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?insegnamento=<%=utente.getInsegnamento() %>"></a>			
 		              	<% }%>
 		              	</div>
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<p>
-    		 			<form action="ModificaProfiloUtenteServlet">
+    		 			<form action="modificaProfiloUtente.jsp">
     		 				<button type="button" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
     		 				</button>
     		 			</form>
-    		 			<form action="ModificaPasswordServlet">
+    		 			<form action="modificaPassword.jsp">
     		 				<button type="button" class="btn btn-primary mx-2">Modifica password
     		 				</button>
     		 			</form>
