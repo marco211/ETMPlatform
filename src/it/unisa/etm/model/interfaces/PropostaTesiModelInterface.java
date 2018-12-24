@@ -9,7 +9,9 @@ import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 
 public interface PropostaTesiModelInterface {
-
+	
+	public void accettaRichiestaPartecipazione(int id) throws SQLException;
+	public void rifiutaRichiestaPartecipazione(int id) throws SQLException;
 	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email) throws SQLException;
 	public PropostaTesi getPropostaTesi(int id) throws SQLException;
 	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione) throws SQLException;
