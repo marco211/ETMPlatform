@@ -14,6 +14,7 @@
 	
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	Boolean disabilita=(Boolean)session.getAttribute("disabilita");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -43,7 +44,7 @@
 								</button>
 							</form>
 							<form action="caricaFile.jsp">
-							<% if(partecipazioni.size()>0){%>
+							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">

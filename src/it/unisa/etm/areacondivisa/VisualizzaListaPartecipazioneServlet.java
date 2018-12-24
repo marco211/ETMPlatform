@@ -48,11 +48,11 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 			partecipazioni = partecipa.getListaPartecipazione(list);
 			request.getSession().setAttribute("listaPartecipazione", partecipazioni);
 			request.getSession().removeAttribute("listaFile");
+			request.getSession().removeAttribute("disabilita");
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
 		
 		
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
