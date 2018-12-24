@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*, it.unisa.etm.user.*,  it.unisa.etm.bean.* "%>  
 <%
@@ -8,11 +9,10 @@ if(utente==null){
 }
 %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Profilo Utente</title>
+<title>Modifica Profilo Utente</title>
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
 </head>
@@ -27,34 +27,37 @@ if(utente==null){
         <div class="col-md-8 my-4">
         <div class="card mb-3">
         <div class="card-body"> 			
-   			 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
+   			 <h5 class="card-title" style="color:#3385ff">Modifica Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
     		 		<h4>Nome:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?nome=<%=utente.getNome() %>"></a>
+    		 		<form action="ModificaProfiloUtenteServlet" method="post">
+    		 	 	<input type="text" class="form-control" name="nome"
+								placeholder="Nome"></form>
     		 		<h4>Cognome:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?cognome=<%=utente.getCognome() %>"></a>
+    		 			<form action="ModificaProfiloUtenteServlet" method="post">
+    		 	 	<input type="text" class="form-control" name="cognome"
+								placeholder="Cognome"></form>
     		 		<h4>Email:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?email=<%=utente.getEmail() %>"></a>
+    		 			<form action="ModificaProfiloUtenteServlet" method="post">
+    		 	 	<input type="text" class="form-control" name="email"
+								placeholder="E-mail"></form>
     		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?matricola=<%=utente.getMatricola() %>"></a>
-    		 			<% }%>
+    		 			<form action="ModificaProfiloUtenteServlet" method="post">
+    		 	 	<input type="text" class="form-control" name="matricola"
+								placeholder="Matricola"></form>
+					<% }%>
     		 			<%if(utente.getTipo().equals("d")){%>
-    		 			<h4>Ufficio</h4>
-		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?ufficio=<%=utente.getUfficio() %>"></a>	
-		              	<h4>Insegnamento</h4>
-		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?insegnamento=<%=utente.getInsegnamento() %>"></a>			
+		              		<form action="ModificaProfiloUtenteServlet" method="post">
+    		 	 	<input type="text" class="form-control" name="ufficio"
+								placeholder="Ufficio"></form>				
 		              	<% }%>
 		              	</div>
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<p>
-    		 			<form action="modificaProfiloUtente.jsp">
-    		 				<button type="button" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
-    		 				</button>
-    		 			</form>
-    		 			<form action="modificaPassword.jsp">
-    		 				<button type="button" class="btn btn-primary mx-2">Modifica password
+    		 			<form action="ModificaProfiloUtenteServlet">
+    		 				<button type="submit" class="btn btn-primary mx-2" id="SalvaProfilo">Salva Profilo
     		 				</button>
     		 			</form>
     		 			</p>

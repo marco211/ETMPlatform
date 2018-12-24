@@ -86,9 +86,38 @@ public class UtenteManager implements UtenteModelInterface{
 
 	@Override
 	public boolean modificaUtente(Utente u) throws SQLException{
-		// TODO Auto-generated method stub
-		return false;
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String insertSQL=null;
+		if(u.getTipo().equals("s"))
+		{
+			insertSQL = "UPDATE Utente SET (nome, cognome, data_nascita, matricola) "
+					+ "values(?,?,?,?)  WHERE EMAIL=? AND PASSWORD=?;";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, u.getEmail());
+			ps.setString(2, u.getNome());;
+			ps.setString(3, u.getCognome());
+			ps.setString(4, u.getPassword());
+			ps.setString(5, u.getDataDiNascita());
+			ps.setLong(6, u.getMatricola());
+			ps.executeUpdate();
+		}
+		else
+		{
+			insertSQL = "UPDATE Utente SET (nome, cognome, password, data_nascita, insegnamento, ufficio) "
+					+ "values(?,?,?,?,?,?)  WHERE EMAIL=? AND PASSWORD=?;";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, u.getEmail());
+			ps.setString(2, u.getNome());;
+			ps.setString(3, u.getCognome());
+			ps.setString(4, u.getPassword());
+			ps.setString(5, u.getDataDiNascita());
+			ps.setString(6, u.getUfficio());
+			ps.setString(7, u.getInsegnamento());
+			ps.executeUpdate();
+		}
 	}
+
 
 	@Override
 	public Utente getUtente(String email, String password) throws SQLException {
