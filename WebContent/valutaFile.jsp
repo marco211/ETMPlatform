@@ -18,7 +18,6 @@
 <body>
 
 	<jsp:include page="header.jsp" />
-
 	<div style="background-color: #FF9C08">
 		<main role="main" class="container">
 		<div class="row">
@@ -29,18 +28,16 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Valuta File&nbsp;</h5>
 						</div>
-						<form
-							action="ValutaFileServlet?idTesi=<%=file.getPropostaTesiId()%>
-										&nomeFile=<%=file.getNome()%>"
-							method="post" enctype="multipart/form-data">
+						<form action="ValutaFileServlet" method="post" >
+							<input type="hidden" name="idTesi" value="<%= file.getPropostaTesiId()%>">
+							<input type="hidden" name="nomeFile" value="<%=file.getNome()%>">
 							<div class="form-group">
-								<label for="nome"><b>Voto File:</b></label> <input type="text"
-									class="form-control" name="voto" required>
+								<label for="nome"><b>Voto File:</b></label> 
+								<input type="text" class="form-control" name="voto" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizione"><b>Descrizione:</b></label>
-								<textarea class="form-control" name="descrizione" rows="4"
-									required></textarea>
+								<textarea class="form-control" name="descrizione" rows="4" required></textarea>
 							</div>
 							<div class="col text-center">
 								<button type="submit" id="valutaFile" name="valutaFile"
@@ -58,10 +55,9 @@
 				<h4 class="font-italic">Impostazioni</h4>
 				<ol class="list-unstyled mb-0">
 					<div class="row" style="border-bottom: 1px solid;"></div>
-					<li><a href="#">Scarica file</a></li>
+					<li><a href="ScaricaFileServlet?nomeFile=<%=file.getNome()%>&tesiID=<%=file.getPropostaTesiId()%>">Scarica file</a></li>
 					<li><a
-						href="EliminaFileServlet?idTesi=<%=file.getPropostaTesiId()%>
-						&nomeFile=<%=file.getNome()%>">Elimina
+						href="EliminaFileServlet?idTesi=<%=file.getPropostaTesiId()%>&nomeFile=<%=file.getNome()%>">Elimina
 							file</a></li>
 				</ol>
 			</div>

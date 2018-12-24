@@ -6,7 +6,6 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-	//File file = new File("Primo", 1, "eurofilo", 0,"", "f@unisa.it"); 
 	File file = (File) session.getAttribute("infoFile");
 %>
 
