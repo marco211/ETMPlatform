@@ -50,9 +50,7 @@ public class PartecipaManager implements PartecipaModelInterface {
 			prepared.close();
 			rs.close();
 		}
-		prepared.close();
-		rs.close();
-		
+
 		return lista;	
 	}
 

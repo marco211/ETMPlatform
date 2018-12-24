@@ -6,9 +6,7 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
-	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
-	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
+	File file = (File) session.getAttribute("infoFile");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -31,8 +29,10 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Valuta File&nbsp;</h5>
 						</div>
-						<form action="ValutaFileServlet" method="post"
-							enctype="multipart/form-data">
+						<form
+							action="ValutaFileServlet?idTesi=<%=file.getPropostaTesiId()%>
+										&nomeFile=<%=file.getNome()%>"
+							method="post" enctype="multipart/form-data">
 							<div class="form-group">
 								<label for="nome"><b>Voto File:</b></label> <input type="text"
 									class="form-control" name="voto" required>
@@ -53,42 +53,17 @@
 
 
 			<aside class="col-md-4 my-4">
+
 			<div class="p-3 card">
-				<%
-					if (utente.getTipo().equals("d")) {
-				%>
-				<h4 class="font-italic">Aree</h4>
-				<ul class="list-group list-group-flush">
-					<%
-						if (partecipazioni != null) {
-								for (int i = 0; i < partecipazioni.size(); i++) {
-					%>
-					<li class="list-group-item"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><label><%=partecipazioni.get(i).getPropostaTesiId() + " "
-								+ partecipazioni.get(i).getUtenteEmail()%></label></a></li>
-					<%
-						}
-							}
-					%>
-				</ul>
-				<%
-					} else if (utente.getTipo().equals("s")) {
-				%>
-				<h4 class="font-italic">To Do List</h4>
-				<ul class="list-group list-group-flush">
-					<%
-						if (consegne != null) {
-								for (int i = 0; i < consegne.size(); i++) {
-					%>
-					<li class="list-group-item"><a href="#"> <%=consegne.get(i).getNome()%>
-					</a></li>
-					<%
-						}
-							}
-					%>
-				</ul>
-				<%
-					}
-				%>
+				<h4 class="font-italic">Impostazioni</h4>
+				<ol class="list-unstyled mb-0">
+					<div class="row" style="border-bottom: 1px solid;"></div>
+					<li><a href="#">Scarica file</a></li>
+					<li><a
+						href="EliminaFileServlet?idTesi=<%=file.getPropostaTesiId()%>
+						&nomeFile=<%=file.getNome()%>">Elimina
+							file</a></li>
+				</ol>
 			</div>
 			</aside>
 		</div>

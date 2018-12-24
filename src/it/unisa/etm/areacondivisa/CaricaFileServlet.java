@@ -59,6 +59,7 @@ public class CaricaFileServlet extends HttpServlet {
 		attivita.setTipo("c");
 		attivita.setUtente_Email(utente.getEmail());
 		attivita.setData(new Date(11,11,2011));
+		System.out.print(file.getNome()+ file.getEmail()+ file.getPropostaTesiId());
 		if(utente.getTipo().equals("s")) {
 			attivita.setId(utente.getPropostaTesi_ID());
 			file.setPropostaTesiId(utente.getPropostaTesi_ID());

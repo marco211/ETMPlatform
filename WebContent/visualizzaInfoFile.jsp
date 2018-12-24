@@ -61,7 +61,7 @@
 					<%
 						if (utente.getTipo().equals("d")) {
 					%>
-					<li><a href="#">Valuta file</a></li>
+					<li><a href="valutaFile.jsp">Valuta file</a></li>
 					<%
 						}
 					%>
