@@ -47,6 +47,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 			ArrayList<Partecipa> partecipazioni;
 			partecipazioni = partecipa.getListaPartecipazione(list);
 			request.getSession().setAttribute("listaPartecipazione", partecipazioni);
+			request.getSession().removeAttribute("listaFile");
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
