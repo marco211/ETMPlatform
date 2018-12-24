@@ -1,13 +1,19 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
+import java.sql.SQLException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
  * Estende HttpServlet ed offre all'utente registrato come docente la funzionalità di poter eliminare una proposta di tesi caricata da lui precedentemente.
@@ -28,8 +34,15 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		HttpSession session=request.getSession();
+		synchronized(session) {
+			int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
+			System.out.println("sono arrivato alla sessione");
+			if(this.rimuoviPropostaTesi(propostatesi_id)) {
+				System.out.println("ci arrivo?");
+				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+			}
+		}
 	}
 
 	/**
@@ -47,8 +60,18 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 	 * <p>
 	 * false se la rimozione non è riuscita.
 	 */
-	private boolean rimuoviPropostaTesi(PropostaTesi tesi){
-		return false;
+	private boolean rimuoviPropostaTesi(int proposta_id){
+		ManagerFactory mf=new ManagerFactory();
+		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+		boolean b = false;
+		try {
+			b = ptm.rimuoviPropostaTesi(proposta_id);
+			System.out.println("ho provato a fare il metodo nel manager");
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return b;
 		
 	}
 }

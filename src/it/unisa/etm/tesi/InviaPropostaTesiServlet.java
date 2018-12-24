@@ -26,7 +26,7 @@ import it.unisa.etm.model.manager.UtenteManager;
 @WebServlet("/InviaPropostaTesiServlet")
 public class InviaPropostaTesiServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PropostaTesiModelInterface  propostamanager;
+	private PropostaTesiModelInterface  propostamanager; //non serve perchè usiamo il manager factory, anche se a mio parere sarebbe giusto usare le interfacce
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -46,7 +46,7 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 			int propostatesi_id=Integer.parseInt(request.getParameter("propostatesi_id"));
 			Utente utente = (Utente) session.getAttribute("utente");
 			String utente_mail=utente.getEmail();
-			propostamanager = new PropostaTesiManager();
+			propostamanager = new PropostaTesiManager();//non serve perchè usiamo il manager factory
 
 			RichiestaPartecipazione richiesta = new RichiestaPartecipazione(data, propostatesi_id, utente_mail);
 			

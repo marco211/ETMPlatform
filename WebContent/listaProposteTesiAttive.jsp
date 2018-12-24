@@ -40,6 +40,15 @@
 					<div class="row">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
+		               <% 
+					if (utente.getTipo().equals("d")) {
+						if((p.isArchiviato())&&(!p.isChiuso())){
+					%>
+				 
+				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " ><i class="fas fa-archive"></i></p>				
+				 <%}else if(p.isChiuso()){%>
+				 <p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "><i class="fas fa-door-closed"></i></p>				
+				 <%}} %>
 		              	<% 
 		              	if(utente.getTipo().equals("s")){
 		              	%>

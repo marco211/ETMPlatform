@@ -27,10 +27,14 @@ import java.util.logging.Logger;
 		private static void createConnection() throws SQLException, ClassNotFoundException {
 			Class.forName("com.mysql.jdbc.Driver");
 			String username = "root";//inserite la vostra username
-			String password = "root";//inserite la vostra password
+			String password = "admin";//inserite la vostra password
 
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 19af81b3ecc61e3a5e0ec4d880b9a897de7b753d
 			Logger.getLogger("global").info("**** Connessione creata con successo **** " + connection.toString() + "\n");		
 		}
 	}
