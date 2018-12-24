@@ -47,7 +47,9 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+		if(utente.getTipo().equals("d")) {
+			request.getSession().setAttribute("numeroTesiDocente", id);
+		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
 		requestDispatcher.forward(request, response);
 	}

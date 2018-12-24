@@ -27,7 +27,11 @@ import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
  * Estende HttpServlet fornisce la funzionalit� di caricare un file nell'area privata condivisa.
  */
 @WebServlet("/CaricaFileServlet")
-@MultipartConfig(maxFileSize = 16177215)
+/*@MultipartConfig(maxFileSize = 16177215)*/
+@MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB after which the file will be 
+//temporarily stored on disk
+maxFileSize = 1024 * 1024 * 10, // 10MB maximum size allowed for uploaded files
+maxRequestSize = 1024 * 1024 * 50) // 50MB overall size of all uploaded files
 
 public class CaricaFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -54,16 +58,17 @@ public class CaricaFileServlet extends HttpServlet {
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
-		Attivita attivita=new Attivita();
+		/*Attivita attivita=new Attivita();
 		attivita.setNomeFile(nome);
 		attivita.setTipo("c");
 		attivita.setUtente_Email(utente.getEmail());
 		attivita.setData(new Date(11,11,2011));
-		System.out.print(file.getNome()+ file.getEmail()+ file.getPropostaTesiId());
+		System.out.print(file.getNome()+ file.getEmail()+ file.getPropostaTesiId());*/
 		if(utente.getTipo().equals("s")) {
-			attivita.setId(utente.getPropostaTesi_ID());
-			file.setPropostaTesiId(utente.getPropostaTesi_ID());
+			//attivita.setId(utente.getPropostaTesi_ID());
+			file.setPropostaTesiId(1);
 			System.out.println(utente.getPropostaTesi_ID());
+			System.out.println(utente.getEmail());
 	}
 		else {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
@@ -75,7 +80,7 @@ public class CaricaFileServlet extends HttpServlet {
 		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
 		try {
 			fm.aggiungiFile(file);
-			am.aggiungiAttivita(attivita);
+			//am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

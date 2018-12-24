@@ -2,13 +2,12 @@ package it.unisa.etm.model.manager;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import javax.servlet.http.Part;
 
 import it.unisa.etm.bean.File;
 import it.unisa.etm.database.DatabaseManager;
@@ -110,8 +109,29 @@ public class FileManager implements FileModelInterface {
 		return list;
 	}
 
+	@Override
+	public File scaricaFile(int idTesi, String nomeFile) throws SQLException {
+		connection=DatabaseManager.getIstance();
+		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE NOME=? AND PROPOSTATESI_ID=?");
+		prepared.setString(1, nomeFile);
+		prepared.setInt(2, idTesi);
+		rs=prepared.executeQuery();
+		File f=new File();
+		if (rs.next()) {
+            // gets file name and file blob data
+            String fileName = rs.getString("NOME");
+            Blob blob=rs.getBlob("FILE");
+            InputStream stream = blob.getBinaryStream();
+            f.setNome(fileName);
+            f.setInputStream(stream);
+		}         
+		
+		return f;
+	}
+	
 	private Connection connection;
 	private PreparedStatement prepared;
 	private ResultSet rs;
+	
 	
 }
