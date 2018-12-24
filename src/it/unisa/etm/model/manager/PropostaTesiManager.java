@@ -65,7 +65,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	@Override
 	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email) throws SQLException{
 		
-		String SQL = "SELECT * FROM richiestapartecipazione WHERE propostatesi_id=(SELECT ID FROM propostatesi WHERE utente_email=?)";
+		String SQL = "SELECT * FROM richiestapartecipazione WHERE propostatesi_id IN (SELECT ID FROM propostatesi WHERE utente_email=?)";
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList<RichiestaPartecipazione> richieste = null;
