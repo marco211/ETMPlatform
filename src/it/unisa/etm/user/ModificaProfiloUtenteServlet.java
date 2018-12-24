@@ -37,25 +37,8 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email=request.getParameter("email");
-		String nome=request.getParameter("nome");
-		String cognome=request.getParameter("cognome");
-		String password=request.getParameter("password");
-		String data=request.getParameter("data");
-		String tipo=request.getParameter("tipo");
-		Utente utente;
-		if(tipo.equals("s"))
-		{
-			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente=new Utente(cognome, data, nome, tipo, email, password, matricola);
-		}
-		else
-		{
-			String insegnamento=request.getParameter("insegnamento").toLowerCase();
-			String ufficio=request.getParameter("ufficio");
-			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento);
-		}
-		response.sendRedirect(request.getContextPath()+"/index.jsp");;
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 	
 	/**
