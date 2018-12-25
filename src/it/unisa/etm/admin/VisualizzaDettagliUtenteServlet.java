@@ -2,7 +2,6 @@ package it.unisa.etm.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,10 +23,12 @@ public class VisualizzaDettagliUtenteServlet extends HttpServlet{
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String email= request.getParameter("utente_email");
-		Utente utenteEmail=this.visualizzaDettagliUtente(email);
+		String email=(String) request.getParameter("utente_email");
+		Utente utenteEmail=(Utente) visualizzaDettagliUtente(email);
+		
 		HttpSession session=request.getSession();
 		session.setAttribute("utenteemail", utenteEmail);
+		System.out.println("VisualizzaDettagliUtenteServlet: sessione settata");
 		request.getRequestDispatcher("visualizzaDettagliUtente.jsp").forward(request, response);
 	}
 	
@@ -48,6 +49,7 @@ public class VisualizzaDettagliUtenteServlet extends HttpServlet{
 			e.printStackTrace();
 			return null;
 		}
+		System.out.println("VisualizzaDettagliUtenteServlet: utente inviato");
 		return utente;	
 	}
 	

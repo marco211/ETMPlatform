@@ -51,19 +51,21 @@ public class LoginServlet extends HttpServlet {
 		try {
 			Utente utente=um.getUtente(email, password);
 			if(utente!=null) {
-				if(utente.getValidazione().equals("valido"))
-				{
+				if(utente.getValidazione().equals("valido")) {
 					HttpSession session=request.getSession();
 					session.setAttribute("utente", utente);
+					response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 				}
-				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+				else {
+					response.sendRedirect(request.getContextPath()+"/loginFallitoRegistrazioneNonConfermata.jsp");
+				}				
 			}
 			else {
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
+				response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
 		}
 		
 	}

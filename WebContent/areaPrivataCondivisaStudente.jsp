@@ -26,7 +26,7 @@
 
 	<jsp:include page="header.jsp" />
 
-	<div style="background-color: #FF9C08">
+	<div style="background-color: #FF9C08; min-height: 81vh;">
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">

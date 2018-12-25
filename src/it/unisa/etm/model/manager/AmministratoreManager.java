@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.database.DatabaseManager;
@@ -53,34 +52,48 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 
 	@Override
 	public boolean eliminaUtente(String email) throws SQLException {
-		String SQL = "Delete u FROM Utente WHERE u.email="+email+";";
-		Connection connection = null;
-		PreparedStatement statement = null;
-		boolean risp;
+		System.out.println("Sono in Amministratore Manager , eliminaUtente");
+		Connection connection=DatabaseManager.getIstance();
+		PreparedStatement prepared=connection.prepareStatement("DELETE FROM Utente WHERE email =?;");
+		boolean b;
 		try {
-			connection = DatabaseManager.getIstance();
-			statement = connection.prepareStatement(SQL);
-			statement.executeUpdate();
-			risp=true;;
+			prepared.setString(1, email);
+			prepared.executeUpdate();
+			b=true;
+			System.out.println("AmministratoreManager: ci siamo");
 		}finally {
-				if(statement!=null)
-					statement.close();
+					prepared.close();
 		}
-		
-		return risp;
+		return b;
 	}
 
 	@Override
 	public Utente getUtente(String email) throws SQLException {
-		String SQL = "SELECT * FROM Utente WHERE email=" +email;
+		ArrayList<Utente> utenti=(ArrayList<Utente>) this.getListaUtenti();
+		
+		for(Utente u: utenti)
+			if(u.getEmail().equalsIgnoreCase(email)) {
+				System.out.println("AmministartoreManager: utente preso");
+				return u;
+			}
+	
+		
+	return null;
+	}
+
+	@Override
+	public List<Utente> cercaUtente(String nome) throws SQLException {
+		String SQL = "SELECT u FROM Utente WHERE u.nome="+nome+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
-		Utente utente=new Utente();
+		ArrayList <Utente> utenti = null;
 		try {
 			connection =  DatabaseManager.getIstance();
-			statement = connection.prepareStatement(SQL);			
+			statement = connection.prepareStatement(SQL);
 			ResultSet rs = statement.executeQuery(SQL);
-			rs.next();
+			utenti = new ArrayList<Utente>();
+			while(rs.next()) {
+				Utente utente=new Utente();
 				utente.setEmail(rs.getString(1));
 				utente.setNome(rs.getString(2));
 				utente.setCognome(rs.getString(3));
@@ -90,12 +103,13 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 				utente.setMatricola(rs.getLong(7));
 				utente.setUfficio(rs.getString(8));
 				utente.setTipo(rs.getString(9));
+				utenti.add(utente);
+			}
 		}finally {
 			if(statement!=null)
 				statement.close();
 		}
-		
-		return utente;
+		return utenti;
 	}
 	
 }

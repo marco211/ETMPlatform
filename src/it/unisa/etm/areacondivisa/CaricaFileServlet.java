@@ -3,6 +3,7 @@ package it.unisa.etm.areacondivisa;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -67,12 +68,15 @@ public class CaricaFileServlet extends HttpServlet {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
-
+		LocalDate data = LocalDate.now();
+		System.out.println(data);
+		Attivita attivita = new Attivita(file.getEmail(), file.getNome(), data ,"c",file.getPropostaTesiId());
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();
 		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
 		try {
 			fm.aggiungiFile(file);
+			am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}

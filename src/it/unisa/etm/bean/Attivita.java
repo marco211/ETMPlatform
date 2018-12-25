@@ -15,10 +15,10 @@ public class Attivita implements Serializable{
 
 	}
 
-	public Attivita(String utente_Email, String nomeFile, String data, String tipo, int propostatesi_id) {
+	public Attivita(String utente_Email, String nomeFile, LocalDate data, String tipo, int propostatesi_id) {
 		super();
 		this.utente_Email = utente_Email;
-		NomeFile = nomeFile;
+		this.NomeFile = nomeFile;
 		this.data = data;
 		this.tipo = tipo;
 		this.propostatesi_id = propostatesi_id;
@@ -48,11 +48,11 @@ public class Attivita implements Serializable{
 		NomeFile = nomeFile;
 	}
 
-	public String getData() {
+	public LocalDate getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(LocalDate data) {
 		this.data = data;
 	}
 
@@ -76,16 +76,20 @@ public class Attivita implements Serializable{
 	public String toString() {
 		// TODO Auto-generated method stub
 		//valutare bene il tipo, io farei un controllo, se non ricordo male serviva ad indicare se il file era stato caricato o eliminato.
-		String t = "eliminato";
+		String t = null;
 		if(tipo.equals("c"))
 			t = "caricato";
+		else if(tipo.equals("v"))
+			t = "valutato";
+		else if(tipo.equals("e"))
+			t= "eliminato";
 		return "L'utente: "+utente_Email+" ha "+t+" il file: "+NomeFile+" il giorno: "+data+"";
 	}
 
 	private int id;
 	private String utente_Email;
 	private String NomeFile;
-	private String data;
+	private LocalDate data;
 	private String tipo;
 	private int propostatesi_id;
 
