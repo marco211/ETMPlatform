@@ -44,20 +44,20 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		String propostaTesiId;
+		int propostaTesiId;
 		if(utente.getTipo().equals("d")) {
-		propostaTesiId=(String)request.getSession().getAttribute("numeroTesiDocente");
+		propostaTesiId=(int)request.getSession().getAttribute("numeroTesiDocente");
 		}
 		else {
-		propostaTesiId =request.getParameter("propostaTesiId");
+		propostaTesiId =Integer.parseInt(request.getParameter("propostaTesiId"));
 		}
 		
-		if(propostaTesiId!=null) {
+		if(propostaTesiId!=0) {
 		
 		ManagerFactory em = new ManagerFactory();
 		AttivitaManager attivita = (AttivitaManager) em.createAttivitaManager();
 		try {
-			ArrayList<Attivita> lista = (ArrayList<Attivita>) attivita.getListaAttivita(Integer.parseInt(propostaTesiId));
+			ArrayList<Attivita> lista = (ArrayList<Attivita>) attivita.getListaAttivita(propostaTesiId);
 			request.getSession().setAttribute("storico", lista);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

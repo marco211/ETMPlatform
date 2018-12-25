@@ -35,8 +35,8 @@
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<form
-								action="VisualizzaStoricoServlet">
+							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
+							<form action="VisualizzaStoricoServlet" method="get">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="VisualizzaArchivio">
@@ -44,7 +44,6 @@
 								</button>
 							</form>
 							<form action="caricaFile.jsp">
-							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">
@@ -83,7 +82,7 @@
 					<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">Identificativo proposta tesi</th>
+							<th scope="col">Proposta tesi</th>
 							<th scope="col">Email studente</th>
 						</tr>
 					</thead>

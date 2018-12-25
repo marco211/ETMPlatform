@@ -35,8 +35,8 @@
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<form
-								action="VisualizzaStoricoServlet?propostaTesiId=<%=utente.getPropostaTesi_ID()%>">
+							<form action="VisualizzaStoricoServlet" method="get">
+								<input type="hidden" name="propostaTesiId" value="<%=utente.getPropostaTesi_ID()%>">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="VisualizzaArchivio">
