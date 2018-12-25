@@ -10,7 +10,6 @@ import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
-import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
@@ -72,7 +71,7 @@ public class RegistrazioneServlet extends HttpServlet {
 				"</head>\r\n" + 
 				"<body>\r\n" + 
 				"\r\n" + 
-				"copia il link in descrizione ed aprilo per confermare registrazione <br>" +
+				"clicca sul link in basso per confermare la registrazione <br>" +
 				"<a href=\"http://localhost:8080/ETMPlatform/ConfermaMailServlet?validazione=" + validazione + "\"" + ">Clicca qui</a>" +
 				"\r\n" + 
 				"</body>\r\n" + 
@@ -80,10 +79,13 @@ public class RegistrazioneServlet extends HttpServlet {
 
 		if(registrazioneControl(utente)) {
 			if(sendEmail(email, testo)) {
-				response.sendRedirect(request.getContextPath()+"/index.jsp");
+				response.sendRedirect(request.getContextPath()+"/registrazioneRiuscita.jsp");
 			}else {
-				//se il metodo ritorna false c'è stato un errore, gestirlo con altra jsp, servlet o messaggio di errore
+				response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");
 			}
+		}
+		else {
+			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");
 		}
 	}
 

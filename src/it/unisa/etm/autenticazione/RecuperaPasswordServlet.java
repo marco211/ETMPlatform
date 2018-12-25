@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import javax.mail.Message;
 import javax.mail.MessagingException;
+import javax.mail.NoSuchProviderException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.AddressException;
@@ -52,11 +53,11 @@ public class RecuperaPasswordServlet extends HttpServlet {
 		String email=request.getParameter("email");
 		if(this.inviaPassword(email))
 		{
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/recuperoPasswordRiuscito.jsp");
 		}
 		else
 		{
-			response.sendRedirect(request.getContextPath()+"/recuperaPassword.jsp");
+			response.sendRedirect(request.getContextPath()+"/recuperoPasswordNonRiuscito.jsp");
 		}
 	}
 	
@@ -74,18 +75,19 @@ public class RecuperaPasswordServlet extends HttpServlet {
 			String password=um.getPassword(email);
 			if(password==null)
 				return false;
-			send(email, password);
-		} catch (MessagingException e) {
-			e.printStackTrace();
-			return false;
+			if(send(email, password)) {
+				return true;
+			}
+			else {
+				return false;
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
 	}
 	
-	public static void send(String ricevente, String testo) throws AddressException, MessagingException {
+	public static boolean send(String ricevente, String testo) {
         Properties prop = System.getProperties();
         
         prop.setProperty("mail.transport.protocol", "smtp");
@@ -101,21 +103,44 @@ public class RecuperaPasswordServlet extends HttpServlet {
 			addForm = new InternetAddress("emtplatform@gmail.com", "etm platform");
 			msg.setFrom(addForm);
 		} catch (UnsupportedEncodingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			return false;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
 		}
         
 
-        InternetAddress addTo = new InternetAddress(ricevente);
+        InternetAddress addTo;
+		try {
+			addTo = new InternetAddress(ricevente);
+	        msg.setRecipient(Message.RecipientType.TO, addTo);
+	        msg.setSubject("Recupero password"); 
+	        msg.setContent("Ciao, questa è la tua password: " + testo + ".", "text/plain"); 
+		} catch (AddressException e) {
+			e.printStackTrace();
+			return false;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
+		}
 
-        msg.setRecipient(Message.RecipientType.TO, addTo);
-        msg.setSubject("Recupero password"); 
-        msg.setContent("Ciao, questa è la tua password: " + testo + ".", "text/plain"); 
+
         
         
-        Transport transport=session.getTransport();
-        transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234"); 
-        transport.sendMessage(msg, msg.getAllRecipients());
+        Transport transport;
+		try {
+			transport = session.getTransport();
+	        transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234"); 
+	        transport.sendMessage(msg, msg.getAllRecipients());
+		} catch (NoSuchProviderException e) {
+			e.printStackTrace();
+			return false;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
     }
 	
 }

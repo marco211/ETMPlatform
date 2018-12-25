@@ -36,10 +36,9 @@ public class ConfermaMailServlet extends HttpServlet {
 		UtenteManager um=(UtenteManager) mf.createUtenteManager();
 		try {
 			um.setValidazione(validazione);
-			response.sendRedirect(request.getContextPath()+"/index.jsp");
+			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneRiuscita.jsp");
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneNonRiuscita.jsp");
 		}
 		
 	}

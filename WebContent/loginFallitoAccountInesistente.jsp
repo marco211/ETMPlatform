@@ -1,15 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.* "%>
 	
-<%
-Utente utente=(Utente)session.getAttribute("utente");
-if(utente!=null){
-	response.sendRedirect("./homePage.jsp");
-    return;
-}
-%>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -124,80 +116,10 @@ if(utente!=null){
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-				<form action="RegistrazioneServlet" method="post">
-					<h1>Iscriviti</h1>
-					<h6>Gestisci facilmente la tua tesi</h6>
-
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="tipo" value="s"
-							checked="checked" onclick="cambiaStudente()"> <label
-							class="form-check-label" for="inlineRadio1">Studente</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="tipo" value="d"
-							onclick="cambiaDocente()"> <label
-							class="form-check-label" for="inlineRadio2">Docente</label>
-					</div>
-
-
-
-					<div class="form-row">
-						<div class="form-group col-md-6">
-							<label for="inputNome4">Nome</label> <input type="text"
-								class="form-control" name="nome" placeholder="Nome" required>
-						</div>
-
-						<div class="form-group col-md-6">
-							<label for="inputCognome4">Cognome</label> <input type="text"
-								class="form-control" name="cognome" placeholder="Cognome"
-								required>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label for="inputEmail">E-mail</label> <input type="email"
-							class="form-control" name="email" placeholder="E-mail" required>
-					</div>
-
-					<div class="form-group" id="matricolaID">
-						<label for="inputMatricola">Matricola</label> <input type="text"
-							class="form-control" name="matricola" placeholder="Matricola"
-							>
-					</div>
-
-					<div class="form-group d-none" id="insegnamentoID">
-						<label for="inputInsegnamento">Insegnamento</label> <input
-							type="text" class="form-control" name="insegnamento"
-							placeholder="Insegnamento">
-					</div>
-
-					<div class="form-group d-none" id="ufficioID" hidden>
-						<label for="inputUfficio">Ufficio</label> <input type="text"
-							class="form-control" name="ufficio" placeholder="Ufficio"
-							>
-					</div>
-
-					<div class="form-group">
-						<label for="inputPassword">Password</label> <input type="password"
-							class="form-control" name="password" placeholder="Password"
-							required>
-					</div>
-
-					<div class="form-group">
-						<label for="inputData">Data di nascita</label> <input type="date"
-							class="form-control" name="data" required>
-					</div>
-
-					<div class="form-group">
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" name="check"
-								required> <label class="form-check-label"
-								for="gridCheck"> Spuntando questa casella, accetti le
-								nostre normative sulla privacy </label>
-						</div>
-					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
-				</form>
+					<h1>Login non riuscito</h1>
+					<h6>I dati inseriti non corrispondono a nessun account attivo</h6>
+					<h6>E-mail e password inserite non sono corrette</h6>
+					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
 			</div>
 		</div>
 	</div>
