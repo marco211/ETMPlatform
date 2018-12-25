@@ -15,9 +15,47 @@ import it.unisa.etm.model.interfaces.PartecipaModelInterface;
 public class PartecipaManager implements PartecipaModelInterface {
 
 	@Override
-	public boolean inserisciPartecipazione(int propostaTesiId, String utenteEmail) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean inserisciPartecipazione(int richiestaId, String utenteEmail) throws SQLException {
+		String selectSQL="SELECT * FROM richiestapartecipazione";
+		String insertSQL="insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";
+		connection=DatabaseManager.getIstance();
+
+		int propostaTesiId=0;
+		boolean b=false;
+		try {
+			
+			prepared1=connection.prepareStatement(selectSQL);
+			System.out.println(richiestaId);
+
+			System.out.println(prepared1);
+			
+			
+			rs1 = prepared1.executeQuery(selectSQL);
+			
+			while(rs1.next()) {
+				propostaTesiId = rs1.getInt("PropostaTesi_Id");
+				
+				System.out.println(propostaTesiId);	
+			}
+			
+			System.out.println(propostaTesiId);	
+			prepared=connection.prepareStatement(insertSQL);
+			prepared.setString(1, utenteEmail);
+			prepared.setInt(2, propostaTesiId);
+			prepared.executeUpdate();
+			prepared.close();
+			rs1.close();
+		
+		}catch(Exception e) {
+			e.printStackTrace();			
+		}
+		finally {
+			if (prepared != null)
+				prepared.close();
+		}
+			
+		
+		return b;
 	}
 
 	@Override
@@ -55,8 +93,9 @@ public class PartecipaManager implements PartecipaModelInterface {
 	}
 
 	private ResultSet rs;
+	private ResultSet rs1;
 	private Connection connection=null;
 	private PreparedStatement prepared=null;
-	
+	private PreparedStatement prepared1=null;
 
 }

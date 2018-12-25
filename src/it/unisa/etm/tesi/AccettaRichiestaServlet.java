@@ -13,6 +13,7 @@ import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
+import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
@@ -33,9 +34,10 @@ public class AccettaRichiestaServlet extends HttpServlet {
 		synchronized(session) {
 			LocalDate data = LocalDate.now();
 			int propostatesi_id=Integer.parseInt(request.getParameter("richiesta_id"));
+			String utenteEmail = request.getParameter("utente_email");
 			propostamanager = new PropostaTesiManager();
 		
-			if(this.accettaRichiestaPropostaTesi(propostatesi_id));
+			if(this.accettaRichiestaPropostaTesi(propostatesi_id,utenteEmail));
 			{
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
@@ -48,10 +50,13 @@ public class AccettaRichiestaServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private boolean	accettaRichiestaPropostaTesi(int id){ 
+	private boolean	accettaRichiestaPropostaTesi(int id, String utenteEmail){ 
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+		PartecipaManager pm=(PartecipaManager) mf.createPartecipaManager();
+
 		try {
+			pm.inserisciPartecipazione(id, utenteEmail);
 			ptm.accettaRichiestaPartecipazione(id);
 		} catch (SQLException e) {
 			e.printStackTrace();
