@@ -16,7 +16,7 @@ public class PartecipaManager implements PartecipaModelInterface {
 
 	@Override
 	public boolean inserisciPartecipazione(int richiestaId, String utenteEmail) throws SQLException {
-		String selectSQL="SELECT * FROM richiestapartecipazione";
+		String selectSQL="SELECT * FROM richiestapartecipazione WHERE id=?;";
 		String insertSQL="insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";
 		connection=DatabaseManager.getIstance();
 
@@ -26,11 +26,11 @@ public class PartecipaManager implements PartecipaModelInterface {
 			
 			prepared1=connection.prepareStatement(selectSQL);
 			System.out.println(richiestaId);
-
+			prepared1.setInt(1, richiestaId);
 			System.out.println(prepared1);
 			
 			
-			rs1 = prepared1.executeQuery(selectSQL);
+			rs1 = prepared1.executeQuery();
 			
 			while(rs1.next()) {
 				propostaTesiId = rs1.getInt("PropostaTesi_Id");
