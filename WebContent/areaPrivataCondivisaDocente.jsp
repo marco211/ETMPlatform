@@ -26,12 +26,12 @@
 
 	<jsp:include page="header.jsp" />
 
-	<div style="background-color: #FF9C08">
+	<div style="background-color: #FF9C08; min-height: 81vh;">
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
-					<div class="card-body ">
+					<div class="card-body">
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
