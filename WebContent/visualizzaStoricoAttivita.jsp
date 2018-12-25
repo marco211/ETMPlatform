@@ -36,7 +36,7 @@
 								if (attivita != null) {
 									for (int i = 0; i < attivita.size(); i++) {
 							%>
-							<li class="list-group-item"><%= attivita.toString()
+							<li class="list-group-item"><%= attivita.get(i).toString()
 									%></li>
 							<%
 								}
@@ -56,18 +56,25 @@
 					if (utente.getTipo().equals("d")) {
 				%>
 				<h4 class="font-italic">Aree</h4>
-				<ul class="list-group list-group-flush">
-					<%
-						if (partecipazioni != null) {
-								for (int i = 0; i < partecipazioni.size(); i++) {
-					%>
-					<li class="list-group-item"><a href="#"><label><%=partecipazioni.get(i).getPropostaTesiId() + " "
-								+ partecipazioni.get(i).getUtenteEmail()%></label></a></li>
-					<%
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">Proposta tesi</th>
+							<th scope="col">Email studente</th>
+						</tr>
+					</thead>
+					<tbody>
+					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
+						<tr>
+							<td><%=partecipazioni.get(i).getPropostaTesiId() %></td>
+							<td><%=partecipazioni.get(i).getUtenteEmail() %></td>
+							<td><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>">Visualizza</a></td>
+						</tr>
+						<%
 						}
-							}
 					%>
-				</ul>
+					</tbody>
+					</table>
 				<%
 					} else if (utente.getTipo().equals("s")) {
 				%>
