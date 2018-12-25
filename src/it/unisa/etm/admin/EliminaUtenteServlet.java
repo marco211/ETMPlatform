@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 import it.unisa.etm.model.manager.AmministratoreManager;
-import it.unisa.etm.model.manager.PropostaTesiManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

@@ -14,7 +14,7 @@
 
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
+<div style="background-color: #FF9C08; min-height: 81vh">
 <main role="main" class="container">
 
       <div class="row">  
@@ -34,7 +34,7 @@
 		 			  {
 					%>
 					<div class="row">
-						<a class="col-3" href="VisualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome() %></a>
+						<a class="col-3" href="VisualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>
 		               
 		              	
 		              </div>

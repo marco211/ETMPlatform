@@ -52,19 +52,17 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 
 	@Override
 	public boolean eliminaUtente(String email) throws SQLException {
-		String SQL = "Delete FROM Utente WHERE email="+email+";";
-		Connection connection = null;
-		PreparedStatement statement = null;
+		System.out.println("Sono in Amministratore Manager , eliminaUtente");
+		Connection connection=DatabaseManager.getIstance();
+		PreparedStatement prepared=connection.prepareStatement("DELETE FROM Utente WHERE email =?;");
 		boolean b;
 		try {
-			connection = DatabaseManager.getIstance();
-			statement = connection.prepareStatement(SQL);
-			statement.executeUpdate();
+			prepared.setString(1, email);
+			prepared.executeUpdate();
 			b=true;
 			System.out.println("AmministratoreManager: ci siamo");
 		}finally {
-				if(statement!=null)
-					statement.close();
+					prepared.close();
 		}
 		return b;
 	}
