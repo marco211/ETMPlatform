@@ -20,29 +20,24 @@ import it.unisa.etm.model.manager.UtenteManager;
 @WebServlet("/VisualizzaProfiloUtenteServlet")
 public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+	
     public VisualizzaProfiloUtenteServlet() {
         super();
-        // TODO Auto-generated constructor stub
+        
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String email= (request.getParameter("email"));
-		String password= (request.getParameter("password"));
-		Utente utente= (Utente) getUtente(email,password);
-		
+		String email=(String) request.getParameter("utente_email");
+		Utente utenteEmail=(Utente) visualizzaProfiloUtente(email);
 		HttpSession session=request.getSession();
-		session.setAttribute("utente", utente);
+		session.setAttribute("utenteemail", utenteEmail);
+		System.out.println("VisualizzaProfiloUtente: sessione settata");
 		request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
-	}
 
+	}
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
@@ -56,12 +51,13 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 	 * @param username strigna che rappresenta lo username dell'utente cercato.
 	 * @return Utente l'utente cercato.
 	 */
-	private Utente getUtente(String email, String password){
+	@SuppressWarnings("unused")
+	private Utente visualizzaProfiloUtente(String email){
 	ManagerFactory em = new ManagerFactory();
 	UtenteManager um = (UtenteManager) em.createUtenteManager();
-	Utente utente;
+	Utente utente=null;
 	try {
-		utente=um.getUtente(email , password);
+		utente=um.getInfo(email);
 	} catch (SQLException e) {
 		e.printStackTrace();
 		return null;

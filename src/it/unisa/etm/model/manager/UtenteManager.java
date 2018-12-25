@@ -10,11 +10,43 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
 
-public class UtenteManager implements UtenteModelInterface{
+public  class UtenteManager implements UtenteModelInterface{
 
 	public UtenteManager() {
 		
 	}
+	@Override
+	public Utente getInfo(String email) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT * FROM UTENTE WHERE EMAIL=?");
+		pr.setString(1, email);
+		ResultSet rs=pr.executeQuery();
+		rs.next();
+		Utente utente=new Utente();
+		if(rs.getString("TIPO").equals("s")){
+		utente.setNome(rs.getString("NOME"));
+		utente.setCognome(rs.getString("COGNOME"));
+		utente.setMatricola(rs.getLong("MATRICOLA"));
+		utente.setEmail(rs.getString("EMAIL"));
+		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+		}
+		else if(rs.getString("TIPO").equals("d")) {
+			utente.setNome(rs.getString("NOME"));
+			utente.setCognome(rs.getString("COGNOME"));
+			utente.setEmail(rs.getString("EMAIL"));
+			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+			utente.setUfficio(rs.getString("UFFICIO"));
+			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
+			pr1.setString(1, email);
+			ResultSet rs1=pr1.executeQuery();
+			while(rs1.next()) {
+				utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+			}
+		}
+		return utente;
+	}
+	
+	
 	
 	@Override
 	public void registraUtente(Utente utente) throws SQLException{
@@ -166,6 +198,7 @@ public class UtenteManager implements UtenteModelInterface{
 		}
 		return utente;
 	}
+	
 	
 	public String getPassword(String email) throws SQLException {
 		Connection istance=DatabaseManager.getIstance();

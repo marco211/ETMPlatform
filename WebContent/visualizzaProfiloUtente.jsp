@@ -1,13 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*, it.unisa.etm.user.*,  it.unisa.etm.bean.* "%>  
+<%@ page import="it.unisa.etm.bean.* "%>
+
 <%
-Utente utente = (Utente) session.getAttribute("utente");
+Utente utente = (Utente) session.getAttribute("utenteemail");
 if(utente==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
-%>
 
+Utente ut = (Utente) session.getAttribute("utente");
+if(ut==null){
+	response.sendRedirect("./index.jsp");
+    return;
+}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,20 +36,20 @@ if(utente==null){
    			 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
     		 		<h4>Nome:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?nome=<%=utente.getNome() %>"></a>
+    		 			<a class="col-3"><%=utente.getNome()%></a>
     		 		<h4>Cognome:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?cognome=<%=utente.getCognome() %>"></a>
+    		 			<a class="col-3"><%=utente.getCognome()%></a>
     		 		<h4>Email:</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?email=<%=utente.getEmail() %>"></a>
+    		 			<a class="col-3"><%=utente.getEmail()%></a>
     		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>
-    		 			<a class="col-3" href="VisualizzaProfiloUtenteServlet?matricola=<%=utente.getMatricola() %>"></a>
+    		 			<a class="col-3"><%=utente.getMatricola()%></a>
     		 			<% }%>
     		 			<%if(utente.getTipo().equals("d")){%>
     		 			<h4>Ufficio</h4>
-		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?ufficio=<%=utente.getUfficio() %>"></a>	
+		              		<a class="col-3"><%=utente.getUfficio()%></a>	
 		              	<h4>Insegnamento</h4>
-		              		<a class="col-3" href="VisualizzaProfiloUtenteServlet?insegnamento=<%=utente.getInsegnamento() %>"></a>			
+		              		<a class="col-3"><%=utente.getInsegnamento()%></a>		
 		              	<% }%>
 		              	</div>
 		              </div>
