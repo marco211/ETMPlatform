@@ -87,29 +87,6 @@ public class FileManager implements FileModelInterface {
 	}
 
 	@Override
-	public ArrayList<File> getListaFile(int idTesi) throws SQLException {
-		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE PROPOSTATESI_ID=?");
-		prepared.setInt(1, idTesi);
-		
-		rs=prepared.executeQuery();
-		ArrayList<File> list=new ArrayList<File>();
-		while(rs.next()) {
-			File file=new File();
-			file.setNome(rs.getString("NOME"));
-			file.setEmail(rs.getString("UTENTE_EMAIL"));
-			file.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
-			file.setDescrizione(rs.getString("DESCRIZIONE"));
-			file.setDescrizioneVoto(rs.getString("DESCRIZIONE_VOTO"));
-			file.setVoto(rs.getInt("VOTO"));
-			list.add(file);
-		}
-		prepared.close();
-		rs.close();
-		return list;
-	}
-
-	@Override
 	public File scaricaFile(int idTesi, String nomeFile) throws SQLException {
 		connection=DatabaseManager.getIstance();
 		prepared=connection.prepareStatement("SELECT * FROM FILE WHERE NOME=? AND PROPOSTATESI_ID=?");
@@ -129,9 +106,51 @@ public class FileManager implements FileModelInterface {
 		return f;
 	}
 	
+
+	@Override
+	public ArrayList<File> getListaFile(int idTesi, String studente, String docente) throws SQLException {
+		connection=DatabaseManager.getIstance();
+		String sql="SELECT * FROM FILE WHERE PROPOSTATESI_ID=? AND UTENTE_EMAIL=?";
+		prepared=connection.prepareStatement(sql);
+		prepared.setInt(1, idTesi);
+		prepared.setString(2, studente);
+		rs=prepared.executeQuery();
+		ArrayList<File> list=new ArrayList<File>();
+		while(rs.next()) {
+			File file=new File();
+			file.setNome(rs.getString("NOME"));
+			file.setEmail(rs.getString("UTENTE_EMAIL"));
+			file.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
+			file.setDescrizione(rs.getString("DESCRIZIONE"));
+			file.setDescrizioneVoto(rs.getString("DESCRIZIONE_VOTO"));
+			file.setVoto(rs.getInt("VOTO"));
+			list.add(file);
+		}
+		
+		prepared=connection.prepareStatement(sql);
+		prepared.setInt(1, idTesi);
+		prepared.setString(2, docente);
+		rs=prepared.executeQuery();
+		while(rs.next()) {
+			File file=new File();
+			file.setNome(rs.getString("NOME"));
+			file.setEmail(rs.getString("UTENTE_EMAIL"));
+			file.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
+			file.setDescrizione(rs.getString("DESCRIZIONE"));
+			file.setDescrizioneVoto(rs.getString("DESCRIZIONE_VOTO"));
+			file.setVoto(rs.getInt("VOTO"));
+			list.add(file);
+		}
+		prepared.close();
+		rs.close();
+		
+		return list;
+	}
+	
 	private Connection connection;
 	private PreparedStatement prepared;
 	private ResultSet rs;
+
 	
 	
 }

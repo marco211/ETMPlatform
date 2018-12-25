@@ -43,6 +43,7 @@
 									<span class="fa fa-archive"></span>
 								</button>
 							</form>
+							<%if(utente.getPropostaTesi_ID()>0){ %>
 							<form action="caricaFile.jsp">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
@@ -50,7 +51,7 @@
 									<i class="fas fa-plus-circle"></i>
 								</button>
 							</form>
-
+							<%} %>
 						</div>
 
 

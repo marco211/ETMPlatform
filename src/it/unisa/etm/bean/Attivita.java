@@ -15,7 +15,7 @@ public class Attivita implements Serializable{
 
 	}
 
-	public Attivita(String utente_Email, String nomeFile, Date data, String tipo, int propostatesi_id) {
+	public Attivita(String utente_Email, String nomeFile, String data, String tipo, int propostatesi_id) {
 		super();
 		this.utente_Email = utente_Email;
 		NomeFile = nomeFile;
@@ -48,11 +48,11 @@ public class Attivita implements Serializable{
 		NomeFile = nomeFile;
 	}
 
-	public Date getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Date data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
@@ -85,7 +85,7 @@ public class Attivita implements Serializable{
 	private int id;
 	private String utente_Email;
 	private String NomeFile;
-	private Date data;
+	private String data;
 	private String tipo;
 	private int propostatesi_id;
 

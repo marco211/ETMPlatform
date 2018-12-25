@@ -381,6 +381,27 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 		return b;
 	}
-
+	
+	@Override
+	public String getNomeDocente(int id) throws SQLException {
+		String SQL = "SELECT UTENTE_EMAIL FROM PROPOSTATESI WHERE id=?";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		String nome=null;
+		try {
+			connection =  DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			rs.next();
+			nome=rs.getString("UTENTE_EMAIL");
+	}finally {
+		if(statement!=null)
+			statement.close();
+	}
+		
+		return nome;
+	}
 
 }
+
