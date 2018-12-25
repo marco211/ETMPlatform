@@ -51,6 +51,8 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 
 			}
 			else {
+				ArrayList<RichiestaPartecipazione> richieste_studente = propostamanager.getRichiestaStudente(utente.getEmail());
+				request.setAttribute("richieste_studente", richieste_studente);
 				request.getRequestDispatcher("listaTesiAttive.jsp").forward(request, response);
 			}
 		}catch(SQLException e){

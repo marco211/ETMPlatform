@@ -31,19 +31,36 @@
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
     		        int count = 0;
     		        session.setAttribute("count", count);
+    		        boolean b = false;
+    		        PropostaTesi proposta = new PropostaTesi();
 		   			for(PropostaTesi p : proposte)
 		 			  {
+		   				if(utente.getPropostaTesi_ID()!=p.getId()){
+		   					proposta = p;
 		   				if((!p.isArchiviato())&&(!p.isChiuso())){
 					%>
 					<div class="row" id="lista">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
-		              		<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>				
-		              	
+		               <%
+		               ArrayList<RichiestaPartecipazione> richieste_studente = (ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste_studente");
+		               if(richieste_studente.size()==0){
+		            	   b=true;
+		            	   %>
+		            	   <a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>	
+		            	   <% }
+		               else{b=false;
+		               for (RichiestaPartecipazione r : richieste_studente){
+		            	   if(p.getId()==r.getPropostatesi_id())
+		            		   b=true;
+		               }if(!b){
+		               %>
+		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>			
+		              	<%}} %>
 		              	</div>
 		              	
 		              </div>
-					<%}} %>
+					<%}}} %>
       
             </div>
  		    </div>
@@ -72,8 +89,11 @@
           <div class="p-3 card">
             <h4 class="font-italic">Statistiche</h4>
             <ol class="list-unstyled mb-0">
-
-              <li><a href="#">Statistica uno</a></li>
+<%int id = utente.getPropostaTesi_ID();
+if(id!=0){
+%>
+              <li><p>stai partecipando a questa tesi: <%=proposta.getTitolo() %></p></li>
+              <%} %>
             </ol>
           </div>
    

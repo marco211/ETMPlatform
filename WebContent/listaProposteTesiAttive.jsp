@@ -75,9 +75,9 @@
 		   			for(RichiestaPartecipazione r : richieste)
 		 			  {
 					%>
-					<div class="row">Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%></div>
-						<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AccettaRichiesta">Accetta</a>				
-						<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="RifiutaRichiesta">Rifiuta</a>				
+						<div class="row">Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%></div>
+						<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AccettaRichiesta">Accetta</a>				
+						<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="RifiutaRichiesta">Rifiuta</a>					
 					<%} %>
             </ol>
           </div>

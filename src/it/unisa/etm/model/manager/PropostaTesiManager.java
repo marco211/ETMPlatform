@@ -1,6 +1,7 @@
 package it.unisa.etm.model.manager;
 
 import java.sql.Connection;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -401,6 +402,33 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 		
 		return nome;
+	}
+
+	@Override
+	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ArrayList<RichiestaPartecipazione> richieste= new ArrayList<RichiestaPartecipazione>();
+		String SQL = "SELECT * FROM richiestapartecipazione WHERE utente_email=?;";
+		try {
+			connection = DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			statement.setString(1, utenteEmail);
+			ResultSet rs = statement.executeQuery();
+			while(rs.next()) {
+				RichiestaPartecipazione richiesta = new RichiestaPartecipazione();
+				richiesta.setId(rs.getInt(1));
+				richiesta.setData(rs.getDate(2).toLocalDate()); 
+				richiesta.setPropostatesi_id(rs.getInt(3)); 
+				richiesta.setUtente_mail(rs.getString(4));
+				richieste.add(richiesta);
+			}
+		}finally {
+			if(statement!=null)
+				statement.close();
+		}
+		
+		return richieste;
 	}
 
 }
