@@ -20,9 +20,52 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
+	public void accettaRichiestaPartecipazione(int id) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		PreparedStatement ps2=null;
+		String insertSQL=null;
+		String insertSQL2=null;
+
+		insertSQL = "UPDATE utente SET PropostaTesi_ID = (Select PropostaTesi_Id FROM richiestapartecipazione WHERE ID= ?) WHERE email=(Select utente_email FROM richiestapartecipazione WHERE ID= ?)";
+		insertSQL2 ="delete from RichiestaPartecipazione where id=?"; 
+		try {
+			ps=istance.prepareStatement(insertSQL); 
+			ps.setInt(1, id);			
+			ps.setInt(2, id);
+			ps.executeUpdate();
+			
+			ps2=istance.prepareStatement(insertSQL2); 
+			ps2.setInt(1, id);
+			ps2.executeUpdate();
+		}finally {
+			if (ps != null)
+				ps.close();
+		}
+	}
+	
+	
+	
+	@Override
+	public void rifiutaRichiestaPartecipazione(int id) throws SQLException{
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement ps=null;
+		String insertSQL=null;
+		insertSQL = "delete from RichiestaPartecipazione where id=?";
+		try {
+			ps=istance.prepareStatement(insertSQL); 
+			ps.setInt(1, id);			
+			ps.executeUpdate();
+		}finally {
+			if (ps != null)
+				ps.close();
+		}
+	}
+		
+	@Override
 	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email) throws SQLException{
 		
-		String SQL = "SELECT * FROM richiestapartecipazione WHERE ID=(SELECT ID FROM propostatesi WHERE utente_email=?)";
+		String SQL = "SELECT * FROM richiestapartecipazione WHERE propostatesi_id IN (SELECT ID FROM propostatesi WHERE utente_email=?)";
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList<RichiestaPartecipazione> richieste = null;
@@ -164,11 +207,24 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	@Override
 	public boolean rimuoviPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
 		String SQL = "Delete FROM PropostaTesi WHERE id="+id+";";
+		String SQL2 = "Select * FROM RichiestaPartecipazione";
 		Connection connection = null;
+		PreparedStatement statement1 = null;
 		PreparedStatement statement = null;
 		boolean b;
 		try {
 			connection = DatabaseManager.getIstance();
+			statement1 = connection.prepareStatement(SQL);
+			statement1.executeQuery(SQL2);
+			ResultSet rs = statement1.getResultSet();
+			while(rs.next()) {
+				int id_proposta = rs.getInt(3);
+				if(id_proposta==id) {
+					String SQL3 = "Delete FROM RichiestaPartecipazione WHERE id="+id_proposta+";";
+					PreparedStatement statement2 = connection.prepareStatement(SQL3);
+					statement2.executeUpdate();
+				}
+			}
 			statement = connection.prepareStatement(SQL);
 			statement.executeUpdate();
 			b=true;
@@ -202,7 +258,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setArchiviato(rs.getBoolean(8));
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
-				System.out.println("proposta aggiunta");
 			}
 		}finally {
 			if(statement!=null)
@@ -277,7 +332,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		try {
 			connection =  DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
-			System.out.println("L'ID EEEEEEEEEEEEEE:" + id );			
 			ResultSet rs = statement.executeQuery(SQL);
 			rs.next();
 
@@ -299,5 +353,55 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return proposta;
 	}
 
+	@Override
+	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		boolean b;
+		try {
+			connection = DatabaseManager.getIstance();
+			
+			String SQL = "UPDATE PropostaTesi SET Titolo = ?, Ambito = ?, Tempo = ?, Descrizione = ?, Materia = ? WHERE Id = ?;";
+			
+			statement = connection.prepareStatement(SQL);
+			statement.setString(1,proposta.getTitolo());
+			statement.setString(2,proposta.getAmbito());
+			statement.setInt(3, proposta.getTempoDiSviluppo());
+			statement.setString(4,proposta.getDecrizione());
+			statement.setString(5,proposta.getMaterie());
+			statement.setInt(6, proposta.getId());
+			//UPDATE `etm_platform`.`propostatesi` SET `Ambito` = 'nm', `Descrizione` = 'jk', `Materia` = 'j' WHERE (`Id` = '3');
+
+			statement.executeUpdate();
+			b=true;
+			System.out.println("update ok");
+		}finally {
+			if (statement != null)
+				statement.close();
+		}
+		return b;
+	}
+	
+	@Override
+	public String getNomeDocente(int id) throws SQLException {
+		String SQL = "SELECT UTENTE_EMAIL FROM PROPOSTATESI WHERE id=?";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		String nome=null;
+		try {
+			connection =  DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			statement.setInt(1, id);
+			ResultSet rs = statement.executeQuery();
+			rs.next();
+			nome=rs.getString("UTENTE_EMAIL");
+	}finally {
+		if(statement!=null)
+			statement.close();
+	}
+		
+		return nome;
+	}
 
 }
+

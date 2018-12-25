@@ -2,6 +2,7 @@ package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,9 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 
 /**
@@ -47,8 +51,13 @@ public class ValutaFileServlet extends HttpServlet {
 		String descrizione=request.getParameter("descrizione");
 		ManagerFactory em = new ManagerFactory();
 		FileManager um = (FileManager) em.createFileManager();
+		LocalDate data = LocalDate.now();
+		Utente utente=(Utente)request.getSession().getAttribute("utente");
+		Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data ,"v",id);
+		AttivitaManager am=(AttivitaManager)em.createAttivitaManager();
 		try {
 			um.modificaFile(id, nomeFile, voto, descrizione);
+			am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

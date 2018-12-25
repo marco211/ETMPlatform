@@ -68,13 +68,14 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	private boolean aggiungiPropostatesi(PropostaTesi tesi){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+		boolean b = false;
 		try {
-			ptm.inserisciPropostaTesi(tesi);
+			b = ptm.inserisciPropostaTesi(tesi);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;	
+		return b;	
 	}
 
 }

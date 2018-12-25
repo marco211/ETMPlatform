@@ -11,9 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.File;
+import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
+import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
  * Servlet implementation class VisualizzaListaFileServlet
@@ -35,13 +37,23 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
-		String email=request.getParameter("emailUtente");
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		ManagerFactory em = new ManagerFactory();
 		FileManager um = (FileManager) em.createFileManager();
+		ArrayList<File> lista;
 		try {
-			ArrayList<File> lista=um.getListaFile(id);
+			if(utente.getTipo().equals("s")) {
+			PropostaTesiManager pt=(PropostaTesiManager)em.createPropostaTesiManager();
+			String docente=pt.getNomeDocente(id);
+			String email=request.getParameter("utenteEmail");
+			lista=um.getListaFile(id,email,docente);
 			request.getSession().setAttribute("listaFile", lista);
+			}
+			else if(utente.getTipo().equals("d")) {
+			String email=request.getParameter("emailUtente");
+			lista=um.getListaFile(id, email, utente.getEmail());
+			request.getSession().setAttribute("listaFile", lista);
+			}
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -49,6 +61,7 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 		}
 		if(utente.getTipo().equals("d")) {
 			request.getSession().setAttribute("numeroTesiDocente", id);
+			request.getSession().setAttribute("disabilita", true);
 		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaStudente.jsp");
 		requestDispatcher.forward(request, response);

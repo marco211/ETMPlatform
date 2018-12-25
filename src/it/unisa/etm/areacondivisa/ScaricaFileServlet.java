@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -12,9 +13,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AreaCondivisaManager;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 
 /**

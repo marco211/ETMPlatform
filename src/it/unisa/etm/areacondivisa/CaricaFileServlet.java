@@ -3,6 +3,7 @@ package it.unisa.etm.areacondivisa;
 import java.io.IOException;
 import java.sql.Date;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,14 +36,14 @@ maxRequestSize = 1024 * 1024 * 50) // 50MB overall size of all uploaded files
 
 public class CaricaFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public CaricaFileServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public CaricaFileServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 
 	/**
@@ -58,31 +59,25 @@ public class CaricaFileServlet extends HttpServlet {
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
-		/*Attivita attivita=new Attivita();
-		attivita.setNomeFile(nome);
-		attivita.setTipo("c");
-		attivita.setUtente_Email(utente.getEmail());
-		attivita.setData(new Date(11,11,2011));
-		System.out.print(file.getNome()+ file.getEmail()+ file.getPropostaTesiId());*/
 		if(utente.getTipo().equals("s")) {
-			//attivita.setId(utente.getPropostaTesi_ID());
 			file.setPropostaTesiId(1);
 			System.out.println(utente.getPropostaTesi_ID());
 			System.out.println(utente.getEmail());
-	}
+		}
 		else {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
-		
+		LocalDate data = LocalDate.now();
+		System.out.println(data);
+		Attivita attivita = new Attivita(file.getEmail(), file.getNome(), data ,"c",file.getPropostaTesiId());
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();
 		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
 		try {
 			fm.aggiungiFile(file);
-			//am.aggiungiAttivita(attivita);
+			am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
@@ -97,7 +92,7 @@ public class CaricaFileServlet extends HttpServlet {
 	 * false in caso di insuccesso.
 	 */
 	private boolean uploadFileControl(File file){
-		
+
 
 		return true;
 	}

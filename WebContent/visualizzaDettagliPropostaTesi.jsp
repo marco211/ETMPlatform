@@ -48,9 +48,13 @@ if(utente==null){
     			<%} %>
     			<%if(!propostatesi.isArchiviato()){ %>				
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
-    			<% }%>
-    			<%} %>
+    			<% }int count = 0;
+    		        session.setAttribute("count", count);%>
+    			
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="RimuoviProposta">Elimina</a>
+    			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-primary col-2 my-2" id="ModificaProposta">Modifica</a>
+    			
+    			<%} %>
   		</div>
 	</div>	
  

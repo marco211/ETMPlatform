@@ -1,5 +1,6 @@
 #DB(which is local)
 DatabaseManager.class
+DatabaseManager.java
 
 # Compiled class file
 *.class
