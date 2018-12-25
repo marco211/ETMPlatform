@@ -40,7 +40,6 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
 		try {
-			System.out.println("Mammtaaaaaaaaaaaaaaaaaaaa");
 			propostamanager = new PropostaTesiManager();
 			ArrayList<PropostaTesi> proposte = propostamanager.getProposteTesiAttive();
 			Utente utente = (Utente) session.getAttribute("utente");
@@ -48,9 +47,12 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 			if(utente.getTipo().equals("d")) {
 				ArrayList<RichiestaPartecipazione> richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
 				request.setAttribute("richieste", richieste);
+				request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
+
 			}
-			
-			request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
+			else {
+				request.getRequestDispatcher("listaTesiAttive.jsp").forward(request, response);
+			}
 		}catch(SQLException e){
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			e.printStackTrace();

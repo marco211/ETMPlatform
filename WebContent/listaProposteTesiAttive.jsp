@@ -24,7 +24,6 @@
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
       			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
-				<button type="button" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="CercaProposta"><span class="fa fa-search"></span> </button>
 					<% 
 					if (utente.getTipo().equals("d")) {
 					%>
@@ -34,13 +33,17 @@
 			
     		 <div class="container">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
+    		        int count = 0;
+    		        session.setAttribute("count", count);
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
 					<div class="row" id="lista">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
-		               <% 
+		               <%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
+		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>"">Modifica&nbsp;<i class="fas fa-dice-d6"></i></a>				
+		               <% }
 					if (utente.getTipo().equals("d")) {
 						if((p.isArchiviato())&&(!p.isChiuso())){
 					%>

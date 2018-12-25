@@ -23,4 +23,5 @@ public interface PropostaTesiModelInterface {
 	public ArrayList<PropostaTesi> getProposteTesiAttive()  throws SQLException;
 	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
 	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException;
+	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException;
 }

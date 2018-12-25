@@ -220,11 +220,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			while(rs.next()) {
 				int id_proposta = rs.getInt(3);
 				if(id_proposta==id) {
-					System.out.println("sono nell'if");
 					String SQL3 = "Delete FROM RichiestaPartecipazione WHERE id="+id_proposta+";";
 					PreparedStatement statement2 = connection.prepareStatement(SQL3);
 					statement2.executeUpdate();
-					System.out.println("ho eliminato la richiesta");
 				}
 			}
 			statement = connection.prepareStatement(SQL);
@@ -260,7 +258,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setArchiviato(rs.getBoolean(8));
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
-				System.out.println("proposta aggiunta");
 			}
 		}finally {
 			if(statement!=null)
@@ -335,7 +332,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		try {
 			connection =  DatabaseManager.getIstance();
 			statement = connection.prepareStatement(SQL);
-			System.out.println("L'ID EEEEEEEEEEEEEE:" + id );			
 			ResultSet rs = statement.executeQuery(SQL);
 			rs.next();
 
@@ -355,6 +351,35 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 		
 		return proposta;
+	}
+
+	@Override
+	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		boolean b;
+		try {
+			connection = DatabaseManager.getIstance();
+			
+			String SQL = "UPDATE PropostaTesi SET Titolo = ?, Ambito = ?, Tempo = ?, Descrizione = ?, Materia = ? WHERE Id = ?;";
+			
+			statement = connection.prepareStatement(SQL);
+			statement.setString(1,proposta.getTitolo());
+			statement.setString(2,proposta.getAmbito());
+			statement.setInt(3, proposta.getTempoDiSviluppo());
+			statement.setString(4,proposta.getDecrizione());
+			statement.setString(5,proposta.getMaterie());
+			statement.setInt(6, proposta.getId());
+			//UPDATE `etm_platform`.`propostatesi` SET `Ambito` = 'nm', `Descrizione` = 'jk', `Materia` = 'j' WHERE (`Id` = '3');
+
+			statement.executeUpdate();
+			b=true;
+			System.out.println("update ok");
+		}finally {
+			if (statement != null)
+				statement.close();
+		}
+		return b;
 	}
 
 
