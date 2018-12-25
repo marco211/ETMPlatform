@@ -27,7 +27,7 @@ import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
  * Estende HttpServlet fornisce la funzionalit� di caricare un file nell'area privata condivisa.
  */
 @WebServlet("/CaricaFileServlet")
-
+/*@MultipartConfig(maxFileSize = 16177215)*/
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB after which the file will be 
 //temporarily stored on disk
 maxFileSize = 1024 * 1024 * 10, // 10MB maximum size allowed for uploaded files
@@ -67,6 +67,8 @@ public class CaricaFileServlet extends HttpServlet {
 		if(utente.getTipo().equals("s")) {
 			//attivita.setId(utente.getPropostaTesi_ID());
 			file.setPropostaTesiId(1);
+			System.out.println(utente.getPropostaTesi_ID());
+			System.out.println(utente.getEmail());
 	}
 		else {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");

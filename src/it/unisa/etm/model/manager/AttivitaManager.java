@@ -17,7 +17,7 @@ public class AttivitaManager implements AttivitaModelInterface {
 		prepared=connection.prepareStatement("INSERT INTO ATTIVITA (UTENTE_EMAIL,NOMEFILE,DATA,TIPO,PROPOSTATESI_ID) VALUES (?,?,?,?,?)");
 		prepared.setString(1, attivita.getUtente_Email());
 		prepared.setString(2, attivita.getNomeFile());
-		prepared.setDate(3, attivita.getData());
+		prepared.setString(3, attivita.getData());
 		prepared.setString(4, attivita.getTipo());
 		prepared.setInt(5, attivita.getPropostatesi_id());
 		prepared.executeUpdate();	
@@ -42,7 +42,7 @@ public class AttivitaManager implements AttivitaModelInterface {
 			Attivita attivita=new Attivita();
 			attivita.setUtente_Email(rs.getString("UTENTE_EMAIL"));
 			attivita.setNomeFile(rs.getString("NOMEFILE"));
-			attivita.setData(rs.getDate("DATA"));
+			attivita.setData(rs.getString("DATA"));
 			attivita.setTipo(rs.getString("TIPO"));
 			attivita.setPropostatesi_id(propostaTesiId);
 			list.add(attivita);
