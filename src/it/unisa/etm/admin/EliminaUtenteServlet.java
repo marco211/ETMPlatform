@@ -2,9 +2,10 @@ package it.unisa.etm.admin;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 import it.unisa.etm.model.manager.AmministratoreManager;
+import it.unisa.etm.model.manager.PropostaTesiManager;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
@@ -35,27 +35,16 @@ public class EliminaUtenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		synchronized(session){
-			Utente utente=new Utente();
-			AmministratoreManager am=new AmministratoreManager();
-			String email=(String) request.getAttribute("utente_email");
-			ArrayList<Utente> utenti=new ArrayList<Utente>();
+		synchronized(session) {
+			String email = (String )request.getParameter("utente_email");
+			System.out.println("sono arrivato alla sessione");
 			try {
-				utenti = (ArrayList<Utente>) am.getListaUtenti();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			for(int i=0;i<utenti.size();i++) {
-				if(utenti.get(i).getEmail().equalsIgnoreCase(email))
-					utente=utenti.get(i);
-			}
-			try {
-				if(this.eliminaUtente(utente)){
-					request.getRequestDispatcher("visualizzaListaUtenti.jsp").forward(request, response);
+				if(this.eliminaUtente(email)) {
+					System.out.println("ci arrivo?");
+					response.sendRedirect(request.getContextPath()+"/ListaUtentiServlet");
 				}
 			} catch (SQLException e) {
-				request.getRequestDispatcher("index.jsp").forward(request, response);
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
@@ -77,17 +66,19 @@ public class EliminaUtenteServlet extends HttpServlet {
 	 * 					false se l'eliminazione non è andata a buon fine;
 	 * @throws SQLException 
 	 */
-	@SuppressWarnings("unused")
-	private boolean eliminaUtente(Utente utente) throws SQLException{
+
+	private boolean eliminaUtente(String email) throws SQLException{
 		ManagerFactory mf=new ManagerFactory();
-		AmministratoreManager am= (AmministratoreManager) mf.createAmministratoreManager();
+		AmministratoreManager am=(AmministratoreManager) mf.createAmministratoreManager();
+		boolean b = false;
 		try {
-			am.eliminaUtente(utente.getEmail());
-		} catch (SQLException e) {
+			b = am.eliminaUtente(email);
+			System.out.println("ho provato a fare il metodo nel manager");
+		}catch(SQLException e) {
 			e.printStackTrace();
 			return false;
 		}
-		return true;
+		return b;
 	}
 
 }

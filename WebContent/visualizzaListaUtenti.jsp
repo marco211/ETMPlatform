@@ -34,7 +34,7 @@
 		 			  {
 					%>
 					<div class="row">
-						<a class="col-3" href="visualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome() %></a>
+						<a class="col-3" href="VisualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome() %></a>
 		               
 		              	
 		              </div>

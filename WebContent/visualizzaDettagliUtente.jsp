@@ -39,24 +39,14 @@ if(ut==null){
   		<div class="container">
     		 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
-    		 		<h4>Nome:</h4>
-    		 			<%utente.getNome(); %>
-    		 		<h4>Cognome:</h4>
-    		 			<%utente.getCognome();%>
-    		 		<h4>Email:</h4>
-    		 			<%utente.getEmail();%>
-    		 		<%if(utente.getTipo().equalsIgnoreCase("d")){ %>
-    		 		<h4>Ufficio</h4>
-    		 			<%utente.getUfficio(); %>
-    		 		<h4>Insegnamento:</h4>
-    		 			<%utente.getInsegnamento(); %>
-    		 		<%} %>
-    		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			
-    		 			<p>
-    		 				<button type="button" class="btn btn-primary mx-2">Elimina Utente</button>
-    		 				
-    		 			</p>
+    		 		<h1 class="display-4"><%=utente.getNome()+" "+utente.getCognome()%></h1>
+    					<p class="lead">Matricola: <%=utente.getMatricola()%></p>
+    					<p class="lead">Data Di Nascita: <%=utente.getDataDiNascita()%></p>
+    					<%if(utente.getTipo().equalsIgnoreCase("d")){ %>
+    					<p class="lead">Ufficio: <%=utente.getUfficio()%></p>
+    					<%} %>
+    					
+    					<a class="col" href="EliminaUtenteServlet?utente_email=<%=utente.getEmail()%>" class="btn btn-primary col-2 my-2" id="RimuoviUtente">Elimina</a>
   		</div>
 	</div>	
  
