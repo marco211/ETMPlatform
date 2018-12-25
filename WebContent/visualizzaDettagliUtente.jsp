@@ -32,7 +32,7 @@ if(ut==null){
 
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
+<div style="background-color: #FF9C08; min-height: 81vh">
 	<main role="main" class="container">
  			
  	<div class="jumbotron jumbotron-fluid">
@@ -40,13 +40,14 @@ if(ut==null){
     		 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
     		 		<h1 class="display-4"><%=utente.getNome()+" "+utente.getCognome()%></h1>
+    		 			<p class="lead">Email: <%=utente.getEmail()%></p>    		 			
     					<p class="lead">Matricola: <%=utente.getMatricola()%></p>
     					<p class="lead">Data Di Nascita: <%=utente.getDataDiNascita()%></p>
     					<%if(utente.getTipo().equalsIgnoreCase("d")){ %>
     					<p class="lead">Ufficio: <%=utente.getUfficio()%></p>
     					<%} %>
     					
-    					<a class="col" href="EliminaUtenteServlet?utente_email=<%=utente.getEmail()%>" class="btn btn-primary col-2 my-2" id="RimuoviUtente">Elimina</a>
+    					<h4><a class="col-3" href="ListaUtentiServlet"><i class="fas fa-arrow-circle-left"></i></a></h4>
   		</div>
 	</div>	
  
