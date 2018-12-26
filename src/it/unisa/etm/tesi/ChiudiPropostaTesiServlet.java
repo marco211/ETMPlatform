@@ -38,9 +38,7 @@ public class ChiudiPropostaTesiServlet extends HttpServlet {
 		synchronized(session) {
 			int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
 			Utente utente = (Utente) session.getAttribute("utente");
-			System.out.println("sono arrivato alla sessione");
 			if(this.chiudiPropostaTesi(propostatesi_id)) {
-				System.out.println("ci arrivo?");
 				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");			}
 		}
 	}
@@ -67,7 +65,6 @@ public class ChiudiPropostaTesiServlet extends HttpServlet {
 		boolean b = false;
 		try {
 			b = ptm.chiudiPropostaTesi(propostatesi_id);
-			System.out.println("ho provato a fare il metodo nel manager");
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return false;

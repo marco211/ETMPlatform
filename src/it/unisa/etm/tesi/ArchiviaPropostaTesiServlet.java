@@ -40,9 +40,7 @@ public class ArchiviaPropostaTesiServlet extends HttpServlet {
 		synchronized(session) {
 			int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
 			Utente utente = (Utente) session.getAttribute("utente");
-			System.out.println("sono arrivato alla sessione");
 			if(this.archiviaPropostaTesi(propostatesi_id)) {
-				System.out.println("ci arrivo?");
 				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");			}
 		}
 	}
@@ -68,7 +66,6 @@ public class ArchiviaPropostaTesiServlet extends HttpServlet {
 		boolean b = false;
 		try {
 			b = ptm.archiviaPropostaTesi(propostatesi_id);
-			System.out.println("ho provato a fare il metodo nel manager");
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return false;

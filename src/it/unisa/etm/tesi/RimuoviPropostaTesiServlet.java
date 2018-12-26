@@ -37,9 +37,7 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		synchronized(session) {
 			int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
-			System.out.println("sono arrivato alla sessione");
 			if(this.rimuoviPropostaTesi(propostatesi_id)) {
-				System.out.println("ci arrivo?");
 				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
 			}
 		}
@@ -66,7 +64,6 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 		boolean b = false;
 		try {
 			b = ptm.rimuoviPropostaTesi(proposta_id);
-			System.out.println("ho provato a fare il metodo nel manager");
 		}catch(SQLException e) {
 			e.printStackTrace();
 			return false;

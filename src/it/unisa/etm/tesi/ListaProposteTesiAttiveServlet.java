@@ -17,6 +17,7 @@ import it.unisa.etm.model.manager.*;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
 
 /**
  * Servlet implementation class ListaProposteTesiAttive
@@ -39,25 +40,19 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		try {
-			propostamanager = new PropostaTesiManager();
-			ArrayList<PropostaTesi> proposte = propostamanager.getProposteTesiAttive();
+		synchronized(session) {
+			ArrayList<PropostaTesi> proposte = this.getProposte();
 			Utente utente = (Utente) session.getAttribute("utente");
 			request.setAttribute("proposte", proposte);
+			ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
 			if(utente.getTipo().equals("d")) {
-				ArrayList<RichiestaPartecipazione> richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
 				request.setAttribute("richieste", richieste);
 				request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
-
 			}
 			else {
-				ArrayList<RichiestaPartecipazione> richieste_studente = propostamanager.getRichiestaStudente(utente.getEmail());
-				request.setAttribute("richieste_studente", richieste_studente);
+				request.setAttribute("richieste_studente", richieste);
 				request.getRequestDispatcher("listaTesiAttive.jsp").forward(request, response);
 			}
-		}catch(SQLException e){
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-			e.printStackTrace();
 		}
 	}
 
@@ -69,4 +64,45 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
+	/**
+	 * Restituisce tutte le proposte di tesi
+	 * @param
+	 * @return ArrayList<PropostaTesi> rappresenta tutte le proposte tesi;
+	 * <p>
+	 * null altrimenti;
+	 */
+	private ArrayList<PropostaTesi> getProposte(){
+		ManagerFactory mf=new ManagerFactory();
+		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
+		ArrayList<PropostaTesi> lista = new ArrayList<PropostaTesi>();
+		try {
+			lista = propostamanager.getProposteTesiAttive();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return lista;
+	}
+	
+	/**
+	 * Restituisce tutte le richieste di proposte di tesi: se l'utente è un docente restituisce tutte le richieste
+	 * effettuate da parte degli studenti; se l'utente è uno studente restituisce tutte le richieste effettuate.
+	 * @param
+	 * @return ArrayList<RichiestaPartecipazione> rappresenta tutte le richieste per le proposte tesi;
+	 * <p>
+	 * null altrimenti;
+	 */
+	private ArrayList<RichiestaPartecipazione> getRichieste(Utente utente){
+		ManagerFactory mf=new ManagerFactory();
+		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
+		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
+		try {
+			if(utente.getTipo().equals("d")) 
+				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
+			else 
+				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return richieste;
+	}
 }

@@ -238,7 +238,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	@Override
 	public ArrayList<PropostaTesi> getProposteTesiAttive() throws SQLException {
 		String SQL = "SELECT * FROM PropostaTesi;";
-		System.out.println("ci sono");
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList <PropostaTesi> proposte = null;
@@ -371,11 +370,8 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(4,proposta.getDecrizione());
 			statement.setString(5,proposta.getMaterie());
 			statement.setInt(6, proposta.getId());
-			//UPDATE `etm_platform`.`propostatesi` SET `Ambito` = 'nm', `Descrizione` = 'jk', `Materia` = 'j' WHERE (`Id` = '3');
-
 			statement.executeUpdate();
 			b=true;
-			System.out.println("update ok");
 		}finally {
 			if (statement != null)
 				statement.close();

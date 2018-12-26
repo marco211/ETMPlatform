@@ -22,22 +22,12 @@ public class PartecipaManager implements PartecipaModelInterface {
 		int propostaTesiId=0;
 		boolean b=false;
 		try {
-			
 			prepared1=connection.prepareStatement(selectSQL);
-			System.out.println(richiestaId);
-			prepared1.setInt(1, richiestaId);
-			System.out.println(prepared1);
-			
-			
+			prepared1.setInt(1, richiestaId);			
 			rs1 = prepared1.executeQuery();
-			
 			while(rs1.next()) {
 				propostaTesiId = rs1.getInt("PropostaTesi_Id");
-				
-				System.out.println(propostaTesiId);	
 			}
-			
-			System.out.println(propostaTesiId);	
 			prepared=connection.prepareStatement(insertSQL);
 			prepared.setString(1, utenteEmail);
 			prepared.setInt(2, propostaTesiId);
