@@ -27,15 +27,23 @@ public  class UtenteManager implements UtenteModelInterface{
 		utente.setNome(rs.getString("NOME"));
 		utente.setCognome(rs.getString("COGNOME"));
 		utente.setMatricola(rs.getLong("MATRICOLA"));
+		utente.setTipo(rs.getString("TIPO"));
+		if(rs.getInt("PROPOSTATESI_ID")!=0)
+		utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
 		utente.setEmail(rs.getString("EMAIL"));
 		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+		utente.setPassword(rs.getString("PASSWORD"));
+		utente.setValidazione(rs.getString("VALIDAZIONE"));
 		}
 		else if(rs.getString("TIPO").equals("d")) {
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
 			utente.setEmail(rs.getString("EMAIL"));
+			utente.setTipo(rs.getString("TIPO"));
 			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+			utente.setPassword(rs.getString("PASSWORD"));
 			utente.setUfficio(rs.getString("UFFICIO"));
+			utente.setValidazione(rs.getString("VALIDAZIONE"));
 			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
 			pr1.setString(1, email);
 			ResultSet rs1=pr1.executeQuery();

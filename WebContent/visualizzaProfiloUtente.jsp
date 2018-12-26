@@ -2,14 +2,8 @@
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
-Utente utente = (Utente) session.getAttribute("utenteemail");
+Utente utente = (Utente) session.getAttribute("utente");
 if(utente==null){
-	response.sendRedirect("./index.jsp");
-    return;
-}
-
-Utente ut = (Utente) session.getAttribute("utente");
-if(ut==null){
 	response.sendRedirect("./index.jsp");
     return;
 }
@@ -55,11 +49,11 @@ if(ut==null){
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<p>
-    		 			<form action="modificaProfiloUtente.jsp">
-    		 				<button type="button" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
+    		 			<form method="get" action="modificaProfiloUtente.jsp">
+    		 				<button type="submit" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
     		 				</button>
     		 			</form>
-    		 			<form action="modificaPassword.jsp">
+    		 			<form method="get" action="modificaPassword.jsp">
     		 				<button type="button" class="btn btn-primary mx-2">Modifica password
     		 				</button>
     		 			</form>

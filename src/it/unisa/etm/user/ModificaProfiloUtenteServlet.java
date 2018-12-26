@@ -1,6 +1,9 @@
 package it.unisa.etm.user;
 
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.UUID;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.UtenteManager;
 
 /**
  * Estende la casse HttpServlet e fornisce all'utente la funzionalità di poter modificare il proprio profilo.
@@ -38,7 +43,28 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		doGet(request, response);
+		String email=request.getParameter("email");
+		String nome=request.getParameter("nome");
+		String cognome=request.getParameter("cognome");
+		String password=request.getParameter("password");
+		String data=request.getParameter("data");
+		String tipo=request.getParameter("tipo");
+		String validazione=UUID.randomUUID().toString();
+		@SuppressWarnings("unused")
+		Utente utente=null;
+
+
+		if(tipo.equals("s")){
+
+			long matricola=Long.parseLong(request.getParameter("matricola"));
+			utente=new Utente(cognome, data, nome, tipo, email, password, matricola, validazione);
+
+		}else{
+
+			String insegnamento=request.getParameter("insegnamento").toLowerCase();
+			String ufficio=request.getParameter("ufficio");
+			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, validazione);
+		}
 	}
 	
 	/**
@@ -48,8 +74,17 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 * <p>
 	 * false in caso contrario.
 	 */
+	@SuppressWarnings("unused")
 	private boolean modificaProfiloUtente(Utente utente){
-		return false;
+		ManagerFactory mf=new ManagerFactory();
+		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		try {
+			um.modificaUtente(utente);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+		return true;
 		
 	}
 

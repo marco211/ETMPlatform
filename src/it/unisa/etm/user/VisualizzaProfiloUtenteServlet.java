@@ -51,11 +51,11 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 	 * @param username strigna che rappresenta lo username dell'utente cercato.
 	 * @return Utente l'utente cercato.
 	 */
-	@SuppressWarnings("unused")
+	
 	private Utente visualizzaProfiloUtente(String email){
 	ManagerFactory em = new ManagerFactory();
 	UtenteManager um = (UtenteManager) em.createUtenteManager();
-	Utente utente=null;
+	Utente utente;
 	try {
 		utente=um.getInfo(email);
 	} catch (SQLException e) {

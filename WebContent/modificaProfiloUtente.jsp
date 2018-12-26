@@ -32,36 +32,31 @@ if(utente==null){
     		 		<h4>Nome:</h4>
     		 		<form action="ModificaProfiloUtenteServlet" method="post">
     		 	 	<input type="text" class="form-control" name="nome"
-								placeholder="Nome"></form>
+								placeholder="Nome">
     		 		<h4>Cognome:</h4>
-    		 			<form action="ModificaProfiloUtenteServlet" method="post">
     		 	 	<input type="text" class="form-control" name="cognome"
-								placeholder="Cognome"></form>
+								placeholder="Cognome">
     		 		<h4>Email:</h4>
-    		 			<form action="ModificaProfiloUtenteServlet" method="post">
-    		 	 	<input type="text" class="form-control" name="email"
-								placeholder="E-mail"></form>
+    		 	 	<input type="text" class="form-control" name="data"
+								placeholder="Data">
     		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>
-    		 			<form action="ModificaProfiloUtenteServlet" method="post">
     		 	 	<input type="text" class="form-control" name="matricola"
-								placeholder="Matricola"></form>
+								placeholder="Matricola">
 					<% }%>
     		 			<%if(utente.getTipo().equals("d")){%>
-		              		<form action="ModificaProfiloUtenteServlet" method="post">
     		 	 	<input type="text" class="form-control" name="ufficio"
-								placeholder="Ufficio"></form>				
+								placeholder="Ufficio">			
 		              	<% }%>
 		              	</div>
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<p>
-    		 			<form action="ModificaProfiloUtenteServlet">
     		 				<button type="submit" class="btn btn-primary mx-2" id="SalvaProfilo">Salva Profilo
     		 				</button>
-    		 			</form>
+    		 			
     		 			</p>
-    		 		</div>
+    		 		</div></form>
  		    </div>
 	</div>
          
