@@ -31,8 +31,8 @@ import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
 /*@MultipartConfig(maxFileSize = 16177215)*/
 @MultipartConfig(fileSizeThreshold = 1024 * 1024 * 2, // 2MB after which the file will be 
 //temporarily stored on disk
-maxFileSize = 1024 * 1024 * 10, // 10MB maximum size allowed for uploaded files
-maxRequestSize = 1024 * 1024 * 50) // 50MB overall size of all uploaded files
+maxFileSize = 1024 * 1024 * 100, // 10MB maximum size allowed for uploaded files
+maxRequestSize = 1024 * 1024 * 100) // 50MB overall size of all uploaded files
 
 public class CaricaFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
