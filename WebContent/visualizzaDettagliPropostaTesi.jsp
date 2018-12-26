@@ -32,7 +32,7 @@ if(utente==null){
 
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
+	<div style="background-color: #FF9C08; min-height: 81vh;">
 	<main role="main" class="container">
  			
  	<div class="jumbotron jumbotron-fluid">
@@ -51,8 +51,8 @@ if(utente==null){
     			<% }int count = 0;
     		        session.setAttribute("count", count);%>
     			
-    			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="RimuoviProposta">Elimina</a>
-    			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-primary col-2 my-2" id="ModificaProposta">Modifica</a>
+    			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
+    			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
     			
     			<%} %>
   		</div>
