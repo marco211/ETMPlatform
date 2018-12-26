@@ -49,11 +49,14 @@
 									id="AddFile">
 									<i class="fas fa-plus-circle"></i>
 								</button>
-							<%} %>
 							</form>
-
+							<%}%>
 						</div>
-
+						<%if((disabilita==null) &&(partecipazioni.size()<0)){%>
+							<h5>Area disabilitata</h5>
+						<%}else if((disabilita==null) &&(partecipazioni.size()>0)){ %>
+						<h5>Area disabilitata: visualizza un area per attivarla</h5>
+						<%} %>
 						<ul class="list-group list-group-flush">
 								<%
 									if (file != null) {
@@ -67,6 +70,7 @@
 									}
 								%>
 							</ul>
+							
 					</div>
 				</div>
 
