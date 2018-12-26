@@ -14,8 +14,8 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
-<main role="main" class="container">
+	<div style="background-color: #FF9C08; min-height: 81vh;">
+	<main role="main" class="container">
 
       <div class="row">  
         <div class="col-md-8 my-4">
@@ -76,8 +76,8 @@
 		 			  {
 					%>
 						<div class="row">Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%></div>
-						<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AccettaRichiesta">Accetta</a>				
-						<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="RifiutaRichiesta">Rifiuta</a>					
+						<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2" id="AccettaRichiesta">Accetta</a>				
+						<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-inline my-2 my-sm-0 mx-2" id="RifiutaRichiesta">Rifiuta</a>					
 					<%} %>
             </ol>
           </div>
