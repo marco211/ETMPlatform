@@ -102,7 +102,7 @@ if(utente!=null){
 						</div>
 
 						<div class="form-group">
-							<a href="#"> <label class="form-check-label"
+							<a href="recuperaPassword.jsp"> <label class="form-check-label"
 								for="dropdownCheck2"> password dimenticata </label>
 							</a>
 						</div>

@@ -31,7 +31,7 @@
 		<div class="row">
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
-					<div class="card-body">
+					<div class="card-body" style="min-height: 80vh;">
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
@@ -78,7 +78,7 @@
 
 
 			<aside class="col-md-4 my-4">
-			<div class="p-3 card">
+			<div class="p-3 card" style="min-height: 80vh;">
 
 				<h4 class="font-italic">To Do List</h4>
 				<ul class="list-group list-group-flush">

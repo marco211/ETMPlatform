@@ -29,7 +29,7 @@
 		<div class="row">
 			<div class="col-md-8 my-4">
 				<div class="card mb-3">
-					<div class="card-body">
+					<div class="card-body" style="min-height: 80vh;">
 
 						<h5 class="card-title" style="color: #3385ff">File</h5>
 						<div class="row" style="border-bottom: 1px solid;"></div>
@@ -52,7 +52,7 @@
 
 			<aside class="col-md-4 my-4">
 
-			<div class="p-3 card">
+			<div class="p-3 card" style="min-height: 80vh;">
 				<h4 class="font-italic">Impostazioni</h4>
 				<ol class="list-unstyled mb-0">
 					<div class="row" style="border-bottom: 1px solid;"></div>

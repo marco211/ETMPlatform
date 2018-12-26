@@ -60,16 +60,13 @@ public class CaricaFileServlet extends HttpServlet {
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
 		if(utente.getTipo().equals("s")) {
-			file.setPropostaTesiId(1);
-			System.out.println(utente.getPropostaTesi_ID());
-			System.out.println(utente.getEmail());
+			file.setPropostaTesiId(utente.getPropostaTesi_ID());
 		}
 		else {
 			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
 		LocalDate data = LocalDate.now();
-		System.out.println(data);
 		Attivita attivita = new Attivita(file.getEmail(), file.getNome(), data ,"c",file.getPropostaTesiId());
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm= (FileManager) mf.createFileManager();

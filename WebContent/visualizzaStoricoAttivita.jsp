@@ -24,7 +24,7 @@
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">
-				<div class="card mb-3">
+				<div class="card mb-3" style="min-height: 80vh;">
 					<div class="card-body">
 						<form class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
@@ -51,7 +51,7 @@
 
 
 			<aside class="col-md-4 my-4">
-			<div class="p-3 card">
+			<div class="p-3 card" style="min-height: 80vh;">
 				<%
 					if (utente.getTipo().equals("d")) {
 				%>

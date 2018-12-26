@@ -81,7 +81,7 @@
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
 				<li class="nav-item d-lg-none"><a class="nav-link text-dark"
-					href="#">Logout</a></li>
+					href="LogoutServlet">Logout</a></li>
 			</ul>
 
 			<form class="form-inline my-2 my-lg-0">
@@ -95,7 +95,7 @@
 					</button>
 				</div>
 			</form>
-			<ul class="navbar-nav">
+			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
 						<button class="btn btn-inline my-2 my-sm-0 bg-warning"
