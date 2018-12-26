@@ -55,10 +55,7 @@
 							<%} %>
 						</div>
 
-						<%if(utente.getPropostaTesi_ID()==0){ %>
-							<h5>Area disabilitata: Partecipa ad una tesi per attivarla</h5>
-						<%} %>
-
+						
 						<ul class="list-group list-group-flush">
 							<%
 								if (file != null) {

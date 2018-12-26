@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.* "%>
+<%@ page import="it.unisa.etm.bean.* ,java.util.*"%>
 
 <%
 Utente utente =(Utente)session.getAttribute("utente");
 if(utente==null){
 	response.sendRedirect("./index.jsp");
     return;
+}
+ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+if ((partecipazioni == null)&&(utente.getTipo().equals("d"))) {
+	response.sendRedirect("./VisualizzaListaPartecipazioneServlet");
+	return;
 }
 %>
 

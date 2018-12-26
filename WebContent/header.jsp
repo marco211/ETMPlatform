@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*"%>
+	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*,java.util.*"%>
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
+	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,27 +58,25 @@
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="homePage.jsp">Home <span class="sr-only"></span>
 				</a></li>
-				        <a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area proposta tesi</a>
-				<li class="nav-item">
-					<%
-						if (utente.getTipo().equals("s")) {
-					%> <a class="nav-link text-dark"
-					href="VisualizzaListaConsegneServlet">Area privata condivisa</a>
-					<%
-						} else if (utente.getTipo().equals("d")) {
-					%> <a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a> 
-					<%
-						}
+				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area
+					proposta tesi</a>
+				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
+				<li class="nav-item"><a class="nav-link text-dark"
+					href="VisualizzaListaConsegneServlet">Area privata condivisa</a></li>
+				<%
+				}
+				%>
+
+				<%
+					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
- 					
-				</li>
-				<li>
-				<a class="nav-link text-dark"
-					href="ListaUtentiServlet">Area Admin</a>
-				</li>
-				<li>
-				<a class="nav-link text-dark"
+				<li class="nav-item"><a class="nav-link text-dark"
+					href="areaPrivataCondivisaDocente.jsp">Area privata condivisa</a></li>
+				<%} %>
+
+				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
+						Admin</a></li>
+				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
 				<li class="nav-item d-lg-none"><a class="nav-link text-dark"

@@ -55,7 +55,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 		}
 		
 		
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
+		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
 		requestDispatcher.forward(request, response);
 	}
 
