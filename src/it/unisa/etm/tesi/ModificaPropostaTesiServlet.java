@@ -47,12 +47,10 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 			if(count==0) { 
 				int id= Integer.parseInt(request.getParameter("propostatesi_id"));
 				session.setAttribute("proposta_tesi_id", id);
-				System.out.println(id);
 				request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);
 				}
 			else {
 				int id = (int) session.getAttribute("proposta_tesi_id");
-				System.out.println("sono nell'else");
 				String titolo=request.getParameter("titolo");
 				String ambito=request.getParameter("ambito");
 				int tempo=Integer.parseInt(request.getParameter("tempo"));

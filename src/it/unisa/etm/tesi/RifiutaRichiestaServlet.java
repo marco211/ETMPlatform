@@ -23,7 +23,6 @@ import it.unisa.etm.model.manager.PropostaTesiManager;
 @WebServlet("/RifiutaRichiestaServlet")
 public class RifiutaRichiestaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PropostaTesiModelInterface  propostamanager;                                                                                       
        
     public RifiutaRichiestaServlet() {
     	super();
@@ -34,7 +33,6 @@ public class RifiutaRichiestaServlet extends HttpServlet {
 		synchronized(session) {
 			LocalDate data = LocalDate.now();
 			int propostatesi_id=Integer.parseInt(request.getParameter("richiesta_id"));
-			propostamanager = new PropostaTesiManager();
 		
 			if(this.rifiutaRichiestaPropostaTesi(propostatesi_id));
 			{

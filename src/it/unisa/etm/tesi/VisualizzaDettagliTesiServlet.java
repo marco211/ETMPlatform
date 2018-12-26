@@ -49,7 +49,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	/**-----------------+-+-+-+-+-+-+da cambiare
+	/**da cambiare
 	 * Torna i dettagli di una determinata PropostaTesi presa come input.
 	 * @param id della PropostaTesi, che rappresenta la tesi scelta per conoscere le info.
 	 * @return proposta di tesi che ha l'id inserito come input;
