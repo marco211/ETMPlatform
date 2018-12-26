@@ -36,8 +36,8 @@ if(utente==null){
     		 		<h4>Cognome:</h4>
     		 	 	<input type="text" class="form-control" name="cognome"
 								placeholder="Cognome">
-    		 		<h4>Email:</h4>
-    		 	 	<input type="text" class="form-control" name="data"
+    		 		<h4>Data:</h4>
+    		 	 	<input type="date" class="form-control" name="data"
 								placeholder="Data">
     		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>

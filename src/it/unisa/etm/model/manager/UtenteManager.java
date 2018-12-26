@@ -164,7 +164,8 @@ public  class UtenteManager implements UtenteModelInterface{
 			ps.setString(6, utente.getUfficio());
 			ps.executeUpdate();
 		}
-	return true; }
+		return true;
+	 }
 
 
 	@Override

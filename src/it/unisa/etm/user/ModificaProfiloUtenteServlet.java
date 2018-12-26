@@ -49,21 +49,20 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 		String password=request.getParameter("password");
 		String data=request.getParameter("data");
 		String tipo=request.getParameter("tipo");
-		String validazione=UUID.randomUUID().toString();
+		Utente utente= null ;
 		@SuppressWarnings("unused")
-		Utente utente=null;
-
-
+		Utente aggiornato;
 		if(tipo.equals("s")){
-
 			long matricola=Long.parseLong(request.getParameter("matricola"));
-			utente=new Utente(cognome, data, nome, tipo, email, password, matricola, validazione);
+		   utente=new Utente(cognome, data, nome, tipo, email, password, matricola, "valido");
+		   aggiornato= (Utente) modificaProfiloUtente(utente);
 
 		}else{
 
 			String insegnamento=request.getParameter("insegnamento").toLowerCase();
 			String ufficio=request.getParameter("ufficio");
-			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, validazione);
+		    utente= new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, "valido");
+		    aggiornato= (Utente) modificaProfiloUtente(utente);
 		}
 	}
 	
@@ -74,17 +73,17 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 * <p>
 	 * false in caso contrario.
 	 */
-	@SuppressWarnings("unused")
-	private boolean modificaProfiloUtente(Utente utente){
+
+	private Utente modificaProfiloUtente(Utente aggiornato){
 		ManagerFactory mf=new ManagerFactory();
 		UtenteManager um=(UtenteManager) mf.createUtenteManager();
 		try {
-			um.modificaUtente(utente);
+			um.modificaUtente(aggiornato);
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return false;
+			return null;
 		}
-		return true;
+		return aggiornato;
 		
 	}
 
