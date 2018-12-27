@@ -21,12 +21,9 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	@Override
 	public List<Utente> getListaUtenti() throws SQLException {
 		String SQL = "SELECT * FROM Utente;";
-<<<<<<< HEAD
-=======
 
 		log.info("Ci sono");
 		
->>>>>>> 417e7a3eda6e55216d6148c082ae539b837c1fa1
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList <Utente> utenti = null;
