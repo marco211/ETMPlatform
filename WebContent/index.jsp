@@ -2,13 +2,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="it.unisa.etm.bean.* "%>
-	
+
 <%
-Utente utente=(Utente)session.getAttribute("utente");
-if(utente!=null){
-	response.sendRedirect("./homePage.jsp");
-    return;
-}
+	Utente utente = (Utente) session.getAttribute("utente");
+	if (utente != null) {
+		response.sendRedirect("./homePage.jsp");
+		return;
+	}
 %>
 
 <!DOCTYPE html>
@@ -60,25 +60,27 @@ if(utente!=null){
 				<form action="LoginServlet" method="post">
 					<div class="form-row">
 						<div class="col">
-							<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
+							<input type="email" class="form-control mb-2 mr-sm-2"
+								name="emailLogin" placeholder="E-mail" required>
 						</div>
 						<div class="col">
-							<input type="password" class="form-control" name="passwordLogin" placeholder="Password" required>
+							<input type="password" class="form-control" name="passwordLogin"
+								placeholder="Password" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary mb-2">Login</button>
 						</div>
 					</div>
-					
+
 					<div class="form-row">
 						<div class="col-4"></div>
 						<div class="col">
 							<a href="recuperaPassword.jsp">Password dimenticata?</a>
 						</div>
-						
+
 					</div>
-					
-				</form>				
+
+				</form>
 			</li>
 
 			<li class="d-lg-none d-xl-none">
@@ -102,8 +104,9 @@ if(utente!=null){
 						</div>
 
 						<div class="form-group">
-							<a href="recuperaPassword.jsp"> <label class="form-check-label"
-								for="dropdownCheck2"> password dimenticata </label>
+							<a href="recuperaPassword.jsp"> <label
+								class="form-check-label" for="dropdownCheck2"> password
+									dimenticata </label>
 							</a>
 						</div>
 						<button type="submit" class="btn btn-primary">Login</button>
@@ -124,7 +127,8 @@ if(utente!=null){
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-				<form action="RegistrazioneServlet" method="post" name="registrazione">
+				<form action="RegistrazioneServlet" method="post"
+					name="registrazione">
 					<h1>Iscriviti</h1>
 					<h6>Gestisci facilmente la tua tesi</h6>
 
@@ -144,48 +148,51 @@ if(utente!=null){
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputNome4">Nome</label> <input type="text"
-								class="form-control" name="nome" onchange="controlloNome()" placeholder="Nome" required>
+								class="form-control" name="nome" onchange="controlloNome()"
+								placeholder="Nome" required>
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="inputCognome4">Cognome</label> <input type="text"
-								class="form-control" name="cognome" onchange="controlloCognome()" placeholder="Cognome"
-								required>
+								class="form-control" name="cognome"
+								onchange="controlloCognome()" placeholder="Cognome" required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="inputEmail">E-mail</label> <input type="email"
-							class="form-control" name="email" onchange="controlloEmail()" placeholder="E-mail" required>
+							class="form-control" name="email" onchange="controlloEmail()"
+							placeholder="E-mail" required>
 					</div>
 
 					<div class="form-group" id="matricolaID">
 						<label for="inputMatricola">Matricola</label> <input type="text"
-							class="form-control" name="matricola" onchange="controlloMatricola()" placeholder="Matricola"
-							>
+							class="form-control" name="matricola"
+							onchange="controlloMatricola()" placeholder="Matricola">
 					</div>
 
 					<div class="form-group d-none" id="insegnamentoID">
 						<label for="inputInsegnamento">Insegnamento</label> <input
-							type="text" class="form-control" name="insegnamento" onchange="controlloInsegnamento()" 
-							placeholder="Insegnamento">
+							type="text" class="form-control" name="insegnamento"
+							onchange="controlloInsegnamento()" placeholder="Insegnamento">
 					</div>
 
 					<div class="form-group d-none" id="ufficioID" hidden>
 						<label for="inputUfficio">Ufficio</label> <input type="text"
-							class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="Ufficio"
-							>
+							class="form-control" name="ufficio" onchange="controlloUfficio()"
+							placeholder="Ufficio">
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword">Password</label> <input type="password"
-							class="form-control" name="password" onchange="controlloPassword()" placeholder="Password"
-							required>
+							class="form-control" name="password"
+							onchange="controlloPassword()" placeholder="Password" required>
 					</div>
 
 					<div class="form-group">
 						<label for="inputData">Data di nascita</label> <input type="date"
-							class="form-control" name="data" onchange="controlloData()" required>
+							class="form-control" name="data" onchange="controlloData()"
+							required>
 					</div>
 
 					<div class="form-group">
@@ -196,13 +203,17 @@ if(utente!=null){
 								nostre normative sulla privacy </label>
 						</div>
 					</div>
-					<button type="button" class="btn btn-primary" name="invio" onclick="validazione()">Sign in</button>
+
+					<div id="infoDiv" class="alert alert-danger" role="alert">Attenzione!</div>
+					<button type="button" class="btn btn-primary" name="invio"
+						onclick="validazione()">Sign in</button>
 				</form>
+
 			</div>
 		</div>
 	</div>
 
-<script src="js/validazioneRegistrazione.js"></script>
+	<script src="js/validazioneRegistrazione.js"></script>
 
 </body>
 

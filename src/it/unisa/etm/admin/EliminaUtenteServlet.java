@@ -69,15 +69,9 @@ public class EliminaUtenteServlet extends HttpServlet {
 	private boolean eliminaUtente(String email) throws SQLException{
 		ManagerFactory mf=new ManagerFactory();
 		AmministratoreManager am=(AmministratoreManager) mf.createAmministratoreManager();
-		boolean b = false;
-		try {
-			b = am.eliminaUtente(email);
-			System.out.println("ho provato a fare il metodo nel manager");
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return b;
+		
+		if(email!="") return am.eliminaUtente(email);
+		else return false;
 	}
 
 }
