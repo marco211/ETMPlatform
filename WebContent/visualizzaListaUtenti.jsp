@@ -6,8 +6,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Admin</title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/stile.css">
+    <title>ETM Platform - Area admin</title>
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
 </head>
 <body>
@@ -23,8 +28,7 @@
         <div class="card-body">
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Lista Utenti &nbsp;</h5>
-      			<input class="form-control form-control-sm mr-3 w-50" type="text" placeholder="Cerca utente" aria-label="Cerca utente">
-				<button type="button" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="CercaUtente"><span class="fa fa-search"></span> </button>
+      			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca utente" aria-label="Cerca utente"><h3><i class="fas fa-search"></i></h3>
 				
 			</form>
 			
@@ -33,7 +37,7 @@
 		   			for(Utente u : utenti)
 		 			  {
 					%>
-					<div class="row">
+					<div class="row" id="lista">
 						<a class="col-3" href="VisualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>
 		               
 		              	
@@ -59,6 +63,16 @@
 
     </main>
 </div>
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#lista *").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
     
 <jsp:include page="footer.jsp" />
 

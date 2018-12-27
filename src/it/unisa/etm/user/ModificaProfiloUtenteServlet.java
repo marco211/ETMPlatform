@@ -22,14 +22,14 @@ import it.unisa.etm.model.manager.UtenteManager;
 @WebServlet("/ModificaProfiloUtenteServlet")
 public class ModificaProfiloUtenteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ModificaProfiloUtenteServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+
+	/**
+	 * @see HttpServlet#HttpServlet()
+	 */
+	public ModificaProfiloUtenteServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
@@ -47,7 +47,7 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
 		String password=request.getParameter("password");
-		String data=request.getParameter("data_nascita");
+		String data=request.getParameter("data");
 		String tipo=request.getParameter("tipo");
 		String validazione=request.getParameter("validazione");
 		Utente utente= null;
@@ -63,14 +63,11 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, validazione);
 		}
 		if(modificaProfiloUtente(utente) == true) {
-								response.sendRedirect(request.getContextPath()+"/homePage.jsp");
-						}
-					
-		else 
-		{			
+			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+		}else{			
 			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");					
 		}
-	
+
 	}
 	/**
 	 * Riceve le modifiche effettuate dall'utente e le appliche al profilo di quest'ultimo.
@@ -92,7 +89,7 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 			return false;
 		}
 		return true;
-		
+
 	}
 
 }
