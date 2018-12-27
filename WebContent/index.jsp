@@ -4,8 +4,9 @@
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
+    Amministratore admin=(Amministratore)session.getAttribute("admin");
 	Utente utente = (Utente) session.getAttribute("utente");
-	if (utente != null) {
+	if (utente != null || admin !=null) {
 		response.sendRedirect("./homePage.jsp");
 		return;
 	}
