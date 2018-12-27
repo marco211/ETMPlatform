@@ -60,6 +60,8 @@ if(utente==null){
     			%>
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
     			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
+    			<%}else{ %>
+    			<p>Non puoi modificare o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
     			<%}} %>
   		</div>
 	</div>	
