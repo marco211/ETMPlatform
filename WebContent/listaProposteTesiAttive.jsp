@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.* "%>  
+<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.*, java.time.* "%>  
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
 %>
@@ -69,7 +69,7 @@
         </div>
 		<% if(utente.getTipo().equals("d")){ %>
         <aside class="col-md-4 my-4">
-          <div class="p-3 card">
+          <div class="list-group p-3 card">
             <h4 class="font-italic">Richieste ricevute</h4>
             		<% ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste");
 		   			  int c=0;
@@ -81,18 +81,39 @@
         				  	if(r.getPropostatesi_id()==p.getId())
         				  		titolop = p.getTitolo();
         				  }
+        				  	
+        				  Period tempo = Period.between(r.getData(), LocalDate.now());
 					%>
-						<div class="row border border-dark bg-info mx-1 px-1"><%=c%>)Richiesta effettuata il giorno <%=r.getData()%> da parte di 
-						<a class="alert-link" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a> per la tesi&nbsp;
-						<a class="alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
-						<div class="row border border-dark bg-info mx-2 px-1">
-							<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="AccettaRichiesta">Accetta</a>				
-							<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="RifiutaRichiesta">Rifiuta</a>					
+						<div class="list-group-item list-group-item-action flex-column align-items-start mx-1 px-1">
+							<div class="d-flex w-100 justify-content-between">
+								<div class="mb-1" style="font-size:12px">Richiesta effettuata da parte di
+									<a class="mb-1 alert-link" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a><br> 
+									per la tesi&nbsp; <a class="mb-1 alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
+								</div>
+								<div class="border-left pl-2 w-50" style="font-size: 13px">
+									<div>
+									<%if(LocalDate.now().getYear()==r.getData().getYear()) 
+										{
+											if(LocalDate.now().getMonth().equals(r.getData().getMonth()))
+											{
+									%>
+												<%=tempo.getDays()%> giorno/i fa
+									<%		}else{ %>
+											<%=tempo.getMonths()%> mese/i fa
+									<%		}
+										}else{%>
+												<%=tempo.getYears()%> anno/i fa
+									<%	}%>
+									</div>
+									<div class="mt-3" >
+										<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="AccettaRichiesta"><i class="fas fa-check-circle"></i></a>				
+										<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="RifiutaRichiesta"><i class="fas fa-times-circle"></i></a>					
+									</div>									
+								</div>
 							</div>
-							</div>
+							
 						</div>
 					<%}%>
-          </div>
    
         </aside>
 		<% }else{ %>
