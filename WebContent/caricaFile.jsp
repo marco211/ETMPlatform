@@ -75,28 +75,19 @@
 					if (utente.getTipo().equals("d")) {
 				%>
 				<h4 class="font-italic">Aree</h4>
-				<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Identificativo proposta tesi</th>
-							<th scope="col">Email studente</th>
-						</tr>
-					</thead>
-					<tbody>
+				<div class="row">
+					<div class="col"><b>Proposta Tesi</b></div>
+					<div class="col"><b>Email Studente</b></div>
+					<div class="col"></div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
+					<div class="col"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a></div>
+					<div class="col"><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a></div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
 						<%
-							for (int i = 0; i < partecipazioni.size(); i++) {
-						%>
-						<tr>
-							<td><%=partecipazioni.get(i).getPropostaTesiId()%></td>
-							<td><%=partecipazioni.get(i).getUtenteEmail()%></td>
-							<td><a
-								href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>">Visualizza</a></td>
-						</tr>
-						<%
-							}
-						%>
-					</tbody>
-				</table>
+						}
+					%>
+				</div>
 				<%
 					} else if (utente.getTipo().equals("s")) {
 				%>
