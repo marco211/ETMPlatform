@@ -7,19 +7,23 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.util.logging.Logger;
+
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.database.DatabaseManager;
 public class AmministratoreManager implements AmministratoreModelInterface{
 
 	public AmministratoreManager() {
-		
+		log = Logger.getLogger("global");
 	}
 
 	@Override
 	public List<Utente> getListaUtenti() throws SQLException {
 		String SQL = "SELECT * FROM Utente;";
-		System.out.println("ci sono");
+
+		log.info("Ci sono");
+		
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList <Utente> utenti = null;
@@ -51,20 +55,30 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	}
 
 	@Override
-	public boolean eliminaUtente(String email) throws SQLException {
-		System.out.println("Sono in Amministratore Manager , eliminaUtente");
-		Connection connection=DatabaseManager.getIstance();
-		PreparedStatement prepared=connection.prepareStatement("DELETE FROM Utente WHERE email =?;");
-		boolean b;
+	public boolean eliminaUtente(String email){
+		log.info("Amministratore, elimina utente");
+		Connection connection = null;
+		PreparedStatement prepared = null;
+		
 		try {
+			connection = DatabaseManager.getIstance();
+			prepared=connection.prepareStatement("DELETE FROM Utente WHERE email =?;");
+			
 			prepared.setString(1, email);
 			prepared.executeUpdate();
-			b=true;
-			System.out.println("AmministratoreManager: ci siamo");
+			return true;
+		}catch(SQLException e){
+			e.printStackTrace();
+			return false;
 		}finally {
-					prepared.close();
+			try{
+				prepared.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return false;
+			}
 		}
-		return b;
+		
 	}
 
 	@Override
@@ -112,6 +126,8 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 		return utenti;
 	}
 	
+	
+	private Logger log;
 }
 	
 	
