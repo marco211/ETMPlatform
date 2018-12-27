@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
@@ -72,37 +73,57 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 		pr.setString(1, email);
 		pr.setString(2, password);
 		ResultSet rs=pr.executeQuery();
-		rs.next();
-		Utente utente=new Utente();
-		if(rs.getString("TIPO").equals("s")){
-		utente.setNome(rs.getString("NOME"));
-		utente.setCognome(rs.getString("COGNOME"));
-		utente.setMatricola(rs.getLong("MATRICOLA"));
-		utente.setTipo(rs.getString("TIPO"));
-		if(rs.getInt("PROPOSTATESI_ID")!=0)
-		utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
-		utente.setEmail(rs.getString("EMAIL"));
-		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-		utente.setPassword(rs.getString("PASSWORD"));
-		utente.setValidazione(rs.getString("VALIDAZIONE"));
-		}
-		else if(rs.getString("TIPO").equals("d")) {
+		if(rs.next()) {
+			Utente utente=new Utente();
+			if(rs.getString("TIPO").equals("s")){
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
-			utente.setEmail(rs.getString("EMAIL"));
+			utente.setMatricola(rs.getLong("MATRICOLA"));
 			utente.setTipo(rs.getString("TIPO"));
+			if(rs.getInt("PROPOSTATESI_ID")!=0)
+			utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
+			utente.setEmail(rs.getString("EMAIL"));
 			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
 			utente.setPassword(rs.getString("PASSWORD"));
-			utente.setUfficio(rs.getString("UFFICIO"));
 			utente.setValidazione(rs.getString("VALIDAZIONE"));
-			PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
-			pr1.setString(1, email);
-			ResultSet rs1=pr1.executeQuery();
-			while(rs1.next()) {
-				utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
 			}
+			else if(rs.getString("TIPO").equals("d")) {
+				utente.setNome(rs.getString("NOME"));
+				utente.setCognome(rs.getString("COGNOME"));
+				utente.setEmail(rs.getString("EMAIL"));
+				utente.setTipo(rs.getString("TIPO"));
+				utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+				utente.setPassword(rs.getString("PASSWORD"));
+				utente.setUfficio(rs.getString("UFFICIO"));
+				utente.setValidazione(rs.getString("VALIDAZIONE"));
+				PreparedStatement pr1=istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA WHERE UTENTE_EMAIL=?");
+				pr1.setString(1, email);
+				ResultSet rs1=pr1.executeQuery();
+				while(rs1.next()) {
+					utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+				}
+			}
+			return utente;
 		}
-		return utente;
+		return null;
+	}
+	
+	public Amministratore getAdmin(String email, String password) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT * FROM AMMINISTRATORE WHERE EMAIL=? AND PASSWORD=?");
+		pr.setString(1, email);
+		pr.setString(2, password);
+		ResultSet rs=pr.executeQuery();
+		if(rs.next())
+		{
+			Amministratore admin=new Amministratore();
+			admin.setNome(rs.getString("NOME"));
+			admin.setCognome(rs.getString("COGNOME"));
+			admin.setEmail(rs.getString("EMAIL"));
+			admin.setPassword(rs.getString("PASSWORD"));
+			return admin;
+		}
+		return null;
 	}
 	
 	@Override

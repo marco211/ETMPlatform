@@ -4,8 +4,9 @@
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
+    Amministratore admin=(Amministratore)session.getAttribute("admin");
 	Utente utente = (Utente) session.getAttribute("utente");
-	if (utente != null) {
+	if (utente != null || admin !=null) {
 		response.sendRedirect("./homePage.jsp");
 		return;
 	}
@@ -204,7 +205,7 @@
 						</div>
 					</div>
 
-					<div id="infoDiv" class="alert alert-danger" role="alert">Attenzione!</div>
+					<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
 					<button type="button" class="btn btn-primary" name="invio"
 						onclick="validazione()">Sign in</button>
 				</form>

@@ -139,6 +139,7 @@ function controlloData()
 
 function validazione()
 {
+	document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 	var focused = false;
 	var div = $("#infoDiv");
 	
@@ -147,7 +148,7 @@ function validazione()
 	if(!controlloNome()){
 		
 		document.registrazione.nome.focus();
-		div.append("Problema con il nome!");
+		div.append("Inserisci un nome");
 	}
 	else if(!controlloCognome())
 	{

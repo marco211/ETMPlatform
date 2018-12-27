@@ -18,12 +18,21 @@ public class Amministratore implements Serializable {
 		
 	}
 	
-	public Amministratore(String nome, String cognome, String email) {
-		this.nome = nome;
+	public Amministratore(String email, String nome, String cognome, String password) {
+		this.email=email;
+		this.nome=nome;
 		this.cognome = cognome;
-		this.email = email;
+		this.password = password;
 	}
 	
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -48,5 +57,5 @@ public class Amministratore implements Serializable {
 		this.email = email;
 	}
 
-	private String nome, cognome, email;
+	private String nome, cognome, email, password;
 }
