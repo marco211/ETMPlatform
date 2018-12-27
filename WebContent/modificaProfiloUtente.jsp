@@ -11,23 +11,23 @@ if(utente==null){
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Modifica Profilo Utente</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
-
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>ETM Platform - Modifica Profilo</title>
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
 <jsp:include page="header.jsp"/>
 
-
-<div style="background-color: #FF9C08">
+<div style="background-color: #FF9C08; min-height: 81vh;">
 <main role="main" class="container">
-      <div class="row" >  
+      <div class="row">  
         <div class="col-md-8 my-4">
         <div class="card mb-3">
-        <div class="card-body"> 			
-   			 <h5 class="card-title" style="color:#3385ff">Modifica Informazioni Personali</h5>
+        <div class="card-body">
+  			<h5 class="card-title" style="color:#3385ff">Modifica Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
    			 		
     		 		
@@ -40,7 +40,7 @@ if(utente==null){
     		 	 	<input type="text" class="form-control" name="cognome"
 								placeholder="Cognome">
     		 		<h4>Data:</h4>
-    		 	 	<input type="date" class="form-control" name="data_nascita"
+    		 	 	<input type="date" class="form-control" name="data"
 								placeholder="Data">
 
     		 		<%if(utente.getTipo().equals("s")){%>
@@ -55,32 +55,18 @@ if(utente==null){
 		              	</div>
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			<p>
     		 				<button type="submit" class="btn btn-primary mx-2" id="SalvaProfilo">Salva Profilo
-    		 				</button>
-    		 			
-    		 			</p>
-    		 		</div></form>
- 		    </div>
-	</div>
-         
-        </div>
+    		 				</button></form>	
+  			</div>
 
+</div>
         <aside class="col-md-4 my-4">
-
           <div class="p-3 card">
-            <h4 class="font-italic">Le mie proposte tesi attive</h4>
+            <h4 class="font-italic">Nome Sezione</h4>
             <ol class="list-unstyled mb-0">
-            <div class="row" style="border-bottom: 1px solid;"></div>
-            <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 1 <span class="fas fa-exclamation-circle"></span></a></li>
-             </div>
-             <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 2</a></li>
-             </div>
-             <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 3 <span class="fas fa-exclamation-circle" onmouseover="visualizzaMessaggio()"></span></a></li>
-             </div>
+              <li><a href="#">Primo elemento</a></li>
+              <li><a href="#">Secondo elemento</a></li>
+              <li><a href="#">Terzo elemento</a></li>
             </ol>
           </div>
    

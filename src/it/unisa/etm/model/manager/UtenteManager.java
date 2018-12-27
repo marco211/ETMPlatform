@@ -89,8 +89,7 @@ public  class UtenteManager implements UtenteModelInterface{
 		String insertSQL=null;
 		if(utente.getTipo().equals("s"))
 		{
-			insertSQL = "UPDATE utente SET (nome, cognome, data_nascita, matricola)"
-					+ "values(?,?,?,?) WHERE email='"+ utente.getEmail() +"';";
+			insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=?, matricola=? WHERE email='"+ utente.getEmail() +"';";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getNome());;
 			ps.setString(2, utente.getCognome());
@@ -100,8 +99,7 @@ public  class UtenteManager implements UtenteModelInterface{
 		}
 		else
 		{
-			insertSQL = "UPDATE utente SET (nome, cognome, data_nascita, ufficio) "
-					+ "values(?,?,?,?) WHERE email=?;";
+			insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=? , ufficio=? , WHERE email=?;";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getNome());;
 			ps.setString(2, utente.getCognome());

@@ -47,7 +47,7 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
 		String password=request.getParameter("password");
-		String data=request.getParameter("data_nascita");
+		String data=request.getParameter("data");
 		String tipo=request.getParameter("tipo");
 		String validazione=request.getParameter("validazione");
 		Utente utente= null;
