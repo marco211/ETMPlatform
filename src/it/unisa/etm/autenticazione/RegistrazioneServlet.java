@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.UtenteManager;
+import it.unisa.etm.model.manager.AutenticazioneManager;
 
 /**
  * Estende HttpServlet e fornisce la funzionalit� di registrazione.
@@ -100,9 +100,9 @@ public class RegistrazioneServlet extends HttpServlet {
 	 */
 	private boolean registrazioneControl(Utente utente){
 		ManagerFactory mf=new ManagerFactory();
-		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
 		try {
-			um.registraUtente(utente);
+			am.registraUtente(utente);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return false;

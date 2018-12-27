@@ -3,8 +3,7 @@ package it.unisa.etm.autenticazione;
 import java.io.IOException;
 import java.sql.SQLException;
 
-
-import it.unisa.etm.model.manager.UtenteManager;
+import it.unisa.etm.model.manager.AutenticazioneManager;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -47,9 +46,9 @@ public class LoginServlet extends HttpServlet {
 		String password=request.getParameter("passwordLogin");
 		String email=request.getParameter("emailLogin");
 		ManagerFactory em = new ManagerFactory();
-		UtenteManager um = (UtenteManager) em.createUtenteManager();
+		AutenticazioneManager am = (AutenticazioneManager) em.createAutenticazioneManager();
 		try {
-			Utente utente=um.getUtente(email, password);
+			Utente utente=am.getUtente(email, password);
 			if(utente!=null) {
 				if(utente.getValidazione().equals("valido")) {
 					HttpSession session=request.getSession();

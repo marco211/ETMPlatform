@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.UtenteManager;
+import it.unisa.etm.model.manager.AutenticazioneManager;
 
 
 /**
@@ -70,9 +70,9 @@ public class RecuperaPasswordServlet extends HttpServlet {
 	 */
 	private boolean inviaPassword(String email){
 		ManagerFactory mf=new ManagerFactory();
-		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
 		try {
-			String password=um.getPassword(email);
+			String password=am.getPassword(email);
 			if(password==null)
 				return false;
 			if(send(email, password)) {
