@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.UtenteManager;
+import it.unisa.etm.model.manager.AutenticazioneManager;
 
 /**
  * Servlet implementation class ConfermaMailServlet
@@ -33,9 +33,9 @@ public class ConfermaMailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String validazione=request.getParameter("validazione");
 		ManagerFactory mf=new ManagerFactory();
-		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
 		try {
-			um.setValidazione(validazione);
+			am.setValidazione(validazione);
 			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneRiuscita.jsp");
 		} catch (SQLException e) {
 			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneNonRiuscita.jsp");

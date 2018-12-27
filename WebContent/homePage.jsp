@@ -9,7 +9,7 @@ if(utente==null){
 }
 ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 if ((partecipazioni == null)&&(utente.getTipo().equals("d"))) {
-	response.sendRedirect("./VisualizzaListaPartecipazioneServlet");
+	response.sendRedirect("./VisualizzaListaPartecipazioneServlet?action=esegui");
 	return;
 }
 %>
