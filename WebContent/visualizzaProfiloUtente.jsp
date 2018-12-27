@@ -51,37 +51,25 @@ if(utente==null){
 		              	</div>
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			<p>
     		 			<form method="get" action="modificaProfiloUtente.jsp">
     		 				<button type="submit" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
     		 				</button>
-    		 			</form>
+    		 			</form></div>
+    		 			<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<form method="get" action="modificaPassword.jsp">
     		 				<button type="button" class="btn btn-primary mx-2">Modifica password
     		 				</button>
     		 			</form>
-    		 			</p>
     		 		</div>
  		    </div>
-	</div>
-         
-        </div>
-
-        <aside class="col-md-4 my-4">
-
+ 		  
+   <aside class="col-md-4 my-4">
           <div class="p-3 card">
-            <h4 class="font-italic">Le mie proposte tesi attive</h4>
+            <h4 class="font-italic">Nome Sezione</h4>
             <ol class="list-unstyled mb-0">
-            <div class="row" style="border-bottom: 1px solid;"></div>
-            <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 1 <span class="fas fa-exclamation-circle"></span></a></li>
-             </div>
-             <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 2</a></li>
-             </div>
-             <div class="card my-2" style="border: 1px solid;">
-              <li><a href="#">Proposta tesi 3 <span class="fas fa-exclamation-circle" onmouseover="visualizzaMessaggio()"></span></a></li>
-             </div>
+              <li><a href="#">Primo elemento</a></li>
+              <li><a href="#">Secondo elemento</a></li>
+              <li><a href="#">Terzo elemento</a></li>
             </ol>
           </div>
    
