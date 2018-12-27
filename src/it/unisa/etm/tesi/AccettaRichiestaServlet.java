@@ -39,6 +39,7 @@ public class AccettaRichiestaServlet extends HttpServlet {
 		
 			if(this.accettaRichiestaPropostaTesi(propostatesi_id,utenteEmail));
 			{
+				request.getSession().removeAttribute("listaPartecipazione");
 				request.getRequestDispatcher("index.jsp").forward(request, response);
 			}
 			//request.getRequestDispatcher("index.jsp").forward(request, response);

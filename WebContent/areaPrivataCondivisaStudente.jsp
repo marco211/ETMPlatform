@@ -35,6 +35,7 @@
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
+							<%if(utente.getPropostaTesi_ID()>0){ %>
 							<form action="VisualizzaStoricoServlet" method="get">
 								<input type="hidden" name="propostaTesiId" value="<%=utente.getPropostaTesi_ID()%>">
 								<button type="submit"
@@ -43,7 +44,7 @@
 									<span class="fa fa-archive"></span>
 								</button>
 							</form>
-							<%if(utente.getPropostaTesi_ID()>0){ %>
+		
 							<form action="caricaFile.jsp">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
@@ -54,8 +55,7 @@
 							<%} %>
 						</div>
 
-
-
+						
 						<ul class="list-group list-group-flush">
 							<%
 								if (file != null) {
