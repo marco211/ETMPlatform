@@ -22,10 +22,8 @@ if(utente==null){
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <link rel="stylesheet" href="css/stile.css">
-    <title>ETM Platform - Home</title>
+    <title>ETM Platform - Dettagli proposta tesi</title>
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
@@ -60,6 +58,8 @@ if(utente==null){
     			%>
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
     			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
+    			<%}else{ %>
+    			<p>Non puoi modificare o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
     			<%}} %>
   		</div>
 	</div>	

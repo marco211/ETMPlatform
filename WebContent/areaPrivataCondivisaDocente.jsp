@@ -19,8 +19,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Privata Condivisa</title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/stile.css">
+    <title>ETM Platform - Area privata condivisa</title>
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
@@ -36,8 +41,9 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
-						<form action="VisualizzaDettagliTesiServlet" method="get">
-								<input type="hidden" name="propostatesi_id" value="<%=session.getAttribute("numeroTesiDocente") %>">
+							<form action="VisualizzaDettagliTesiServlet" method="get">
+								<input type="hidden" name="propostatesi_id"
+									value="<%=session.getAttribute("numeroTesiDocente") %>">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">
@@ -63,33 +69,31 @@
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
 						<h5>Area disabilitata: visualizza un area per attivarla</h5>
 						<%} %>
-						<ul class="list-group list-group-flush">
-								<%
-									if (file != null) {
-										for (int i = 0; i < file.size(); i++) {
-								%>
-								<li class="list-group-item"><a
-									href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>"> <%=file.get(i).getNome()%>
-								</a></li>
-								<%
-									}
-									}
-								%>
-							</ul>
-							
+						<div class="list-group">
+							<%
+								if (file != null) {
+									for (int i = 0; i < file.size(); i++) {
+							%>
+							<a class="list-group-item"
+								href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>"><i
+								 class="fa fa-file fa-2x" aria-hidden="true"></i>&nbsp; <%=file.get(i).getNome()%></a>
+							<%
+								}
+								}
+							%>
+						</div>
 					</div>
+
 				</div>
-
 			</div>
-
 
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card" style="min-height: 80vh;">
 				<h4 class="font-italic">Aree</h4>
-					<%
+				<%
 						if (partecipazioni != null) {
 					%>
-					<!--  
+				<!--  
 					<table class="table">
 					<thead>
 						<tr>
@@ -112,15 +116,24 @@
 					<%} %>
 					-->
 				<div class="row">
-					<div class="col"><b>Proposta Tesi</b></div>
-					<div class="col"><b>Email Studente</b></div>
-					<div class="col"></div>
+					<div class="col">
+						<b>Proposta Tesi</b>
+					</div>
+					<div class="col">
+						<b>Email Studente</b>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
-					<div class="col"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a></div>
-					<div class="col"><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a></div>
+					<div class="col">
+						<a
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
+					</div>
+					<div class="col">
+						<a
+							href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
-						<%
+					<%
 						}
 					%>
 				</div>

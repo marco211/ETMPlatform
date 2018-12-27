@@ -11,7 +11,7 @@
 
 </head>
 <body>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
 <jsp:include page="header.jsp"/>
 
 	<div style="background-color: #FF9C08; min-height: 81vh;">

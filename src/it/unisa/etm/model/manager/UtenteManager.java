@@ -13,7 +13,7 @@ import it.unisa.etm.model.interfaces.UtenteModelInterface;
 public  class UtenteManager implements UtenteModelInterface{
 
 	public UtenteManager() {
-		
+
 	}
 	@Override
 	public Utente getInfo(String email) throws SQLException {
@@ -24,16 +24,16 @@ public  class UtenteManager implements UtenteModelInterface{
 		rs.next();
 		Utente utente=new Utente();
 		if(rs.getString("TIPO").equals("s")){
-		utente.setNome(rs.getString("NOME"));
-		utente.setCognome(rs.getString("COGNOME"));
-		utente.setMatricola(rs.getLong("MATRICOLA"));
-		utente.setTipo(rs.getString("TIPO"));
-		if(rs.getInt("PROPOSTATESI_ID")!=0)
-		utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
-		utente.setEmail(rs.getString("EMAIL"));
-		utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-		utente.setPassword(rs.getString("PASSWORD"));
-		utente.setValidazione(rs.getString("VALIDAZIONE"));
+			utente.setNome(rs.getString("NOME"));
+			utente.setCognome(rs.getString("COGNOME"));
+			utente.setMatricola(rs.getLong("MATRICOLA"));
+			utente.setTipo(rs.getString("TIPO"));
+			if(rs.getInt("PROPOSTATESI_ID")!=0)
+				utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
+			utente.setEmail(rs.getString("EMAIL"));
+			utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+			utente.setPassword(rs.getString("PASSWORD"));
+			utente.setValidazione(rs.getString("VALIDAZIONE"));
 		}
 		else if(rs.getString("TIPO").equals("d")) {
 			utente.setNome(rs.getString("NOME"));
@@ -53,14 +53,14 @@ public  class UtenteManager implements UtenteModelInterface{
 		}
 		return utente;
 	}
-	
-	
-	
 
 
-	
 
-	
+
+
+
+
+
 	@Override
 	public List<Utente> getUtenti(String nome) throws SQLException{
 		Connection istance=DatabaseManager.getIstance();
@@ -109,12 +109,12 @@ public  class UtenteManager implements UtenteModelInterface{
 			ps.executeUpdate();
 		}
 		return true;
-	 }
+	}
 
 
-	
-	
-	
 
-	
+
+
+
+
 }

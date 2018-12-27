@@ -19,8 +19,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Area Privata Condivisa</title>
+<!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="css/stile.css">
+    <title>ETM Platform - Area privata condivisa</title>
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 <body>
 
@@ -65,20 +70,19 @@
 						</div>
 
 						
-						<ul class="list-group list-group-flush">
+						<div class="list-group">
 							<%
 								if (file != null) {
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<li class="list-group-item"><a href="VisualizzaInfoFileServlet?idTesi=<%=file.get(i).getPropostaTesiId()%>&nomeFile=<%=file.get(i).getNome()%>"> <%=
-										file.get(i).getNome()
-									%>
-							</a></li>
+							<a class="list-group-item"
+								href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>"><i
+								 class="fa fa-file fa-2x" aria-hidden="true"></i>&nbsp; <%=file.get(i).getNome()%></a>
 							<%
 								}
 								}
 							%>
-						</ul>
+						</div>
 						
 					</div>
 				</div>
