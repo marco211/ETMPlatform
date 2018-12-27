@@ -71,7 +71,7 @@
 					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="areaPrivataCondivisaDocente.jsp">Area privata condivisa</a></li>
+					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a></li>
 				<%} %>
 
 				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area

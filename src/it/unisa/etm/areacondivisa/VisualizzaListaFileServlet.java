@@ -42,19 +42,9 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 		FileManager um = (FileManager) em.createFileManager();
 		ArrayList<File> lista;
 		try {
-			if(utente.getTipo().equals("s")) {
 			PropostaTesiManager pt=(PropostaTesiManager)em.createPropostaTesiManager();
-			String docente=pt.getNomeDocente(id);
-			String email=request.getParameter("utenteEmail");
-			lista=um.getListaFile(id,email,docente);
+			lista=um.getListaFile(id);
 			request.getSession().setAttribute("listaFile", lista);
-			}
-			else if(utente.getTipo().equals("d")) {
-			String email=request.getParameter("emailUtente");
-			lista=um.getListaFile(id, email, utente.getEmail());
-			request.getSession().setAttribute("listaFile", lista);
-			}
-			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
