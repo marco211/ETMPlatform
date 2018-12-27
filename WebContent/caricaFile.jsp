@@ -9,6 +9,7 @@
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
+	String errore = (String) request.getAttribute("carica");
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -22,6 +23,7 @@
 	<jsp:include page="header.jsp" />
 
 	<div style="background-color: #FF9C08; min-height: 81vh;">
+
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">
@@ -52,6 +54,15 @@
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary">Carica</button>
 							</div>
+							<%
+								if (errore != null) {
+							%>
+							<div>
+								<p><%=errore.toString()%></p>
+							</div>
+							<%
+								}
+							%>
 						</form>
 					</div>
 				</div>
@@ -72,17 +83,20 @@
 						</tr>
 					</thead>
 					<tbody>
-					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
+						<%
+							for (int i = 0; i < partecipazioni.size(); i++) {
+						%>
 						<tr>
-							<td><%=partecipazioni.get(i).getPropostaTesiId() %></td>
-							<td><%=partecipazioni.get(i).getUtenteEmail() %></td>
-							<td><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>">Visualizza</a></td>
+							<td><%=partecipazioni.get(i).getPropostaTesiId()%></td>
+							<td><%=partecipazioni.get(i).getUtenteEmail()%></td>
+							<td><a
+								href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>">Visualizza</a></td>
 						</tr>
 						<%
-						}
-					%>
+							}
+						%>
 					</tbody>
-					</table>
+				</table>
 				<%
 					} else if (utente.getTipo().equals("s")) {
 				%>

@@ -29,10 +29,11 @@ if(utente==null){
         <div class="card-body"> 			
    			 <h5 class="card-title" style="color:#3385ff">Modifica Informazioni Personali</h5>
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
-    		 		<h4>Nome:</h4>
-    		 		<form action="ModificaProfiloUtenteServlet" method="post">
+   			 		
     		 		
-              			
+    		 		<form action="ModificaProfiloUtenteServlet" method="post">
+    		 		<h4>Nome:</h4>
+    		 		<input type="hidden" name="tipo" value="<%=utente.getTipo()%>">
     		 	 	<input type="text" class="form-control" name="nome"
 								placeholder="Nome">
     		 		<h4>Cognome:</h4>
