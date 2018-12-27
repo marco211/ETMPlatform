@@ -74,11 +74,14 @@ public class CaricaFileServlet extends HttpServlet {
 		try {
 			fm.aggiungiFile(file);
 			am.aggiungiAttivita(attivita);
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
+			requestDispatcher.forward(request, response);
 		} catch (SQLException e) {
-			e.printStackTrace();
+			request.setAttribute("carica", "Errore nel caricamento, riprova");
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/caricaFile.jsp");
+			requestDispatcher.forward(request, response);
 		}
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
-		requestDispatcher.forward(request, response);
+		
 	}
 
 	/**
