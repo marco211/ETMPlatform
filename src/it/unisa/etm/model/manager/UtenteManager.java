@@ -140,28 +140,23 @@ public  class UtenteManager implements UtenteModelInterface{
 		String insertSQL=null;
 		if(utente.getTipo().equals("s"))
 		{
-			insertSQL = "UPDATE Utente SET (nome, cognome, data_nascita, matricola) "
-					+ "values(?,?,?,?)  WHERE EMAIL='"+ utente.getEmail()+"' AND PASSWORD='"+ utente.getPassword() +"';";
+			insertSQL = "UPDATE utente SET nome = ?, cognome = ?, data_nascita = ?, matricola =?;";
 			ps=istance.prepareStatement(insertSQL);
-			ps.setString(1, utente.getEmail());
-			ps.setString(2, utente.getNome());;
-			ps.setString(3, utente.getCognome());
-			ps.setString(4, utente.getPassword());
-			ps.setString(5, utente.getDataDiNascita());
-			ps.setLong(6, utente.getMatricola());
+			ps.setString(1, utente.getNome());;
+			ps.setString(2, utente.getCognome());
+			ps.setString(3, utente.getDataDiNascita());
+			ps.setLong(4, utente.getMatricola());
 			ps.executeUpdate();
 		}
 		else
 		{
-			insertSQL = "UPDATE Utente SET (nome, cognome, password, data_nascita, ufficio) "
-					+ "values(?,?,?,?,?,?) WHERE EMAIL='"+ utente.getEmail()+"' AND PASSWORD='"+ utente.getPassword() +"';";
+			insertSQL = "UPDATE utente SET (nome, cognome, data_nascita, ufficio) "
+					+ "values(?,?,?,?);";
 			ps=istance.prepareStatement(insertSQL);
-			ps.setString(1, utente.getEmail());
-			ps.setString(2, utente.getNome());;
-			ps.setString(3, utente.getCognome());
-			ps.setString(4, utente.getPassword());
-			ps.setString(5, utente.getDataDiNascita());
-			ps.setString(6, utente.getUfficio());
+			ps.setString(1, utente.getNome());;
+			ps.setString(2, utente.getCognome());
+			ps.setString(3, utente.getDataDiNascita());
+			ps.setString(4, utente.getUfficio());
 			ps.executeUpdate();
 		}
 		return true;

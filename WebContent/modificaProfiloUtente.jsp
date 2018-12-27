@@ -31,14 +31,17 @@ if(utente==null){
    			 	<div class="row" style="border-bottom: 1px solid;"></div>
     		 		<h4>Nome:</h4>
     		 		<form action="ModificaProfiloUtenteServlet" method="post">
+    		 		
+              			
     		 	 	<input type="text" class="form-control" name="nome"
 								placeholder="Nome">
     		 		<h4>Cognome:</h4>
     		 	 	<input type="text" class="form-control" name="cognome"
 								placeholder="Cognome">
     		 		<h4>Data:</h4>
-    		 	 	<input type="date" class="form-control" name="data"
+    		 	 	<input type="date" class="form-control" name="data_nascita"
 								placeholder="Data">
+
     		 		<%if(utente.getTipo().equals("s")){%>
     		 		<h4>Matricola</h4>
     		 	 	<input type="text" class="form-control" name="matricola"

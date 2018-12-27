@@ -2,7 +2,6 @@ package it.unisa.etm.user;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.UUID;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -43,28 +42,35 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String email=request.getParameter("email");
+		HttpSession session = request.getSession();
+		Utente utente=(Utente) session.getAttribute("utente");
+		String email= utente.getEmail();
+		String tipo= utente.getTipo();
+		String validazione=utente.getValidazione();
+		String password=utente.getPassword();
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
-		String password=request.getParameter("password");
-		String data=request.getParameter("data");
-		String tipo=request.getParameter("tipo");
-		Utente utente= null ;
-		@SuppressWarnings("unused")
-		Utente aggiornato;
-		if(tipo.equals("s")){
-			long matricola=Long.parseLong(request.getParameter("matricola"));
-		   utente=new Utente(cognome, data, nome, tipo, email, password, matricola, "valido");
-		   aggiornato= (Utente) modificaProfiloUtente(utente);
-
-		}else{
-
-			String insegnamento=request.getParameter("insegnamento").toLowerCase();
-			String ufficio=request.getParameter("ufficio");
-		    utente= new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, "valido");
-		    aggiornato= (Utente) modificaProfiloUtente(utente);
-		}
-	}
+		String data=request.getParameter("data_nascita");
+		System.out.println("Sono dentro?");
+			if(tipo.equals("s")){
+						long matricola=Long.parseLong(request.getParameter("matricola"));
+						utente=new Utente(email, nome, cognome, password, data, tipo, matricola, validazione);
+						System.out.println("Qui Ci sono Arrivato?");
+						
+						 }else{
+							String insegnamento=request.getParameter("insegnamento").toLowerCase();
+							String ufficio=request.getParameter("ufficio");
+							utente= new Utente(email, nome, cognome, password, data, tipo, ufficio, insegnamento, validazione);
+							   }
+								if(this.modificaProfiloUtente(utente))
+									{
+										session=request.getSession();
+										session.setAttribute("utente", utente);
+									}
+								response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+						}
+					
+								
 	
 	/**
 	 * Riceve le modifiche effettuate dall'utente e le appliche al profilo di quest'ultimo.
@@ -74,16 +80,18 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 * false in caso contrario.
 	 */
 
-	private Utente modificaProfiloUtente(Utente aggiornato){
+	private boolean modificaProfiloUtente(Utente utente){
 		ManagerFactory mf=new ManagerFactory();
 		UtenteManager um=(UtenteManager) mf.createUtenteManager();
 		try {
-			um.modificaUtente(aggiornato);
+			um.modificaUtente(utente);
+			System.out.println("CiaoneProprio!!!");
 		} catch (SQLException e) {
 			e.printStackTrace();
-			return null;
+			System.out.println("Addio!!!");
+			return false;
 		}
-		return aggiornato;
+		return true;
 		
 	}
 

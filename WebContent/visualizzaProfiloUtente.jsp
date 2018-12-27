@@ -49,7 +49,7 @@ if(utente==null){
 		              </div>
     		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
     		 			<p>
-    		 			<form method="get" action="modificaProfiloUtente.jsp?utente_email=<%=utente.getEmail() %>;">
+    		 			<form method="get" action="modificaProfiloUtente.jsp">
     		 				<button type="submit" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
     		 				</button>
     		 			</form>
