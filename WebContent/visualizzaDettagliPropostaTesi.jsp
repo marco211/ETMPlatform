@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.* "%>
+<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.* "%>  
 
 <%
 PropostaTesi propostatesi = (PropostaTesi) session.getAttribute("propostatesi");
@@ -39,7 +39,9 @@ if(utente==null){
   		<div class="container">
     		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
     		<p class="lead"><%=propostatesi.getDecrizione()%></p>
-    			<% if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
+    			<%
+    			ArrayList<Utente> utenti = (ArrayList<Utente>)session.getAttribute("utenti");
+    			if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
     			if(!propostatesi.isChiuso()){%>
     			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>
     			<%} %>
@@ -50,11 +52,15 @@ if(utente==null){
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
     			<% }int count = 0;
     		        session.setAttribute("count", count);%>
-    			
+    			<%boolean b = false;
+    			for(Utente u : utenti){
+    					if(u.getPropostaTesi_ID()==propostatesi.getId())
+    						b = true;
+    			}if(!b){
+    			%>
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
     			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
-    			
-    			<%} %>
+    			<%}} %>
   		</div>
 	</div>	
  

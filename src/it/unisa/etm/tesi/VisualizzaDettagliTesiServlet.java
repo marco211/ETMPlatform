@@ -2,6 +2,7 @@ package it.unisa.etm.tesi;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,7 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 
@@ -36,9 +39,10 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id= Integer.parseInt(request.getParameter("propostatesi_id"));
 		PropostaTesi propostaTesi = (PropostaTesi) visualizzaDettagliPropostaTesi(id);
-		
+		ArrayList<Utente> utenti = this.getListaUtenti();
 		HttpSession session=request.getSession();
 		session.setAttribute("propostatesi", propostaTesi);
+		session.setAttribute("utenti", utenti);
 		request.getRequestDispatcher("visualizzaDettagliPropostaTesi.jsp").forward(request, response);
 	}
 
@@ -67,5 +71,25 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 			return null;
 		}
 		return propostaTesi;	
+	}
+	
+	/**da cambiare
+	 * Torna la lista degli utenti.
+	 * @param
+	 * @return ArrayList<Utente> rappresenta la lista degli utenti
+	 * <p>
+	 * null se non vi utenti o si sono presentate eccezioni.
+	 */
+	private ArrayList<Utente> getListaUtenti(){
+		ManagerFactory em = new ManagerFactory();
+		AmministratoreManager atm = (AmministratoreManager) em.createAmministratoreManager();
+		ArrayList<Utente> utenti = new ArrayList<Utente>();
+		try {
+			utenti = (ArrayList<Utente>) atm.getListaUtenti();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return utenti;
 	}
 }
