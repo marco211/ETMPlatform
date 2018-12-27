@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 
@@ -48,20 +49,28 @@ public class LoginServlet extends HttpServlet {
 		ManagerFactory em = new ManagerFactory();
 		AutenticazioneManager am = (AutenticazioneManager) em.createAutenticazioneManager();
 		try {
-			Utente utente=am.getUtente(email, password);
-			if(utente!=null) {
-				if(utente.getValidazione().equals("valido")) {
-					HttpSession session=request.getSession();
-					session.setAttribute("utente", utente);
-					response.sendRedirect(request.getContextPath()+"/homePage.jsp");
-				}
-				else {
-					response.sendRedirect(request.getContextPath()+"/loginFallitoRegistrazioneNonConfermata.jsp");
-				}				
+			Amministratore admin=am.getAdmin(email, password);
+			if(admin!=null) {
+				HttpSession session=request.getSession();
+				session.setAttribute("admin", admin);
+				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}
 			else {
-				response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
-			}
+				Utente utente=am.getUtente(email, password);
+				if(utente!=null) {
+					if(utente.getValidazione().equals("valido")) {
+						HttpSession session=request.getSession();
+						session.setAttribute("utente", utente);
+						response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+					}
+					else {
+						response.sendRedirect(request.getContextPath()+"/loginFallitoRegistrazioneNonConfermata.jsp");
+					}				
+				}
+				else {
+					response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
+				}
+			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");

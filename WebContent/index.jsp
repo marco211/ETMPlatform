@@ -204,7 +204,7 @@
 						</div>
 					</div>
 
-					<div id="infoDiv" class="alert alert-danger" role="alert">Attenzione!</div>
+					<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
 					<button type="button" class="btn btn-primary" name="invio"
 						onclick="validazione()">Sign in</button>
 				</form>

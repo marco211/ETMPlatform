@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
@@ -103,6 +104,21 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 			}
 		}
 		return utente;
+	}
+	
+	public Amministratore getAdmin(String email, String password) throws SQLException {
+		Connection istance=DatabaseManager.getIstance();
+		PreparedStatement pr=istance.prepareStatement("SELECT * FROM AMMINISTRATORE WHERE EMAIL=? AND PASSWORD=?");
+		pr.setString(1, email);
+		pr.setString(2, password);
+		ResultSet rs=pr.executeQuery();
+		rs.next();
+		Amministratore admin=new Amministratore();
+		admin.setNome(rs.getString("NOME"));
+		admin.setCognome(rs.getString("COGNOME"));
+		admin.setEmail(rs.getString("EMAIL"));
+		admin.setPassword(rs.getString("PASSWORD"));
+		return admin;
 	}
 	
 	@Override
