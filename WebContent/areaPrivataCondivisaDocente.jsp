@@ -36,7 +36,8 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
-						<form action="#" method="get">
+						<form action="VisualizzaDettagliTesiServlet" method="get">
+								<input type="hidden" name="propostatesi_id" value="<%=session.getAttribute("numeroTesiDocente") %>">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
 									id="AddFile">
