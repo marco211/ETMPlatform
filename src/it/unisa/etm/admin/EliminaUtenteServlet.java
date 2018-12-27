@@ -36,10 +36,10 @@ public class EliminaUtenteServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		synchronized(session) {
 			String email = (String )request.getParameter("utente_email");
-			System.out.println("sono arrivato alla sessione");
+			System.out.println("EliminsaUtenteServlet: sono arrivato alla sessione");
 			try {
 				if(this.eliminaUtente(email)) {
-					System.out.println("ci arrivo?");
+					System.out.println("EliminaUtenteServlet: utente eliminato");
 					response.sendRedirect(request.getContextPath()+"/ListaUtentiServlet");
 				}
 			} catch (SQLException e) {

@@ -45,11 +45,12 @@ public class VisualizzaDettagliUtenteServlet extends HttpServlet{
 		Utente utente=null;
 		try {
 			utente=am.getUtente(email);
+			System.out.println("VisualizzaDettagliUtenteServlet: utente inviato");
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-		System.out.println("VisualizzaDettagliUtenteServlet: utente inviato");
 		return utente;	
 	}
 	

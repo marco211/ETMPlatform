@@ -19,7 +19,6 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	@Override
 	public List<Utente> getListaUtenti() throws SQLException {
 		String SQL = "SELECT * FROM Utente;";
-		System.out.println("ci sono");
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList <Utente> utenti = null;
@@ -66,6 +65,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 		}
 		return b;
 	}
+
 
 	@Override
 	public Utente getUtente(String email) throws SQLException {
