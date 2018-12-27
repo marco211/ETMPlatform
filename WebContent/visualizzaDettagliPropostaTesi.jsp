@@ -30,13 +30,15 @@ if(utente==null){
 
 <jsp:include page="header.jsp"/>
 
-	<div style="background-color: #FF9C08; min-height: 81vh;">
-	<main role="main" class="container">
+	<div style="background-color: #FF9C08; min-height: 81vh; padding-top: 10px">
+	<main role="main" class="container bg-white">
  			
- 	<div class="jumbotron jumbotron-fluid">
-  		<div class="container">
+ 	<div class="jumbotron jumbotron-fluid bg-white row">
+  		<div class="container-fluid bg-white col">
     		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
     		<p class="lead"><%=propostatesi.getDecrizione()%></p>
+			<p class="lead"><%=propostatesi.getAmbito()%></p>
+		    	
     			<%
     			ArrayList<Utente> utenti = (ArrayList<Utente>)session.getAttribute("utenti");
     			if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
@@ -62,6 +64,11 @@ if(utente==null){
     			<p>Non puoi modificare o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
     			<%}} %>
   		</div>
+  		 <div class="container-fluid bg-white border-left col" style="width: 10px">
+  		 	<p>Materia/e: <%=propostatesi.getMaterie()%></p>
+  		 	<p>Tempo di sviluppo: <%=propostatesi.getTempoDiSviluppo()%> giorni</p>
+  		 	<p class="blockquote-footer">Autore: <a href="VisualizzaProfiloUtenteServlet?utente_email"><%=propostatesi.getUtenteEmail()%></a></p>
+		</div>
 	</div>	
  
  

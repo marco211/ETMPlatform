@@ -38,11 +38,11 @@
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
-					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+					<div class="row pt-1" id="lista">
+						<a class="col-5" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
 		               <%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
-		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>"">Modifica&nbsp;<i class="fas fa-dice-d6"></i></a>				
+		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>"">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
 		               <% }
 					if (utente.getTipo().equals("d")) {
 						if((p.isArchiviato())&&(!p.isChiuso())){
