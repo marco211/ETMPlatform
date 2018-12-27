@@ -35,8 +35,9 @@
     		        PropostaTesi proposta = new PropostaTesi();
 		   			for(PropostaTesi p : proposte)
 		 			  {
-		   				if(utente.getPropostaTesi_ID()!=p.getId()){
+		   				if(utente.getPropostaTesi_ID()==p.getId())
 		   					proposta = p;
+		   				if(utente.getPropostaTesi_ID()!=p.getId()){
 		   				if((!p.isArchiviato())&&(!p.isChiuso())){
 					%>
 					<div class="row" id="lista">
@@ -92,7 +93,8 @@
 <%int id = utente.getPropostaTesi_ID();
 if(id!=0){
 %>
-              <li><p>stai partecipando a questa tesi: <%=proposta.getTitolo() %></p></li>
+              <li><p>stai partecipando a questa tesi:
+              <a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId() %>"><%=proposta.getTitolo() %></a></li>
               <%} %>
             </ol>
           </div>

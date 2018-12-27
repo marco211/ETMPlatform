@@ -73,17 +73,25 @@
             <h4 class="font-italic">Richieste ricevute</h4>
             		<% ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste");
 		   			  int c=0;
+		   			  String titolop = "";
         			  for(RichiestaPartecipazione r : richieste)
 		 			  {
         				  c++;
+        				  for (PropostaTesi p : proposte){
+        				  	if(r.getPropostatesi_id()==p.getId())
+        				  		titolop = p.getTitolo();
+        				  }
 					%>
-						<div class="row border border-dark bg-info mx-3 px-1"><%=c%>)Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%>
-							<div class="btn-group mx-5 px-3">
+						<div class="row border border-dark bg-info mx-1 px-1"><%=c%>)Richiesta effettuata il giorno <%=r.getData()%> da parte di 
+						<a class="alert-link" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a> per la tesi&nbsp;
+						<a class="alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
+						<div class="row border border-dark bg-info mx-2 px-1">
 							<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="AccettaRichiesta">Accetta</a>				
 							<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="RifiutaRichiesta">Rifiuta</a>					
 							</div>
+							</div>
 						</div>
-					<%} %>
+					<%}%>
           </div>
    
         </aside>
