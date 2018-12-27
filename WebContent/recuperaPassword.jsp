@@ -64,15 +64,15 @@
                 <img src="https://www.unisa.it/rescue/img/logo_cc.png" class="img-fluid" alt="Responsive image">
                    <p>Per effettuare il recuperdo della password inserisci la mail con la quale ti sei registrato</p>
                     <div class="info-form">
-                        <form action="RecuperaPasswordServlet" method="post" class="form-inline justify-content-center">
+                        <form action="RecuperaPasswordServlet" method="post" name="recupero_password" class="form-inline justify-content-center">
                             <div class="form-group">
                                 <label class="sr-only">Email</label>
-                                <input type="text" name="email" class="form-control" placeholder="mario.rossi@gmail.com">
+                                <input type="text" name="email" class="form-control " placeholder="mario.rossi@gmail.com" onchange="controlloEmail()" required>
                             </div>
                         
                     </div>
                     <br>
-                  <button type="submit" class="btn btn-success ">Recupera password</button>      
+                  <button type="button" class="btn btn-success " onclick="validazione()" >Recupera password</button>      
                 </form>
                 </div>
             </div>
@@ -81,5 +81,8 @@
 
 </section>
 <jsp:include page="footer.jsp" />
+
+<script src="js/validazioneRecuperoPassword.js"></script>
+
 </body>
 </html>
