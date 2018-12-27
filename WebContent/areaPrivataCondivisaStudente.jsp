@@ -36,6 +36,16 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<%if(utente.getPropostaTesi_ID()>0){ %>
+							<%System.out.print("id="+utente.getPropostaTesi_ID()); %>
+							<form action="VisualizzaDettagliTesiServlet?propostatesi_id=<%=utente.getPropostaTesi_ID() %>" method="get">
+							<%System.out.print("id="+utente.getPropostaTesi_ID()); %>
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fa fa-info-circle" aria-hidden="true"></i>
+								</button>
+							</form>
+							
 							<form action="VisualizzaStoricoServlet" method="get">
 								<input type="hidden" name="propostaTesiId" value="<%=utente.getPropostaTesi_ID()%>">
 								<button type="submit"
