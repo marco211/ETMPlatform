@@ -84,14 +84,16 @@
         				  	
         				  Period tempo = Period.between(r.getData(), LocalDate.now());
 					%>
-						<div class="list-group-item list-group-item-action flex-column align-items-start mx-1 px-1">
-							<div class="d-flex w-100 justify-content-between">
-								<div class="mb-1" style="font-size:12px">Richiesta effettuata da parte di
-									<a class="mb-1 alert-link" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a><br> 
-									per la tesi&nbsp; <a class="mb-1 alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
+						<div class="list-group-item list-group-item-action flex-column align-items-start mx-1 px-1 py-2">
+							<div class="d-flex w-100">
+								<div style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
+									<p  class="text-xs-center mb-1" >Nome</p>
+									<a class="text-xs-center mt-1" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a><br> 
+									<p  class="text-xs-center mb-1 mt-3" >Tesi</p>
+									<a class="text-xs-center mt-1" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
 								</div>
-								<div class="border-left pl-2 w-50" style="font-size: 13px">
-									<div>
+								<div class="border-left pl-2 pr-1 pt-3 w-20">
+									<div style="font-size: 14px">
 									<%if(LocalDate.now().getYear()==r.getData().getYear()) 
 										{
 											if(LocalDate.now().getMonth().equals(r.getData().getMonth()))
@@ -105,7 +107,7 @@
 												<%=tempo.getYears()%> anno/i fa
 									<%	}%>
 									</div>
-									<div class="mt-3" >
+									<div class="mt-2" >
 										<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="AccettaRichiesta"><i class="fas fa-check-circle"></i></a>				
 										<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="RifiutaRichiesta"><i class="fas fa-times-circle"></i></a>					
 									</div>									
