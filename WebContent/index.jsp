@@ -124,7 +124,7 @@ if(utente!=null){
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-				<form action="RegistrazioneServlet" method="post">
+				<form action="RegistrazioneServlet" method="post" name="registrazione">
 					<h1>Iscriviti</h1>
 					<h6>Gestisci facilmente la tua tesi</h6>
 
@@ -144,48 +144,48 @@ if(utente!=null){
 					<div class="form-row">
 						<div class="form-group col-md-6">
 							<label for="inputNome4">Nome</label> <input type="text"
-								class="form-control" name="nome" placeholder="Nome" required>
+								class="form-control" name="nome" onchange="controlloNome()" placeholder="Nome" required>
 						</div>
 
 						<div class="form-group col-md-6">
 							<label for="inputCognome4">Cognome</label> <input type="text"
-								class="form-control" name="cognome" placeholder="Cognome"
+								class="form-control" name="cognome" onchange="controlloCognome()" placeholder="Cognome"
 								required>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label for="inputEmail">E-mail</label> <input type="email"
-							class="form-control" name="email" placeholder="E-mail" required>
+							class="form-control" name="email" onchange="controlloEmail()" placeholder="E-mail" required>
 					</div>
 
 					<div class="form-group" id="matricolaID">
 						<label for="inputMatricola">Matricola</label> <input type="text"
-							class="form-control" name="matricola" placeholder="Matricola"
+							class="form-control" name="matricola" onchange="controlloMatricola()" placeholder="Matricola"
 							>
 					</div>
 
 					<div class="form-group d-none" id="insegnamentoID">
 						<label for="inputInsegnamento">Insegnamento</label> <input
-							type="text" class="form-control" name="insegnamento"
+							type="text" class="form-control" name="insegnamento" onchange="controlloInsegnamento()" 
 							placeholder="Insegnamento">
 					</div>
 
 					<div class="form-group d-none" id="ufficioID" hidden>
 						<label for="inputUfficio">Ufficio</label> <input type="text"
-							class="form-control" name="ufficio" placeholder="Ufficio"
+							class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="Ufficio"
 							>
 					</div>
 
 					<div class="form-group">
 						<label for="inputPassword">Password</label> <input type="password"
-							class="form-control" name="password" placeholder="Password"
+							class="form-control" name="password" onchange="controlloPassword()" placeholder="Password"
 							required>
 					</div>
 
 					<div class="form-group">
 						<label for="inputData">Data di nascita</label> <input type="date"
-							class="form-control" name="data" required>
+							class="form-control" name="data" onchange="controlloData()" required>
 					</div>
 
 					<div class="form-group">
@@ -196,11 +196,15 @@ if(utente!=null){
 								nostre normative sulla privacy </label>
 						</div>
 					</div>
-					<button type="submit" class="btn btn-primary">Sign in</button>
+					<button type="button" class="btn btn-primary" name="invio" onclick="validazione()">Sign in</button>
 				</form>
 			</div>
 		</div>
 	</div>
 
+<script src="js/validazioneRegistrazione.js"></script>
+
 </body>
+
+
 </html>

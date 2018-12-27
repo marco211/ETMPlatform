@@ -8,10 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+
+
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+
 import it.unisa.etm.model.manager.UtenteManager;
 
 /**
@@ -41,37 +43,35 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		HttpSession session = request.getSession();
-		Utente utente=(Utente) session.getAttribute("utente");
-		String email= utente.getEmail();
-		String tipo= utente.getTipo();
-		String validazione=utente.getValidazione();
-		String password=utente.getPassword();
+		String email=request.getParameter("email");
 		String nome=request.getParameter("nome");
 		String cognome=request.getParameter("cognome");
+		String password=request.getParameter("password");
 		String data=request.getParameter("data_nascita");
-		System.out.println("Sono dentro?");
-			if(tipo.equals("s")){
-						long matricola=Long.parseLong(request.getParameter("matricola"));
-						utente=new Utente(email, nome, cognome, password, data, tipo, matricola, validazione);
-						System.out.println("Qui Ci sono Arrivato?");
-						
-						 }else{
-							String insegnamento=request.getParameter("insegnamento").toLowerCase();
-							String ufficio=request.getParameter("ufficio");
-							utente= new Utente(email, nome, cognome, password, data, tipo, ufficio, insegnamento, validazione);
-							   }
-								if(this.modificaProfiloUtente(utente))
-									{
-										session=request.getSession();
-										session.setAttribute("utente", utente);
-									}
+		String tipo=request.getParameter("tipo");
+		String validazione=request.getParameter("validazione");
+		Utente utente= null;
+		if(tipo.equals("s")){
+
+			long matricola=Long.parseLong(request.getParameter("matricola"));
+			utente=new Utente(cognome, data, nome, tipo, email, password, matricola, validazione);
+
+		}else{
+
+			String insegnamento=request.getParameter("insegnamento").toLowerCase();
+			String ufficio=request.getParameter("ufficio");
+			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, validazione);
+		}
+		if(modificaProfiloUtente(utente) == true) {
 								response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 						}
 					
-								
+		else 
+		{			
+			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");					
+		}
 	
+	}
 	/**
 	 * Riceve le modifiche effettuate dall'utente e le appliche al profilo di quest'ultimo.
 	 * @param utente rappresenta il profilo modificato dall'utente
