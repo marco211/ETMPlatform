@@ -36,6 +36,14 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
 							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
+						<form action="VisualizzaDettagliTesiServlet" method="get">
+								<input type="hidden" name="propostatesi_id" value="<%=session.getAttribute("numeroTesiDocente") %>">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fa fa-info-circle" aria-hidden="true"></i>
+								</button>
+							</form>
 							<form action="VisualizzaStoricoServlet" method="get">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
@@ -81,6 +89,7 @@
 					<%
 						if (partecipazioni != null) {
 					%>
+					<!--  
 					<table class="table">
 					<thead>
 						<tr>
@@ -101,7 +110,21 @@
 					</tbody>
 					</table>
 					<%} %>
+					-->
+				<div class="row">
+					<div class="col"><b>Proposta Tesi</b></div>
+					<div class="col"><b>Email Studente</b></div>
+					<div class="col"></div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
+					<div class="col"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a></div>
+					<div class="col"><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a></div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+						<%
+						}
+					%>
 				</div>
+			</div>
 			</aside>
 		</div>
 		</main>
