@@ -41,7 +41,7 @@ public class ListaUtentiServlet extends HttpServlet {
 			ArrayList<Utente> utenti= (ArrayList<Utente>) am.getListaUtenti();
 			request.setAttribute("utenti", utenti);
 			request.getRequestDispatcher("visualizzaListaUtenti.jsp").forward(request, response);
-		}catch(SQLException e) {
+		}catch(Exception e) {
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 			e.printStackTrace();
 		}

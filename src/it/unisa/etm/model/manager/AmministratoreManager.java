@@ -19,7 +19,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	}
 
 	@Override
-	public List<Utente> getListaUtenti() throws SQLException {
+	public List<Utente> getListaUtenti(){
 		String SQL = "SELECT * FROM Utente;";
 
 		log.info("Ci sono");
@@ -46,9 +46,17 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 				utenti.add(utente);
 				
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}finally {
-			if(statement!=null)
-				statement.close();
+				try{
+					if(statement!=null)
+						statement.close();
+				}catch(SQLException e) {
+					e.printStackTrace();
+					return null;
+				}
 		}
 		
 		return utenti;
@@ -83,7 +91,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 
 
 	@Override
-	public Utente getUtente(String email) throws SQLException {
+	public Utente getUtente(String email){
 		ArrayList<Utente> utenti=(ArrayList<Utente>) this.getListaUtenti();
 		
 		for(Utente u: utenti)
@@ -97,7 +105,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	}
 
 	@Override
-	public List<Utente> cercaUtente(String nome) throws SQLException {
+	public List<Utente> cercaUtente(String nome){
 		String SQL = "SELECT u FROM Utente WHERE u.nome="+nome+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -120,9 +128,16 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 				utente.setTipo(rs.getString(9));
 				utenti.add(utente);
 			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}finally {
-			if(statement!=null)
+			try{
 				statement.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
 		}
 		return utenti;
 	}
