@@ -121,9 +121,13 @@
 			<div class="p-3 card" style="min-height: 30vh;">
 				<h4 class="font-italic">Info Proposta Tesi</h4>
 			<ol class="list-unstyled mb-0">
-				<li><a href="#">Utente 1</a></li>
-				<li><a href="#">Utente 2</a></li>
-				<li><a href="#">Utente 3</a></li>
+			<%
+			if(disabilita!=null){
+			for (int i = 0; i < partecipazioni.size(); i++) { 
+				if(partecipazioni.get(i).getPropostaTesiId()==(int)request.getSession().getAttribute("numeroTesiDocente")){
+			%>
+				<li><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
+			<%}} }%>
 			</ol>
 			</div>
 			
@@ -145,10 +149,7 @@
 						<a
 							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
 					</div>
-					<div class="col">
-						<a
-							href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a>
-					</div>
+					
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
