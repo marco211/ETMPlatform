@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.database.DatabaseManager;
@@ -425,6 +426,29 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 		
 		return richieste;
+	}
+
+	@Override
+	public ArrayList<Insegnamento> getInsegnamenti() throws SQLException {
+		String SQL = "SELECT * FROM insegnamento;";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
+		try {
+			connection = DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			ResultSet rs = statement.executeQuery(SQL);
+			while(rs.next()) {
+				Insegnamento insegnamento = new Insegnamento();
+				insegnamento.setNome(rs.getString(1));
+				insegnamento.setCfu(rs.getInt(2));
+				insegnamenti.add(insegnamento);
+			}
+		}finally {
+			if(statement!=null)
+				statement.close();
+		}
+		return insegnamenti;
 	}
 
 }
