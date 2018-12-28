@@ -14,6 +14,8 @@
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
+	@SuppressWarnings("unchecked")
+	ArrayList<PropostaTesi> listaTesi = (ArrayList<PropostaTesi>) session.getAttribute("listaTesiDocente");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -91,7 +93,7 @@
 						<b>Proposta Tesi</b>
 					</div>
 					<div class="col">
-						<b>Email Studente</b>
+						<b>Nome Proposta Tesi</b>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
@@ -102,9 +104,15 @@
 					%>
 					<div class="col">
 						<a
-							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId()%></a>
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
 					</div>
-
+					<div class="col">
+					<%for(int x=0;x<listaTesi.size();x++) {
+							if(listaTesi.get(x).getId()==j){
+						%>
+							<%=listaTesi.get(x).getTitolo() %>
+						<%}} %>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
