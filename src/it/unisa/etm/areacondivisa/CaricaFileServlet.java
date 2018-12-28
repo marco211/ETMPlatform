@@ -54,11 +54,12 @@ public class CaricaFileServlet extends HttpServlet {
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
+		int tesi=0;
 		if(utente.getTipo().equals("s")) {
 			file.setPropostaTesiId(utente.getPropostaTesi_ID());
 		}
 		else {
-			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
+			tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
 		LocalDate data = LocalDate.now();
@@ -69,8 +70,14 @@ public class CaricaFileServlet extends HttpServlet {
 		try {
 			fm.aggiungiFile(file);
 			am.aggiungiAttivita(attivita);
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
+			if(utente.getTipo().equals("d")) {
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+tesi);
 			requestDispatcher.forward(request, response);
+			}
+			else {
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID());
+				requestDispatcher.forward(request, response);
+			}
 		} catch (SQLException e) {
 			request.setAttribute("carica", "Errore nel caricamento, riprova");
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/caricaFile.jsp");

@@ -68,7 +68,7 @@
 							<%}%>
 						</div>
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
-						<h5>Area disabilitata: visualizza un area per attivarla</h5>
+						<h5>Area disabilitata: clicca su una proposta tesi per attivarla</h5>
 						<%} %>
 						<div class="list-group">
 							<%

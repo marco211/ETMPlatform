@@ -94,6 +94,14 @@
 					</button>
 				</div>
 			</form>
+			<!-- 
+          <ul class="navbar-nav d-none d-lg-block d-xl-block">
+          <li class="nav-item">
+          	<a>Benvenuto, </a>
+          	<a class="nav-link text-dark"
+					href="#">Visualizza profilo</a></li>
+			</ul>
+			 -->
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
