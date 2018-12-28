@@ -2,7 +2,6 @@ package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 import java.util.Properties;
 import java.util.UUID;
 
@@ -101,13 +100,12 @@ public class RegistrazioneServlet extends HttpServlet {
 	private boolean registrazioneControl(Utente utente){
 		ManagerFactory mf=new ManagerFactory();
 		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
-		try {
-			am.registraUtente(utente);
-		} catch (SQLException e) {
-			e.printStackTrace();
+		if(am.registraUtente(utente)){
+			return true;
+		}
+		else {
 			return false;
 		}
-		return true;
 	}
 
 

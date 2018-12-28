@@ -1,7 +1,6 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,13 +33,12 @@ public class ConfermaMailServlet extends HttpServlet {
 		String validazione=request.getParameter("validazione");
 		ManagerFactory mf=new ManagerFactory();
 		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
-		try {
-			am.setValidazione(validazione);
+		if(am.setValidazione(validazione)) {
 			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneRiuscita.jsp");
-		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneNonRiuscita.jsp");
 		}
-		
+		else {
+			response.sendRedirect(request.getContextPath()+"/confermaRegistrazioneNonRiuscita.jsp");
+		}		
 	}
 
 	/**

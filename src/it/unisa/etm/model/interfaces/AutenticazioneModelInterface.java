@@ -1,13 +1,12 @@
 package it.unisa.etm.model.interfaces;
 
-import java.sql.SQLException;
-
+import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 
 public interface AutenticazioneModelInterface {
-	public void registraUtente(Utente utente) throws SQLException;
-	public Utente getUtente(String email,String password) throws SQLException;
-	public String getPassword(String email) throws SQLException;
-	public boolean setValidazione(String validazione) throws SQLException;
-	
+	public boolean registraUtente(Utente utente);
+	public Utente getUtente(String email,String password);
+	public String getPassword(String email);
+	public boolean setValidazione(String validazione);
+	public Amministratore getAdmin(String email, String password);
 }
