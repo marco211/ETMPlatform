@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.annotation.WebServlet;
 
-import it.unisa.etm.bean.Utente;
 
 /**
  * Offre la funzionalità di poter effettuare il logout
@@ -47,8 +46,5 @@ public class LogoutServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
-	private boolean logout(){
-		return true;
-	}
 
 }

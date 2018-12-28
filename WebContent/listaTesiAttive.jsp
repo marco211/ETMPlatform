@@ -13,7 +13,7 @@
 <body>
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
+<div style="background-color: #FF9C08; min-height: 81vh;">
 <main role="main" class="container">
 
       <div class="row">  
@@ -40,7 +40,8 @@
 		   				if((!p.isArchiviato())&&(!p.isChiuso())){
 					%>
 					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+						<a class="col-5" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+						<%if(utente.getPropostaTesi_ID()==0){ %>
 		               <div>
 		               <%
 		               ArrayList<RichiestaPartecipazione> richieste_studente = (ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste_studente");
@@ -58,7 +59,7 @@
 		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>			
 		              	<%}} %>
 		              	</div>
-		              	
+		              	<%} %>
 		              </div>
 					<%}}} %>
       
@@ -87,14 +88,16 @@
 		 <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
-            <h4 class="font-italic">Statistiche</h4>
+            <h4 class="font-italic">Tesi a cui stai partecipando:</h4>
             <ol class="list-unstyled mb-0">
-<%int id = utente.getPropostaTesi_ID();
-if(id!=0){
-%>
+			<%int id = utente.getPropostaTesi_ID();
+			if(id!=0){
+			%>
               <li><p>stai partecipando a questa tesi:
               <a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId() %>"><%=proposta.getTitolo() %></a></li>
-              <%} %>
+              <%} else{%>
+              	<p>Non stai partecipando ad alcuna tesi attualmente.</p>
+              <%}%>
             </ol>
           </div>
    

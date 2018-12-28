@@ -3,7 +3,6 @@ package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.sql.SQLException;
 import java.util.Properties;
 
 import javax.mail.Message;
@@ -71,18 +70,13 @@ public class RecuperaPasswordServlet extends HttpServlet {
 	private boolean inviaPassword(String email){
 		ManagerFactory mf=new ManagerFactory();
 		AutenticazioneManager am=(AutenticazioneManager) mf.createAutenticazioneManager();
-		try {
-			String password=am.getPassword(email);
-			if(password==null)
-				return false;
-			if(send(email, password)) {
-				return true;
-			}
-			else {
-				return false;
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
+		String password=am.getPassword(email);
+		if(password==null)
+			return false;
+		if(send(email, password)) {
+			return true;
+		}
+		else {
 			return false;
 		}
 	}
