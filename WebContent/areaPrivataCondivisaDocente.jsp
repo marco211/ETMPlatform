@@ -109,38 +109,26 @@
 							%>
 							</table>
 					</div>
+					
 
 				</div>
 			</div>
 
 			<aside class="col-md-4 my-4">
-			<div class="p-3 card" style="min-height: 80vh;">
-				<h4 class="font-italic">Aree</h4>
+			<div class="p-3 card" style="min-height: 30vh;">
+				<h4 class="font-italic">Info Proposta Tesi</h4>
+			<ol class="list-unstyled mb-0">
+				<li><a href="#">Utente 1</a></li>
+				<li><a href="#">Utente 2</a></li>
+				<li><a href="#">Utente 3</a></li>
+			</ol>
+			</div>
+			
+			<div class="p-3 card my-4" style="min-height: 40vh;">
+			<h4 class="font-italic">Aree</h4>
 				<%
 						if (partecipazioni != null) {
 					%>
-				<!--  
-					<table class="table">
-					<thead>
-						<tr>
-							<th scope="col">Proposta tesi</th>
-							<th scope="col">Email studente</th>
-						</tr>
-					</thead>
-					<tbody>
-					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
-						<tr>
-							<td><%=partecipazioni.get(i).getPropostaTesiId() %></td>
-							<td><%=partecipazioni.get(i).getUtenteEmail() %></td>
-							<td><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>">Visualizza</a></td>
-						</tr>
-						<%
-						}
-					%>
-					</tbody>
-					</table>
-					<%} %>
-					-->
 				<div class="row">
 					<div class="col">
 						<b>Proposta Tesi</b>
@@ -161,13 +149,16 @@
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
+						}
 					%>
 				</div>
-			</div>
-			</aside>
+			
 		</div>
+		
+			</aside>
+			</div>
 		</main>
-	</div>
+</div>
 
 	<jsp:include page="footer.jsp" />
 </body>

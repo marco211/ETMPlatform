@@ -115,8 +115,16 @@
 
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card" style="min-height: 80vh;">
-
-				<h4 class="font-italic">To Do List</h4>
+				<h4 class="font-italic">Info Proposta Tesi</h4>
+					<ol class="list-unstyled mb-0">
+						<li><a href="#">Descrizione</a></li>
+						<li><a href="#">Cose</a></li>
+						<li><a href="#">Situazioni</a></li>
+					</ol>	
+			</div>
+			
+			<div class="p-3 card my-4" style="min-height: 80vh;">
+			<h4 class="font-italic">To Do List</h4>
 				<ul class="list-group list-group-flush">
 					<%
 						if (consegne != null) {
@@ -131,7 +139,9 @@
 						}
 					%>
 				</ul>
+				
 			</div>
+		
 			</aside>
 		</div>
 		</main>
