@@ -77,7 +77,7 @@ public  class UtenteManager implements UtenteModelInterface{
 		Connection istance=DatabaseManager.getIstance();
 		PreparedStatement ps=null;
 		String insertSQL=null;
-		insertSQL = "UPDATE utente SET password=? WHERE EMAIL='"+ utente.getEmail()+"';";
+		insertSQL = "UPDATE utente SET password=? WHERE email='"+ utente.getEmail()+"';";
 		ps=istance.prepareStatement(insertSQL);
 		ps.setString(1, utente.getPassword());
 		return true;

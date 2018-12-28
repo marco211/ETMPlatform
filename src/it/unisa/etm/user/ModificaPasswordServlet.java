@@ -39,7 +39,7 @@ public class ModificaPasswordServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utente utente = (Utente) request.getSession().getAttribute("utente");
 		
-		utente.setPassword(request.getParameter("password1"));
+		utente.setPassword(request.getParameter("password"));
 			if(modificaPasswordUtente(utente) == true) {
 				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 			}else{			
