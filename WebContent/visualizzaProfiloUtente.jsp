@@ -2,7 +2,7 @@
 <%@ page import="it.unisa.etm.bean.* "%>
 
 <%
-Utente utente = (Utente) session.getAttribute("utente");
+Utente utente = (Utente) request.getAttribute("toShow");
 if(utente==null){
 	response.sendRedirect("./index.jsp");
     return;
