@@ -75,7 +75,6 @@ if(utente==null){
     			if(utente.getPropostaTesi_ID()!=propostatesi.getId()) {
     				for(RichiestaPartecipazione r : richieste){
     					if(r.getPropostatesi_id()==propostatesi.getId()){
-    						System.out.println("dentro2");
     						b = true;
     					}
     				}if(!b){

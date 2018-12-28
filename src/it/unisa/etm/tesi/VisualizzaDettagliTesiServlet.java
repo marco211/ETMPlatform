@@ -47,9 +47,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		session.setAttribute("propostatesi", propostaTesi);
 		session.setAttribute("utenti", utenti);
 		request.setAttribute("richiesteproposte", richieste);
-		for (RichiestaPartecipazione p : richieste) {
-			System.out.println(p.getPropostatesi_id());
-		}
+		
 		Utente docente = new Utente();
 		for(Utente u : utenti){
 			if(propostaTesi.getUtenteEmail().equalsIgnoreCase(u.getEmail())){
