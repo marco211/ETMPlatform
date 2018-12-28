@@ -40,7 +40,11 @@
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 			<div class="col my-4 mx-4">
+<<<<<<< HEAD
 				<form action="AggiungiPropostaTesiServlet" method="post" id="aggiungi" name="aggiungiproposta">
+=======
+				<form action="ConfermaAggiungiPropostaTesiServlet" method="post" id="aggiungi">
+>>>>>>> 2b3bd8585fd9ef935e24c5c8788e1c9f03c0cebc
 					<h1>Aggiungi una nuova proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
