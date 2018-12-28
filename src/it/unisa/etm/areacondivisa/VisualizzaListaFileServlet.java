@@ -13,7 +13,6 @@ import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
-import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
  * Servlet implementation class VisualizzaListaFileServlet
@@ -40,7 +39,6 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 		FileManager um = (FileManager) em.createFileManager();
 		ArrayList<File> lista;
 		try {
-			PropostaTesiManager pt=(PropostaTesiManager)em.createPropostaTesiManager();
 			lista=um.getListaFile(id);
 			request.getSession().setAttribute("listaFile", lista);
 		} catch (SQLException e) {
