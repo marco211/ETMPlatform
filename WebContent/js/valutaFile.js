@@ -49,4 +49,9 @@ function validazione()
 		}
 		div.append("Inserisci una descrizione");
 	}
+	else
+	{
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
+		document.valuta.submit();
+	}
 }

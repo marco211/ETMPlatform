@@ -56,10 +56,10 @@
 								<label for="File"><b>File:</b></label>
 							</div>
 							<div class="form-group">
-								<input type="file" name="uploadFile" id="uploadFile">
+								<input type="file" name="uploadFile" id="uploadFile" required>
 							</div>
 							<div class="col text-center">
-							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
+							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert"></div>
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary" onclick="validazione()">Carica</button>
 							</div>
