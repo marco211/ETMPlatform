@@ -2,6 +2,7 @@ package it.unisa.etm.tesi;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -46,6 +48,7 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 			int count = (int) session.getAttribute("count");
 			PropostaTesi p = new PropostaTesi();
 			if(count==0) { 
+				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
 				p.setTitolo(request.getParameter("propostatesi_titolo"));
 				p.setAmbito(request.getParameter("propostatesi_ambito"));
 				p.setTempoDiSviluppo(Integer.parseInt(request.getParameter("propostatesi_tempo")));
@@ -54,6 +57,7 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 				session.setAttribute("propostacorrente", p);
 				int id= Integer.parseInt(request.getParameter("propostatesi_id"));
 				session.setAttribute("proposta_tesi_id", id);
+				session.setAttribute("insegnamenti", insegnamenti);
 				request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);
 				}
 			else {
@@ -99,4 +103,23 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 		return true;	
 	}
 
+	/**
+	 *	ritorna la lista degli insegnamenti dei docenti
+	 * @param 
+	 * @return lista degli insegnamenti
+	 * <p>
+	 * null in caso di errore o che non sono prensenti insegnamenti.
+	 */
+	private ArrayList<Insegnamento> getInsegnamenti(){
+		ManagerFactory mf = new ManagerFactory();
+		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
+		try {
+			insegnamenti = ptm.getInsegnamenti();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return insegnamenti;
+	}
 }

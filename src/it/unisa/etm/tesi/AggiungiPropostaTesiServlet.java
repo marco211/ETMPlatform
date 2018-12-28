@@ -2,6 +2,7 @@ package it.unisa.etm.tesi;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -41,22 +43,33 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String titolo=request.getParameter("titolo");
-		String ambito=request.getParameter("ambito");
-		int tempo=Integer.parseInt(request.getParameter("tempo"));
-		String descrizione= request.getParameter("descrizione");
-		String materia=request.getParameter("materia");
 		HttpSession session = request.getSession();
-		Utente utente = (Utente) session.getAttribute("utente");
-		String utenteEmail = utente.getEmail();
-		PropostaTesi tesi = new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
-		if(aggiungiPropostatesi(tesi))
-		{
-			session=request.getSession();
-			session.setAttribute("tesi", tesi);
-		}
-		response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
-	}
+		synchronized(session) {
+			int count = (int) session.getAttribute("count2");
+			if(count==0) { 
+				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
+				session.setAttribute("insegnamenti", insegnamenti);
+				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);
+				}
+			else {			
+				String titolo=request.getParameter("titolo");
+				String ambito=request.getParameter("ambito");
+				int tempo=Integer.parseInt(request.getParameter("tempo"));
+				String descrizione= request.getParameter("descrizione");
+				String materia=request.getParameter("materia");
+				Utente utente = (Utente) session.getAttribute("utente");
+				String utenteEmail = utente.getEmail();
+				PropostaTesi tesi = new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
+				count=0;
+				session.setAttribute("count2", count);
+				if(aggiungiPropostatesi(tesi))
+				{
+					session=request.getSession();
+					session.setAttribute("tesi", tesi);
+				}
+				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+					}
+			}}
 	
 	/**
 	 * Aggiunge alla lista delle proposte di tesi, una nuova proposta creata dal docente.
@@ -78,4 +91,24 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 		return b;	
 	}
 
+	/**
+	 *	ritorna la lista degli insegnamenti dei docenti
+	 * @param 
+	 * @return lista degli insegnamenti
+	 * <p>
+	 * null in caso di errore o che non sono prensenti insegnamenti.
+	 */
+	private ArrayList<Insegnamento> getInsegnamenti(){
+		ManagerFactory mf = new ManagerFactory();
+		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
+		try {
+			System.out.println("ci sono");
+			insegnamenti = ptm.getInsegnamenti();
+		}catch(SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return insegnamenti;
+	}
 }

@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.* "%>
+<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.*, java.time.* "%>
 
 
 <!DOCTYPE html>
@@ -38,8 +38,7 @@
 
 
 	<div style="background-color: #FF9C08; min-height: 81vh;">
-			
-				
+			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 			<div class="col my-4 mx-4">
 				<form action="AggiungiPropostaTesiServlet" method="post" id="aggiungi">
 					<h1>Aggiungi una nuova proposta di tesi</h1>
@@ -65,12 +64,20 @@
 							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
 					</div>
 
-					<div class="form-group col-4">
-						<label for="inputMateria">Materia</label> <input type="text"
-							class="form-control" name="materia" placeholder="Materia"
-							>
-					</div>
-					
+					<select class="combobox" name="materia">
+									  <%for(Insegnamento i : insegnamenti){ %>
+									  <option value="<%=i.getNome()%>"><%=i.getNome() %></option>
+									</select>
+									
+									<script type="text/javascript">
+									  $(document).ready(function(){
+									    $('.combobox').combobox();
+									  });
+									</script>
+					<%} %>
+					<%int count = (int) session.getAttribute("count2");
+								count++;
+								session.setAttribute("count2",count);%>
 					
 					<button type="submit" class="btn btn-primary col-2 my-2">Aggiungi</button>
 					</div>
