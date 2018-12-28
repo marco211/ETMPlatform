@@ -5,8 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.bean.Partecipa;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.database.DatabaseManager;

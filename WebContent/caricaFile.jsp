@@ -6,8 +6,11 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
+	@SuppressWarnings("unchecked")
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+	@SuppressWarnings("unchecked")
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 	String errore = (String) request.getAttribute("carica");
 %>

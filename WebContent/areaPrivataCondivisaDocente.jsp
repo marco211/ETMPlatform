@@ -11,8 +11,9 @@
 		response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
 		return;
 	}
-	
+	@SuppressWarnings("unchecked")
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+	@SuppressWarnings("unchecked")
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	Boolean disabilita=(Boolean)session.getAttribute("disabilita");
 %>

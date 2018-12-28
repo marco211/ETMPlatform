@@ -61,8 +61,10 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	 * @param nome stringa che rappresenza il nome del file;
 	 * @return un oggetto file il cui nome � quello passato come parametro.
 	 */
+	/*
 	private File getInfo(String nome){
 		return null;
 		
 	}
+	*/
 }

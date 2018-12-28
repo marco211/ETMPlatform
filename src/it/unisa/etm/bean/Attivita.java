@@ -1,7 +1,6 @@
 package it.unisa.etm.bean;
 
 import java.io.Serializable;
-import java.sql.Date;
 import java.time.LocalDate;
 
 public class Attivita implements Serializable{

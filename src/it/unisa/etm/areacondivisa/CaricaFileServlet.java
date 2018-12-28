@@ -1,10 +1,8 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,16 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
 import javax.servlet.annotation.*;
-
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
-import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
 
 
 /**
@@ -91,9 +86,11 @@ public class CaricaFileServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
+	/*
 	private boolean uploadFileControl(File file){
 
 
 		return true;
 	}
+	*/
 }
