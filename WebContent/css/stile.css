@@ -3,9 +3,6 @@ aside {
 }
 .side-crop { max-width: 375px; overflow: hidden; }
 .side-crop img { max-width: initial; /* Maybe optional. See note below */ }
-body{
-    background: -webkit-linear-gradient(left, #3931af, #00c6ff);
-}
 .emp-profile{
     padding: 3%;
     margin-top: 3%;
