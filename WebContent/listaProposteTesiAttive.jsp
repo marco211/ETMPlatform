@@ -31,6 +31,7 @@
 			
     		 <div class="container">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
+    		      
     		        int count = 0;
     		        session.setAttribute("count", count);
 		   			for(PropostaTesi p : proposte)
@@ -40,7 +41,7 @@
 						<a class="col-5" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
 		               <div>
 		               <%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
-		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>"">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
+		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>&propostatesi_titolo=<%=p.getTitolo()%>&propostatesi_ambito=<%=p.getAmbito()%>&propostatesi_tempo=<%=p.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=p.getDecrizione()%>&propostatesi_materia=<%=p.getMaterie()%>">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
 		               <% }
 					
 						if((p.isArchiviato())&&(!p.isChiuso())){
