@@ -1,7 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*,java.util.*"%>
 <%
+	Amministratore admin = (Amministratore) session.getAttribute("admin");
 	Utente utente = (Utente) session.getAttribute("utente");
+	if(utente==null && admin == null){
+		response.sendRedirect("./index.jsp");
+	    return;
+	}
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 %>
 <!DOCTYPE html>
@@ -53,7 +58,11 @@
 		<a class="navbar-brand" href="#"><img alt="load"
 			src="img/logo.png" width="60" height="60"></a> <span
 			style="color: orange;">ETM Platform</span>
+
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+
+			<%if(utente!=null){ %>
+			
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="homePage.jsp">Home <span class="sr-only"></span>
@@ -71,18 +80,27 @@
 					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a></li>
+					href="VisualizzaListaPartecipazioneServlet">Area privata
+						condivisa</a></li>
 				<%} %>
 
-				
+
 				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
-				
+
 				<li class="nav-item d-lg-none"><a class="nav-link text-dark"
 					href="LogoutServlet">Logout</a></li>
-			</ul>
 
+				<%}else if(admin!=null){ %>
+
+				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
+						Admin</a></li>
+			
+
+
+				<%} %>
+			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<div class="container">
 					<input class="form-control mr-sm-2 border-dark" type="search"
