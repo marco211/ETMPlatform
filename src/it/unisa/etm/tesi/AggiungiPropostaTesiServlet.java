@@ -45,51 +45,13 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		synchronized(session) {
-			int count = (int) session.getAttribute("count2");
-			if(count==0) { 
+			
 				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
 				session.setAttribute("insegnamenti", insegnamenti);
-				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);
-				}
-			else {			
-				String titolo=request.getParameter("titolo");
-				String ambito=request.getParameter("ambito");
-				int tempo=Integer.parseInt(request.getParameter("tempo"));
-				String descrizione= request.getParameter("descrizione");
-				String materia=request.getParameter("materia");
-				Utente utente = (Utente) session.getAttribute("utente");
-				String utenteEmail = utente.getEmail();
-				PropostaTesi tesi = new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
-				count=0;
-				session.setAttribute("count2", count);
-				if(aggiungiPropostatesi(tesi))
-				{
-					session=request.getSession();
-					session.setAttribute("tesi", tesi);
-				}
-				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
-					}
+				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
+				
 			}}
 	
-	/**
-	 * Aggiunge alla lista delle proposte di tesi, una nuova proposta creata dal docente.
-	 * @param tesi rappresenta la proposta di tesi che il docente vuole aggiungere
-	 * @return boolean true se l'aggiunta è avvenuta con successo;
-	 * <p>
-	 * false in caso contrario.
-	 */
-	private boolean aggiungiPropostatesi(PropostaTesi tesi){
-		ManagerFactory mf=new ManagerFactory();
-		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		boolean b = false;
-		try {
-			b = ptm.inserisciPropostaTesi(tesi);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return b;	
-	}
 
 	/**
 	 *	ritorna la lista degli insegnamenti dei docenti

@@ -41,23 +41,23 @@
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 				
 			<div class="col my-4 mx-4">
-				<form action="ModificaPropostaTesiServlet" method="post" id="aggiungi">
+				<form action="ConfermaModificaPropostaTesiServlet" method="post" id="aggiungi"  name="aggiungiproposta">
 					<h1>Modifica una proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
 						<div class="form-group col-4 pt-4">
 							<label for="inputTitolo">Titolo</label> <input type="text"
-								class="form-control" name="titolo" placeholder="Titolo" value="<%=proposta.getTitolo()%>"required>
+								class="form-control" name="titolo" placeholder="Titolo" onchange="controlloTitolo()" value="<%=proposta.getTitolo()%>"required>
 						</div>
 
 						<div class="form-group col-4">
 							<label for="inputAmbito">Ambito</label> <input type="text"
-								class="form-control" name="ambito" placeholder="Ambito" value="<%=proposta.getAmbito() %>"
+								class="form-control" name="ambito" placeholder="Ambito" onchange="controlloAmbito()" value="<%=proposta.getAmbito() %>"
 								required>
 						</div>
 
 					<div class="form-group col-4">
-                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="<%=proposta.getTempoDiSviluppo()%>">
+                        <label for="inputTempo">Durata</label> <input type="number"  name="tempo" class="count" form="aggiungi" onchange="controlloTempo()" value="<%=proposta.getTempoDiSviluppo()%>"> giorni
 					</div>
 
 					<div class="form-group col-5" >
@@ -81,17 +81,23 @@
 								</div>
 			
 					<%int count = (int) session.getAttribute("count");
-								count++;
-								session.setAttribute("count",count);%>
-					<button type="submit" class="btn btn-primary col-2 my-2">Modifica</button>
-					</div>
+						if(count==0){
+							count++;
+						}
+									
+									session.setAttribute("count",count);
+									%> 
+							<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
+							<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>	
+						</div>
 				</form>
 			</div>
 			
 		</div>
 		
-	</div>
 	<jsp:include page="footer.jsp" />
+	<script src="js/validazionePropostaTesi.js"></script>
+
 
 </body>
 </html>

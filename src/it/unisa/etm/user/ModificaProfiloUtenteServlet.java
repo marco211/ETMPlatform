@@ -1,7 +1,6 @@
 package it.unisa.etm.user;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
@@ -9,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -41,6 +39,7 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 				
 		utente.setNome(request.getParameter("nome"));
 		utente.setCognome(request.getParameter("cognome"));
+		utente.setDataDiNascita(request.getParameter("data"));
 		log.info(utente.getNome());
 		if(utente.getTipo().equals("s")) utente.setMatricola(Long.parseLong(request.getParameter("matricola")));
 		else {

@@ -51,6 +51,7 @@ public class LoginServlet extends HttpServlet {
 		if(admin!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("admin", admin);
+			System.out.print("admin preso: "+email+" "+password);
 			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 		}
 		else {

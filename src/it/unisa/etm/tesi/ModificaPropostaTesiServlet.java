@@ -45,9 +45,7 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		synchronized(session) {
-			int count = (int) session.getAttribute("count");
 			PropostaTesi p = new PropostaTesi();
-			if(count==0) { 
 				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
 				p.setTitolo(request.getParameter("propostatesi_titolo"));
 				p.setAmbito(request.getParameter("propostatesi_ambito"));
@@ -59,48 +57,10 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 				session.setAttribute("proposta_tesi_id", id);
 				session.setAttribute("insegnamenti", insegnamenti);
 				request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);
-				}
-			else {
-				int id = (int) session.getAttribute("proposta_tesi_id");
-				String titolo=request.getParameter("titolo");
-				String ambito=request.getParameter("ambito");
-				int tempo=Integer.parseInt(request.getParameter("tempo"));
-				String descrizione= request.getParameter("descrizione");
-				String materia=request.getParameter("materia");
-				Utente utente = (Utente) session.getAttribute("utente");
-				String utenteEmail = utente.getEmail();
-				PropostaTesi tesi = new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
-				tesi.setId(id);
-				count=0;
-				session.setAttribute("count", count);
-				if(this.modificaPropostaTesi(tesi))
-				{
-					session=request.getSession();
-					session.setAttribute("tesi", tesi);
-				}
-				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
-					}
-					
-				}
-			}
-	/**
-	 * Modifica la proposta di tesi selezionata dall'utente registrato come docente con i cambiamenti apportati da quest'ultimo.
-	 * @param tesi rappresenta la proposta di tesi che il docene vuole modificare.
-	 * @return boolean: se la modifica ha avuto successo allora torna true;
-	 * <p>
-	 * altrimenti torna false.
-	 */
-	private boolean modificaPropostaTesi(PropostaTesi tesi){
-		ManagerFactory mf=new ManagerFactory();
-		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
-			ptm.modificaPropostaTesi(tesi);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
+				
 		}
-		return true;	
-	}
+			}
+
 
 	/**
 	 *	ritorna la lista degli insegnamenti dei docenti

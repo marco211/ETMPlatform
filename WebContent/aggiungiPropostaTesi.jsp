@@ -40,55 +40,59 @@
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 			<div class="col my-4 mx-4">
-				<form action="AggiungiPropostaTesiServlet" method="post" id="aggiungi">
+
+				<form action="ConfermaAggiungiPropostaTesiServlet" method="post" id="aggiungi" name="aggiungiproposta">
 					<h1>Aggiungi una nuova proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
 						<div class="form-group col-4 pt-4">
 							<label for="inputTitolo">Titolo</label> <input type="text"
-								class="form-control" name="titolo" placeholder="Titolo" required>
+								class="form-control" name="titolo" placeholder="Titolo" onchange="controlloTitolo()" required>
 						</div>
 
 						<div class="form-group col-4">
 							<label for="inputAmbito">Ambito</label> <input type="text"
-								class="form-control" name="ambito" placeholder="Ambito"
-								required>
+								class="form-control" name="ambito" placeholder="Ambito" onchange="controlloAmbito()" required>
 						</div>
 
 					<div class="form-group col-4">
-                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="1">
+                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1"> giorni
 					</div>
 
 					<div class="form-group col-5" >
 						<label for="inputDescrizione">Descrizione</label>
-							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
+						<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
+
 					</div>
- <div class="col-sm-3">
-					<select class="form-control" name="materia">
+					 <div class="form-group col-sm-5">
+						<select class="form-control" name="materia">
+							<%if(!insegnamenti.isEmpty()){%>
 									  <%for(Insegnamento i : insegnamenti){ %>
 									  <option value="<%=i.getNome()%>"><%=i.getNome() %></option>
+									  <%} }else{%>
+									  <option value="Attualmente non ci sono insegnamenti.">Attualmente non ci sono insegnamenti.</option>
 									  <%} %>
 									</select>
-									</div>
+					 </div>
 									<script type="text/javascript">
 									  $(document).ready(function(){
 									    $('.form-control').combobox();
 									  });
 									</script>
 					
-					<%int count = (int) session.getAttribute("count2");
-								count++;
-								session.setAttribute("count2",count);%>
+									<%int count = (int) session.getAttribute("count2");
+									count++;
+									session.setAttribute("count2",count);%>
 					
-					<button type="submit" class="btn btn-primary col-2 my-2">Aggiungi</button>
-					</div>
+					<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
+					<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Aggiungi</button>							</div>
 				</form>
 			</div>
 			
 		</div>
 		
-	</div>
 	<jsp:include page="footer.jsp" />
+	<script src="js/validazionePropostaTesi.js"></script>
 
 </body>
 </html>

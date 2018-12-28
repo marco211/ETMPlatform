@@ -28,18 +28,18 @@ if(utente==null){
                 <div class="col-sm-10 offset-sm-1 text-center py-5">
                 <img src="https://www.unisa.it/rescue/img/logo_cc.png" class="img-fluid" alt="Responsive image">
                    <p>Inserisci due volte la nuova password per apportare la modifica.</p>
+                     <form action="ModificaPasswordServlet" method="post" class="form-inline justify-content-center">
                     <div class="info-form">
-                        <form action="ModificaPasswordServlet" method="post" class="form-inline justify-content-center">
                             <div class="form-group">
                                 <label class="sr-only">Nuova Password</label>
-                                <input type="text" name="newpass" class="form-control" placeholder="Nuova Password"> 
-                                <input type="text" name="newpass" class="form-control" placeholder="Conferma Password"> 
+                                <input type="password" name="password" class="form-control" placeholder="Nuova Password"> 
+                                <input type="password" name="password2" class="form-control" placeholder="Conferma Password"> 
                                  
                             </div>
-                        </form>
+                       
                    </div>
                     <br>
-                  <button type="submit" class="btn btn-success ">Modifica password</button>      
+                  <button type="submit" class="btn btn-success ">Modifica password</button></form>     
                 
                 </div>
             </div>

@@ -6,7 +6,7 @@
 <%
     Amministratore admin=(Amministratore)session.getAttribute("admin");
 	Utente utente = (Utente) session.getAttribute("utente");
-	if (utente != null || admin !=null) {
+	if (admin !=null || utente!=null) {
 		response.sendRedirect("./homePage.jsp");
 		return;
 	}
