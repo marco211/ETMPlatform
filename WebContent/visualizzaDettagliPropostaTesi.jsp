@@ -2,6 +2,7 @@
 <%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.* "%>  
 
 <%
+Utente docente = (Utente) session.getAttribute("docente");
 PropostaTesi propostatesi = (PropostaTesi) session.getAttribute("propostatesi");
 if(propostatesi==null){
 	response.sendRedirect("./index.jsp");
@@ -40,6 +41,8 @@ if(utente==null){
 			<p class="lead"><%=propostatesi.getAmbito()%></p>
 		    	
     			<%
+    			String uno;
+    			String due;
     			ArrayList<Utente> utenti = (ArrayList<Utente>)session.getAttribute("utenti");
     			if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
     			if(!propostatesi.isChiuso()){%>
@@ -52,6 +55,7 @@ if(utente==null){
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
     			<% }int count = 0;
     		        session.setAttribute("count", count);%>
+    		        <a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
     			<%boolean b = false;
     			for(Utente u : utenti){
     					if(u.getPropostaTesi_ID()==propostatesi.getId())
@@ -59,10 +63,13 @@ if(utente==null){
     			}if(!b){
     			%>
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
-    			<a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
+    			
     			<%}else{ %>
-    			<p>Non puoi modificare o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
+    			<p>Non puoi o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
     			<%}} %>
+    			<p>Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></p>
+    			<a class="alert-link"href="VisualizzaProfiloUtenteServlet?utente_email=<%=docente.getEmail() %>"><%=docente.getEmail()%></a>
+    			
   		</div>
   		 <div class="container-fluid bg-white border-left col" style="width: 10px">
   		 	<p>Materia/e: <%=propostatesi.getMaterie()%></p>

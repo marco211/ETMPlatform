@@ -84,6 +84,7 @@
         				  	
         				  Period tempo = Period.between(r.getData(), LocalDate.now());
 					%>
+<<<<<<< HEAD
 						<div class="list-group-item list-group-item-action flex-column align-items-start mx-1 px-1 py-2">
 							<div class="d-flex w-100">
 								<div style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
@@ -112,6 +113,15 @@
 										<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="RifiutaRichiesta"><i class="fas fa-times-circle"></i></a>					
 									</div>									
 								</div>
+=======
+						<div class="row border border-dark bg-info mx-1 px-1"><%=c%>)Richiesta effettuata il giorno <%=r.getData()%> da parte di 
+						<a class="alert-link" href="VisualizzaProfiloUtenteServlet?utente_email=><%=r.getUtente_mail()%>"><%=r.getUtente_mail() %></a> per la tesi&nbsp;
+						<a class="alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
+						<div class="row border border-dark bg-info mx-2 px-1">
+							<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="AccettaRichiesta">Accetta</a>				
+							<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="RifiutaRichiesta">Rifiuta</a>					
+							</div>
+>>>>>>> fafc37737049d18c572b422df71a6391305bd02e
 							</div>
 							
 						</div>
