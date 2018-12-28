@@ -11,7 +11,6 @@ if(utente==null){
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -47,7 +46,7 @@ if(utente==null){
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni</a>
                                 </li>
-                                 <%if(utente.getEmail().equals(request.getParameter("email"))){%>
+                                 <%if(utente.getEmail().equals(request.getParameter("utente_email"))){%>
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica Profilo</a>
                                 </li><% }%>
@@ -104,13 +103,13 @@ if(utente==null){
                             </div>
                            
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                                <form action="ModificaProfiloUtenteServlet" method="post">
+                                <form action="ModificaProfiloUtenteServlet" method="post" name="modificaProfilo">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <label>Nome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" name="nome" placeholder="Nome">
+                                                <input type="text" class="form-control" name="nome" onchange="controlloNome()"placeholder="Nome">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -118,7 +117,7 @@ if(utente==null){
                                                 <label>Cognome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="cognome" placeholder="Cognome">
+                                                 <input type="text" class="form-control" name="cognome" onchange="controlloCognome()" placeholder="Cognome">
                                             </div>
                                         </div>
                                         <div class="row">
@@ -126,7 +125,7 @@ if(utente==null){
                                                 <label>Data di Nascita</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="date" class="form-control" name="data" placeholder="Data di Nascita">
+                                                 <input type="date" class="form-control" name="data" onchange="controlloData()" placeholder="Data di Nascita">
                                             </div>
                                         </div>
                                         <%if(utente.getTipo().equals("s")){%>
@@ -135,7 +134,7 @@ if(utente==null){
                                                 <label>Matricola</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="matricola" placeholder="Matricola">
+                                                 <input type="text" class="form-control" name="matricola" onchange="controlloMatricola()"placeholder="Matricola">
                                             </div>
                                         </div><% }%>
                                         <%if(utente.getTipo().equals("d")){%>
@@ -144,14 +143,12 @@ if(utente==null){
                                                 <label>Ufficio</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="ufficio" placeholder="Ufficio">
+                                                 <input type="text" class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="Ufficio">
                                             </div>
                                         </div><% }%>
-                                    <div class="row">
-                                    <div class="col-md-6">
-                                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Salva"/>
-                                    </div>
-                                </div></form>
+                                    <div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
+									<button type="button" class="btn btn-primary" name="invio" onclick="validazione()">Salva</button>
+									</form>
                             </div>
                         </div>
                     </div>
@@ -178,6 +175,8 @@ if(utente==null){
 </div>
     
 <jsp:include page="footer.jsp" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="js/validazioneRegistrazione.js"></script>
 
 </body>
 </html>
