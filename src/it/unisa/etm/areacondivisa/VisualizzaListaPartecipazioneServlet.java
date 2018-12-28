@@ -37,7 +37,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		ManagerFactory em = new ManagerFactory();
 		PropostaTesiManager tesi=(PropostaTesiManager)em.createPropostaTesiManager();
-		ArrayList<PropostaTesi> list;
+		ArrayList<PropostaTesi> list = null;
 		try {
 			list = tesi.getProposteTesiDocente(utente.getEmail());
 			PartecipaManager partecipa = (PartecipaManager) em.createPartecipaManager();
@@ -57,6 +57,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
 			requestDispatcher.forward(request, response);
 		}else {
+			request.getSession().setAttribute("listaTesiDocente", list);
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
 		requestDispatcher.forward(request, response);
 		}

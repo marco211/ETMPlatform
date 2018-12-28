@@ -9,9 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.Consegna;
+import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
+import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
  * Servlet implementation class VisualizzaListaConsegneServlet
@@ -37,7 +39,10 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 		int propostaTesiId =utente.getPropostaTesi_ID();
 		ManagerFactory em = new ManagerFactory();
 		ConsegnaManager consegna = (ConsegnaManager) em.createConsegnaManager();
+		PropostaTesiManager tesi = (PropostaTesiManager) em.createPropostaTesiManager();
 		try {
+			PropostaTesi propostaTesi = tesi.getPropostaTesi(propostaTesiId);
+			request.getSession().setAttribute("propostaTesi", propostaTesi);
 			ArrayList<Consegna> consegne = consegna.getListaConsegne(propostaTesiId);
 			request.getSession().setAttribute("listaConsegne", consegne);
 		} catch (SQLException e) {
