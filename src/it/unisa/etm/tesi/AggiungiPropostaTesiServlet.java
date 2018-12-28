@@ -103,7 +103,6 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
 		try {
-			System.out.println("ci sono");
 			insegnamenti = ptm.getInsegnamenti();
 		}catch(SQLException e) {
 			e.printStackTrace();

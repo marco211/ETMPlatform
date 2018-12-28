@@ -72,6 +72,8 @@ if(utente==null){
     			<%
     			boolean b = false;
     			ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richiesteproposte");
+    			if(utente.getTipo().equals("s")){
+    				if(utente.getPropostaTesi_ID()==0){
     			if(utente.getPropostaTesi_ID()!=propostatesi.getId()) {
     				for(RichiestaPartecipazione r : richieste){
     					if(r.getPropostatesi_id()==propostatesi.getId()){
@@ -82,7 +84,7 @@ if(utente==null){
     			<a class="alert-link" href="InviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle">Invia Richiesta Proposta Tesi&nbsp;</i></a>
     			<%}else{%>
     			<p>Hai già inviato una richiesta di partecipazione</p>
-    			<%}} %>
+    			<%}}}} %>
   		</div>
   		 <div class="container-fluid bg-white border-left col" style="width: 10px">
   		 	<p>Materia/e: <%=propostatesi.getMaterie()%></p>
