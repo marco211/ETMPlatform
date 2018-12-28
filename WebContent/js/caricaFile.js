@@ -28,21 +28,6 @@ function controlloDescrizione()
 	}
 }
 
-function controlloFile()
-{
-	var file=document.getElementById('uploadFile').value;
-	if(file.size==0)
-	{
-		document.carica.uploadFile.style.borderColor="red";
-		return false;
-	}
-	else
-	{
-		document.carica.uploadFile.style.borderColor="green";
-		return true;
-	}
-}
-
 function validazione()
 {
 	document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
@@ -63,13 +48,9 @@ function validazione()
 			focused = true;
 		}
 		div.append("Inserisci una descrizione");
-	}
-	else if(!controlloFile())
+	}else
 	{
-		if(!focused){
-			document.carica.uploadFile.focus();
-			focused=true;
-		}
-		div.append("Inserisci un file")
-		}
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
+		document.carica.submit();
 	}
+}

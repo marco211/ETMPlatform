@@ -47,9 +47,10 @@ if(utente==null){
                                 <li class="nav-item">
                                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni</a>
                                 </li>
+                                 <%if(utente.getEmail().equals(request.getParameter("email"))){%>
                                 <li class="nav-item">
                                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica Profilo</a>
-                                </li>
+                                </li><% }%>
                             </ul>
                         </div>
                     </div>
@@ -101,6 +102,7 @@ if(utente==null){
                                             </div>
                                         </div><% }%>
                             </div>
+                           
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <form action="ModificaProfiloUtenteServlet" method="post">
                                         <div class="row">
