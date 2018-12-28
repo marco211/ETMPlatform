@@ -43,7 +43,20 @@ function controlloDescrizione()
 	}
 }
 
-
+function controlloTempo()
+{
+	var tempo=document.aggiungiproposta.tempo.value;
+	if(tempo.length==0 || tempo<=0)
+	{
+		document.aggiungiproposta.descrizione.style.borderColor="red";
+		return false;
+	}
+	else
+	{
+		document.aggiungiproposta.descrizione.style.borderColor="green";
+		return true;
+	}
+}
 
 function validazione()
 {
@@ -72,6 +85,14 @@ function validazione()
 			focused = true;
 		}	
 		div.append("Inserisci una descrizione");
+	}
+	else if(!controlloTempo())
+	{
+		if(!focused){
+			document.aggiungiproposta.tempo.focus();
+			focused = true;
+		}	
+		div.append("La proposta tesi deve avere una durata di almeno 1 giorno");
 	}
 		else
 		{
