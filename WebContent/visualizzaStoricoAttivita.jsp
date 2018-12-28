@@ -6,7 +6,8 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-	
+
+	PropostaTesi tesi = (PropostaTesi) session.getAttribute("propostaTesi");
 	@SuppressWarnings("unchecked")
 	ArrayList<Attivita> attivita = (ArrayList<Attivita>) session.getAttribute("storico");
 	@SuppressWarnings("unchecked")
@@ -18,12 +19,14 @@
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/stile.css">
-    <title>ETM Platform - Storico attivita'</title>
-  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="css/stile.css">
+<title>ETM Platform - Storico attivita'</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
 </head>
 <body>
 
@@ -45,8 +48,7 @@
 								if (attivita != null) {
 									for (int i = 0; i < attivita.size(); i++) {
 							%>
-							<li class="list-group-item"><%= attivita.get(i).toString()
-									%></li>
+							<li class="list-group-item"><%=attivita.get(i).toString()%></li>
 							<%
 								}
 								}
@@ -59,28 +61,67 @@
 			</div>
 
 
-			<aside class="col-md-4 my-4">
-			<div class="p-3 card" style="min-height: 80vh;">
-				<%
-					if (utente.getTipo().equals("d")) {
-				%>
-				<h4 class="font-italic">Aree</h4>
-				<div class="row">
-					<div class="col"><b>Proposta Tesi</b></div>
-					<div class="col"><b>Email Studente</b></div>
-					<div class="col"></div>
-					<div class="w-100" style="border-bottom: 1px solid"></div>
-					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
-					<div class="col"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a></div>
-					<div class="col"><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a></div>
-					<div class="w-100" style="border-bottom: 1px solid"></div>
-						<%
+			<aside class="col-md-4 my-4"> <%
+ 	if (utente.getTipo().equals("d")) {
+ %>
+			<div class="p-3 card" style="min-height: 35vh;">
+				<h4 class="font-italic">Info Proposta Tesi</h4>
+				<ol class="list-unstyled mb-0">
+					<%
+						for (int i = 0; i < partecipazioni.size(); i++) {
+								if (partecipazioni.get(i)
+										.getPropostaTesiId() == (int) request.getSession().getAttribute("numeroTesiDocente")) {
+					%>
+					<li><a
+						href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
+					<%
 						}
+							}
+					%>
+				</ol>
+			</div>
+
+			<div class="p-3 card my-4" style="min-height: 35vh;">
+				<h4 class="font-italic">Aree</h4>
+				<%
+					if (partecipazioni != null) {
+				%>
+				<div class="row">
+					<div class="col">
+						<b>Proposta Tesi</b>
+					</div>
+					<div class="col">
+						<b>Email Studente</b>
+					</div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					<%
+						int j = 0;
+								for (int i = 0; i < partecipazioni.size(); i++) {
+									if (partecipazioni.get(i).getPropostaTesiId() != j) {
+										j = partecipazioni.get(i).getPropostaTesiId();
+					%>
+					<div class="col">
+						<a
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId()%></a>
+					</div>
+
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					<%
+						}
+								}
+							}
 					%>
 				</div>
-				<%
-					} else if (utente.getTipo().equals("s")) {
-				%>
+			</div>
+			<%
+				} else if (utente.getTipo().equals("s")) {
+			%>
+			<div class="p-3 card" style="min-height: 35vh;">
+				<h4 class="font-italic"><%=tesi.getTitolo()%></h4>
+				<h6><%=tesi.getDecrizione()%></h6>
+			</div>
+
+			<div class="p-3 card my-4" style="min-height: 35vh;">
 				<h4 class="font-italic">To Do List</h4>
 				<ul class="list-group list-group-flush">
 					<%
@@ -94,11 +135,11 @@
 							}
 					%>
 				</ul>
-				<%
-					}
-				%>
+
 			</div>
-			</aside>
+			<%
+				}
+			%> </aside>
 		</div>
 		</main>
 	</div>

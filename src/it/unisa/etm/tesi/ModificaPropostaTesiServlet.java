@@ -61,7 +61,6 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 				request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);
 				}
 			else {
-				
 				int id = (int) session.getAttribute("proposta_tesi_id");
 				String titolo=request.getParameter("titolo");
 				String ambito=request.getParameter("ambito");

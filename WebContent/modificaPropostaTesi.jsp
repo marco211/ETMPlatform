@@ -64,19 +64,22 @@
 						<label for="inputDescrizione">Descrizione</label>
 							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi" ><%=proposta.getDecrizione() %></textarea>
 					</div>
+					 <div class="col-sm-3">
+					<select class="form-control" name="materia">
+					<option value="<%=proposta.getMaterie()%>"><%=proposta.getMaterie() %></option>
 					
-								<select class="combobox" name="materia">
-									  <option value="<%=proposta.getMaterie()%>"><%=proposta.getMaterie() %></option>
 									  <%for(Insegnamento i : insegnamenti){ %>
 									  <option value="<%=i.getNome()%>"><%=i.getNome() %></option>
+									  <%} %>
 									</select>
-									
+									</div>
 									<script type="text/javascript">
 									  $(document).ready(function(){
-									    $('.combobox').combobox();
+									    $('.form-control').combobox();
 									  });
 									</script>
-					<%} %>
+								</div>
+			
 					<%int count = (int) session.getAttribute("count");
 								count++;
 								session.setAttribute("count",count);%>
