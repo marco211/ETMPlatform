@@ -41,7 +41,7 @@
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 				
 			<div class="col my-4 mx-4">
-				<form action="ModificaPropostaTesiServlet" method="post" id="aggiungi">
+				<form action="ConfermaModificaPropostaTesiServlet" method="post" id="aggiungi">
 					<h1>Modifica una proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
@@ -81,8 +81,12 @@
 								</div>
 			
 					<%int count = (int) session.getAttribute("count");
-								count++;
-								session.setAttribute("count",count);%>
+					if(count==0){
+						count++;
+					}
+								
+								session.setAttribute("count",count);
+								%> 
 					<button type="submit" class="btn btn-primary col-2 my-2">Modifica</button>
 					</div>
 				</form>
