@@ -74,11 +74,11 @@
 					href="VisualizzaListaPartecipazioneServlet">Area privata condivisa</a></li>
 				<%} %>
 
-				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
-						Admin</a></li>
+				
 				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
+				
 				<li class="nav-item d-lg-none"><a class="nav-link text-dark"
 					href="LogoutServlet">Logout</a></li>
 			</ul>

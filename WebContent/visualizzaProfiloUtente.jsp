@@ -103,6 +103,12 @@ if(utente==null || utenteToShow == null){
                                                 <a class="col-3"><%=utenteToShow.getUfficio()%></a>
                                             </div>
                                         </div><% }%>
+                                        <div class="row">
+                                          <div class="col-md-6">
+                                      		    <form method="get" action="modificaPassword.jsp?utente_email="<%=utente.getEmail()%>">
+                                                <button type="submit" class="btn btn-primary" name="invio">Cambia Password</button></form>
+                                          </div>
+                                        </div>
                             </div>
                            
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -151,8 +157,7 @@ if(utente==null || utenteToShow == null){
                                             </div>
                                         </div><% }%>
                                     <div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
-									<button type="submit" class="btn btn-primary" name="invio">Salva</button>
-									</form>
+									<button type="submit" class="btn btn-primary" name="invio">Salva</button></form>
                             </div>
                         </div>
                     </div>
