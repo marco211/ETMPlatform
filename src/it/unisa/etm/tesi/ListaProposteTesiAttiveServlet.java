@@ -45,6 +45,7 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 			Utente utente = (Utente) session.getAttribute("utente");
 			request.setAttribute("proposte", proposte);
 			ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
+
 			if(utente.getTipo().equals("d")) {
 				request.setAttribute("richieste", richieste);
 				request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);

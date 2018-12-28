@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AmministratoreManager;
@@ -41,8 +42,14 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		PropostaTesi propostaTesi = (PropostaTesi) visualizzaDettagliPropostaTesi(id);
 		ArrayList<Utente> utenti = this.getListaUtenti();
 		HttpSession session=request.getSession();
+		Utente utente = (Utente) session.getAttribute("utente");
+		ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
 		session.setAttribute("propostatesi", propostaTesi);
 		session.setAttribute("utenti", utenti);
+		request.setAttribute("richiesteproposte", richieste);
+		for (RichiestaPartecipazione p : richieste) {
+			System.out.println(p.getPropostatesi_id());
+		}
 		Utente docente = new Utente();
 		for(Utente u : utenti){
 			if(propostaTesi.getUtenteEmail().equalsIgnoreCase(u.getEmail())){
@@ -93,5 +100,28 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ArrayList<Utente> utenti = new ArrayList<Utente>();
 		utenti = (ArrayList<Utente>) atm.getListaUtenti();
 		return utenti;
+	}
+	
+	/**
+	 * Restituisce tutte le richieste di proposte di tesi: se l'utente è un docente restituisce tutte le richieste
+	 * effettuate da parte degli studenti; se l'utente è uno studente restituisce tutte le richieste effettuate.
+	 * @param
+	 * @return ArrayList<RichiestaPartecipazione> rappresenta tutte le richieste per le proposte tesi;
+	 * <p>
+	 * null altrimenti;
+	 */
+	private ArrayList<RichiestaPartecipazione> getRichieste(Utente utente){
+		ManagerFactory mf=new ManagerFactory();
+		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
+		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
+		try {
+			if(utente.getTipo().equals("d")) 
+				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
+			else 
+				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return richieste;
 	}
 }
