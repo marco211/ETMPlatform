@@ -95,7 +95,10 @@
 										</a>
 										</td>
 										<td><%=file.get(i).getEmail()%></td>
-										<%if(file.get(i).getVoto()!=0) {%>
+										<%if(file.get(i).getEmail().equals(utente.getEmail())){ %>
+										<td></td>
+										<%}
+										else if(file.get(i).getVoto()!=0) {%>
 											<td><%=file.get(i).getVoto()%></td>
 										<%} else if(file.get(i).getVoto()==0){%>
 											<td>Non valutato</td>
