@@ -126,7 +126,7 @@
 			for (int i = 0; i < partecipazioni.size(); i++) { 
 				if(partecipazioni.get(i).getPropostaTesiId()==(int)request.getSession().getAttribute("numeroTesiDocente")){
 			%>
-				<li><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
+				<li><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
 			<%}} }%>
 			</ol>
 			</div>
@@ -144,7 +144,12 @@
 						<b>Email Studente</b>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
-					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
+					<%
+					int j=0;
+					for (int i = 0; i < partecipazioni.size(); i++) { 
+						if(partecipazioni.get(i).getPropostaTesiId()!=j){
+							j=partecipazioni.get(i).getPropostaTesiId();
+					%>
 					<div class="col">
 						<a
 							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
@@ -152,6 +157,7 @@
 					
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
+						}
 						}
 						}
 					%>
