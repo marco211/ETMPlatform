@@ -1,10 +1,8 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.sql.Date;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,16 +10,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-
 import javax.servlet.annotation.*;
-
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
-import it.unisa.etm.tesi.ArchiviaPropostaTesiServlet;
 
 
 /**
@@ -59,11 +54,12 @@ public class CaricaFileServlet extends HttpServlet {
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
 		file.setFilePart(filePart);
+		int tesi=0;
 		if(utente.getTipo().equals("s")) {
 			file.setPropostaTesiId(utente.getPropostaTesi_ID());
 		}
 		else {
-			int tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
+			tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
 		LocalDate data = LocalDate.now();
@@ -74,8 +70,14 @@ public class CaricaFileServlet extends HttpServlet {
 		try {
 			fm.aggiungiFile(file);
 			am.aggiungiAttivita(attivita);
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
+			if(utente.getTipo().equals("d")) {
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+tesi);
 			requestDispatcher.forward(request, response);
+			}
+			else {
+				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID());
+				requestDispatcher.forward(request, response);
+			}
 		} catch (SQLException e) {
 			request.setAttribute("carica", "Errore nel caricamento, riprova");
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/caricaFile.jsp");
@@ -91,9 +93,11 @@ public class CaricaFileServlet extends HttpServlet {
 	 * <p>
 	 * false in caso di insuccesso.
 	 */
+	/*
 	private boolean uploadFileControl(File file){
 
 
 		return true;
 	}
+	*/
 }

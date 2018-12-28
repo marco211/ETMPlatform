@@ -3,26 +3,19 @@ package it.unisa.etm.areacondivisa;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.File;
-import it.unisa.etm.bean.Partecipa;
-import it.unisa.etm.bean.PropostaTesi;
+//import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.AreaCondivisaManager;
+//import it.unisa.etm.model.manager.AreaCondivisaManager;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
-import it.unisa.etm.model.manager.PartecipaManager;
-import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalit� di poter eliminare un file dall'area privata condivisa.
@@ -76,6 +69,7 @@ public class EliminaFileServlet extends HttpServlet {
 	 * <p>
 	 * false se non � andata a buon fine.
 	 */
+    /*
 	private boolean deleteFile(File file){
 		ManagerFactory mf=new ManagerFactory();
 		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
@@ -83,4 +77,5 @@ public class EliminaFileServlet extends HttpServlet {
 		return true;
 		
 	}
+	*/
 }

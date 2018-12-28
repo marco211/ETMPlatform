@@ -13,7 +13,7 @@
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="css/stile.css">
@@ -33,20 +33,21 @@
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Valuta File&nbsp;</h5>
 						</div>
-						<form action="ValutaFileServlet" method="post" >
+						<form action="ValutaFileServlet" method="post" name="valuta">
 							<input type="hidden" name="idTesi" value="<%= file.getPropostaTesiId()%>">
 							<input type="hidden" name="nomeFile" value="<%=file.getNome()%>">
 							<div class="form-group">
-								<label for="nome"><b>Voto File:</b></label> 
-								<input type="text" class="form-control" name="voto" required>
+								<label for="voto"><b>Voto File:</b></label> 
+								<input type="number" min="0" max="5" class="form-control" name="voto" onchange="controlloVoto()" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizione"><b>Descrizione:</b></label>
-								<textarea class="form-control" name="descrizione" rows="4" required></textarea>
+								<textarea class="form-control" name="descrizione" rows="4" onchange="controlloDescrizione()" required></textarea>
 							</div>
 							<div class="col text-center">
+							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
 								<button type="submit" id="valutaFile" name="valutaFile"
-									class="btn btn-primary">Valuta</button>
+									class="btn btn-primary" onclick="validazione()">Valuta</button>
 							</div>
 						</form>
 					</div>
@@ -72,5 +73,7 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
+	
+	<script src="js/valutaFile.js"></script>
 </body>
 </html>

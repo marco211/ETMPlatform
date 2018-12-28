@@ -11,8 +11,9 @@
 		response.sendRedirect("./areaPrivataCondivisaStudente.jsp");
 		return;
 	}
-	
+	@SuppressWarnings("unchecked")
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+	@SuppressWarnings("unchecked")
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	Boolean disabilita=(Boolean)session.getAttribute("disabilita");
 %>
@@ -20,7 +21,7 @@
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="css/stile.css">
@@ -67,7 +68,7 @@
 							<%}%>
 						</div>
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
-						<h5>Area disabilitata: visualizza un area per attivarla</h5>
+						<h5>Area disabilitata: clicca su una proposta tesi per attivarla</h5>
 						<%} %>
 						<div class="list-group">
 							<%

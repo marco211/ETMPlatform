@@ -11,8 +11,6 @@ if(utente==null){
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -27,9 +25,12 @@ if(utente==null){
 <jsp:include page="header.jsp"/>
 
 
-<div style="background-color: #FF9C08">
+<div style="background-color: #FF9C08; min-height: 81vh">
 <main role="main" class="container">
-      <div class="row" >  
+      <div class="row" > 
+       <div class="col-md-8 my-4">
+        <div class="card mb-3">
+        <div class="card-body"> 
         <div class="container emp-profile">
                 <div class="row">
                     <div class="col-md-4">
@@ -78,7 +79,7 @@ if(utente==null){
                                                 <label>Email</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <a class="col-3"><%=utente.getEmail()%></a>
+                                               <a style="font-size:14px"><%=utente.getEmail()%></a>
                                             </div>
                                         </div>
                                         <%if(utente.getTipo().equals("s")){%>
@@ -153,8 +154,10 @@ if(utente==null){
                         </div>
                     </div>
                 </div>
-        </div>>
- 		  
+        </div>
+ 		  </div>
+ 		  </div>
+ 		  </div>
    <aside class="col-md-4 my-4">
           <div class="p-3 card">
             <h4 class="font-italic">Nome Sezione</h4>

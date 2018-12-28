@@ -6,8 +6,11 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
+	@SuppressWarnings("unchecked")
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+	@SuppressWarnings("unchecked")
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 	String errore = (String) request.getAttribute("carica");
 %>
@@ -16,7 +19,7 @@
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="css/stile.css">
@@ -39,25 +42,26 @@
 							<h5 class="card-title mb-1">Carica File&nbsp;</h5>
 						</div>
 						<form action="CaricaFileServlet" method="post"
-							enctype="multipart/form-data">
+							enctype="multipart/form-data" name="carica">
 							<div class="form-group">
-								<label for="nome"><b>Nome File:</b></label> <input type="text"
-									class="form-control" name="nomeFile" required>
+								<label for="nomeFile"><b>Nome File:</b></label> <input type="text"
+									class="form-control" onchange="controlloNome()" name="nomeFile" required>
 							</div>
 							<div class="form-group">
-								<label for="descrizione"><b>Descrizione:</b></label>
-								<textarea class="form-control" name="descrizioneFile" rows="4"
+								<label for="descrizioneFile"><b>Descrizione:</b></label>
+								<textarea class="form-control" onchange="controlloDescrizione()" name="descrizioneFile" rows="4"
 									required></textarea>
 							</div>
 							<div>
 								<label for="File"><b>File:</b></label>
 							</div>
 							<div class="form-group">
-								<input type="file" name="uploadFile" id="uploadFile">
+								<input type="file" onchange="controlloFile()" name="uploadFile" id="uploadFile">
 							</div>
 							<div class="col text-center">
+							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
 								<button type="submit" id="caricaFile" name="caricaFile"
-									class="btn btn-primary">Carica</button>
+									class="btn btn-primary" onclick="validazione()">Carica</button>
 							</div>
 							<%
 								if (errore != null) {
@@ -119,5 +123,7 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
+	
+	<script src="js/caricaFile.js"></script>
 </body>
 </html>

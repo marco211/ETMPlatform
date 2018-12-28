@@ -3,19 +3,15 @@ package it.unisa.etm.areacondivisa;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.model.manager.AreaCondivisaManager;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 
@@ -67,13 +63,14 @@ public class ValutaFileServlet extends HttpServlet {
 		
 	}
 
+	/*
 	private boolean inserisciValutazione(int voto, String descrizione) {
 		ManagerFactory mf=new ManagerFactory();
 		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
 		return true;
 		
 	}
-	
+	*/
 	/**
 	 * Esegue il controllo sui parametri di valutazione che deve ricevere un file presente nell'area privata condivisa.
 	 * @param valutazione intero che rappresenta il voto che deve ricevere un file.
@@ -82,11 +79,12 @@ public class ValutaFileServlet extends HttpServlet {
 	 * <p>
 	 * false se la valutazione non rispetta i parametri.
 	 */
+	/*
 	private boolean isValid(int valutazione, String descrizione){
 		return false;
 		
 	}
-	
+	*/
 	/**
 	 * Torna la valutazione di un determinato file presente nell'area privata condivisa e preso in input.
 	 * @param file presente nell'area condivisa.
@@ -94,8 +92,10 @@ public class ValutaFileServlet extends HttpServlet {
 	 * <p>
 	 * 0 se il file non � stato valutato.
 	 */
+	/*
 	private int getValutazione(File file){
 		return 0;
 		
 	}
+	*/
 }

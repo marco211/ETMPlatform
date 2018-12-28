@@ -10,17 +10,16 @@
 		response.sendRedirect("./areaPrivataCondivisaDocente.jsp");
 		return;
 	}
-	//File f = new File("Primo", 1, "eurofilo", 5,"", "f@unisa.it");
-	//ArrayList<File> file = new ArrayList<File>();
-	//file.add(f);
+	@SuppressWarnings("unchecked")
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
+	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta charset="utf-8">
+    <meta content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link rel="stylesheet" href="css/stile.css">
