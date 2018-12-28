@@ -58,7 +58,7 @@ public class ValutaFileServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		RequestDispatcher view=getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
+		RequestDispatcher view=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+id);
 		view.forward(request, response);
 		
 	}
