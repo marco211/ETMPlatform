@@ -156,16 +156,15 @@ function validazione()
 			document.registrazione.cognome.focus();
 			focused = true;
 		}
-		div.append("Problema con il cognome!");
+		div.append("Inserisci un cognome");
 	}
 	else if(!controlloEmail())
 	{
 		if(!focused){
 			document.registrazione.email.focus();
 			focused = true;
-		}
-		
-		div.append("Problema con il cognome!");
+		}	
+		div.append("E-mail inserita non valida");
 	}
 	else
 	{
@@ -178,6 +177,8 @@ function validazione()
 					document.registrazione.matricola.focus();
 					focused = true;
 				}
+				div.append("Matricola inserita non valida");
+				return false;
 			}
 		}
 		else
@@ -188,6 +189,8 @@ function validazione()
 					document.registrazione.insegnamento.focus();
 					focused = true;
 				}
+				div.append("Inserisci un insegnamento");
+				return false;
 			}
 			else if(!controlloUfficio())
 			{
@@ -195,6 +198,8 @@ function validazione()
 					document.registrazione.ufficio.focus();
 					focused = true;
 				}
+				div.append("Inserisci l'ufficio");
+				return false;
 			}
 		}
 		if(!controlloPassword())
@@ -203,6 +208,7 @@ function validazione()
 				document.registrazione.password.focus();
 				focused = true;
 			}
+			div.append("La password deve contenere almeno una lettera maiuscola, una lettera minuscola ed un numero e deve avere una lunghezza compresa tra 8 e 16 caratteri.");
 		}
 		else if(!controlloData())
 		{
@@ -210,6 +216,7 @@ function validazione()
 				document.registrazione.data.focus();
 				focused = true;
 			}
+			div.append("Data non valida");
 		}
 		else if(!document.registrazione.check.checked==true)
 		{
@@ -217,9 +224,11 @@ function validazione()
 				document.registrazione.check.focus();
 				focused = true;
 			}
+			div.append("Spuntare la casella in alto");
 		}
 		else
 		{
+			document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
 			document.registrazione.submit();
 		}
 	}

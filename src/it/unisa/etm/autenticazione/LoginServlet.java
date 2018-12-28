@@ -1,7 +1,6 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-import java.sql.SQLException;
 
 import it.unisa.etm.model.manager.AutenticazioneManager;
 
@@ -48,34 +47,27 @@ public class LoginServlet extends HttpServlet {
 		String email=request.getParameter("emailLogin");
 		ManagerFactory em = new ManagerFactory();
 		AutenticazioneManager am = (AutenticazioneManager) em.createAutenticazioneManager();
-		try {
-			Amministratore admin=am.getAdmin(email, password);
-			if(admin!=null) {
-				HttpSession session=request.getSession();
-				session.setAttribute("admin", admin);
-				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
-			}
-			else {
-				Utente utente=am.getUtente(email, password);
-				if(utente!=null) {
-					if(utente.getValidazione().equals("valido")) {
-						HttpSession session=request.getSession();
-						session.setAttribute("utente", utente);
-						response.sendRedirect(request.getContextPath()+"/homePage.jsp");
-					}
-					else {
-						response.sendRedirect(request.getContextPath()+"/loginFallitoRegistrazioneNonConfermata.jsp");
-					}				
+		Amministratore admin=am.getAdmin(email, password);
+		if(admin!=null) {
+			HttpSession session=request.getSession();
+			session.setAttribute("admin", admin);
+			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+		}
+		else {
+			Utente utente=am.getUtente(email, password);
+			if(utente!=null) {
+				if(utente.getValidazione().equals("valido")) {
+					HttpSession session=request.getSession();
+					session.setAttribute("utente", utente);
+					response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 				}
 				else {
-					response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
-				}
-			}			
-		} catch (SQLException e) {
-			e.printStackTrace();
-			response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
-		}
-		
+					response.sendRedirect(request.getContextPath()+"/loginFallitoRegistrazioneNonConfermata.jsp");
+				}				
+			}
+			else {
+				response.sendRedirect(request.getContextPath()+"/loginFallitoAccountInesistente.jsp");
+			}
+		}			
 	}
-
 }
