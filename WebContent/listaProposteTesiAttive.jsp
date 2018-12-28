@@ -24,11 +24,9 @@
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
       			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
-					<% 
-					if (utente.getTipo().equals("d")) {
-					%>
+					
 					<a href="aggiungiPropostaTesi.jsp" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddProposta"><i class="fas fa-plus-circle"></i></a>				
-				 <% }%>
+				 
 			</form>
 			
     		 <div class="container">
@@ -44,19 +42,15 @@
 		               <%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
 		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>"">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
 		               <% }
-					if (utente.getTipo().equals("d")) {
+					
 						if((p.isArchiviato())&&(!p.isChiuso())){
 					%>
 				 
 				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " ><i class="fas fa-archive"></i></p>				
 				 <%}else if(p.isChiuso()){%>
 				 <p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "><i class="fas fa-door-closed"></i></p>				
-				 <%}} %>
-		              	<% 
-		              	if(utente.getTipo().equals("s")){
-		              	%>
-		              		<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>				
-		              	<% }%>
+				 <%} %>
+		              	
 		              	</div>
 		              	
 		              </div>
@@ -67,7 +61,7 @@
 </div>
          
         </div>
-		<% if(utente.getTipo().equals("d")){ %>
+		
         <aside class="col-md-4 my-4">
           <div class="list-group p-3 card">
             <h4 class="font-italic">Richieste ricevute</h4>
@@ -119,19 +113,7 @@
 					<%}%>
    
         </aside>
-		<% }else{ %>
-		 <aside class="col-md-4 my-4">
-
-          <div class="p-3 card">
-            <h4 class="font-italic">Statistiche</h4>
-            <ol class="list-unstyled mb-0">
-
-              <li><a href="#">Statistica uno</a></li>
-            </ol>
-          </div>
-   
-        </aside>
-		<% }%>
+		
       </div>
 
     </main>

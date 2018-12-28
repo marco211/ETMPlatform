@@ -31,6 +31,7 @@
     		        int count = 0;
     		        session.setAttribute("count", count);
     		        boolean b = false;
+    		        session.setAttribute("richiesteproposte", proposte);
     		        PropostaTesi proposta = new PropostaTesi();
 		   			for(PropostaTesi p : proposte)
 		 			  {
@@ -68,23 +69,6 @@
 </div>
          
         </div>
-		<% if(utente.getTipo().equals("d")){ %>
-        <aside class="col-md-4 my-4">
-          <div class="p-3 card">
-            <h4 class="font-italic">Richieste ricevute</h4>
-            		<% ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste");
-		   			for(RichiestaPartecipazione r : richieste)
-		 			  {
-					%>
-					<div class="row">Richiesta effettuata il giorno <%=r.getData()%> da parte di <%=r.getUtente_mail()%></div>
-						<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AccettaRichiesta">Accetta</a>				
-						<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="RifiutaRichiesta">Rifiuta</a>				
-					<%} %>
-            </ol>
-          </div>
-   
-        </aside>
-		<% }else{ %>
 		 <aside class="col-md-4 my-4">
 
           <div class="p-3 card">
@@ -102,7 +86,7 @@
           </div>
    
         </aside>
-		<% }%>
+	
       </div>
 
     </main>
