@@ -69,19 +69,43 @@
 						</div>
 
 						
-						<div class="list-group">
+						<table class="table table-striped">
 							<%
 								if (file != null) {
+							%>
+							<thead>
+									<tr>
+										<th scope="col">#</th>
+										<th scope="col">File</th>
+										<th scope="col">Email Utente</th>
+										<th scope="col">Valutazione</th>
+									</tr>
+								</thead>
+							<%
 									for (int i = 0; i < file.size(); i++) {
 							%>
-							<a class="list-group-item"
-								href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>"><i
-								 class="fa fa-file fa-2x" aria-hidden="true"></i>&nbsp; <%=file.get(i).getNome()%></a>
+							<tbody>
+									<tr>
+										<th scope="row"><i class="fa fa-file fa" aria-hidden="true"></i></th>
+										<td>
+										<a href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>">
+										<%=file.get(i).getNome()%>
+										</a>
+										</td>
+										<td><%=file.get(i).getEmail()%></td>
+										<%if(file.get(i).getVoto()!=0) {%>
+											<td><%=file.get(i).getVoto()%></td>
+										<%} else if(file.get(i).getVoto()==0){%>
+											<td>Non valutato</td>
+										<%} %>
+									</tr>
+									
+								</tbody>
 							<%
 								}
 								}
 							%>
-						</div>
+						</table>
 						
 					</div>
 				</div>

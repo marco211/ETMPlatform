@@ -56,7 +56,7 @@
 								<label for="File"><b>File:</b></label>
 							</div>
 							<div class="form-group">
-								<input type="file" onchange="controlloFile()" name="uploadFile" id="uploadFile">
+								<input type="file" name="uploadFile" id="uploadFile">
 							</div>
 							<div class="col text-center">
 							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
