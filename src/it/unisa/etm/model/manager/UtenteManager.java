@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Logger;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
@@ -13,7 +14,7 @@ import it.unisa.etm.model.interfaces.UtenteModelInterface;
 public  class UtenteManager implements UtenteModelInterface{
 
 	public UtenteManager() {
-
+		log = Logger.getLogger("global");
 	}
 	@Override
 	public Utente getInfo(String email) throws SQLException {
@@ -83,38 +84,38 @@ public  class UtenteManager implements UtenteModelInterface{
 	}
 
 	@Override
-	public boolean modificaUtente(Utente utente) throws SQLException{
-		Connection istance=DatabaseManager.getIstance();
-		PreparedStatement ps=null;
-		String insertSQL=null;
-		if(utente.getTipo().equals("s"))
-		{
-			insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=?, matricola=? WHERE email='"+ utente.getEmail() +"';";
-			ps=istance.prepareStatement(insertSQL);
-			ps.setString(1, utente.getNome());;
-			ps.setString(2, utente.getCognome());
-			ps.setString(3, utente.getDataDiNascita());
-			ps.setLong(4, utente.getMatricola());
-			ps.executeUpdate();
+	public boolean modificaUtente(Utente utente){
+		try {
+			Connection istance=DatabaseManager.getIstance();
+			PreparedStatement ps=null;
+			String insertSQL=null;
+			if(utente.getTipo().equals("s"))
+			{
+				insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=?, matricola=? WHERE email='"+ utente.getEmail() +"';";
+				ps=istance.prepareStatement(insertSQL);
+				ps.setString(1, utente.getNome());;
+				ps.setString(2, utente.getCognome());
+				ps.setString(3, utente.getDataDiNascita());
+				ps.setLong(4, utente.getMatricola());
+				ps.executeUpdate();
+			}
+			else
+			{
+				insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=? , ufficio=? WHERE email=?;";
+				ps=istance.prepareStatement(insertSQL);
+				ps.setString(1, utente.getNome());;
+				ps.setString(2, utente.getCognome());
+				ps.setString(3, utente.getDataDiNascita());
+				ps.setString(4, utente.getUfficio());
+				ps.setString(5, utente.getEmail());
+				ps.executeUpdate();
+			}
+			return true;
+		}catch(SQLException e) {
+			log.warning(e.getMessage());
+			return false;
 		}
-		else
-		{
-			insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=? , ufficio=? , WHERE email=?;";
-			ps=istance.prepareStatement(insertSQL);
-			ps.setString(1, utente.getNome());;
-			ps.setString(2, utente.getCognome());
-			ps.setString(3, utente.getDataDiNascita());
-			ps.setString(4, utente.getUfficio());
-			ps.setString(5, utente.getEmail());
-			ps.executeUpdate();
-		}
-		return true;
 	}
-
-
-
-
-
-
+	private Logger log;
 
 }
