@@ -11,6 +11,9 @@ if(utente==null){
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,41 +30,130 @@ if(utente==null){
 <div style="background-color: #FF9C08">
 <main role="main" class="container">
       <div class="row" >  
-        <div class="col-md-8 my-4">
-        <div class="card mb-3">
-        <div class="card-body"> 			
-   			 <h5 class="card-title" style="color:#3385ff">Informazioni Personali</h5>
-   			 	<div class="row" style="border-bottom: 1px solid;"></div>
-    		 		<h4>Nome:</h4>
-    		 			<a class="col-3"><%=utente.getNome()%></a>
-    		 		<h4>Cognome:</h4>
-    		 			<a class="col-3"><%=utente.getCognome()%></a>
-    		 		<h4>Email:</h4>
-    		 			<a class="col-3"><%=utente.getEmail()%></a>
-    		 		<%if(utente.getTipo().equals("s")){%>
-    		 		<h4>Matricola</h4>
-    		 			<a class="col-3"><%=utente.getMatricola()%></a>
-    		 			<% }%>
-    		 			<%if(utente.getTipo().equals("d")){%>
-    		 			<h4>Ufficio</h4>
-		              		<a class="col-3"><%=utente.getUfficio()%></a>	
-		              	<h4>Insegnamento</h4>
-		              		<a class="col-3"><%=utente.getInsegnamento()%></a>		
-		              	<% }%>
-		              	</div>
-		              </div>
-    		 		<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			<form method="get" action="modificaProfiloUtente.jsp">
-    		 				<button type="submit" class="btn btn-primary mx-2" id="ModificaProfilo">Modifica profilo
-    		 				</button>
-    		 			</form></div>
-    		 			<div class="col-sm-10 offset-sm-1 text-center mt-3">
-    		 			<form method="get" action="modificaPassword.jsp">
-    		 				<button type="button" class="btn btn-primary mx-2">Modifica password
-    		 				</button>
-    		 			</form>
-    		 		</div>
- 		    </div>
+        <div class="container emp-profile">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img alt="load" src="img/logo.png"	width="100%">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <h5>
+                                        Gestione Profilo
+                                    </h5>
+                            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Modifica Profilo</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="col-3"><%=utente.getNome()%></a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Cognome</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="col-3"><%=utente.getCognome()%></a>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Email</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="col-3"><%=utente.getEmail()%></a>
+                                            </div>
+                                        </div>
+                                        <%if(utente.getTipo().equals("s")){%>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Matricola</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="col-3"><%=utente.getMatricola()%></a>
+                                            </div>
+                                        </div><% }%>
+                                        <%if(utente.getTipo().equals("d")){%>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Ufficio</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <a class="col-3"><%=utente.getUfficio()%></a>
+                                            </div>
+                                        </div><% }%>
+                            </div>
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                <form action="ModificaProfiloUtenteServlet" method="post">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" name="nome" placeholder="Nome">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Cognome</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <input type="text" class="form-control" name="cognome" placeholder="Cognome">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Data di Nascita</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <input type="date" class="form-control" name="data" placeholder="Data di Nascita">
+                                            </div>
+                                        </div>
+                                        <%if(utente.getTipo().equals("s")){%>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Matricola</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <input type="text" class="form-control" name="matricola" placeholder="Matricola">
+                                            </div>
+                                        </div><% }%>
+                                        <%if(utente.getTipo().equals("d")){%>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Ufficio</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                 <input type="text" class="form-control" name="ufficio" placeholder="Ufficio">
+                                            </div>
+                                        </div><% }%>
+                                    <div class="row">
+                                    <div class="col-md-6">
+                                    <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Salva"/>
+                                    </div>
+                                </div></form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>>
  		  
    <aside class="col-md-4 my-4">
           <div class="p-3 card">
