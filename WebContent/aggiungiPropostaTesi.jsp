@@ -55,7 +55,7 @@
 						</div>
 
 					<div class="form-group col-4">
-                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1">
+                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1"> giorni
 					</div>
 
 					<div class="form-group col-5" >
