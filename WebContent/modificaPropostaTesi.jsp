@@ -36,7 +36,7 @@
 
 
 
-
+<%PropostaTesi proposta = (PropostaTesi) session.getAttribute("propostacorrente"); %>
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 			
 				
@@ -47,27 +47,27 @@
 
 						<div class="form-group col-4 pt-4">
 							<label for="inputTitolo">Titolo</label> <input type="text"
-								class="form-control" name="titolo" placeholder="Titolo" required>
+								class="form-control" name="titolo" placeholder="Titolo" value="<%=proposta.getTitolo()%>"required>
 						</div>
 
 						<div class="form-group col-4">
 							<label for="inputAmbito">Ambito</label> <input type="text"
-								class="form-control" name="ambito" placeholder="Ambito"
+								class="form-control" name="ambito" placeholder="Ambito" value="<%=proposta.getAmbito() %>"
 								required>
 						</div>
 
 					<div class="form-group col-4">
-                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="1">
+                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="<%=proposta.getTempoDiSviluppo()%>">
 					</div>
 
 					<div class="form-group col-5" >
 						<label for="inputDescrizione">Descrizione</label>
-							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
+							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi" ><%=proposta.getDecrizione() %></textarea>
 					</div>
 
 					<div class="form-group col-4">
 						<label for="inputMateria">Materia</label> <input type="text"
-							class="form-control" name="materia" placeholder="Materia"
+							class="form-control" name="materia" placeholder="Materia" value="<%=proposta.getMaterie() %>"
 							>
 					</div>
 					
