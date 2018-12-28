@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 			HttpSession session=request.getSession();
 			session.setAttribute("admin", admin);
 			System.out.print("admin preso: "+email+" "+password);
-			response.sendRedirect(request.getContextPath()+"/homePageAdmin.jsp");
+			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
 		}
 		else {
 			Utente utente=am.getUtente(email, password);
