@@ -72,16 +72,22 @@ public  class UtenteManager implements UtenteModelInterface{
 	}
 
 	@Override
-	public boolean modificaPassword(Utente utente) throws SQLException{
+	public boolean modificaPassword(Utente utente) {
+		try {
 		Connection istance=DatabaseManager.getIstance();
 		PreparedStatement ps=null;
 		String insertSQL=null;
-		insertSQL = "UPDATE Utente SET password "
-				+ "values(?)  WHERE EMAIL='"+ utente.getEmail()+"' AND MATRICOLA='"+ utente.getMatricola() +"';";
+		insertSQL = "UPDATE utente SET password=? WHERE EMAIL='"+ utente.getEmail()+"';";
 		ps=istance.prepareStatement(insertSQL);
 		ps.setString(1, utente.getPassword());
 		return true;
-	}
+		}catch(SQLException e) {
+			log.warning(e.getMessage());
+			return false;
+		}
+		}
+		
+		
 
 	@Override
 	public boolean modificaUtente(Utente utente){

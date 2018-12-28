@@ -32,14 +32,14 @@ if(utente==null){
                         <form action="ModificaPasswordServlet" method="post" class="form-inline justify-content-center">
                             <div class="form-group">
                                 <label class="sr-only">Nuova Password</label>
-                                <input type="text" name="newpass" class="form-control" placeholder="Nuova Password"> 
-                                <input type="text" name="newpass" class="form-control" placeholder="Conferma Password"> 
+                                <input type="password" name="password1" class="form-control" placeholder="Nuova Password"> 
+                                <input type="password" name="password2" class="form-control" placeholder="Conferma Password"> 
                                  
                             </div>
-                        </form>
+                       
                    </div>
                     <br>
-                  <button type="submit" class="btn btn-success ">Modifica password</button>      
+                  <button type="submit" class="btn btn-success ">Modifica password</button></form>     
                 
                 </div>
             </div>

@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.UtenteManager;
 /**
  * Estende a classe HttpServlet e fornisce all'utente la funzionalità di poter modificare la password precedente.
  */
@@ -34,8 +37,15 @@ public class ModificaPasswordServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		Utente utente = (Utente) request.getSession().getAttribute("utente");
+		
+		utente.setPassword(request.getParameter("password1"));
+			if(modificaPasswordUtente(utente) == true) {
+				response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+			}else{			
+				response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");					
+			}
+		 
 	}
 
 	/**
@@ -43,9 +53,11 @@ public class ModificaPasswordServlet extends HttpServlet {
 	 * @param password stringa che rappresenta la password digitata dall'utente
 	 * @return boolean true se la modifica è andata a buon fine;
 	 * <p>
-	 * false in caso contrario.
+	 * false in caso contrario
 	 */
-	private boolean setPassword(String password){
-		return false;
+	private boolean modificaPasswordUtente(Utente utente){
+		ManagerFactory mf=new ManagerFactory();
+		UtenteManager um=(UtenteManager) mf.createUtenteManager();
+		return um.modificaPassword(utente);
 	}
 }
