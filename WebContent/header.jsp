@@ -88,10 +88,6 @@
 				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
-
-				<li class="nav-item d-lg-none"><a class="nav-link text-dark"
-					href="LogoutServlet">Logout</a></li>
-
 				<%}else if(admin!=null){ %>
 
 				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
@@ -100,6 +96,11 @@
 
 
 				<%} %>
+
+				<li class="nav-item d-lg-none"><a class="nav-link text-dark"
+					href="LogoutServlet">Logout</a></li>
+
+				
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<div class="container">
