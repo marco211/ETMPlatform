@@ -24,14 +24,15 @@
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
       			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
-					
-					<a href="aggiungiPropostaTesi.jsp" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddProposta"><i class="fas fa-plus-circle"></i></a>				
+					<%int count2 = 0;
+					session.setAttribute("count2", count2);
+					%>
+					<a href="AggiungiPropostaTesiServlet" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddProposta"><i class="fas fa-plus-circle"></i></a>				
 				 
 			</form>
 			
     		 <div class="container">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
-    		      
     		        int count = 0;
     		        session.setAttribute("count", count);
 		   			for(PropostaTesi p : proposte)

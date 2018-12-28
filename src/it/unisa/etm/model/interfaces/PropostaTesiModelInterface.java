@@ -5,6 +5,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 
@@ -26,5 +27,6 @@ public interface PropostaTesiModelInterface {
 	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException;
 	public String getNomeDocente(int id) throws SQLException;
 	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail) throws SQLException;
+	public ArrayList<Insegnamento> getInsegnamenti() throws SQLException;
 }
 
