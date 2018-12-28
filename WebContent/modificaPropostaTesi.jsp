@@ -41,11 +41,7 @@
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
 				
 			<div class="col my-4 mx-4">
-<<<<<<< HEAD
-				<form action="ModificaPropostaTesiServlet" method="post" id="aggiungi"  name="aggiungiproposta">
-=======
-				<form action="ConfermaModificaPropostaTesiServlet" method="post" id="aggiungi">
->>>>>>> 2b3bd8585fd9ef935e24c5c8788e1c9f03c0cebc
+				<form action="ConfermaModificaPropostaTesiServlet" method="post" id="aggiungi"  name="aggiungiproposta">
 					<h1>Modifica una proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
@@ -61,7 +57,7 @@
 						</div>
 
 					<div class="form-group col-4">
-                        <label for="inputTempo">Tempo</label> <input type="number" class="count" name="tempo" value="<%=proposta.getTempoDiSviluppo()%>">
+                        <label for="inputTempo">Durata</label> <input type="number"  name="tempo" class="count" form="aggiungi" onchange="controlloTempo()" value="<%=proposta.getTempoDiSviluppo()%>"> giorni
 					</div>
 
 					<div class="form-group col-5" >
@@ -85,21 +81,15 @@
 								</div>
 			
 					<%int count = (int) session.getAttribute("count");
-<<<<<<< HEAD
-								count++;
-								session.setAttribute("count",count);%>
-						<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
-					<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>							</div>
-=======
-					if(count==0){
-						count++;
-					}
-								
-								session.setAttribute("count",count);
-								%> 
-					<button type="submit" class="btn btn-primary col-2 my-2">Modifica</button>
-					</div>
->>>>>>> 2b3bd8585fd9ef935e24c5c8788e1c9f03c0cebc
+						if(count==0){
+							count++;
+						}
+									
+									session.setAttribute("count",count);
+									%> 
+							<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
+							<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>	
+						</div>
 				</form>
 			</div>
 			

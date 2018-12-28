@@ -32,10 +32,13 @@ if(utente==null){
 <jsp:include page="header.jsp"/>
 
 	<div style="background-color: #FF9C08; min-height: 81vh; padding-top: 10px">
-	<main role="main" class="container bg-white">
+	<main role="main" class="container">
  			
- 	<div class="jumbotron jumbotron-fluid bg-white row">
-  		<div class="container-fluid bg-white col">
+ 	<div class="row">
+  		<div class="col-md-8 my-4">
+        <div class="card mb-3">
+        <div class="card-body">
+  		
     		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
     		<p class="lead"><%=propostatesi.getDecrizione()%></p>
 			<p class="lead"><%=propostatesi.getAmbito()%></p>
