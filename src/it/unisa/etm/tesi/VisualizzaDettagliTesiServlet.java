@@ -43,6 +43,13 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		session.setAttribute("propostatesi", propostaTesi);
 		session.setAttribute("utenti", utenti);
+		Utente docente = new Utente();
+		for(Utente u : utenti){
+			if(propostaTesi.getUtenteEmail().equalsIgnoreCase(u.getEmail())){
+				docente = u;
+			}
+		}
+		session.setAttribute("docente", docente);
 		request.getRequestDispatcher("visualizzaDettagliPropostaTesi.jsp").forward(request, response);
 	}
 
@@ -84,12 +91,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ManagerFactory em = new ManagerFactory();
 		AmministratoreManager atm = (AmministratoreManager) em.createAmministratoreManager();
 		ArrayList<Utente> utenti = new ArrayList<Utente>();
-		try {
-			utenti = (ArrayList<Utente>) atm.getListaUtenti();
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
+		utenti = (ArrayList<Utente>) atm.getListaUtenti();
 		return utenti;
 	}
 }

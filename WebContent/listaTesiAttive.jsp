@@ -41,6 +41,7 @@
 					%>
 					<div class="row" id="lista">
 						<a class="col-3" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+						<%if(utente.getPropostaTesi_ID()==0){ %>
 		               <div>
 		               <%
 		               ArrayList<RichiestaPartecipazione> richieste_studente = (ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste_studente");
@@ -58,7 +59,7 @@
 		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>			
 		              	<%}} %>
 		              	</div>
-		              	
+		              	<%} %>
 		              </div>
 					<%}}} %>
       

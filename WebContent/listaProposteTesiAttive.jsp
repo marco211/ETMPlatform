@@ -83,7 +83,7 @@
         				  }
 					%>
 						<div class="row border border-dark bg-info mx-1 px-1"><%=c%>)Richiesta effettuata il giorno <%=r.getData()%> da parte di 
-						<a class="alert-link" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a> per la tesi&nbsp;
+						<a class="alert-link" href="VisualizzaProfiloUtenteServlet?utente_email=><%=r.getUtente_mail()%>"><%=r.getUtente_mail() %></a> per la tesi&nbsp;
 						<a class="alert-link" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
 						<div class="row border border-dark bg-info mx-2 px-1">
 							<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary" id="AccettaRichiesta">Accetta</a>				
