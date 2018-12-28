@@ -12,6 +12,8 @@
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
+	@SuppressWarnings("unchecked")
+	ArrayList<PropostaTesi> listaTesi = (ArrayList<PropostaTesi>) session.getAttribute("listaTesiDocente");
 	String errore = (String) request.getAttribute("carica");
 %>
 
@@ -19,12 +21,14 @@
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/stile.css">
-    <title>ETM Platform - Carica file</title>
-  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="css/stile.css">
+<title>ETM Platform - Carica file</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
 </head>
 <body>
 
@@ -44,13 +48,14 @@
 						<form action="CaricaFileServlet" method="post"
 							enctype="multipart/form-data" name="carica">
 							<div class="form-group">
-								<label for="nomeFile"><b>Nome File:</b></label> <input type="text"
-									class="form-control" onchange="controlloNome()" name="nomeFile" required>
+								<label for="nomeFile"><b>Nome File:</b></label> <input
+									type="text" class="form-control" onchange="controlloNome()"
+									name="nomeFile" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizioneFile"><b>Descrizione:</b></label>
-								<textarea class="form-control" onchange="controlloDescrizione()" name="descrizioneFile" rows="4"
-									required></textarea>
+								<textarea class="form-control" onchange="controlloDescrizione()"
+									name="descrizioneFile" rows="4" required></textarea>
 							</div>
 							<div>
 								<label for="File"><b>File:</b></label>
@@ -59,7 +64,8 @@
 								<input type="file" name="uploadFile" id="uploadFile" required>
 							</div>
 							<div class="col text-center">
-							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert"></div>
+								<div id="infoDiv" class="alert alert-danger form-group d-none"
+									role="alert"></div>
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary" onclick="validazione()">Carica</button>
 							</div>
@@ -83,47 +89,72 @@
 				<%
 					if (utente.getTipo().equals("d")) {
 				%>
-				<h4 class="font-italic">Aree</h4>
+			<h4 class="font-italic">Aree</h4>
+					<%
+						if (partecipazioni != null) {
+					%>
 				<div class="row">
-					<div class="col"><b>Proposta Tesi</b></div>
-					<div class="col"><b>Email Studente</b></div>
-					<div class="col"></div>
+					<div class="col">
+						<b>Proposta Tesi</b>
+					</div>
+					<div class="col">
+						<b>Nome Proposta Tesi</b>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
-					<%for (int i = 0; i < partecipazioni.size(); i++) { %>
-					<div class="col"><a href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a></div>
-					<div class="col"><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail() %></a></div>
+					<%
+					int j=0;
+					for (int i = 0; i < partecipazioni.size(); i++) { 
+						if(partecipazioni.get(i).getPropostaTesiId()!=j){
+							j=partecipazioni.get(i).getPropostaTesiId();
+					%>
+					<div class="col">
+						<a
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
+					</div>
+					<div class="col">
+					<%for(int x=0;x<listaTesi.size();x++) {
+							if(listaTesi.get(x).getId()==j){
+						%>
+							<%=listaTesi.get(x).getTitolo() %>
+						<%}} %>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
-						<%
+					<%
+						}
+						}
 						}
 					%>
 				</div>
-				<%
+
+			</div>
+			<%
 					} else if (utente.getTipo().equals("s")) {
 				%>
-				<h4 class="font-italic">To Do List</h4>
-				<ul class="list-group list-group-flush">
-					<%
+			<h4 class="font-italic">To Do List</h4>
+			<ul class="list-group list-group-flush">
+				<%
 						if (consegne != null) {
 								for (int i = 0; i < consegne.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"> <%=consegne.get(i).getNome()%>
-					</a></li>
-					<%
+				<li class="list-group-item"><a href="#"> <%=consegne.get(i).getNome()%>
+				</a></li>
+				<%
 						}
 							}
 					%>
-				</ul>
-				<%
+			</ul>
+			<%
 					}
 				%>
-			</div>
-			</aside>
+			
 		</div>
-		</main>
+		</aside>
+	</div>
+	</main>
 	</div>
 
 	<jsp:include page="footer.jsp" />
-	
+
 	<script src="js/caricaFile.js"></script>
 </body>
 </html>

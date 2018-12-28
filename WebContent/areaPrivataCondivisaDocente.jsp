@@ -15,18 +15,22 @@
 	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
 	@SuppressWarnings("unchecked")
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	@SuppressWarnings("unchecked")
+	ArrayList<PropostaTesi> listaTesi = (ArrayList<PropostaTesi>) session.getAttribute("listaTesiDocente");
 	Boolean disabilita=(Boolean)session.getAttribute("disabilita");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <!-- Required meta tags -->
-    <meta content="text/html; charset=utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta content="text/html; charset=utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="css/stile.css">
-    <title>ETM Platform - Area privata condivisa</title>
-  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link rel="stylesheet" href="css/stile.css">
+<title>ETM Platform - Area privata condivisa</title>
+<link href="https://fonts.googleapis.com/css?family=Roboto"
+	rel="stylesheet">
 </head>
 <body>
 
@@ -68,51 +72,52 @@
 							<%}%>
 						</div>
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
-						<h5>Area disabilitata: clicca su una proposta tesi per attivarla</h5>
+						<h5>Area disabilitata: clicca su una proposta tesi per
+							attivarla</h5>
 						<%} %>
-						
-							<%
+
+						<%
 								if (file != null) {
 							%>
-								<table class="table table-striped">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">File</th>
-										<th scope="col">Email Utente</th>
-										<th scope="col">Valutazione</th>
-									</tr>
-								</thead>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th scope="col">#</th>
+									<th scope="col">File</th>
+									<th scope="col">Email Utente</th>
+									<th scope="col">Valutazione</th>
+								</tr>
+							</thead>
 							<%		
 									for (int i = 0; i < file.size(); i++) {
 							%>
-								<tbody>
-									<tr>
-										<th scope="row"><i class="fa fa-file fa" aria-hidden="true"></i></th>
-										<td>
-										<a href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>">
-										<%=file.get(i).getNome()%>
-										</a>
-										</td>
-										<td><%=file.get(i).getEmail()%></td>
-										<%if(file.get(i).getEmail().equals(utente.getEmail())){ %>
-										<td></td>
-										<%}
+							<tbody>
+								<tr>
+									<th scope="row"><i class="fa fa-file fa"
+										aria-hidden="true"></i></th>
+									<td><a
+										href="VisualizzaInfoFileServlet?nomeFile=<%=file.get(i).getNome()%>&idTesi=<%=file.get(i).getPropostaTesiId()%>">
+											<%=file.get(i).getNome()%>
+									</a></td>
+									<td><%=file.get(i).getEmail()%></td>
+									<%if(file.get(i).getEmail().equals(utente.getEmail())){ %>
+									<td></td>
+									<%}
 										else if(file.get(i).getVoto()!=0) {%>
-											<td><%=file.get(i).getVoto()%></td>
-										<%} else if(file.get(i).getVoto()==0){%>
-											<td>Non valutato</td>
-										<%} %>
-									</tr>
-									
-								</tbody>
+									<td><%=file.get(i).getVoto()%></td>
+									<%} else if(file.get(i).getVoto()==0){%>
+									<td>Non valutato</td>
+									<%} %>
+								</tr>
+
+							</tbody>
 							<%
 								}
 								}
 							%>
-							</table>
+						</table>
 					</div>
-					
+
 
 				</div>
 			</div>
@@ -120,20 +125,21 @@
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card" style="min-height: 30vh;">
 				<h4 class="font-italic">Info Proposta Tesi</h4>
-			<ol class="list-unstyled mb-0">
-			<%
+				<ol class="list-unstyled mb-0">
+					<%
 			if(disabilita!=null){
 			for (int i = 0; i < partecipazioni.size(); i++) { 
 				if(partecipazioni.get(i).getPropostaTesiId()==(int)request.getSession().getAttribute("numeroTesiDocente")){
 			%>
-				<li><a href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
-			<%}} }%>
-			</ol>
+					<li><a
+						href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
+					<%}} }%>
+				</ol>
 			</div>
-			
+
 			<div class="p-3 card my-4" style="min-height: 40vh;">
-			<h4 class="font-italic">Aree</h4>
-				<%
+				<h4 class="font-italic">Aree</h4>
+					<%
 						if (partecipazioni != null) {
 					%>
 				<div class="row">
@@ -141,7 +147,7 @@
 						<b>Proposta Tesi</b>
 					</div>
 					<div class="col">
-						<b>Email Studente</b>
+						<b>Nome Proposta Tesi</b>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
@@ -152,9 +158,15 @@
 					%>
 					<div class="col">
 						<a
-							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>&emailUtente=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
 					</div>
-					
+					<div class="col">
+					<%for(int x=0;x<listaTesi.size();x++) {
+							if(listaTesi.get(x).getId()==j){
+						%>
+							<%=listaTesi.get(x).getTitolo() %>
+						<%}} %>
+					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
@@ -162,13 +174,13 @@
 						}
 					%>
 				</div>
-			
-		</div>
-		
-			</aside>
+
 			</div>
+
+			</aside>
+		</div>
 		</main>
-</div>
+	</div>
 
 	<jsp:include page="footer.jsp" />
 </body>
