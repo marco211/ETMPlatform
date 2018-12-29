@@ -78,12 +78,7 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 	private boolean inviaRichiestaPropostaTesi(RichiestaPartecipazione richiesta){ //cambiato il parametro da PropostaTesi a RichiestaPartecipazione
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
 			ptm.inserisciRichiestaPartecipazione(richiesta);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
 		return true;		
 	}
 }

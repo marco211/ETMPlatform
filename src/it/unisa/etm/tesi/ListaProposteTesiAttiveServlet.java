@@ -76,11 +76,7 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<PropostaTesi> lista = new ArrayList<PropostaTesi>();
-		try {
 			lista = propostamanager.getProposteTesiAttive();
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 		return lista;
 	}
 	
@@ -96,14 +92,10 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
-		try {
 			if(utente.getTipo().equals("d")) 
 				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
 			else 
 				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 		return richieste;
 	}
 }

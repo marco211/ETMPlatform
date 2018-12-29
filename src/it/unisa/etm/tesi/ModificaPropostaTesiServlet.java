@@ -73,12 +73,7 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 		ManagerFactory mf = new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
-		try {
 			insegnamenti = ptm.getInsegnamenti();
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
 		return insegnamenti;
 	}
 }

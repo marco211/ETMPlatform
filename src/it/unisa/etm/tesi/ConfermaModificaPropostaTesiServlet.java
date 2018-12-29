@@ -74,12 +74,7 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
 	private boolean modificaPropostaTesi(PropostaTesi tesi){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
 			ptm.modificaPropostaTesi(tesi);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
 		return true;	
 	}
 }
