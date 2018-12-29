@@ -76,12 +76,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ManagerFactory em = new ManagerFactory();
 		PropostaTesiManager ptm = (PropostaTesiManager) em.createPropostaTesiManager();
 		PropostaTesi propostaTesi;
-		try {
 			propostaTesi=ptm.getPropostaTesi(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
 		return propostaTesi;	
 	}
 	
@@ -112,14 +107,10 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
-		try {
 			if(utente.getTipo().equals("d")) 
 				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
 			else 
 				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
-		}catch(SQLException e) {
-			e.printStackTrace();
-		}
 		return richieste;
 	}
 }

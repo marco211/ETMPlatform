@@ -64,12 +64,7 @@ public class ArchiviaPropostaTesiServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		boolean b = false;
-		try {
 			b = ptm.archiviaPropostaTesi(propostatesi_id);
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
 		return b;
 	}
 }

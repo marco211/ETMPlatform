@@ -34,10 +34,9 @@ public class RifiutaRichiestaServlet extends HttpServlet {
 			LocalDate data = LocalDate.now();
 			int propostatesi_id=Integer.parseInt(request.getParameter("richiesta_id"));
 		
-			if(this.rifiutaRichiestaPropostaTesi(propostatesi_id));
-			{
+			this.rifiutaRichiestaPropostaTesi(propostatesi_id);
 				request.getRequestDispatcher("index.jsp").forward(request, response);
-			}
+			
 			//request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
 	}
@@ -46,16 +45,15 @@ public class RifiutaRichiestaServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-	private boolean rifiutaRichiestaPropostaTesi(int id){ 
+	private void rifiutaRichiestaPropostaTesi(int id){ 
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
-			ptm.rifiutaRichiestaPartecipazione(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-		return true;		
+			try {
+				ptm.rifiutaRichiestaPartecipazione(id);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}		
 	}
 
 }
