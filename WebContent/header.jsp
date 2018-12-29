@@ -58,8 +58,7 @@
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="homePage.jsp">Home <span class="sr-only"></span>
 				</a></li>
-				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area
-					proposta tesi</a>
+				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area proposta tesi</a>
 				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="VisualizzaListaConsegneServlet">Area privata condivisa</a></li>
@@ -85,13 +84,14 @@
 
 			<form class="form-inline my-2 my-lg-0">
 				<div class="container">
-					<input class="form-control mr-sm-2 border-dark" type="search"
+					<form action="CercaUtenteServlet" metod="post">
+					<input class="form-control mr-sm-2 border-dark" type="search" name="cerca"
 						placeholder="Cerca" aria-label="Cerca">
-					<button type="button"
+					<button type="submit"
 						class="btn btn-inline my-2 my-sm-0 bg-warning "
 						id="exampleButton1">
 						<span class="fa fa-search"></span>
-					</button>
+					</button></form>
 				</div>
 			</form>
 			<!-- 
