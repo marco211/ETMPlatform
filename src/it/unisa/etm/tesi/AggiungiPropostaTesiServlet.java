@@ -46,7 +46,7 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		synchronized(session) {	
 				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
-				session.setAttribute("insegnamenti", insegnamenti);
+				request.setAttribute("insegnamenti", insegnamenti);
 				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
 				
 			}}

@@ -36,12 +36,12 @@
 
 
 
-<%PropostaTesi proposta = (PropostaTesi) session.getAttribute("propostacorrente"); %>
+<%PropostaTesi proposta = (PropostaTesi) request.getAttribute("propostacorrente"); %>
 	<div style="background-color: #FF9C08; min-height: 81vh;">
-			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) session.getAttribute("insegnamenti"); %>
+			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) request.getAttribute("insegnamenti"); %>
 				
 			<div class="col my-4 mx-4">
-				<form action="ConfermaModificaPropostaTesiServlet" method="post" id="aggiungi"  name="aggiungiproposta">
+				<form action="ConfermaModificaPropostaTesiServlet?proposta_id=<%=proposta.getId() %>" method="post" id="aggiungi"  name="aggiungiproposta">
 					<h1>Modifica una proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
@@ -79,14 +79,6 @@
 									  });
 									</script>
 								</div>
-			
-					<%int count = (int) session.getAttribute("count");
-						if(count==0){
-							count++;
-						}
-									
-									session.setAttribute("count",count);
-									%> 
 							<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
 							<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>	
 						</div>
