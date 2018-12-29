@@ -26,10 +26,8 @@
 					
 			</form>
 			
-    		 <div class="container">
+    		 <table class="table table-striped">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
-    		        int count = 0;
-    		        session.setAttribute("count", count);
     		        boolean b = false;
     		        session.setAttribute("richiesteproposte", proposte);
     		        PropostaTesi proposta = new PropostaTesi();
@@ -40,8 +38,11 @@
 		   				if(utente.getPropostaTesi_ID()!=p.getId()){
 		   				if((!p.isArchiviato())&&(!p.isChiuso())){
 					%>
-					<div class="row" id="lista">
-						<a class="col-5" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+					<tr class="pt-1" id="lista">
+							<td style="width:60%; border-style: none">
+								<a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+		               		</td>
+		               		<td style="border-style: none">
 						<%if(utente.getPropostaTesi_ID()==0){ %>
 		               <div>
 		               <%
@@ -59,12 +60,12 @@
 		               %>
 		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>			
 		              	<%}} %>
-		              	</div>
 		              	<%} %>
-		              </div>
+		              </td>
+		              </tr>
 					<%}}} %>
       
-            </div>
+            </table>
  		    </div>
 </div>
          
