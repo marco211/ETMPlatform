@@ -56,12 +56,16 @@
 									type="date" class="form-control" onchange="controlloScadenzaConsegna()"
 									name="scadenzaConsegna" required>
 							</div>
+							<%if(consegne.size()<5){ %>
 							<div class="col text-center">
 								<div id="infoDiv" class="alert alert-danger form-group d-none"
 									role="alert"></div>
 								<button type="submit" id="caricaFile" name="caricaFile"
 									class="btn btn-primary" onclick="validazione()">Aggiungi</button>
 							</div> 
+							<%}else{ %>
+							<h4>Hai raggiunto il numero massimo di consegne</h4>
+							<%} %>
 						</form>
 					</div>
 				</div>
@@ -77,7 +81,7 @@
 					<table class="table table-striped">
 							<thead>
 								<tr>
-									<th scope="col">Proposta Tesi</th>
+									<th scope="col">N° Consegna</th>
 									<th scope="col">Nome</th>
 								</tr>
 							</thead>
@@ -86,7 +90,7 @@
 							%>
 							<tbody>
 								<tr>
-									<th><a><%=consegne.get(i).getPropostaTesiId()%></a></th>
+									<th><a><%=i+1%></a></th>
 									<th><a><%=consegne.get(i).getNome()%></a></th>
 								</tr>
 
@@ -95,7 +99,8 @@
 								}
 							%>
 						</table>
-					<%} else{%>
+					<%} 
+					else{%>
 						<p>Non ci sono consegne assegnate</p>
 					<%} %>
 				
@@ -105,10 +110,9 @@
 		</aside>
 	</div>
 	</main>
-	</div>
 
 	<jsp:include page="footer.jsp" />
 
-	<script src="js/caricaFile.js"></script>
+	<script src="js/caricaConsegna.js"></script>
 </body>
 </html>
