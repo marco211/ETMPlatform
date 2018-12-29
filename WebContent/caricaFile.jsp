@@ -171,14 +171,14 @@
 
 												<div class="form-group">
 													<label for="nomeConsegna"><b>Scadenza Consegna:</b></label> <input
-														type="text" class="form-control"
-														onchange="controlloScadenza()" name="scadenzaConsegna" required>
+														type="date" class="form-control"
+														name="scadenzaConsegna" required>
 												</div>
 												<div class="col text-center">
 													<div id="infoDivConsegna"
 														class="alert alert-danger form-group d-none" role="alert"></div>
 													<button type="submit" id="caricaConsegna" name="caricaConsegna"
-														class="btn btn-primary" onclick="validazioneConsegna()">Aggiungi</button>
+														class="btn btn-primary" >Aggiungi</button>
 												</div>
 
 											</form>

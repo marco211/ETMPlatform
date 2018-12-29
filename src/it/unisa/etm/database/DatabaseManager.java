@@ -31,7 +31,7 @@ import java.util.logging.Logger;
 
 
 
-			String password = "admin";//inserite la vostra password
+			String password = "root";//inserite la vostra password
 
 			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ETM_PLATFORM?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC", username, password);
 			Logger.getLogger("global").info("**** Connessione creata con successo **** " + connection.toString() + "\n");		
