@@ -31,7 +31,7 @@
 				<div class="card mb-3">
 					<div class="card-body" style="min-height: 80vh;">
 
-						<h5 class="card-title" style="color: #3385ff">File</h5>
+						<h5 class="card-title">File</h5>
 						<div class="row" style="border-bottom: 1px solid;"></div>
 						
 							<h4>Nome File:</h4>

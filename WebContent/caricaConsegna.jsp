@@ -91,7 +91,7 @@
 							<tbody>
 								<tr>
 									<th><a><%=i+1%></a></th>
-									<th><a><%=consegne.get(i).getNome()%></a></th>
+									<th><a href="VisualizzaInfoConsegnaServlet?idConsegna=<%=consegne.get(i).getId()%>"><%=consegne.get(i).getNome()%></a></th>
 								</tr>
 
 							</tbody>

@@ -33,32 +33,14 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	}
 
 	@Override
-	public boolean modificaConsegna(Consegna c) throws SQLException {
-		String selectSQL="UPDATE Consegna SET ID = ?,"
-						+ "SCADENZA = ?,"
-						+ "NOME = ?,"
-						+ "DESCRIZIONE = ?"
-						+ "WHERE PROPOSTATESI_ID = ?";
-		
-		try {
-			connection=DatabaseManager.getIstance();
-			prepared=connection.prepareStatement(selectSQL);
-			prepared.setInt(1, c.getId());
-			prepared.setString(2, c.getScadenza());
-			prepared.setString(3, c.getNome());
-			prepared.setString(4, c.getDescrzione());
-			prepared.setInt(5, c.getId());
-			prepared.executeUpdate();
-			connection.commit();
-			
-			return true;
-		} catch (Exception e) {
-			return false;
-		} finally {
-			if(prepared!=null) {
-				prepared.close();
-			}
-		}
+	public boolean modificaConsegna(String scadenza, int id) throws SQLException {
+		connection=DatabaseManager.getIstance();
+		prepared=connection.prepareStatement("UPDATE CONSEGNA SET Scadenza=? Where Id=?");
+		prepared.setString(1, scadenza);
+		prepared.setInt(2, id);
+		prepared.executeUpdate();	
+		prepared.close();
+		return true;
 	}
 
 	
@@ -70,17 +52,10 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 			prepared=connection.prepareStatement(selectSQL);
 			prepared.setInt(1, id);			
 			prepared.executeUpdate();
-			connection.commit();
+			prepared.close();
 			return true;
 		} catch (Exception e){
 			return false;
-		
-		} finally {
-		
-			if(prepared!=null) {
-				prepared.close();
-				connection.close();
-			}
 		}
 	}
 	
@@ -91,7 +66,7 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 		prepared=connection.prepareStatement(selectSQL);
 		prepared.setInt(1, id);
 		rs=prepared.executeQuery();
-		
+		rs.next();
 			Consegna consegna = new Consegna();
 			consegna.setNome(rs.getString("NOME"));
 			consegna.setDescrzione(rs.getString("DESCRIZIONE"));
