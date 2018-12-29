@@ -38,7 +38,7 @@
 		 			  {
 					%>
 					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaDettagliUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>
+						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>
 		               
 		              	
 		              </div>

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -56,7 +57,44 @@ public  class UtenteManager implements UtenteModelInterface{
 	}
 
 
-
+	@Override
+	public List<Utente> cercaUtente(String email){
+		String SQL = "SELECT u FROM Utente WHERE u.email="+email+";";
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ArrayList <Utente> utenti = null;
+		try {
+			connection =  DatabaseManager.getIstance();
+			statement = connection.prepareStatement(SQL);
+			ResultSet rs = statement.executeQuery(SQL);
+			utenti = new ArrayList<Utente>();
+			while(rs.next()) {
+				Utente utente=new Utente();
+				utente.setEmail(rs.getString(1));
+				utente.setNome(rs.getString(2));
+				utente.setCognome(rs.getString(3));
+				utente.setPassword(rs.getString(4));
+				utente.setDataDiNascita(rs.getString(5));
+				utente.setPropostaTesi_ID(rs.getInt(6));
+				utente.setMatricola(rs.getLong(7));
+				utente.setUfficio(rs.getString(8));
+				utente.setTipo(rs.getString(9));
+				utenti.add(utente);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try{
+				statement.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+				return null;
+			}
+		}
+		return utenti;
+	}
+	
 
 
 
