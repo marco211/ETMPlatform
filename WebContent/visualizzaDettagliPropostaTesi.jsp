@@ -38,19 +38,12 @@ if(utente==null){
   		<div class="col-md-8 my-4">
         <div class="card mb-3">
         <div class="card-body">
-  		
-    		<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
-    		<p class="lead"><%=propostatesi.getDecrizione()%></p>
-			<p class="lead"><%=propostatesi.getAmbito()%></p>
-		    	
+      	
     			<%
     			ArrayList<Utente> utenti = (ArrayList<Utente>)session.getAttribute("utenti");
     			if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
     			if(!propostatesi.isChiuso()){%>
     			<a class="col" href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-primary col-2 my-2" id="ChiudiProposta">Chiudi</a>
-    			<%} %>
-    			<%if(propostatesi.isChiuso()){%>
-    			<p>la proposta di tesi è chiusa</p>
     			<%} %>
     			<%if(!propostatesi.isArchiviato()){ %>				
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
@@ -66,9 +59,14 @@ if(utente==null){
     			<a class="col" href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="RimuoviProposta">Elimina</a>
     			
     			<%}else{ %>
-    			<p>Non puoi o eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
+    			<p style="font-size: small; margin:0"><i class="fas fa-exclamation pr-2 mt-1"></i>Non puoi eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
     			<%}}%>
-    			
+    			<%if(propostatesi.isChiuso()){%>
+    			<p style="font-size: small; margin:0"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è chiusa</p>
+    			<%} %>
+    			<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
+    			<p class="lead"><%=propostatesi.getDecrizione()%></p>
+				<p class="lead"><%=propostatesi.getAmbito()%></p>
     					
     			<p class="blockquote-footer pt-3">Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></p>
     			<%

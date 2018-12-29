@@ -23,7 +23,7 @@
         <div class="card-body">
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
    			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
-      			<input class="form-control form-control-sm mr-3 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
+      			<input class="form-control form-control-sm ml-5 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
 					<%int count2 = 0;
 					session.setAttribute("count2", count2);
 					%>
