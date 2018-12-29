@@ -56,7 +56,7 @@ if(utente==null){
     	    	<a class="col" href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-primary col-2 my-2" id="ArchiviaProposta">Archivia</a>				
     			<% }int count = 0;
     		        session.setAttribute("count", count);%>
-    		        <a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
+    		        <a class="col" href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>&propostatesi_titolo=<%=propostatesi.getTitolo()%>&propostatesi_ambito=<%=propostatesi.getAmbito()%>&propostatesi_tempo=<%=propostatesi.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=propostatesi.getDecrizione()%>&propostatesi_materia=<%=propostatesi.getMaterie()%>" class="btn btn-inline col-2 my-2 px-2 mx-2 bg-warning" id="ModificaProposta">Modifica</a>
     			<%boolean b = false;
     			for(Utente u : utenti){
     					if(u.getPropostaTesi_ID()==propostatesi.getId())
