@@ -33,8 +33,6 @@
 			
     		 <div class="container">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
-    		        int count = 0;
-    		        session.setAttribute("count", count);
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
