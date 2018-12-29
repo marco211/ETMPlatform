@@ -60,6 +60,14 @@
 									<i class="fas fa-plus-circle"></i>
 								</button>
 							</form>
+							<form action="AggiungiConsegnaServlet">
+							<input type="hidden" name="action" value="listaConsegna">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fa fa-paper-plane"></i>
+								</button>
+							</form>
 							<%}%>
 						</div>
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
