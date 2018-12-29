@@ -60,6 +60,14 @@
 									<i class="fas fa-plus-circle"></i>
 								</button>
 							</form>
+							<form action="AggiungiConsegnaServlet">
+								<input type="hidden" name="action" value="listaConsegna">
+								<button type="submit"
+									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
+									id="AddFile">
+									<i class="fa fa-paper-plane"></i>
+								</button>
+							</form>
 							<%}%>
 						</div>
 						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
@@ -115,24 +123,25 @@
 
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card" style="min-height: 30vh;">
-			<div class="form-inline mb-3 pb-3"
-							style="border-bottom: 1px solid">
-								<%
+				<div class="form-inline mb-3 pb-3" style="border-bottom: 1px solid">
+					<h4 class="font-italic">
+						Proposta Tesi:
+						<%
 			if(disabilita!=null){
 			
 			%>
-				<h4 class="font-italic">Proposta Tesi <%=session.getAttribute("numeroTesiDocente") %></h4>
-				<%} %>
-				<form action="VisualizzaDettagliTesiServlet" method="get">
-								<input type="hidden" name="propostatesi_id"
-									value="<%=session.getAttribute("numeroTesiDocente") %>">
-								<button type="submit"
-									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-									id="AddFile">
-									<i class="fa fa-info-circle" aria-hidden="true"></i>
-								</button>
-							</form>
-							</div>
+						<%=session.getAttribute("numeroTesiDocente") %></h4>
+
+					<form action="VisualizzaDettagliTesiServlet" method="get">
+						<input type="hidden" name="propostatesi_id"
+							value="<%=session.getAttribute("numeroTesiDocente") %>">
+						<button type="submit"
+							class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddFile">
+							<i class="fa fa-info-circle" aria-hidden="true"></i>
+						</button>
+					</form>
+					<%} %>
+				</div>
 				<ol class="list-unstyled mb-0">
 					<%
 			if(disabilita!=null){
@@ -147,7 +156,7 @@
 
 			<div class="p-3 card my-4" style="min-height: 40vh;">
 				<h4 class="font-italic">Aree</h4>
-					<%
+				<%
 						if (partecipazioni != null) {
 					%>
 				<div class="row">
@@ -169,10 +178,10 @@
 							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
 					</div>
 					<div class="col">
-					<%for(int x=0;x<listaTesi.size();x++) {
+						<%for(int x=0;x<listaTesi.size();x++) {
 							if(listaTesi.get(x).getId()==j){
 						%>
-							<%=listaTesi.get(x).getTitolo() %>
+						<%=listaTesi.get(x).getTitolo() %>
 						<%}} %>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>

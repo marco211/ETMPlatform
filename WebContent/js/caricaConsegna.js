@@ -28,19 +28,36 @@ function controlloDescrizioneConsegna()
 	}
 }
 
-function controlloScadenza(){
-	var date=/\d{1,2}\/\d{1,2}\/\d{4}/;	
-	var scadenza=document.caricaConsegna.scadenzaConsegna.value;
-	if(scadenza.match(date)){
-		document.caricaConsegna.scadenzaConsegna.style.borderColor="green";
-		return true;
-	}
-	else{
+function controlloScadenzaConsegna(){
+	var lettere6=/^[0-9]{2}$/;
+	var lettere7=/^[0-9]{4}$/;
+	var data=document.caricaConsegna.scadenzaConsegna.value;
+	var giorno=data.substring(8,10);
+	var mese=data.substring(5,7);
+	var anno=data.substring(0,4);
+	if(!giorno.match(lettere6))
+	{
 		document.caricaConsegna.scadenzaConsegna.style.borderColor="red";
 		return false;
 	}
-	
+	else if(!mese.match(lettere6))
+	{
+		document.caricaConsegna.scadenzaConsegna.style.borderColor="red";
+		return false;
+	}
+	else if(!anno.match(lettere7))
+	{
+		document.caricaConsegna.scadenzaConsegna.style.borderColor="red";
+		return false;
+	}
+	else
+	{
+		document.caricaConsegna.scadenzaConsegna.style.borderColor="green";
+		return true;
+	}
 }
+	
+
 
 function validazione()
 {
@@ -63,7 +80,7 @@ function validazione()
 		}
 		div.append("Inserisci una descrizione");
 	}
-	else if(!controlloScadenza()){
+	else if(!controlloScadenzaConsegna()){
 		if(!focused){
 			document.caricaConsegna.scadenzaConsegna.focus();
 			focused = true;

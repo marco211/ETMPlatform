@@ -35,17 +35,19 @@ public class AggiungiConsegnaServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		String action = request.getParameter("action");
+		int idTesi=(int)request.getSession().getAttribute("numeroTesiDocente");
+		ManagerFactory mf=new ManagerFactory();
+		ConsegnaManager cm = (ConsegnaManager) mf.createConsegnaManager();
+		if(action==null) {
 		String nome=request.getParameter("nomeConsegna");
 		String descrizione=request.getParameter("descrizioneConsegna");
 		String dataScadenza = request.getParameter("scadenzaConsegna");
-		int idTesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 		Consegna consegna = new Consegna();
 		consegna.setNome(nome);
 		consegna.setDescrzione(descrizione);
 		consegna.setPropostaTesiId(idTesi);
 		consegna.setScadenza(dataScadenza);
-		ManagerFactory mf=new ManagerFactory();
-		ConsegnaManager cm = (ConsegnaManager) mf.createConsegnaManager();
 		try {
 			cm.aggiungiConsegna(consegna);
 		} catch (SQLException e) {
@@ -54,6 +56,17 @@ public class AggiungiConsegnaServlet extends HttpServlet {
 		}
 		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
 		requestDispatcher.forward(request, response);
+		}
+		else {
+			try {
+				request.getSession().setAttribute("listaConsegne", cm.getListaConsegne(idTesi));
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/caricaConsegna.jsp");
+			requestDispatcher.forward(request, response);
+		}
 	}
 
 	/**
