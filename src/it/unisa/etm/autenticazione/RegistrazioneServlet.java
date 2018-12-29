@@ -70,8 +70,12 @@ public class RegistrazioneServlet extends HttpServlet {
 				"</head>\r\n" + 
 				"<body>\r\n" + 
 				"\r\n" + 
-				"clicca sul link in basso per confermare la registrazione <br>" +
-				"<a href=\"http://localhost:8080/ETMPlatform/ConfermaMailServlet?validazione=" + validazione + "\"" + ">Clicca qui</a>" +
+				"<h1>Benvenuto su ETM-Platform</h1>" +
+				"Gentile utente,<br>" +
+				"abbiamo ricevuto la vostra richiesta di registrazione ed è richiesta la vostra conferma per completare la procedura. <br>" +
+				"La invitiamo a cliccare sul link in basso per confermare la registrazione ad ETM-Platform:<br>" +
+				"<a href=\"http://localhost:8080/ETMPlatform/ConfermaMailServlet?validazione=" + validazione + "\"" + ">Conferma registrazione</a> <br>" +
+				"Cordiali saluti.<br>" +
 				"\r\n" + 
 				"</body>\r\n" + 
 				"</html>";
@@ -124,7 +128,7 @@ public class RegistrazioneServlet extends HttpServlet {
 		InternetAddress receiver = null;
 
 		try {
-			sender = new InternetAddress("emtplatform@gmail.com", "etm platform");
+			sender = new InternetAddress("emtplatform@gmail.com", "ETM-Platform");
 			receiver = new InternetAddress(ricevente, "Email ricevente");
 
 		} catch (UnsupportedEncodingException e) {

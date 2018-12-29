@@ -1,7 +1,10 @@
 package it.unisa.etm.user;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+
+import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.UtenteManager;
 
 import javax.servlet.RequestDispatcher;
@@ -36,12 +39,15 @@ public class CercaUtenteServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String email=request.getParameter("cerca");
-		ManagerFactory em = new ManagerFactory();
-		UtenteManager um = (UtenteManager) em.createUtenteManager();
-		ArrayList<Utente> utenti= (ArrayList<Utente>) um.cercaUtente(email);
-			request.getSession().setAttribute("utente", utenti);
-		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaListaUtenti.jsp");
-		view.forward(request, response);
+		try{
+			UtenteManager um= new UtenteManager();
+			Utente utenti= (Utente) um.cercaUtente(email);
+			request.setAttribute("utenti", utenti);
+			request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
+		}catch(Exception e) {
+			request.getRequestDispatcher("index.jsp").forward(request, response);
+			e.printStackTrace();
+		}
 	}
 
 	/**
