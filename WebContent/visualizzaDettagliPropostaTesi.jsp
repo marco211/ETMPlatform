@@ -70,8 +70,7 @@ if(utente==null){
     			<%}}%>
     			
     					
-    			<p>Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></p>
-    			<a class="alert-link"href="VisualizzaProfiloUtenteServlet?utente_email=<%=docente.getEmail() %>"><%=docente.getEmail()%></a>
+    			<p class="blockquote-footer pt-3">Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></p>
     			<%
     			boolean b = false;
     			ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richiesteproposte");
@@ -89,23 +88,18 @@ if(utente==null){
     			<p>Hai già inviato una richiesta di partecipazione</p>
     			<%}}}} %>
   		</div>
-  		 <div class="container-fluid bg-white border-left col" style="width: 10px">
-  		 	<p>Materia/e: <%=propostatesi.getMaterie()%></p>
-  		 	<p>Tempo di sviluppo: <%=propostatesi.getTempoDiSviluppo()%> giorni</p>
-  		 	<p class="blockquote-footer">Autore: <a href="VisualizzaProfiloUtenteServlet?utente_email"><%=propostatesi.getUtenteEmail()%></a></p>
-		</div>
+  	</div>	
+  </div>		
+  
+  		 <aside class="col-md-4 my-4">
+  		 	<div class="list-group p-3 card">
+  		 		<p>Materia/e: <%=propostatesi.getMaterie()%></p>
+  		 		<p>Tempo di sviluppo: <%=propostatesi.getTempoDiSviluppo()%> giorni</p>
+  		 		<a href="VisualizzaProfiloUtenteServlet?utente_email=<%=docente.getEmail() %>"><i class="fas fa-user"></i>&nbsp; <%=docente.getEmail()%></a>
+			</div>
+		</aside>
 	</div>	
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
+ 	
  
  
      </main>
