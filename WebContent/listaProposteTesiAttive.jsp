@@ -37,20 +37,21 @@
 		 			  {
 					%>
 					<tr class="pt-1" id="lista">
-							<td style="width:100%; border-style: none">
-								<a style="width:100%" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+							<td style="width:60%; border-style: none">
+								<a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+		               		</td>
+		               		<td style="border-style: none">
+		               		<%if((p.isArchiviato())&&(!p.isChiuso())){
+							%>
+						 		<p style="font-size: small; display: inline">Archiviata<i class="fas fa-archive my-1"></i></p>				
+						 	<%}else if(p.isChiuso()){%>
+						 		<p style="font-size: small; display: inline">Chiusa<i class="fas fa-door-closed my-1"></i></p>				
+						 	<%}%>
 		               		</td>
 		               		<td style="border-style: none">
 		              		<%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
-		              			<a class="btn bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>&propostatesi_titolo=<%=p.getTitolo()%>&propostatesi_ambito=<%=p.getAmbito()%>&propostatesi_tempo=<%=p.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=p.getDecrizione()%>&propostatesi_materia=<%=p.getMaterie()%>">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
-		             	 	<% }
-						
-							if((p.isArchiviato())&&(!p.isChiuso())){
-							%>
-						 		<p class="btn bg-warning " >Archiviato<i class="fas fa-archive my-1"></i></p>				
-						 	<%}else if(p.isChiuso()){%>
-						 		<p class="btn bg-warning ">Chiuso<i class="fas fa-door-closed my-1"></i></p>				
-						 	<%}%>
+		              			<a class="btn bg-warning" href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>&propostatesi_titolo=<%=p.getTitolo()%>&propostatesi_ambito=<%=p.getAmbito()%>&propostatesi_tempo=<%=p.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=p.getDecrizione()%>&propostatesi_materia=<%=p.getMaterie()%>">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
+		             	 	<% }%>
 						 	</td>		              	
 		             </tr>
 					<%} %>
@@ -63,8 +64,15 @@
         <aside class="col-md-4 my-4">
           <div class="list-group p-3 card">
             <h4 class="font-italic">Richieste ricevute</h4>
+               <table>
+            
             		<% ArrayList<RichiestaPartecipazione> richieste =(ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste");
-		   			  int c=0;
+		   			  if(richieste.isEmpty()){%>
+		   				  <div style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
+									<p  class="text-xs-center mb-1" >Non hai ricevuto alcuna richiesta attualmente.</p>								
+								</div>
+		   			  <%}
+            		  int c=0;
 		   			  String titolop = "";
         			  for(RichiestaPartecipazione r : richieste)
 		 			  {
@@ -76,16 +84,15 @@
         				  	
         				  Period tempo = Period.between(r.getData(), LocalDate.now());
 					%>
-						<div class="list-group-item list-group-item-action flex-column align-items-start mx-1 px-1 py-2">
-							<div class="d-flex w-100">
-								<div style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
+							<tr class="border">
+								<td style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
 									<p  class="text-xs-center mb-1" >Nome</p>
-									<a class="text-xs-center mt-1" href="VisualizzaProfiloUtenteServlet?utente_email=><%=r.getUtente_mail()%>"></a><br> 
+									<a class="text-xs-center mt-1" href="VisualizzaProfiloUtenteServlet?utente_email=<%=r.getUtente_mail()%>"><%=r.getUtente_mail()%></a><br> 
 									<p  class="text-xs-center mb-1 mt-3" >Tesi</p>
 									<a class="text-xs-center mt-1" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
-								</div>
-								<div class="border-left pl-2 pr-1 pt-3 w-20">
-									<div style="font-size: 14px">
+								</td>
+								<td class="px-1">
+									<div class="px-1" style="font-size: 12px">
 									<%if(LocalDate.now().getYear()==r.getData().getYear()) 
 										{
 											if(LocalDate.now().getMonth().equals(r.getData().getMonth()))
@@ -99,16 +106,19 @@
 												<%=tempo.getYears()%> anno/i fa
 									<%	}%>
 									</div>
-									<div class="mt-2" >
-										<a href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="AccettaRichiesta"><i class="fas fa-check-circle"></i></a>				
-										<a href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn btn-primary"  style="font-size: 10px;" id="RifiutaRichiesta"><i class="fas fa-times-circle"></i></a>					
+									<div class="mt-2">
+										<a style="display: inline;" href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn-sm btn-primary" id="AccettaRichiesta"><i class="fas fa-check-circle fa-xs"></i></a>				
+										<a style="display: inline;" href="RifiutaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>" class="btn-sm btn-primary" id="RifiutaRichiesta"><i class="fas fa-times-circle fa-xs"></i></a>					
 									</div>																		
-									
+								</td>
+							</tr>
 							</div>
 							</div>
 							
 						</div>
 					<%}%>
+			</table>
+				
    
         </aside>
 		
