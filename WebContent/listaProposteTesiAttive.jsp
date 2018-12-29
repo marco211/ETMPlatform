@@ -22,7 +22,7 @@
         <div class="card mb-3">
         <div class="card-body">
    			 <form class="form-inline mb-3 pb-3" style="border-bottom:1px solid">
-   			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>
+   			 	<h5 class="card-title mb-1">Proposte tesi&nbsp;</h5>	
       			<input class="form-control form-control-sm ml-5 w-50" id="myInput" type="text" placeholder="Cerca proposta" aria-label="Cerca proposta">
 					<%int count2 = 0;
 					session.setAttribute("count2", count2);
@@ -31,32 +31,30 @@
 				 
 			</form>
 			
-    		 <div class="container">
+    		 <table class="table table-striped">
     		        <% ArrayList<PropostaTesi> proposte =(ArrayList<PropostaTesi>)request.getAttribute("proposte");
 		   			for(PropostaTesi p : proposte)
 		 			  {
 					%>
-					<div class="row pt-1" id="lista">
-						<a class="col-5" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
-		               <div>
-		               <%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
-		               <a class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>&propostatesi_titolo=<%=p.getTitolo()%>&propostatesi_ambito=<%=p.getAmbito()%>&propostatesi_tempo=<%=p.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=p.getDecrizione()%>&propostatesi_materia=<%=p.getMaterie()%>">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
-		               <% }
-					
-						if((p.isArchiviato())&&(!p.isChiuso())){
-					%>
-				 
-				 	<p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " ><i class="fas fa-archive"></i></p>				
-				 <%}else if(p.isChiuso()){%>
-				 <p class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "><i class="fas fa-door-closed"></i></p>				
-				 <%} %>
-		              	
-		              	</div>
-		              	
-		              </div>
+					<tr class="pt-1" id="lista">
+							<td style="width:100%; border-style: none">
+								<a style="width:100%" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId() %>"><%= p.getTitolo() %></a>
+		               		</td>
+		               		<td style="border-style: none">
+		              		<%if(utente.getEmail().equals(p.getUtenteEmail())){ %>
+		              			<a class="btn bg-warning " href="ModificaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>&propostatesi_titolo=<%=p.getTitolo()%>&propostatesi_ambito=<%=p.getAmbito()%>&propostatesi_tempo=<%=p.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=p.getDecrizione()%>&propostatesi_materia=<%=p.getMaterie()%>">Modifica&nbsp;<i class="fas fa-edit"></i></a>				
+		             	 	<% }
+						
+							if((p.isArchiviato())&&(!p.isChiuso())){
+							%>
+						 		<p class="btn bg-warning " >Archiviato<i class="fas fa-archive my-1"></i></p>				
+						 	<%}else if(p.isChiuso()){%>
+						 		<p class="btn bg-warning ">Chiuso<i class="fas fa-door-closed my-1"></i></p>				
+						 	<%}%>
+						 	</td>		              	
+		             </tr>
 					<%} %>
-      
-            </div>
+            </table>
  		    </div>
 </div>
          
