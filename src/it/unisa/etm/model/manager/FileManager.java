@@ -137,6 +137,4 @@ public class FileManager implements FileModelInterface {
 	private PreparedStatement prepared;
 	private ResultSet rs;
 
-	
-	
 }
