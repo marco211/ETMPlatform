@@ -11,22 +11,22 @@ import it.unisa.etm.bean.RichiestaPartecipazione;
 
 public interface PropostaTesiModelInterface {
 	
-	public void accettaRichiestaPartecipazione(int id) throws SQLException;
-	public void rifiutaRichiestaPartecipazione(int id) throws SQLException;
-	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email) throws SQLException;
-	public PropostaTesi getPropostaTesi(int id) throws SQLException;
-	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione) throws SQLException;
-	public boolean inserisciPropostaTesi(PropostaTesi proposta)  throws SQLException;
-	public boolean archiviaPropostaTesi(int id)  throws SQLException;
-	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo)  throws SQLException;
-	public boolean chiudiPropostaTesi(int id)  throws SQLException;//modificato con l'identificativo
-	public boolean rimuoviPropostaTesi(int id) throws SQLException;//modificato con l'identificativo
-	public ArrayList<PropostaTesi> getProposteTesiAttive()  throws SQLException;
+	public void accettaRichiestaPartecipazione(int id);
+	public void rifiutaRichiestaPartecipazione(int id);
+	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email);
+	public PropostaTesi getPropostaTesi(int id);
+	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione);
+	public boolean inserisciPropostaTesi(PropostaTesi proposta);
+	public boolean archiviaPropostaTesi(int id);
+	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo);
+	public boolean chiudiPropostaTesi(int id);//modificato con l'identificativo
+	public boolean rimuoviPropostaTesi(int id);//modificato con l'identificativo
+	public ArrayList<PropostaTesi> getProposteTesiAttive();
 	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
-	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException;
-	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException;
-	public String getNomeDocente(int id) throws SQLException;
-	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail) throws SQLException;
-	public ArrayList<Insegnamento> getInsegnamenti() throws SQLException;
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException; //inutilizzato
+	public boolean modificaPropostaTesi(PropostaTesi proposta);
+	public String getNomeDocente(int id) throws SQLException; //inutilizzato
+	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail);
+	public ArrayList<Insegnamento> getInsegnamenti();
 }
 

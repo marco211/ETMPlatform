@@ -44,10 +44,9 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
-		synchronized(session) {
-			
+		synchronized(session) {	
 				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
-				session.setAttribute("insegnamenti", insegnamenti);
+				request.setAttribute("insegnamenti", insegnamenti);
 				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
 				
 			}}
@@ -64,12 +63,7 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 		ManagerFactory mf = new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
-		try {
 			insegnamenti = ptm.getInsegnamenti();
-		}catch(SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
 		return insegnamenti;
 	}
 }

@@ -43,8 +43,7 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		synchronized(session) {
-			PropostaTesi p = new PropostaTesi();
-			int id = (int) session.getAttribute("proposta_tesi_id");
+			int id = Integer.parseInt(request.getParameter("proposta_id"));
 			String titolo=request.getParameter("titolo");
 			String ambito=request.getParameter("ambito");
 			int tempo=Integer.parseInt(request.getParameter("tempo"));
@@ -74,12 +73,7 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
 	private boolean modificaPropostaTesi(PropostaTesi tesi){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
 			ptm.modificaPropostaTesi(tesi);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
 		return true;	
 	}
 }

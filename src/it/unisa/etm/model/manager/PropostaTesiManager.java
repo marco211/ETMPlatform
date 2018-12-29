@@ -22,8 +22,8 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public void accettaRichiestaPartecipazione(int id) throws SQLException{
-		Connection istance=DatabaseManager.getIstance();
+	public void accettaRichiestaPartecipazione(int id){
+		Connection istance=null;
 		PreparedStatement ps=null;
 		PreparedStatement ps2=null;
 		String insertSQL=null;
@@ -32,6 +32,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		insertSQL = "UPDATE utente SET PropostaTesi_ID = (Select PropostaTesi_Id FROM richiestapartecipazione WHERE ID= ?) WHERE email=(Select utente_email FROM richiestapartecipazione WHERE ID= ?)";
 		insertSQL2 ="delete from RichiestaPartecipazione where id=?"; 
 		try {
+			istance = DatabaseManager.getIstance();
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
 			ps.setInt(2, id);
@@ -40,32 +41,31 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps2=istance.prepareStatement(insertSQL2); 
 			ps2.setInt(1, id);
 			ps2.executeUpdate();
-		}finally {
-			if (ps != null)
-				ps.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
 	
 	
 	@Override
-	public void rifiutaRichiestaPartecipazione(int id) throws SQLException{
-		Connection istance=DatabaseManager.getIstance();
+	public void rifiutaRichiestaPartecipazione(int id){
+		Connection istance=null;
 		PreparedStatement ps=null;
 		String insertSQL=null;
 		insertSQL = "delete from RichiestaPartecipazione where id=?";
 		try {
+			istance = DatabaseManager.getIstance();
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
 			ps.executeUpdate();
-		}finally {
-			if (ps != null)
-				ps.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 		
 	@Override
-	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email) throws SQLException{
+	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email){
 		
 		String SQL = "SELECT * FROM richiestapartecipazione WHERE propostatesi_id IN (SELECT ID FROM propostatesi WHERE utente_email=?)";
 		Connection connection = null;
@@ -84,38 +84,36 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				richiesta.setPropostatesi_id(rs.getInt(3)); 
 				richiesta.setUtente_mail(rs.getString(4));
 				richieste.add(richiesta);
-			}
-		}finally {
-			if(statement!=null)
-				statement.close();
+			}return richieste;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
-		
-		return richieste;
 	}
 	
 
 	
 	@Override
-	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione) throws SQLException{
-		Connection istance=DatabaseManager.getIstance();
+	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione){
+		Connection istance=null;
 		PreparedStatement ps=null;
 		String insertSQL=null;
 		insertSQL = "insert into RichiestaPartecipazione (Data, PropostaTesi_Id, Utente_Email) "
 					+ "values(?,?,?);";
 		try {
+			istance = DatabaseManager.getIstance();
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setDate(1, java.sql.Date.valueOf(richiestaPartecipazione.getData()));			
 			ps.setInt(2, richiestaPartecipazione.getPropostatesi_id());			
 			ps.setString(3, richiestaPartecipazione.getUtente_mail());								
 			ps.executeUpdate();
-		}finally {
-			if (ps != null)
-				ps.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
 		}
 	}
 	
 	@Override
-	public boolean inserisciPropostaTesi(PropostaTesi proposta) throws SQLException {
+	public boolean inserisciPropostaTesi(PropostaTesi proposta){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;
@@ -135,15 +133,16 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(8, proposta.getMaterie());
 			statement.executeUpdate();
 			b=true;
-		}finally {
-			if (statement != null)
-				statement.close();
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return b;
+
 	}
 	
 	@Override
-	public boolean archiviaPropostaTesi(int id) throws SQLException {
+	public boolean archiviaPropostaTesi(int id){
 		String SQL = "UPDATE PropostaTesi SET Archiviato =1 WHERE id="+id+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -153,14 +152,14 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement = connection.prepareStatement(SQL);
 			statement.executeUpdate();
 			b = true;
-		}finally {
-			if(statement!=null)
-				statement.close();
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return b;
 	}
 	@Override
-	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo) throws SQLException {
+	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo){
 		String SQL = "SELECT p FROM PropostaTesi WHERE p.titolo="+titolo+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -183,14 +182,14 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
 			}
-		}finally {
-			if(statement!=null)
-				statement.close();
+			return proposte;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
-		return proposte;
 	}
 	@Override
-	public boolean chiudiPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
+	public boolean chiudiPropostaTesi(int id){//modificato con l'identificativo
 		String SQL = "UPDATE PropostaTesi SET Chiuso =1 WHERE id="+id+";";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -200,14 +199,15 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement = connection.prepareStatement(SQL);
 			statement.executeUpdate();
 			b = true;
-		}finally {
-			if(statement!=null)
-				statement.close();
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return b;
+
 	}
 	@Override
-	public boolean rimuoviPropostaTesi(int id) throws SQLException {//modificato con l'identificativo
+	public boolean rimuoviPropostaTesi(int id){//modificato con l'identificativo
 		String SQL = "Delete FROM PropostaTesi WHERE id="+id+";";
 		String SQL2 = "Select * FROM RichiestaPartecipazione";
 		Connection connection = null;
@@ -230,14 +230,14 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement = connection.prepareStatement(SQL);
 			statement.executeUpdate();
 			b=true;
-		}finally {
-				if(statement!=null)
-					statement.close();
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return b;
 	}
 	@Override
-	public ArrayList<PropostaTesi> getProposteTesiAttive() throws SQLException {
+	public ArrayList<PropostaTesi> getProposteTesiAttive(){
 		String SQL = "SELECT * FROM PropostaTesi;";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -259,13 +259,13 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setArchiviato(rs.getBoolean(8));
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
-			}
-		}finally {
-			if(statement!=null)
-				statement.close();
-		}
+			}return proposte;
 		
-		return proposte;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+
 	}
 	@Override
 	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException {
@@ -325,7 +325,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		return proposte;
 	}
 
-	public PropostaTesi getPropostaTesi(int id) throws SQLException {
+	public PropostaTesi getPropostaTesi(int id){
 		String SQL = "SELECT * FROM PropostaTesi WHERE id=" + id;
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -346,16 +346,15 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setDecrizione(rs.getString(7));
 				proposta.setArchiviato(rs.getBoolean(8));
 				proposta.setMaterie(rs.getString(9));
-		}finally {
-			if(statement!=null)
-				statement.close();
+				return proposta;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
-		
-		return proposta;
 	}
 
 	@Override
-	public boolean modificaPropostaTesi(PropostaTesi proposta) throws SQLException {
+	public boolean modificaPropostaTesi(PropostaTesi proposta){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		boolean b;
@@ -373,11 +372,12 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setInt(6, proposta.getId());
 			statement.executeUpdate();
 			b=true;
-		}finally {
-			if (statement != null)
-				statement.close();
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
 		}
-		return b;
+
 	}
 	
 	@Override
@@ -402,7 +402,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 
 	@Override
-	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail) throws SQLException {
+	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail){
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ArrayList<RichiestaPartecipazione> richieste= new ArrayList<RichiestaPartecipazione>();
@@ -420,16 +420,17 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				richiesta.setUtente_mail(rs.getString(4));
 				richieste.add(richiesta);
 			}
-		}finally {
-			if(statement!=null)
-				statement.close();
+			return richieste;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		
-		return richieste;
+		
 	}
 
 	@Override
-	public ArrayList<Insegnamento> getInsegnamenti() throws SQLException {
+	public ArrayList<Insegnamento> getInsegnamenti(){
 		String SQL = "SELECT * FROM insegnamento;";
 		Connection connection = null;
 		PreparedStatement statement = null;
@@ -443,12 +444,11 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				insegnamento.setNome(rs.getString(1));
 				insegnamento.setCfu(rs.getInt(2));
 				insegnamenti.add(insegnamento);
-			}
-		}finally {
-			if(statement!=null)
-				statement.close();
+			}return insegnamenti;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
-		return insegnamenti;
 	}
 
 }

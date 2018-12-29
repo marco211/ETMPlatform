@@ -13,8 +13,7 @@ public class Consegna implements Serializable {
 		
 	}
 	
-	public Consegna(int id, String nome, String descrizione, String scadenza, int propostaId) {
-		this.id=id;
+	public Consegna(String nome, String descrizione, String scadenza, int propostaId) {
 		this.nome=nome;
 		this.descrzione=descrizione;
 		this.scadenza=scadenza;

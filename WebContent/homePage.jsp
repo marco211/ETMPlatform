@@ -3,14 +3,18 @@
 
 <%
 Utente utente =(Utente)session.getAttribute("utente");
+Amministratore admin = (Amministratore)session.getAttribute("admin");
 if(utente==null){
-	response.sendRedirect("./index.jsp");
-    return;
-}
-ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
-if ((partecipazioni == null)&&(utente.getTipo().equals("d"))) {
-	response.sendRedirect("./VisualizzaListaPartecipazioneServlet?action=esegui");
-	return;
+	if(admin==null){
+		response.sendRedirect("./index.jsp");
+		return;
+	}
+}else{
+	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	if ((partecipazioni == null)&&(utente.getTipo().equals("d"))) {
+		response.sendRedirect("./VisualizzaListaPartecipazioneServlet?action=esegui");
+		return;
+	}
 }
 %>
 

@@ -19,19 +19,15 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 
 	
 	public boolean aggiungiConsegna(Consegna consegna) throws SQLException {
-		String selectSQL="INSERT INTO Consegna(ID,SCANDENZA,NOME,DESCRIZIONE,PROPOSTATESI_ID) VALUES(?,?,?,?,?)";
+		String selectSQL="INSERT INTO CONSEGNA (SCANDENZA, NOME, DESCRIZIONE, PROPOSTATESI_ID) VALUES (?,?,?,?)";
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement(selectSQL);
-			prepared.setInt(1, consegna.getId());
-			prepared.setString(2, consegna.getScadenza());
-			prepared.setString(3, consegna.getNome());
-			prepared.setString(4, consegna.getDescrzione());
-			prepared.setInt(5, consegna.getId());
+			prepared.setString(1, consegna.getScadenza());
+			prepared.setString(2, consegna.getNome());
+			prepared.setString(3, consegna.getDescrzione());
+			prepared.setInt(4, consegna.getPropostaTesiId());
 			prepared.executeUpdate();
-			connection.commit();
-			
-			return true;
 		} catch (Exception e) {
 			return false;
 		} finally {
@@ -40,7 +36,7 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 				connection.close();
 			}
 		}
-		
+		return true;
 		
 	}
 
