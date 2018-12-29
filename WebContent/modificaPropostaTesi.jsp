@@ -2,7 +2,9 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.*, java.time.* "%>
-
+<%
+	Utente utente = (Utente) session.getAttribute("utente");
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -88,12 +90,37 @@
 								
 							<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
 							<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>	
-						</form>
-					</div>
+				</form></div>
 				</div>
 			</div>
-			</main>
+			<aside class="col-md-4 my-4">
+			<div class="p-3 card" style="min-height: 25vh;">
+			<h4 class="font-italic">Utente</h4>
+				<div class="row">
+					<div class="col">
+						<b>email</b>
+					</div>
+					<div class="col">
+						<b>Nome e Cognome</b>
+					</div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					<div class="col">
+						<a
+							href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>"><%=utente.getEmail() %></a>
+					</div>
+					<div class="col">
+					<%=utente.getNome()%>&nbsp;<%=utente.getCognome() %>
+					</div>
+					<div class="w-100" style="border-bottom: 1px solid"></div>
+					
+				</div>
+
 			</div>
+		</div>
+		</aside>
+	</div>
+	</main>
+	</div>
 		
 	<jsp:include page="footer.jsp" />
 	<script src="js/validazionePropostaTesi.js"></script>

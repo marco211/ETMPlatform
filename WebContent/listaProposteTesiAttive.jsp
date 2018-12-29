@@ -80,7 +80,7 @@
 							<div class="d-flex w-100">
 								<div style="font-size:14px; padding: 10px; margin-right:15px ;text-align: center">
 									<p  class="text-xs-center mb-1" >Nome</p>
-									<a class="text-xs-center mt-1" href="VisualizzaProfiloUtenteServlet?utente_email"><%=r.getUtente_mail()%></a><br> 
+									<a class="text-xs-center mt-1" href="VisualizzaProfiloUtenteServlet?utente_email=><%=r.getUtente_mail()%>"></a><br> 
 									<p  class="text-xs-center mb-1 mt-3" >Tesi</p>
 									<a class="text-xs-center mt-1" href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id() %>"><%=titolop %></a>
 								</div>
