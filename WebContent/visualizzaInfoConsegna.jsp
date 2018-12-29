@@ -6,7 +6,7 @@
 		response.sendRedirect("./index.jsp");
 		return;
 	}
-	Consegna consegna = (Consegna) session.getAttribute("infoConsegna");
+	Consegna consegna = (Consegna) request.getAttribute("infoConsegna");
 	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
 %>
@@ -33,7 +33,7 @@
 				<div class="card mb-3">
 					<div class="card-body" style="min-height: 80vh;">
 
-						<h5 class="card-title" style="color: #3385ff">Consegna</h5>
+						<h5 class="card-title">Info consegna</h5>
 						<div class="row" style="border-bottom: 1px solid;"></div>
 						
 							<h4>Nome Consegna:</h4>
@@ -41,8 +41,20 @@
 							<h4>Descrizione Consegna:</h4>
 							<%=consegna.getDescrzione() %>
 							<h4>Scadenza Consegna:</h4>
-							<%=consegna.getScadenza() %>
-							
+							<div id="scadenzaConsegna"><%=consegna.getScadenza() %></div>
+							<div class="d-none" id="modificaConsegnaDiv">
+								<form action="ModificaConsegnaServlet" method="post">
+									<input type="hidden" name="idConsegna" value="<%=consegna.getId()%>">
+									<input type="hidden" name="nomeConsegna" value="<%=consegna.getNome()%>">
+									<input type="hidden" name="descrizioneConsegna" value="<%=consegna.getDescrzione()%>">
+									<div class="form-group">
+									<input type="date" class="form-control" name="scadenzaConsegna" required>
+									</div>
+									<div>
+									<input type="submit" class="btn btn-primary" value="modificaScadenza">
+									</div>
+								</form>
+							</div>
 					</div>
 				</div>
 
@@ -57,12 +69,11 @@
 					<%
 						if ((utente.getTipo().equals("d"))) {
 					%>
-						<li>Modifica Consegna</li>
-						<li>Elimina Consegna</li>
+						<li><a href="#" onclick="scadenza()">Modifica Consegna</a></li>
+						<li><a href="EliminaConsegnaServlet?idConsegna=<%=consegna.getId()%>">Elimina Consegna</a></li>
 					<%
-						}else if (utente.getTipo().equals("s")){
-					%>
-						<%
+						}
+						else if (utente.getTipo().equals("s")){
 							for (int i = 0; i < consegne.size(); i++) {
 					%>
 					<li class="list-group-item"><a href="#"> <%=
@@ -84,6 +95,6 @@
 	</div>
 
 	<jsp:include page="footer.jsp" />
-
+<script type="text/javascript" src="js/consegna.js"></script>
 </body>
 </html>

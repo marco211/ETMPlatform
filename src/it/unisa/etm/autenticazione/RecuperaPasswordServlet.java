@@ -94,7 +94,7 @@ public class RecuperaPasswordServlet extends HttpServlet {
         Message msg = new MimeMessage(session);
         InternetAddress addForm;
 		try {
-			addForm = new InternetAddress("emtplatform@gmail.com", "etm platform");
+			addForm = new InternetAddress("emtplatform@gmail.com", "ETM-Platform");
 			msg.setFrom(addForm);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -110,7 +110,22 @@ public class RecuperaPasswordServlet extends HttpServlet {
 			addTo = new InternetAddress(ricevente);
 	        msg.setRecipient(Message.RecipientType.TO, addTo);
 	        msg.setSubject("Recupero password"); 
-	        msg.setContent("Ciao, questa è la tua password: " + testo + ".", "text/plain"); 
+	        msg.setContent("<html>\r\n" + 
+					"<head>\r\n" + 
+					"<meta charset=\"ISO-8859-1\">\r\n" + 
+					"<title>ETM Platform</title>\r\n" + 
+					"</head>\r\n" + 
+					"<body>\r\n" + 
+					"\r\n" + 
+					"<h1>Benvenuto su ETM-Platform</h1>" +
+					"Gentile utente,<br>" +
+					"abbiamo ricevuto la vostra richiesta di recupero password. <br>" +
+					"Password: \"" + testo + "\".<br>" +
+					"Le ricordiamo che è possibile cambiare la password una volta effettuato l'accesso con il vostro account all'apposita sezione.<br>" +
+					"Cordiali saluti.<br>" +
+					"\r\n" + 
+					"</body>\r\n" + 
+					"</html>", "text/html"); 
 		} catch (AddressException e) {
 			e.printStackTrace();
 			return false;

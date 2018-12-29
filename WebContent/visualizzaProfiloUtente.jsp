@@ -105,7 +105,7 @@ if(utente==null || utenteToShow == null){
                                         </div><% }%>
                                         <div class="row">
                                           <div class="col-md-6">
-                                      		    <form method="get" action="modificaPassword.jsp?utente_email="<%=utente.getEmail()%>">
+                                      		    <form method="get" action="modificaPassword.jsp?utente_email="<%=utente.getEmail()%>>
                                                 <button type="submit" class="btn btn-primary" name="invio">Cambia Password</button></form>
                                           </div>
                                         </div>

@@ -35,14 +35,16 @@
     		 <div class="container">
     		        <% ArrayList<Utente> utenti =(ArrayList<Utente>)request.getAttribute("utenti");
 		   			for(Utente u : utenti)
-		 			  {
+		 			  { if(utente.getEmail().equals(request.getParameter("utente_email"))) {
 					%>
 					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>
-		               
-		              	
-		              </div>
-					<%} %>
+						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>	
+		       </div>
+					<%}else{ %>
+					<div class="row" id="lista">
+						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a>	
+		       </div>
+		       <% } }%>
       
             </div>
  		    </div>

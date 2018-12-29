@@ -11,22 +11,20 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import it.unisa.etm.bean.Consegna;
-import it.unisa.etm.bean.File;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
-import it.unisa.etm.model.manager.FileManager;
 
 /**
- * Servlet implementation class VisualizzaInfoConsegnaServlet
+ * Servlet implementation class ModificaConsegnaServlet
  */
-@WebServlet("/VisualizzaInfoConsegnaServlet")
-public class VisualizzaInfoConsegnaServlet extends HttpServlet {
+@WebServlet("/ModificaConsegnaServlet")
+public class ModificaConsegnaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VisualizzaInfoConsegnaServlet() {
+    public ModificaConsegnaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,13 +34,19 @@ public class VisualizzaInfoConsegnaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idConsegna"));
+		String scadenza=request.getParameter("scadenzaConsegna");
+		String nome=request.getParameter("nomeConsegna");
+		String descrizione=request.getParameter("descrizioneConsegna");
+		Consegna consegna=new Consegna();
+		consegna.setId(id);
+		consegna.setDescrzione(descrizione);
+		consegna.setNome(nome);
+		consegna.setScadenza(scadenza);
 		ManagerFactory em = new ManagerFactory();
 		ConsegnaManager um = (ConsegnaManager) em.createConsegnaManager();
-		Consegna consegna=null;
 		try {
-			consegna=um.getConsegna(id);
+			um.modificaConsegna(scadenza, id);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		request.setAttribute("infoConsegna", consegna);

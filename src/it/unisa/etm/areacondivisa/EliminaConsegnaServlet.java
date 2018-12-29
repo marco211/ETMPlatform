@@ -10,23 +10,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import it.unisa.etm.bean.Consegna;
-import it.unisa.etm.bean.File;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
-import it.unisa.etm.model.manager.FileManager;
 
 /**
- * Servlet implementation class VisualizzaInfoConsegnaServlet
+ * Servlet implementation class EliminaConsegnaServlet
  */
-@WebServlet("/VisualizzaInfoConsegnaServlet")
-public class VisualizzaInfoConsegnaServlet extends HttpServlet {
+@WebServlet("/EliminaConsegnaServlet")
+public class EliminaConsegnaServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public VisualizzaInfoConsegnaServlet() {
+    public EliminaConsegnaServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -36,17 +33,16 @@ public class VisualizzaInfoConsegnaServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idConsegna"));
-		ManagerFactory em = new ManagerFactory();
-		ConsegnaManager um = (ConsegnaManager) em.createConsegnaManager();
-		Consegna consegna=null;
+		ManagerFactory mf = new ManagerFactory();
+		ConsegnaManager cm = (ConsegnaManager) mf.createConsegnaManager();
 		try {
-			consegna=um.getConsegna(id);
+			cm.eliminaConsegna(id);
+			request.getSession().setAttribute("listaConsegne",cm.getListaConsegne((int)request.getSession().getAttribute("numeroTesiDocente")) );
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		request.setAttribute("infoConsegna", consegna);
-		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaInfoConsegna.jsp");
+		RequestDispatcher view=getServletContext().getRequestDispatcher("/caricaConsegna.jsp");
 		view.forward(request, response);
 	}
 
