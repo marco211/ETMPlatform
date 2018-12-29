@@ -64,7 +64,7 @@
 						</div>
 
 					<div class="form-group">
-                        <label for="inputTempo">Durata</label> <input type="number"  name="tempo" class="count" form="aggiungi" onchange="controlloTempo()" value="<%=proposta.getTempoDiSviluppo()%>"> giorni
+                        <label for="inputTempo">Durata</label> <input type="number"  name="tempo" min ="1" class="count" form="aggiungi" onchange="controlloTempo()" value="<%=proposta.getTempoDiSviluppo()%>"> giorni
 					</div>
 
 					<div class="form-group" >
