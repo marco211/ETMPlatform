@@ -47,8 +47,12 @@
 									<input type="hidden" name="idConsegna" value="<%=consegna.getId()%>">
 									<input type="hidden" name="nomeConsegna" value="<%=consegna.getNome()%>">
 									<input type="hidden" name="descrizioneConsegna" value="<%=consegna.getDescrzione()%>">
-									<input type="date" name="scadenzaConsegna" required>
-									<input type="submit" value="modificaScadenza">
+									<div class="form-group">
+									<input type="date" class="form-control" name="scadenzaConsegna" required>
+									</div>
+									<div>
+									<input type="submit" class="btn btn-primary" value="modificaScadenza">
+									</div>
 								</form>
 							</div>
 					</div>
