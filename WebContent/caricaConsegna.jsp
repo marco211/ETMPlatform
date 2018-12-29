@@ -7,14 +7,8 @@
 		return;
 	}
 	@SuppressWarnings("unchecked")
-	ArrayList<File> file = (ArrayList<File>) session.getAttribute("listaFile");
-	@SuppressWarnings("unchecked")
-	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
-	@SuppressWarnings("unchecked")
 	ArrayList<Consegna> consegne = (ArrayList<Consegna>) session.getAttribute("listaConsegne");
-	@SuppressWarnings("unchecked")
-	ArrayList<PropostaTesi> listaTesi = (ArrayList<PropostaTesi>) session.getAttribute("listaTesiDocente");
-	String errore = (String) request.getAttribute("carica");
+
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -26,7 +20,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <link rel="stylesheet" href="css/stile.css">
-<title>ETM Platform - Carica file</title>
+<title>ETM Platform - Carica Consegna</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
 </head>
@@ -43,14 +37,14 @@
 					<div class="card-body " style="min-height: 80vh;">
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
-							<h5 class="card-title mb-1">Carica File&nbsp;</h5>
+							<h5 class="card-title mb-1">Carica Consegna&nbsp;</h5>
 						</div>
-						<form action="CaricaFileServlet" method="post"
-							enctype="multipart/form-data" name="carica">
+						<form action="AggiungiConsegnaServlet" method="post"
+							name="caricaConsegna">
 							<div class="form-group">
-								<label for="nomeFile"><b>Nome File:</b></label> <input
-									type="text" class="form-control" onchange="controlloNome()"
-									name="nomeFile" required>
+								<label for="nomeConsegna"><b>Nome Consegna:</b></label> <input
+									type="text" class="form-control" onchange="controlloNomeConsegna()"
+									name="nomeConsegna" required>
 							</div>
 							<div class="form-group">
 								<label for="descrizioneFile"><b>Descrizione:</b></label>
