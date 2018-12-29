@@ -121,21 +121,35 @@
 			</div>
 			
 			<div class="p-3 card my-4" style="min-height: 35vh;">
-			<h4 class="font-italic">To Do List</h4>
-				<ul class="list-group list-group-flush">
+				<h4 class="font-italic">To Do List</h4>
+				<%
+					if (consegne != null) {
+				%>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">N° Consegna</th>
+							<th scope="col">Nome</th>
+						</tr>
+					</thead>
 					<%
-						if (consegne != null) {
-							for (int i = 0; i < consegne.size(); i++) {
+						for (int i = 0; i < consegne.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"> <%=
-								consegne.get(i).getNome()
-							%>
-					</a></li>
+					<tbody>
+						<tr>
+							<th><a><%=i + 1%></a></th>
+							<th><a
+								href="VisualizzaInfoConsegnaServlet?idConsegna=<%=consegne.get(i).getId()%>"><%=consegne.get(i).getNome()%></a></th>
+						</tr>
+
+					</tbody>
 					<%
 						}
+					%>
+					</table>
+					<%
 						}
 					%>
-				</ul>
 				
 			</div>
 		
