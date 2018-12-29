@@ -39,27 +39,34 @@
 
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) request.getAttribute("insegnamenti"); %>
-			<div class="col my-4 mx-4">
+			<main role="main" class="container">
+		<div class="row">
+			<div class="col-md-8 my-4">
+				<div class="card mb-3">
+					<div class="card-body " style="min-height: 80vh;">
+						<div class="form-inline mb-3 pb-3"
+							style="border-bottom: 1px solid">
+							<h5 class="card-title mb-1">Aggiungi una nuova Proposta di Tesi&nbsp;</h5>
+						</div>
 
 				<form action="ConfermaAggiungiPropostaTesiServlet" method="post" id="aggiungi" name="aggiungiproposta">
-					<h1>Aggiungi una nuova proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
-						<div class="form-group col-4 pt-4">
+						<div class="form-group">
 							<label for="inputTitolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" placeholder="Titolo" onchange="controlloTitolo()" required>
 						</div>
 
-						<div class="form-group col-4">
+						<div class="form-group">
 							<label for="inputAmbito">Ambito</label> <input type="text"
 								class="form-control" name="ambito" placeholder="Ambito" onchange="controlloAmbito()" required>
 						</div>
 
-					<div class="form-group col-4">
-                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1"> giorni
+					<div class="form-group">
+                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1" min="1"> giorni
 					</div>
-
-					<div class="form-group col-5" >
+					
+					<div class="form-group" >
 						<label for="inputDescrizione">Descrizione</label>
 						<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi"></textarea>
 
@@ -83,9 +90,11 @@
 					<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
 					<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Aggiungi</button>							</div>
 				</form>
+					</div>
+				</div>
 			</div>
-			
-		</div>
+			</main>
+			</div>
 		
 	<jsp:include page="footer.jsp" />
 	<script src="js/validazionePropostaTesi.js"></script>
