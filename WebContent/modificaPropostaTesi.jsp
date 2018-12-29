@@ -40,27 +40,34 @@
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) request.getAttribute("insegnamenti"); %>
 				
-			<div class="col my-4 mx-4">
+			<main role="main" class="container">
+		<div class="row">
+			<div class="col-md-8 my-4">
+				<div class="card mb-3">
+					<div class="card-body " style="min-height: 80vh;">
+						<div class="form-inline mb-3 pb-3"
+							style="border-bottom: 1px solid">
+							<h5 class="card-title mb-1">Modifica una proposta di tesi&nbsp;</h5>
+						</div>
 				<form action="ConfermaModificaPropostaTesiServlet?proposta_id=<%=proposta.getId() %>" method="post" id="aggiungi"  name="aggiungiproposta">
-					<h1>Modifica una proposta di tesi</h1>
 					<h6>Inserisci i dati nei campi sottostanti</h6>
 
-						<div class="form-group col-4 pt-4">
+						<div class="form-group">
 							<label for="inputTitolo">Titolo</label> <input type="text"
 								class="form-control" name="titolo" placeholder="Titolo" onchange="controlloTitolo()" value="<%=proposta.getTitolo()%>"required>
 						</div>
 
-						<div class="form-group col-4">
+						<div class="form-group">
 							<label for="inputAmbito">Ambito</label> <input type="text"
 								class="form-control" name="ambito" placeholder="Ambito" onchange="controlloAmbito()" value="<%=proposta.getAmbito() %>"
 								required>
 						</div>
 
-					<div class="form-group col-4">
+					<div class="form-group">
                         <label for="inputTempo">Durata</label> <input type="number"  name="tempo" class="count" form="aggiungi" onchange="controlloTempo()" value="<%=proposta.getTempoDiSviluppo()%>"> giorni
 					</div>
 
-					<div class="form-group col-5" >
+					<div class="form-group" >
 						<label for="inputDescrizione">Descrizione</label>
 							<textarea class="form-control" id="descrizione" rows="6" placeholder="Descrizione" name="descrizione" form="aggiungi" ><%=proposta.getDecrizione() %></textarea>
 					</div>
@@ -78,14 +85,15 @@
 									    $('.form-control').combobox();
 									  });
 									</script>
-								</div>
+								
 							<div id="infoDiv" class="alert alert-danger form-group d-none my-3" role="alert">Attenzione!</div>
 							<button type="button" class="btn btn-primary mx-3 my-3" name="invio" onclick="validazione()">Modifica</button>	
-						</div>
-				</form>
+						</form>
+					</div>
+				</div>
 			</div>
-			
-		</div>
+			</main>
+			</div>
 		
 	<jsp:include page="footer.jsp" />
 	<script src="js/validazionePropostaTesi.js"></script>
