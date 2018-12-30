@@ -1,16 +1,13 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.bean.Utente;
@@ -31,7 +28,6 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
      */
     public VisualizzaDettagliTesiServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -46,8 +42,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
 		session.setAttribute("propostatesi", propostaTesi);
 		session.setAttribute("utenti", utenti);
-		request.setAttribute("richiesteproposte", richieste);
-		
+		request.setAttribute("richiesteproposte", richieste);	
 		Utente docente = new Utente();
 		for(Utente u : utenti){
 			if(propostaTesi.getUtenteEmail().equalsIgnoreCase(u.getEmail())){
@@ -76,7 +71,7 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ManagerFactory em = new ManagerFactory();
 		PropostaTesiManager ptm = (PropostaTesiManager) em.createPropostaTesiManager();
 		PropostaTesi propostaTesi;
-			propostaTesi=ptm.getPropostaTesi(id);
+		propostaTesi=ptm.getPropostaTesi(id);
 		return propostaTesi;	
 	}
 	
@@ -107,10 +102,10 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
-			if(utente.getTipo().equals("d")) 
-				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
-			else 
-				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
+		if(utente.getTipo().equals("d")) 
+			richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
+		else 
+			richieste = propostamanager.getRichiestaStudente(utente.getEmail());
 		return richieste;
 	}
 }

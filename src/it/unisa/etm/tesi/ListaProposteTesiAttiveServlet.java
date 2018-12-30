@@ -1,18 +1,13 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
-import it.unisa.etm.model.interfaces.*;
 import it.unisa.etm.model.manager.*;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
@@ -25,14 +20,12 @@ import it.unisa.etm.factory.ManagerFactory;
 @WebServlet("/ListaProposteTesiAttiveServlet")
 public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	private PropostaTesiManager  propostamanager;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ListaProposteTesiAttiveServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -40,20 +33,16 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session=request.getSession();
-		synchronized(session) {
-			ArrayList<PropostaTesi> proposte = this.getProposte();
-			Utente utente = (Utente) session.getAttribute("utente");
-			request.setAttribute("proposte", proposte);
-			ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
-
-			if(utente.getTipo().equals("d")) {
-				request.setAttribute("richieste", richieste);
-				request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
-			}
-			else {
-				request.setAttribute("richieste_studente", richieste);
-				request.getRequestDispatcher("listaTesiAttive.jsp").forward(request, response);
-			}
+		ArrayList<PropostaTesi> proposte = this.getProposte();
+		Utente utente=(Utente) session.getAttribute("utente");
+		request.setAttribute("proposte", proposte);
+		ArrayList<RichiestaPartecipazione> richieste=this.getRichieste(utente);
+		if(utente.getTipo().equals("d")) {
+			request.setAttribute("richieste", richieste);
+			request.getRequestDispatcher("listaProposteTesiAttive.jsp").forward(request, response);
+		} else {
+			request.setAttribute("richieste_studente", richieste);
+			request.getRequestDispatcher("listaTesiAttive.jsp").forward(request, response);
 		}
 	}
 
@@ -61,7 +50,6 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
@@ -76,7 +64,7 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<PropostaTesi> lista = new ArrayList<PropostaTesi>();
-			lista = propostamanager.getProposteTesiAttive();
+		lista=propostamanager.getProposteTesiAttive();
 		return lista;
 	}
 	
@@ -91,11 +79,12 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	private ArrayList<RichiestaPartecipazione> getRichieste(Utente utente){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ArrayList<RichiestaPartecipazione> richieste = new ArrayList<RichiestaPartecipazione>();
-			if(utente.getTipo().equals("d")) 
-				richieste= propostamanager.cercaRichiestePartecipazione(utente.getEmail());
-			else 
-				richieste = propostamanager.getRichiestaStudente(utente.getEmail());
+		ArrayList<RichiestaPartecipazione> richieste=new ArrayList<RichiestaPartecipazione>();
+		if(utente.getTipo().equals("d")) 
+			richieste=propostamanager.cercaRichiestePartecipazione(utente.getEmail());
+		else 
+			richieste=propostamanager.getRichiestaStudente(utente.getEmail());
 		return richieste;
 	}
+	
 }

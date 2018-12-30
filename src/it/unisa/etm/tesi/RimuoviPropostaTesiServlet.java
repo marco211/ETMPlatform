@@ -1,17 +1,11 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
-import java.sql.SQLException;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
@@ -27,19 +21,15 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
      */
     public RimuoviPropostaTesiServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session=request.getSession();
-		synchronized(session) {
-			int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
-			if(this.rimuoviPropostaTesi(propostatesi_id)) {
-				response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
-			}
+		int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
+		if(this.rimuoviPropostaTesi(propostatesi_id)) {
+			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
 		}
 	}
 
@@ -47,7 +37,6 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
@@ -61,9 +50,6 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 	private boolean rimuoviPropostaTesi(int proposta_id){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		boolean b = false;
-			b = ptm.rimuoviPropostaTesi(proposta_id);
-		return b;
-		
+		return ptm.rimuoviPropostaTesi(proposta_id);		
 	}
 }

@@ -1,20 +1,15 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
@@ -29,7 +24,6 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
      */
     public ModificaPropostaTesiServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -43,23 +37,20 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		synchronized(session) {
-			PropostaTesi p = new PropostaTesi();
-				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
-				p.setTitolo(request.getParameter("propostatesi_titolo"));
-				p.setAmbito(request.getParameter("propostatesi_ambito"));
-				p.setTempoDiSviluppo(Integer.parseInt(request.getParameter("propostatesi_tempo")));
-				p.setDecrizione(request.getParameter("propostatesi_descrizione"));
-				p.setMaterie(request.getParameter("propostatesi_materia"));
-				int id= Integer.parseInt(request.getParameter("propostatesi_id"));
-				p.setId(id);
-				request.setAttribute("propostacorrente", p);
-				request.setAttribute("insegnamenti", insegnamenti);
-				request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);
-				
+		PropostaTesi p=new PropostaTesi();
+		ArrayList<Insegnamento> insegnamenti=this.getInsegnamenti();
+		p.setTitolo(request.getParameter("propostatesi_titolo"));
+		p.setAmbito(request.getParameter("propostatesi_ambito"));
+		p.setTempoDiSviluppo(Integer.parseInt(request.getParameter("propostatesi_tempo")));
+		p.setDecrizione(request.getParameter("propostatesi_descrizione"));
+		p.setMaterie(request.getParameter("propostatesi_materia"));
+		int id= Integer.parseInt(request.getParameter("propostatesi_id"));
+		p.setId(id);
+		request.setAttribute("propostacorrente", p);
+		request.setAttribute("insegnamenti", insegnamenti);
+		request.getRequestDispatcher("modificaPropostaTesi.jsp").forward(request, response);		
 		}
-			}
+			
 
 
 	/**
@@ -70,10 +61,10 @@ public class ModificaPropostaTesiServlet extends HttpServlet {
 	 * null in caso di errore o che non sono prensenti insegnamenti.
 	 */
 	private ArrayList<Insegnamento> getInsegnamenti(){
-		ManagerFactory mf = new ManagerFactory();
+		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
-			insegnamenti = ptm.getInsegnamenti();
+		ArrayList<Insegnamento> insegnamenti=new ArrayList<Insegnamento>();
+		insegnamenti=ptm.getInsegnamenti();
 		return insegnamenti;
 	}
 }

@@ -1,20 +1,14 @@
 package it.unisa.etm.tesi;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
-
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
 import it.unisa.etm.bean.Insegnamento;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
@@ -29,7 +23,6 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
      */
     public AggiungiPropostaTesiServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -43,13 +36,10 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		synchronized(session) {	
-				ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
-				request.setAttribute("insegnamenti", insegnamenti);
-				request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
-				
-			}}
+		ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
+		request.setAttribute("insegnamenti", insegnamenti);
+		request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
+	}
 	
 
 	/**
@@ -60,10 +50,10 @@ public class AggiungiPropostaTesiServlet extends HttpServlet {
 	 * null in caso di errore o che non sono prensenti insegnamenti.
 	 */
 	private ArrayList<Insegnamento> getInsegnamenti(){
-		ManagerFactory mf = new ManagerFactory();
+		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ArrayList<Insegnamento> insegnamenti = new ArrayList<Insegnamento>();
-			insegnamenti = ptm.getInsegnamenti();
+		ArrayList<Insegnamento> insegnamenti=new ArrayList<Insegnamento>();
+		insegnamenti=ptm.getInsegnamenti();
 		return insegnamenti;
 	}
 }
