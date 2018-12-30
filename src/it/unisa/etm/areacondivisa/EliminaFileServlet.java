@@ -10,10 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.Attivita;
-//import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-//import it.unisa.etm.model.manager.AreaCondivisaManager;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 
@@ -29,7 +27,6 @@ public class EliminaFileServlet extends HttpServlet {
      */
     public EliminaFileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     /**
@@ -45,37 +42,20 @@ public class EliminaFileServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
 		String nomeFile=request.getParameter("nomeFile");
-		ManagerFactory em = new ManagerFactory();
-		FileManager um = (FileManager) em.createFileManager();
-		LocalDate data = LocalDate.now();
-		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data ,"e",id);
-		AttivitaManager am=(AttivitaManager)em.createAttivitaManager();
+		ManagerFactory em=new ManagerFactory();
+		FileManager um=(FileManager) em.createFileManager();
+		LocalDate data=LocalDate.now();
+		Utente utente=(Utente) request.getSession().getAttribute("utente");
+		Attivita attivita=new Attivita(utente.getEmail(), nomeFile, data ,"e",id);
+		AttivitaManager am=(AttivitaManager) em.createAttivitaManager();
 		try {
 			am.aggiungiAttivita(attivita);
 			um.eliminaFile(id, nomeFile);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/homePage.jsp");
 		view.forward(request, response);
 	}
 
-	/**
-	 * Fornisce la funzionalit� di elimiazione di un file dall'area privata condivisa
-	 * @param file presente nell'area privata condivisa
-	 * @return boolean true se l'elimiazione � terminata con successo;
-	 * <p>
-	 * false se non � andata a buon fine.
-	 */
-    /*
-	private boolean deleteFile(File file){
-		ManagerFactory mf=new ManagerFactory();
-		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
-
-		return true;
-		
-	}
-	*/
 }

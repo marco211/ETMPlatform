@@ -27,7 +27,6 @@ public class ValutaFileServlet extends HttpServlet {
      */
     public ValutaFileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -45,57 +44,20 @@ public class ValutaFileServlet extends HttpServlet {
 		String nomeFile=request.getParameter("nomeFile");
 		int voto=Integer.parseInt(request.getParameter("voto"));
 		String descrizione=request.getParameter("descrizione");
-		ManagerFactory em = new ManagerFactory();
-		FileManager um = (FileManager) em.createFileManager();
-		LocalDate data = LocalDate.now();
-		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data ,"v",id);
-		AttivitaManager am=(AttivitaManager)em.createAttivitaManager();
+		ManagerFactory em=new ManagerFactory();
+		FileManager um=(FileManager) em.createFileManager();
+		LocalDate data=LocalDate.now();
+		Utente utente=(Utente) request.getSession().getAttribute("utente");
+		Attivita attivita=new Attivita(utente.getEmail(), nomeFile, data ,"v",id);
+		AttivitaManager am=(AttivitaManager) em.createAttivitaManager();
 		try {
 			um.modificaFile(id, nomeFile, voto, descrizione);
 			am.aggiungiAttivita(attivita);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+id);
-		view.forward(request, response);
-		
+		view.forward(request, response);		
 	}
 
-	/*
-	private boolean inserisciValutazione(int voto, String descrizione) {
-		ManagerFactory mf=new ManagerFactory();
-		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
-		return true;
-		
-	}
-	*/
-	/**
-	 * Esegue il controllo sui parametri di valutazione che deve ricevere un file presente nell'area privata condivisa.
-	 * @param valutazione intero che rappresenta il voto che deve ricevere un file.
-	 * @param descrizione stringa che rappresenta la descrizione che deve ricevere un file.
-	 * @return boolean true se la valutazione � stata data ed � tra 1 e 10;
-	 * <p>
-	 * false se la valutazione non rispetta i parametri.
-	 */
-	/*
-	private boolean isValid(int valutazione, String descrizione){
-		return false;
-		
-	}
-	*/
-	/**
-	 * Torna la valutazione di un determinato file presente nell'area privata condivisa e preso in input.
-	 * @param file presente nell'area condivisa.
-	 * @return int che rappresenta la valutazione del file
-	 * <p>
-	 * 0 se il file non � stato valutato.
-	 */
-	/*
-	private int getValutazione(File file){
-		return 0;
-		
-	}
-	*/
 }

@@ -27,7 +27,6 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
      */
     public VisualizzaListaPartecipazioneServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -35,31 +34,28 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		ManagerFactory em = new ManagerFactory();
-		PropostaTesiManager tesi=(PropostaTesiManager)em.createPropostaTesiManager();
-		ArrayList<PropostaTesi> list = null;
+		ManagerFactory em=new ManagerFactory();
+		PropostaTesiManager tesi=(PropostaTesiManager) em.createPropostaTesiManager();
+		ArrayList<PropostaTesi> list=null;
 		try {
-			list = tesi.getProposteTesiDocente(utente.getEmail());
-			PartecipaManager partecipa = (PartecipaManager) em.createPartecipaManager();
+			list=tesi.getProposteTesiDocente(utente.getEmail());
+			PartecipaManager partecipa=(PartecipaManager) em.createPartecipaManager();
 			ArrayList<Partecipa> partecipazioni;
-			partecipazioni = partecipa.getListaPartecipazione(list);
+			partecipazioni=partecipa.getListaPartecipazione(list);
 			request.getSession().setAttribute("listaPartecipazione", partecipazioni);
 			request.getSession().removeAttribute("listaFile");
 			request.getSession().removeAttribute("disabilita");
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		
 		String action=request.getParameter("action");
 		if (action!=null) {
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");
 			requestDispatcher.forward(request, response);
-		}else {
+		} else {
 			request.getSession().setAttribute("listaTesiDocente", list);
-		RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
-		requestDispatcher.forward(request, response);
+			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
+			requestDispatcher.forward(request, response);
 		}
 	}
 
@@ -67,7 +63,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		doGet(request, response);
 	}
 	
 }

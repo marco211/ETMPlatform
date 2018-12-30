@@ -26,7 +26,6 @@ public class ScaricaFileServlet extends HttpServlet {
      */
     public ScaricaFileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -39,56 +38,34 @@ public class ScaricaFileServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String nome=request.getParameter("nomeFile");
 		int id=Integer.parseInt(request.getParameter("tesiID"));
-		 int BUFFER_SIZE = 4096;
-		 ManagerFactory mf=new ManagerFactory();
-		 FileManager fm=(FileManager)mf.createFileManager();
-		 try {
+		int BUFFER_SIZE = 4096;
+		ManagerFactory mf=new ManagerFactory();
+		FileManager fm=(FileManager) mf.createFileManager();
+		try {
 			File file=fm.scaricaFile(id, nome);
 			InputStream stream=file.getInputStream();
-			int fileLength = stream.available();
-			ServletContext context = getServletContext();
-			String mimeType = context.getMimeType(file.getNome());
-            if (mimeType == null) {        
-                mimeType = "application/octet-stream";
+			int fileLength=stream.available();
+			ServletContext context=getServletContext();
+			String mimeType=context.getMimeType(file.getNome());
+            if(mimeType==null) {        
+                mimeType="application/octet-stream";
             }     
-            
             response.setContentType(mimeType);
             response.setContentLength(fileLength);
-            String headerKey = "Content-Disposition";
-            String headerValue = String.format("attachment; filename=\"%s\"", file.getNome());
+            String headerKey="Content-Disposition";
+            String headerValue=String.format("attachment; filename=\"%s\"", file.getNome());
             response.setHeader(headerKey, headerValue);
-            OutputStream outStream = response.getOutputStream();
-            
-            byte[] buffer = new byte[BUFFER_SIZE];
-            int bytesRead = -1;
+            OutputStream outStream=response.getOutputStream();          
+            byte[] buffer=new byte[BUFFER_SIZE];
+            int bytesRead=-1;
             while ((bytesRead = stream.read(buffer)) != -1) {
                 outStream.write(buffer, 0, bytesRead);
             }
-             
             stream.close();
             outStream.close(); 
-            
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}	 
-    
+		}	    
 	}
 
-	/**
-	 * Permette il download di un file preso in input.
-	 * @param file da scaricare
-	 * @return boolean true se il download � avvenuto con successo;
-	 * <p>
-	 * false in caso di insuccesso.
-	 */
-	/*
-	private boolean scaricaFile(File file){
-		ManagerFactory mf=new ManagerFactory();
-		AreaCondivisaManager fm= (AreaCondivisaManager) mf.createAreaCondivisaManager();
-
-		return true;
-		
-	}
-	*/
 }

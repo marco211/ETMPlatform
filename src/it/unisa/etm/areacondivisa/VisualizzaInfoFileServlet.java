@@ -2,14 +2,12 @@ package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
 import java.sql.SQLException;
-
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.unisa.etm.bean.File;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
@@ -26,7 +24,6 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
      */
     public VisualizzaInfoFileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -35,13 +32,12 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
 		String nomeFile=request.getParameter("nomeFile");
-		ManagerFactory em = new ManagerFactory();
-		FileManager um = (FileManager) em.createFileManager();
+		ManagerFactory em=new ManagerFactory();
+		FileManager um=(FileManager) em.createFileManager();
 		try {
 			File file=um.getFile(id, nomeFile);
 			request.getSession().setAttribute("infoFile", file);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaInfoFile.jsp");
@@ -52,19 +48,7 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 
-	/**
-	 * Prende in input un file dell'area privata condivisa e ne torna le informazioni
-	 * @param nome stringa che rappresenza il nome del file;
-	 * @return un oggetto file il cui nome � quello passato come parametro.
-	 */
-	/*
-	private File getInfo(String nome){
-		return null;
-		
-	}
-	*/
 }

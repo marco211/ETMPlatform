@@ -26,7 +26,6 @@ public class VisualizzaListaFileServlet extends HttpServlet {
      */
     public VisualizzaListaFileServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
@@ -34,15 +33,14 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id=Integer.parseInt(request.getParameter("idTesi"));
-		Utente utente=(Utente)request.getSession().getAttribute("utente");
-		ManagerFactory em = new ManagerFactory();
-		FileManager um = (FileManager) em.createFileManager();
+		Utente utente=(Utente) request.getSession().getAttribute("utente");
+		ManagerFactory em=new ManagerFactory();
+		FileManager um=(FileManager) em.createFileManager();
 		ArrayList<File> lista;
 		try {
 			lista=um.getListaFile(id);
 			request.getSession().setAttribute("listaFile", lista);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		if(utente.getTipo().equals("d")) {
@@ -57,7 +55,6 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

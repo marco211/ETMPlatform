@@ -37,7 +37,6 @@ public class CaricaFileServlet extends HttpServlet {
 	 */
 	public CaricaFileServlet() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 
@@ -62,42 +61,28 @@ public class CaricaFileServlet extends HttpServlet {
 			tesi=(int)request.getSession().getAttribute("numeroTesiDocente");
 			file.setPropostaTesiId(tesi);
 		}
-		LocalDate data = LocalDate.now();
-		Attivita attivita = new Attivita(file.getEmail(), file.getNome(), data ,"c",file.getPropostaTesiId());
+		LocalDate data=LocalDate.now();
+		Attivita attivita=new Attivita(file.getEmail(), file.getNome(), data ,"c",file.getPropostaTesiId());
 		ManagerFactory mf=new ManagerFactory();
-		FileManager fm= (FileManager) mf.createFileManager();
+		FileManager fm=(FileManager) mf.createFileManager();
 		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
 		try {
 			fm.aggiungiFile(file);
 			am.aggiungiAttivita(attivita);
 			if(utente.getTipo().equals("d")) {
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+tesi);
-			requestDispatcher.forward(request, response);
+				RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+tesi);
+				requestDispatcher.forward(request, response);
 			}
 			else {
-				RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID());
+				RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID());
 				requestDispatcher.forward(request, response);
 			}
 		} catch (SQLException e) {
 			request.setAttribute("carica", "Errore nel caricamento, riprova");
-			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/caricaFile.jsp");
+			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/caricaFile.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		
 	}
 
-	/**
-	 * Aggiunge un file all'area privata condivisa
-	 * @param file caricato dall'utente 
-	 * @return boolean true se il caricamento � avvenuto con successo;
-	 * <p>
-	 * false in caso di insuccesso.
-	 */
-	/*
-	private boolean uploadFileControl(File file){
-
-
-		return true;
-	}
-	*/
 }
