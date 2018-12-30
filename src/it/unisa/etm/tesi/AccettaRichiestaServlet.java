@@ -26,11 +26,16 @@ public class AccettaRichiestaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int propostatesi_id=Integer.parseInt(request.getParameter("richiesta_id"));
 		String utenteEmail = request.getParameter("utente_email");
-		if(this.accettaRichiestaPropostaTesi(propostatesi_id,utenteEmail));
+		if(this.accettaRichiestaPropostaTesi(propostatesi_id,utenteEmail))
 		{
 			request.getSession().removeAttribute("listaPartecipazione");
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
+		else {
+			int count = 2;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
+			}
 	}
 
 	
@@ -42,8 +47,11 @@ public class AccettaRichiestaServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		PartecipaManager pm=(PartecipaManager) mf.createPartecipaManager();
-		pm.inserisciPartecipazione(id, utenteEmail);
-		ptm.accettaRichiestaPartecipazione(id);
-		return true;		
+		boolean i = pm.inserisciPartecipazione(id, utenteEmail);
+		boolean a = ptm.accettaRichiestaPartecipazione(id);
+		if(a==i)
+			return true;	
+		else
+			return false;
 	}
 }

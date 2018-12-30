@@ -30,6 +30,10 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 		int propostatesi_id = Integer.parseInt(request.getParameter("propostatesi_id"));
 		if(this.rimuoviPropostaTesi(propostatesi_id)) {
 			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+		}else {
+			int count = 6;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
 		}
 	}
 

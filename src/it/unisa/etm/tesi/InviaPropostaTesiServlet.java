@@ -37,10 +37,15 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 		Utente utente=(Utente) session.getAttribute("utente");
 		String utente_mail=utente.getEmail();
 		RichiestaPartecipazione richiesta=new RichiestaPartecipazione(data, propostatesi_id, utente_mail);	
-		if(this.inviaRichiestaPropostaTesi(richiesta));
+		if(this.inviaRichiestaPropostaTesi(richiesta))
 		{
 			session.setAttribute("richiesta", richiesta);
-			request.getRequestDispatcher("index.jsp").forward(request, response);
+			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+		}
+		else {
+			int count = 4;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
 		}
 	}
 
@@ -61,7 +66,6 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 	private boolean inviaRichiestaPropostaTesi(RichiestaPartecipazione richiesta){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ptm.inserisciRichiestaPartecipazione(richiesta);
-		return true;		
+		return ptm.inserisciRichiestaPartecipazione(richiesta);		
 	}
 }

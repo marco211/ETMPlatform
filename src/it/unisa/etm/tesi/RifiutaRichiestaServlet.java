@@ -22,22 +22,29 @@ public class RifiutaRichiestaServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int propostatesi_id=Integer.parseInt(request.getParameter("richiesta_id"));
-		this.rifiutaRichiestaPropostaTesi(propostatesi_id);
-		request.getRequestDispatcher("index.jsp").forward(request, response);
+		if(this.rifiutaRichiestaPropostaTesi(propostatesi_id)) 
+			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+		else {
+			int count = 5;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
+		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
-	private void rifiutaRichiestaPropostaTesi(int id){ 
+/**
+ * Permette all'utente registrato come docente di rifiutare una richiesta di partecipazione per una proposta di tesi
+ * @param id che identifica la proposta di tesi alla quale l'utente registrato come studente vuole partecipare
+ * @return booleano che è true se il rifiuto della richiesta è andato a buon fine
+ * <p>
+ * false altrimenti;
+ */
+	private boolean rifiutaRichiestaPropostaTesi(int id){ 
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		try {
-			ptm.rifiutaRichiestaPartecipazione(id);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}		
+		return ptm.rifiutaRichiestaPartecipazione(id);
 	}
 
 }

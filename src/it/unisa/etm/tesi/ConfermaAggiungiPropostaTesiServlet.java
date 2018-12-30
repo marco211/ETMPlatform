@@ -46,10 +46,13 @@ public class ConfermaAggiungiPropostaTesiServlet extends HttpServlet {
 		Utente utente=(Utente) session.getAttribute("utente");
 		String utenteEmail = utente.getEmail();
 		PropostaTesi tesi=new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
-		if(aggiungiPropostatesi(tesi)) {
-			session.setAttribute("tesi", tesi);
+		if(aggiungiPropostatesi(tesi)) 
+			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+		else {
+			int count = 1;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
 		}
-		response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
 	}
 	
 	/**

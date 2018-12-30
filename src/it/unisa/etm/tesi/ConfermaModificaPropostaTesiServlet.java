@@ -48,10 +48,13 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
 		String utenteEmail=utente.getEmail();
 		PropostaTesi tesi=new PropostaTesi(titolo, ambito, tempo, materia, descrizione, utenteEmail, false, false);
 		tesi.setId(id);
-		if(this.modificaPropostaTesi(tesi)) {
-			session.setAttribute("tesi", tesi);
+		if(this.modificaPropostaTesi(tesi)) 
+			response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
+		else {
+			int count = 3;
+			request.setAttribute("count", count);
+			request.getRequestDispatcher("aggiungiPropostaTesiFail.jsp").forward(request, response);
 		}
-		response.sendRedirect(request.getContextPath()+"/ListaProposteTesiAttiveServlet");
 	}
 
 	/**
@@ -64,7 +67,6 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
 	private boolean modificaPropostaTesi(PropostaTesi tesi){
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ptm.modificaPropostaTesi(tesi);
-		return true;	
+		return ptm.modificaPropostaTesi(tesi);
 	}
 }

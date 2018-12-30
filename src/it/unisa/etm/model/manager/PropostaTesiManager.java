@@ -21,7 +21,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public void accettaRichiestaPartecipazione(int id){
+	public boolean accettaRichiestaPartecipazione(int id){
 		Connection istance=null;
 		PreparedStatement ps=null;
 		PreparedStatement ps2=null;
@@ -38,13 +38,15 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps2=istance.prepareStatement(insertSQL2); 
 			ps2.setInt(1, id);
 			ps2.executeUpdate();
+			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
 	@Override
-	public void rifiutaRichiestaPartecipazione(int id){
+	public boolean rifiutaRichiestaPartecipazione(int id){
 		Connection istance=null;
 		PreparedStatement ps=null;
 		String insertSQL=null;
@@ -54,8 +56,10 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
 			ps.executeUpdate();
+			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 		
@@ -88,7 +92,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 
 	
 	@Override
-	public void inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione){
+	public boolean inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione){
 		Connection istance=null;
 		PreparedStatement ps=null;
 		String insertSQL=null;
@@ -101,8 +105,10 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps.setInt(2, richiestaPartecipazione.getPropostatesi_id());			
 			ps.setString(3, richiestaPartecipazione.getUtente_mail());								
 			ps.executeUpdate();
+			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
+			return false;
 		}
 	}
 	
