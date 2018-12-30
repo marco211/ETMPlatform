@@ -26,12 +26,6 @@ public class AttivitaManager implements AttivitaModelInterface {
 	}
 
 	@Override
-	public boolean eliminaAttivita(int id, String utenteEmail) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public ArrayList<Attivita> getListaAttivita(int propostaTesiId) throws SQLException {
 		connection=DatabaseManager.getIstance();
 		prepared=connection.prepareStatement("SELECT * FROM ATTIVITA WHERE PROPOSTATESI_ID=?");

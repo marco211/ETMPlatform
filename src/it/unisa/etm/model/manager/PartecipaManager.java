@@ -16,7 +16,6 @@ public class PartecipaManager implements PartecipaModelInterface {
 		String selectSQL="SELECT * FROM richiestapartecipazione WHERE id=?;";
 		String insertSQL="insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";
 		connection=DatabaseManager.getIstance();
-
 		int propostaTesiId=0;
 		boolean b=false;
 		try {
@@ -32,7 +31,6 @@ public class PartecipaManager implements PartecipaModelInterface {
 			prepared.executeUpdate();
 			prepared.close();
 			rs1.close();
-		
 		}catch(Exception e) {
 			e.printStackTrace();			
 		}
@@ -40,22 +38,7 @@ public class PartecipaManager implements PartecipaModelInterface {
 			if (prepared != null)
 				prepared.close();
 		}
-			
-		
 		return b;
-	}
-
-
-	@Override
-	public Partecipa getPartecipazione(int propostaTesiId, String utenteEmail) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean rimuoviPartecipazione(int propostaTesiId, String utenteEmail) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
 	}
 
 	@Override
@@ -76,7 +59,6 @@ public class PartecipaManager implements PartecipaModelInterface {
 			prepared.close();
 			rs.close();
 		}
-
 		return lista;	
 	}
 

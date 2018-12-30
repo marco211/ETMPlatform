@@ -31,14 +31,12 @@ public class FileManager implements FileModelInterface {
                 prepared.setBinaryStream(3, stream, (int) c.getFilePart().getSize());
             }
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		prepared.setString(4, c.getDescrizione());
 		prepared.setString(5, c.getEmail());
 		prepared.executeUpdate();	
 		prepared.close();
-		
 		return true;
 	}
 
@@ -102,7 +100,6 @@ public class FileManager implements FileModelInterface {
             f.setNome(fileName);
             f.setInputStream(stream);
 		}         
-		
 		return f;
 	}
 	
@@ -125,11 +122,8 @@ public class FileManager implements FileModelInterface {
 			file.setVoto(rs.getInt("VOTO"));
 			list.add(file);
 		}
-		
-		
 		prepared.close();
 		rs.close();
-		
 		return list;
 	}
 	

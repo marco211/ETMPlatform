@@ -4,7 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
 import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
@@ -137,7 +136,6 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 			}
 			return null;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}

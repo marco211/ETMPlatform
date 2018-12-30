@@ -14,9 +14,6 @@ public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 		
 	}
 	
-	
-	
-	
 	@Override
 	public boolean inserisciFile(File file) throws SQLException {
 		String selectSQL="INSERT INTO File(PROPOSTATESI_ID,NOME,DESCRIZIONE,DESCRIZIONE_VOTO,VOTO,EMAIL) VALUES(?,?,?,?,?,?)";
@@ -43,18 +40,6 @@ public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 	}
 
 	@Override
-	public File getFile(int id) throws SQLException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean inserisciValutazione(int idFile, String descrizione, int voto) throws SQLException {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
 	public boolean rimuoviFile(int idFile) throws SQLException {
 		String selectSQL="DELETE FROM File WHERE FILE_ID=?";
 		try {
@@ -74,10 +59,6 @@ public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 		}
 	}
 
-	
-	
-	//DA CONTROLLARE, CHIEDERE PRIMA DI USARE
-	//ATTENZIONE - IL METODO NON E' CORRETTO
 	@Override
 	public List<File> getFileByPropostaTesi(int idProposta) throws SQLException {
 		String selectSQL="SELECT * FROM File WHERE propostatesi_id=?";
@@ -92,8 +73,7 @@ public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 			file.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
 			file.setDescrizione(rs.getString("DESCRIZIONE"));
 		}
-	}finally{
-		
+	} finally {
 			if(prepared!=null) {
 				prepared.close();
 				connection.close();
@@ -101,7 +81,6 @@ public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 		}
 		return null; //return file
 	}
-	
 	
 	private Connection connection=null;
 	private PreparedStatement prepared=null;

@@ -4,10 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
-
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
@@ -15,8 +12,9 @@ import it.unisa.etm.model.interfaces.UtenteModelInterface;
 public  class UtenteManager implements UtenteModelInterface{
 
 	public UtenteManager() {
-		log = Logger.getLogger("global");
+
 	}
+	
 	@Override
 	public Utente getInfo(String email) throws SQLException {
 		Connection istance=DatabaseManager.getIstance();
@@ -55,7 +53,6 @@ public  class UtenteManager implements UtenteModelInterface{
 		}
 		return utente;
 	}
-
 
 	@Override
 	public Utente cercaUtente(String email) throws SQLException{
@@ -96,16 +93,11 @@ public  class UtenteManager implements UtenteModelInterface{
 		return utente;
 	}
 	
-
-
-
-
-
 	@Override
 	public List<Utente> getUtenti(String nome) throws SQLException{
 		Connection istance=DatabaseManager.getIstance();
 		PreparedStatement ps=null;
-		String SQL = "SELECT * FROM UTENTE WHERE NOME='"+nome+"';";
+		String SQL="SELECT * FROM UTENTE WHERE NOME='"+nome+"';";
 		ps=istance.prepareStatement(SQL);
 		return null;
 	}
@@ -113,21 +105,18 @@ public  class UtenteManager implements UtenteModelInterface{
 	@Override
 	public boolean modificaPassword(Utente utente) {
 		try {
-		Connection istance=DatabaseManager.getIstance();
-		PreparedStatement ps=null;
-		String insertSQL=null;
-		insertSQL = "UPDATE utente SET password=? WHERE email='"+ utente.getEmail()+"';";
-		ps=istance.prepareStatement(insertSQL);
-		ps.setString(1, utente.getPassword());
-		return true;
-		}catch(SQLException e) {
-			log.warning(e.getMessage());
+			Connection istance=DatabaseManager.getIstance();
+			PreparedStatement ps=null;
+			String insertSQL=null;
+			insertSQL = "UPDATE utente SET password=? WHERE email='"+ utente.getEmail()+"';";
+			ps=istance.prepareStatement(insertSQL);
+			ps.setString(1, utente.getPassword());
+			return true;
+		} catch(SQLException e) {
 			return false;
 		}
-		}
+	}
 		
-		
-
 	@Override
 	public boolean modificaUtente(Utente utente){
 		try {
@@ -157,10 +146,8 @@ public  class UtenteManager implements UtenteModelInterface{
 			}
 			return true;
 		}catch(SQLException e) {
-			log.warning(e.getMessage());
 			return false;
 		}
 	}
-	private Logger log;
 
 }

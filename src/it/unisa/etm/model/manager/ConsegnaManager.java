@@ -15,9 +15,7 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 		
 	}
 	
-	
-
-	
+	@Override
 	public boolean aggiungiConsegna(Consegna consegna) throws SQLException {
 		String selectSQL="INSERT INTO CONSEGNA (SCADENZA, NOME, DESCRIZIONE, PROPOSTATESI_ID) VALUES (?,?,?,?)";
 		connection=DatabaseManager.getIstance();
@@ -29,7 +27,6 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 			prepared.executeUpdate();
 			prepared.close();
 		return true;
-		
 	}
 
 	@Override
@@ -73,10 +70,8 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 			consegna.setId(rs.getInt("ID"));
 			consegna.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
 			consegna.setScadenza(rs.getString("SCADENZA"));	
-
 		prepared.close();
 		rs.close();
-		
 		return consegna;
 	}
 	
@@ -98,8 +93,7 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 				list.add(consegna);
 			}
 			prepared.close();
-			rs.close();
-			
+			rs.close();			
 			return list;	
 	}
 
