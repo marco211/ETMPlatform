@@ -78,11 +78,12 @@
 			<%int id = utente.getPropostaTesi_ID();
 			if(id!=0){
 			%>
-              <li><p>stai partecipando a questa tesi:
+              <li>
               <a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId() %>"><%=proposta.getTitolo() %></a></li>
               <%} else{%>
               	<p>Non stai partecipando ad alcuna tesi attualmente.</p>
               <%}%>
+              <li>
             </ol>
           </div>
    
