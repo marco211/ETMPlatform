@@ -49,20 +49,14 @@ public class RegistrazioneServlet extends HttpServlet {
 		String tipo=request.getParameter("tipo");
 		String validazione=UUID.randomUUID().toString();
 		Utente utente = null;
-
-
 		if(tipo.equals("s")){
-
 			long matricola=Long.parseLong(request.getParameter("matricola"));
 			utente=new Utente(cognome, data, nome, tipo, email, password, matricola, validazione);
-
-		}else{
-
+		} else {
 			String insegnamento=request.getParameter("insegnamento").toLowerCase();
 			String ufficio=request.getParameter("ufficio");
 			utente=new Utente(cognome, data, ufficio, tipo, nome, email, password, insegnamento, validazione);
 		}
-
 		String testo="<html>\r\n" + 
 				"<head>\r\n" + 
 				"<meta charset=\"ISO-8859-1\">\r\n" + 
@@ -79,20 +73,16 @@ public class RegistrazioneServlet extends HttpServlet {
 				"\r\n" + 
 				"</body>\r\n" + 
 				"</html>";
-
 		if(registrazioneControl(utente)) {
 			if(sendEmail(email, testo)) {
 				response.sendRedirect(request.getContextPath()+"/registrazioneRiuscita.jsp");
-			}else {
+			} else {
 				response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");
 			}
-		}
-		else {
+		} else {
 			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");
 		}
 	}
-
-
 
 	/**
 	 * Effettua la registrazione di un utente.
@@ -115,7 +105,6 @@ public class RegistrazioneServlet extends HttpServlet {
 
 	public static boolean sendEmail(String ricevente, String testo){
 		Properties prop = System.getProperties();
-
 		prop.setProperty("mail.transport.protocol", "smtp");
 		prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.starttls.enable", "true");
@@ -126,17 +115,13 @@ public class RegistrazioneServlet extends HttpServlet {
 		Message msg = new MimeMessage(session);
 		InternetAddress sender = null;
 		InternetAddress receiver = null;
-
 		try {
 			sender = new InternetAddress("emtplatform@gmail.com", "ETM-Platform");
 			receiver = new InternetAddress(ricevente, "Email ricevente");
-
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 			return false;
 		}
-
-
 
 		try {
 			msg.setFrom(sender);
@@ -148,22 +133,14 @@ public class RegistrazioneServlet extends HttpServlet {
 			return false;
 		}
 
-
-
-		
-		
-		try {
-			
+		try {			
 			Transport transport=session.getTransport();
 			transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234");
-			transport.sendMessage(msg, msg.getAllRecipients());
-			
+			transport.sendMessage(msg, msg.getAllRecipients());			
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return false;
 		} 
-		
-
 		return true;
 	}
 

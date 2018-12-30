@@ -4,10 +4,6 @@ import java.io.*;
 import java.io.Serializable;
 import javax.servlet.http.*;
 public class File implements Serializable	 {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public File() {
@@ -16,7 +12,6 @@ public class File implements Serializable	 {
 
 	public File(String nome, int propostaId, String descrizione, int voto, String descrizioneVoto, String email) {
 		super();
-		
 		this.nome = nome;
 		this.email = email;
 		this.descrizione = descrizione;
@@ -25,32 +20,25 @@ public class File implements Serializable	 {
 		this.setPropostaTesiId(propostaId);
 	}
 	
-
-	
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public int getVoto() {
 		return voto;
 	}
-
 
 	public void setVoto(int voto) {
 		this.voto = voto;
@@ -59,7 +47,6 @@ public class File implements Serializable	 {
 	public String getDescrizione() {
 		return descrizione;
 	}
-
 
 	public void setDescrizione(String descrizione) {
 		this.descrizione = descrizione;
@@ -97,8 +84,6 @@ public class File implements Serializable	 {
 		this.stream = stream;
 	}
 
-
-
 	private int voto;
 	private int propostaTesiId;
 	private String descrizioneVoto;
@@ -107,5 +92,4 @@ public class File implements Serializable	 {
 	private String nome;
 	private Part filePart;
 	private InputStream stream;
-	
 }

@@ -28,8 +28,6 @@ public class Insegna {
 		this.insegnamentoNome = insegnamentoNome;
 	}
 
-
-
 	private String utenteEmail;
 	private String insegnamentoNome;
 }

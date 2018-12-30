@@ -4,10 +4,6 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 public class Attivita implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	public Attivita() {
@@ -73,8 +69,6 @@ public class Attivita implements Serializable{
 
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
-		//valutare bene il tipo, io farei un controllo, se non ricordo male serviva ad indicare se il file era stato caricato o eliminato.
 		String t = null;
 		if(tipo.equals("c"))
 			t = "caricato";
@@ -91,5 +85,4 @@ public class Attivita implements Serializable{
 	private LocalDate data;
 	private String tipo;
 	private int propostatesi_id;
-
 }

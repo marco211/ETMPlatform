@@ -3,10 +3,6 @@ package it.unisa.etm.bean;
 import java.io.Serializable;
 
 public class Insegnamento implements Serializable {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public Insegnamento() {

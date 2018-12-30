@@ -4,16 +4,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Utente implements Serializable	 {
-	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public Utente() {
 		this.insegnamento=new ArrayList<String>();
 	}
-	
 	
 	//studente
 	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2, String validazione) {
@@ -42,108 +37,85 @@ public class Utente implements Serializable	 {
 		this.validazione=validazione;
 	}
 
-
 	public String getCognome() {
 		return cognome;
 	}
-
 
 	public void setCognome(String cognome) {
 		this.cognome = cognome;
 	}
 
-
 	public String getDataDiNascita() {
 		return dataDiNascita;
 	}
-
 
 	public void setDataDiNascita(String dataDiNascita) {
 		this.dataDiNascita = dataDiNascita;
 	}
 
-
 	public long getMatricola() {
 		return matricola;
 	}
-
 
 	public void setMatricola(long matricola) {
 		this.matricola = matricola;
 	}
 
-
 	public String getUfficio() {
 		return ufficio;
 	}
-
 
 	public void setUfficio(String ufficio) {
 		this.ufficio = ufficio;
 	}
 
-
 	public String getTipo() {
 		return tipo;
 	}
-
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
 
-
 	public String getNome() {
 		return nome;
 	}
-
 
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
 
-
 	public String getEmail() {
 		return email;
 	}
-
 
 	public void setEmail(String email) {
 		this.email = email;
 	}
 
-
 	public String getPassword() {
 		return password;
 	}
 
-
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	
+		
 	public ArrayList<String> getInsegnamento() {
 		return insegnamento;
 	}
-
-
 
 	public void setInsegnamento(String insegnamento) {
 		this.insegnamento.add(insegnamento);
 	}
 
-
-
 	public int getPropostaTesi_ID() {
 		return PropostaTesi_ID;
 	}
 
-
 	public void setPropostaTesi_ID(int propostaTesi_ID) {
 		PropostaTesi_ID = propostaTesi_ID;
 	}
-
 
 	public void setValidazione(String validazione)
 	{

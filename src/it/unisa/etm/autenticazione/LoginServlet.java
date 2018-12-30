@@ -1,16 +1,13 @@
 package it.unisa.etm.autenticazione;
 
 import java.io.IOException;
-
 import it.unisa.etm.model.manager.AutenticazioneManager;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-
 import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
@@ -35,8 +32,7 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-
+		doPost(request, response);
 	}
 
 	/**
@@ -71,4 +67,5 @@ public class LoginServlet extends HttpServlet {
 			}
 		}			
 	}
+	
 }

@@ -38,13 +38,5 @@ public class LogoutServlet extends HttpServlet {
 		session.invalidate(); 
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
-	
-	/**
-	 * Effettua il logout di un determinato utente.
-	 * @param utente che vuole effettuare il logout (oggetto della classe Utente)
-	 * @return boolean true se il logout è avvenuto con successo;
-	 * <p>
-	 * false in caso di insuccesso.
-	 */
 
 }

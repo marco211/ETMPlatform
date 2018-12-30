@@ -1,10 +1,8 @@
 package it.unisa.etm.autenticazione;
-//prova
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Properties;
-
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.NoSuchProviderException;
@@ -18,7 +16,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 
@@ -35,14 +32,13 @@ public class RecuperaPasswordServlet extends HttpServlet {
      */
     public RecuperaPasswordServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+		doPost(request, response);
 	}
 
 	/**
@@ -82,19 +78,18 @@ public class RecuperaPasswordServlet extends HttpServlet {
 	}
 	
 	public static boolean send(String ricevente, String testo) {
-        Properties prop = System.getProperties();
-        
+        Properties prop=System.getProperties();    
         prop.setProperty("mail.transport.protocol", "smtp");
         prop.put("mail.smtp.auth", "true");
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", "587");
 
-        Session session = Session.getDefaultInstance(prop, null);
-        Message msg = new MimeMessage(session);
+        Session session=Session.getDefaultInstance(prop, null);
+        Message msg=new MimeMessage(session);
         InternetAddress addForm;
 		try {
-			addForm = new InternetAddress("emtplatform@gmail.com", "ETM-Platform");
+			addForm=new InternetAddress("emtplatform@gmail.com", "ETM-Platform");
 			msg.setFrom(addForm);
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -104,10 +99,9 @@ public class RecuperaPasswordServlet extends HttpServlet {
 			return false;
 		}
         
-
         InternetAddress addTo;
 		try {
-			addTo = new InternetAddress(ricevente);
+			addTo=new InternetAddress(ricevente);
 	        msg.setRecipient(Message.RecipientType.TO, addTo);
 	        msg.setSubject("Recupero password"); 
 	        msg.setContent("<html>\r\n" + 
@@ -133,13 +127,10 @@ public class RecuperaPasswordServlet extends HttpServlet {
 			e.printStackTrace();
 			return false;
 		}
-
-
-        
-        
+		
         Transport transport;
 		try {
-			transport = session.getTransport();
+			transport=session.getTransport();
 	        transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234"); 
 	        transport.sendMessage(msg, msg.getAllRecipients());
 		} catch (NoSuchProviderException e) {

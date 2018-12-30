@@ -3,10 +3,6 @@ package it.unisa.etm.bean;
 import java.io.Serializable;
 
 public class Partecipa implements Serializable {
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	public Partecipa() {
