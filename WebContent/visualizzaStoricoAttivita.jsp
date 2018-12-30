@@ -66,28 +66,37 @@
 			<aside class="col-md-4 my-4"> <%
  	if (utente.getTipo().equals("d")) {
  %>
-			<div class="p-3 card" style="min-height: 35vh;">
-				<h4 class="font-italic">Info Proposta Tesi</h4>
+			<div class="p-3 card" style="min-height: 30vh;">
+				<div class="form-inline mb-3 pb-3" style="border-bottom: 1px solid">
+					<h4 class="font-italic">
+						Proposta Tesi:
+						<%=session.getAttribute("numeroTesiDocente") %></h4>
+
+					<form action="VisualizzaDettagliTesiServlet" method="get">
+						<input type="hidden" name="propostatesi_id"
+							value="<%=session.getAttribute("numeroTesiDocente") %>">
+						<button type="submit"
+							class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddFile">
+							<i class="fa fa-info-circle" aria-hidden="true"></i>
+						</button>
+					</form>
+				</div>
 				<ol class="list-unstyled mb-0">
 					<%
-						for (int i = 0; i < partecipazioni.size(); i++) {
-								if (partecipazioni.get(i)
-										.getPropostaTesiId() == (int) request.getSession().getAttribute("numeroTesiDocente")) {
-					%>
+			for (int i = 0; i < partecipazioni.size(); i++) { 
+				if(partecipazioni.get(i).getPropostaTesiId()==(int)request.getSession().getAttribute("numeroTesiDocente")){
+			%>
 					<li><a
 						href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
-					<%
-						}
-							}
-					%>
+					<%}} %>
 				</ol>
 			</div>
 
-			<div class="p-3 card my-4" style="min-height: 35vh;">
+			<div class="p-3 card my-4" style="min-height: 40vh;">
 				<h4 class="font-italic">Aree</h4>
 				<%
-					if (partecipazioni != null) {
-				%>
+						if (partecipazioni != null) {
+					%>
 				<div class="row">
 					<div class="col">
 						<b>Proposta Tesi</b>
@@ -97,57 +106,74 @@
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
-						int j = 0;
-								for (int i = 0; i < partecipazioni.size(); i++) {
-									if (partecipazioni.get(i).getPropostaTesiId() != j) {
-										j = partecipazioni.get(i).getPropostaTesiId();
+					int j=0;
+					for (int i = 0; i < partecipazioni.size(); i++) { 
+						if(partecipazioni.get(i).getPropostaTesiId()!=j){
+							j=partecipazioni.get(i).getPropostaTesiId();
 					%>
 					<div class="col">
 						<a
 							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
 					</div>
 					<div class="col">
-					<%for(int x=0;x<listaTesi.size();x++) {
+						<%for(int x=0;x<listaTesi.size();x++) {
 							if(listaTesi.get(x).getId()==j){
 						%>
-							<%=listaTesi.get(x).getTitolo() %>
+						<%=listaTesi.get(x).getTitolo() %>
 						<%}} %>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
-								}
-							}
+						}
+						}
 					%>
 				</div>
-			</div>
+				</div>
 			<%
-				} else if (utente.getTipo().equals("s")) {
+				}else if (utente.getTipo().equals("s")) {
 			%>
 			<div class="p-3 card" style="min-height: 35vh;">
-				<h4 class="font-italic"><%=tesi.getTitolo()%></h4>
-				<h6><%=tesi.getDecrizione()%></h6>
+				<h4 class="font-italic"><%= tesi.getTitolo() %></h4>
+					<h6><%= tesi.getDecrizione() %></h6>	
 			</div>
-
+			
 			<div class="p-3 card my-4" style="min-height: 35vh;">
 				<h4 class="font-italic">To Do List</h4>
-				<ul class="list-group list-group-flush">
+				<%
+					if (consegne != null) {
+				%>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">N° Consegna</th>
+							<th scope="col">Nome</th>
+						</tr>
+					</thead>
 					<%
-						if (consegne != null) {
-								for (int i = 0; i < consegne.size(); i++) {
+						for (int i = 0; i < consegne.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"> <%=consegne.get(i).getNome()%>
-					</a></li>
+					<tbody>
+						<tr>
+							<th><a><%=i + 1%></a></th>
+							<th><a
+								href="VisualizzaInfoConsegnaServlet?idConsegna=<%=consegne.get(i).getId()%>"><%=consegne.get(i).getNome()%></a></th>
+						</tr>
+
+					</tbody>
 					<%
 						}
-							}
 					%>
-				</ul>
-
+					</table>
+					<%
+						}
+					%>
+				
 			</div>
 			<%
 				}
-			%> </aside>
+			%> 
+			</aside>
 		</div>
 		</main>
 	</div>

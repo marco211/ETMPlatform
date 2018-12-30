@@ -63,28 +63,50 @@
 			<aside class="col-md-4 my-4">
 
 			<div class="p-3 card" style="min-height: 80vh;">
-				<h4 class="font-italic">Impostazioni</h4>
-				<ol class="list-unstyled mb-0">
-					<div class="row" style="border-bottom: 1px solid;"></div>
+				
 					<%
 						if ((utente.getTipo().equals("d"))) {
 					%>
-						<li><a href="#" onclick="scadenza()">Modifica Consegna</a></li>
-						<li><a href="EliminaConsegnaServlet?idConsegna=<%=consegna.getId()%>">Elimina Consegna</a></li>
+					<h4 class="font-italic">Impostazioni</h4>
+						<ol class="list-unstyled mb-0">
+						<div class="row" style="border-bottom: 1px solid;"></div>
+							<li><a href="#" onclick="scadenza()">Modifica Consegna</a></li>
+							<li><a href="EliminaConsegnaServlet?idConsegna=<%=consegna.getId()%>">Elimina Consegna</a></li>
+						</ol>
 					<%
 						}
 						else if (utente.getTipo().equals("s")){
+					%>
+						<h4 class="font-italic">To Do List</h4>
+						<%
+					if (consegne != null) {
+				%>
+					<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">N° Consegna</th>
+							<th scope="col">Nome</th>
+						</tr>
+					</thead>
+					<%
 							for (int i = 0; i < consegne.size(); i++) {
 					%>
-					<li class="list-group-item"><a href="#"> <%=
-								consegne.get(i).getNome()
-							%>
-					</a></li>
+					<tbody>
+						<tr>
+							<th><a><%=i + 1%></a></th>
+							<th><a
+								href="VisualizzaInfoConsegnaServlet?idConsegna=<%=consegne.get(i).getId()%>"><%=consegne.get(i).getNome()%></a></th>
+						</tr>
+
+					</tbody>
+					<%
+						}
+					%>
+					</table>
 					<%
 						}
 						}
 					%>
-				</ol>
 			</div>
 
 			</aside>
