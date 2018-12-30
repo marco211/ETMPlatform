@@ -43,20 +43,12 @@ public class AggiungiConsegnaServlet extends HttpServlet {
 			consegna.setDescrzione(descrizione);
 			consegna.setPropostaTesiId(idTesi);
 			consegna.setScadenza(dataScadenza);
-			try {
-				cm.aggiungiConsegna(consegna);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			cm.aggiungiConsegna(consegna);
 			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/areaPrivataCondivisaDocente.jsp");
 			requestDispatcher.forward(request, response);
 		}
 		else {
-			try {
 				request.getSession().setAttribute("listaConsegne", cm.getListaConsegne(idTesi));
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
 			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/caricaConsegna.jsp");
 			requestDispatcher.forward(request, response);
 		}

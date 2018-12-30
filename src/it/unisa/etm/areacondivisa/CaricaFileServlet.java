@@ -66,9 +66,8 @@ public class CaricaFileServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm=(FileManager) mf.createFileManager();
 		AttivitaManager am=(AttivitaManager)mf.createAttivitaManager();
-		try {
-			fm.aggiungiFile(file);
-			am.aggiungiAttivita(attivita);
+			if(fm.aggiungiFile(file)&&am.aggiungiAttivita(attivita)) {
+			
 			if(utente.getTipo().equals("d")) {
 				RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+tesi);
 				requestDispatcher.forward(request, response);
@@ -77,12 +76,11 @@ public class CaricaFileServlet extends HttpServlet {
 				RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID());
 				requestDispatcher.forward(request, response);
 			}
-		} catch (SQLException e) {
+			}
+			else {
 			request.setAttribute("carica", "Errore nel caricamento, riprova");
 			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/caricaFile.jsp");
 			requestDispatcher.forward(request, response);
 		}
-		
 	}
-
 }

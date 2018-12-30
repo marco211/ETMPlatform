@@ -41,11 +41,7 @@ public class ModificaConsegnaServlet extends HttpServlet {
 		consegna.setScadenza(scadenza);
 		ManagerFactory em=new ManagerFactory();
 		ConsegnaManager um=(ConsegnaManager) em.createConsegnaManager();
-		try {
 			um.modificaConsegna(scadenza, id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		request.setAttribute("infoConsegna", consegna);
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaInfoConsegna.jsp");
 		view.forward(request, response);

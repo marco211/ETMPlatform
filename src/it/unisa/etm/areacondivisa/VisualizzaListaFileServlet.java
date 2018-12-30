@@ -37,12 +37,9 @@ public class VisualizzaListaFileServlet extends HttpServlet {
 		ManagerFactory em=new ManagerFactory();
 		FileManager um=(FileManager) em.createFileManager();
 		ArrayList<File> lista;
-		try {
+		
 			lista=um.getListaFile(id);
 			request.getSession().setAttribute("listaFile", lista);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 		if(utente.getTipo().equals("d")) {
 			request.getSession().setAttribute("numeroTesiDocente", id);
 			request.getSession().setAttribute("disabilita", true);

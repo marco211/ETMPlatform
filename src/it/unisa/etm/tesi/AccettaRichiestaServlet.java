@@ -42,13 +42,8 @@ public class AccettaRichiestaServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
 		PartecipaManager pm=(PartecipaManager) mf.createPartecipaManager();
-		try {
-			pm.inserisciPartecipazione(id, utenteEmail);
-			ptm.accettaRichiestaPartecipazione(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
+		pm.inserisciPartecipazione(id, utenteEmail);
+		ptm.accettaRichiestaPartecipazione(id);
 		return true;		
 	}
 }

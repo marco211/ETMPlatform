@@ -35,11 +35,8 @@ public class VisualizzaInfoConsegnaServlet extends HttpServlet {
 		ManagerFactory em=new ManagerFactory();
 		ConsegnaManager um=(ConsegnaManager) em.createConsegnaManager();
 		Consegna consegna=null;
-		try {
 			consegna=um.getConsegna(id);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		request.setAttribute("infoConsegna", consegna);
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaInfoConsegna.jsp");
 		view.forward(request, response);

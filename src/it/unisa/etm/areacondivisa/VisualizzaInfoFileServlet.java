@@ -34,12 +34,10 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
 		String nomeFile=request.getParameter("nomeFile");
 		ManagerFactory em=new ManagerFactory();
 		FileManager um=(FileManager) em.createFileManager();
-		try {
+		
 			File file=um.getFile(id, nomeFile);
 			request.getSession().setAttribute("infoFile", file);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaInfoFile.jsp");
 		view.forward(request, response);
 	}

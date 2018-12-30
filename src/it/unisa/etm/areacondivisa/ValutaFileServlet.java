@@ -50,12 +50,9 @@ public class ValutaFileServlet extends HttpServlet {
 		Utente utente=(Utente) request.getSession().getAttribute("utente");
 		Attivita attivita=new Attivita(utente.getEmail(), nomeFile, data ,"v",id);
 		AttivitaManager am=(AttivitaManager) em.createAttivitaManager();
-		try {
 			um.modificaFile(id, nomeFile, voto, descrizione);
 			am.aggiungiAttivita(attivita);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?idTesi="+id);
 		view.forward(request, response);		
 	}

@@ -48,12 +48,9 @@ public class EliminaFileServlet extends HttpServlet {
 		Utente utente=(Utente) request.getSession().getAttribute("utente");
 		Attivita attivita=new Attivita(utente.getEmail(), nomeFile, data ,"e",id);
 		AttivitaManager am=(AttivitaManager) em.createAttivitaManager();
-		try {
 			am.aggiungiAttivita(attivita);
 			um.eliminaFile(id, nomeFile);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/homePage.jsp");
 		view.forward(request, response);
 	}

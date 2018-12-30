@@ -41,7 +41,6 @@ public class ScaricaFileServlet extends HttpServlet {
 		int BUFFER_SIZE = 4096;
 		ManagerFactory mf=new ManagerFactory();
 		FileManager fm=(FileManager) mf.createFileManager();
-		try {
 			File file=fm.scaricaFile(id, nome);
 			InputStream stream=file.getInputStream();
 			int fileLength=stream.available();
@@ -62,10 +61,7 @@ public class ScaricaFileServlet extends HttpServlet {
                 outStream.write(buffer, 0, bytesRead);
             }
             stream.close();
-            outStream.close(); 
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}	    
+            outStream.close(); 	    
 	}
 
 }

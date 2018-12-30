@@ -16,33 +16,42 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	}
 	
 	@Override
-	public boolean aggiungiConsegna(Consegna consegna) throws SQLException {
+	public boolean aggiungiConsegna(Consegna consegna) {
 		String selectSQL="INSERT INTO CONSEGNA (SCADENZA, NOME, DESCRIZIONE, PROPOSTATESI_ID) VALUES (?,?,?,?)";
-		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement(selectSQL);  
+		try {
+			connection=DatabaseManager.getIstance();
+			prepared=connection.prepareStatement(selectSQL);  
 			prepared.setString(1, consegna.getScadenza());
 			prepared.setString(2, consegna.getNome());
 			prepared.setString(3, consegna.getDescrzione());
 			prepared.setInt(4, consegna.getPropostaTesiId());
 			prepared.executeUpdate();
 			prepared.close();
+		} catch (SQLException e) {
+			return false;
+		}
+		
 		return true;
 	}
 
 	@Override
-	public boolean modificaConsegna(String scadenza, int id) throws SQLException {
-		connection=DatabaseManager.getIstance();
-		prepared=connection.prepareStatement("UPDATE CONSEGNA SET Scadenza=? Where Id=?");
-		prepared.setString(1, scadenza);
-		prepared.setInt(2, id);
-		prepared.executeUpdate();	
-		prepared.close();
+	public boolean modificaConsegna(String scadenza, int id){
+		try {
+			connection=DatabaseManager.getIstance();
+			prepared=connection.prepareStatement("UPDATE CONSEGNA SET Scadenza=? Where Id=?");
+			prepared.setString(1, scadenza);
+			prepared.setInt(2, id);
+			prepared.executeUpdate();	
+			prepared.close();
+		} catch (SQLException e) {
+			return false;
+		}
 		return true;
 	}
 
 	
 	@Override
-	public boolean eliminaConsegna(int id) throws SQLException {
+	public boolean eliminaConsegna(int id){
 		String selectSQL="DELETE FROM Consegna WHERE ID=?";
 		try {
 			connection=DatabaseManager.getIstance();
@@ -57,8 +66,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	}
 	
 	@Override
-	public Consegna getConsegna(int id) throws SQLException {
+	public Consegna getConsegna(int id){
 		String selectSQL="SELECT * FROM CONSEGNA WHERE ID=?";
+		try {
 		connection=DatabaseManager.getIstance();
 		prepared=connection.prepareStatement(selectSQL);
 		prepared.setInt(1, id);
@@ -73,11 +83,15 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 		prepared.close();
 		rs.close();
 		return consegna;
+		} catch (Exception e){
+			return null;
+		}
 	}
 	
 	@Override
-	public ArrayList<Consegna> getListaConsegne(int propostaTesiId) throws SQLException {
+	public ArrayList<Consegna> getListaConsegne(int propostaTesiId){
 		String selectSQL="SELECT * FROM CONSEGNA WHERE PROPOSTATESI_ID=?";
+		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement(selectSQL);
 			prepared.setInt(1, propostaTesiId);
@@ -95,6 +109,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 			prepared.close();
 			rs.close();			
 			return list;	
+		}catch (Exception e){
+			return null;
+		}
 	}
 
 	private ResultSet rs;

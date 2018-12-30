@@ -42,12 +42,10 @@ public class VisualizzaStoricoServlet extends HttpServlet {
 		if(propostaTesiId!=0) {
 			ManagerFactory em=new ManagerFactory();
 			AttivitaManager attivita=(AttivitaManager) em.createAttivitaManager();
-			try {
+			
 				ArrayList<Attivita> lista=(ArrayList<Attivita>) attivita.getListaAttivita(propostaTesiId);
 				request.getSession().setAttribute("storico", lista);
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			
 		}
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/visualizzaStoricoAttivita.jsp");
 		view.forward(request, response);

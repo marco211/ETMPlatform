@@ -32,12 +32,9 @@ public class EliminaConsegnaServlet extends HttpServlet {
 		int id=Integer.parseInt(request.getParameter("idConsegna"));
 		ManagerFactory mf=new ManagerFactory();
 		ConsegnaManager cm=(ConsegnaManager) mf.createConsegnaManager();
-		try {
 			cm.eliminaConsegna(id);
 			request.getSession().setAttribute("listaConsegne",cm.getListaConsegne((int)request.getSession().getAttribute("numeroTesiDocente")) );
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
+		
 		RequestDispatcher view=getServletContext().getRequestDispatcher("/caricaConsegna.jsp");
 		view.forward(request, response);
 	}

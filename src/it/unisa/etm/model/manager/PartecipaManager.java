@@ -12,13 +12,12 @@ import it.unisa.etm.model.interfaces.PartecipaModelInterface;
 
 public class PartecipaManager implements PartecipaModelInterface {
 
-	public boolean inserisciPartecipazione(int richiestaId, String utenteEmail) throws SQLException {
+	public boolean inserisciPartecipazione(int richiestaId, String utenteEmail){
 		String selectSQL="SELECT * FROM richiestapartecipazione WHERE id=?;";
 		String insertSQL="insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";
-		connection=DatabaseManager.getIstance();
 		int propostaTesiId=0;
-		boolean b=false;
 		try {
+			connection=DatabaseManager.getIstance();
 			prepared1=connection.prepareStatement(selectSQL);
 			prepared1.setInt(1, richiestaId);			
 			rs1 = prepared1.executeQuery();
@@ -32,34 +31,35 @@ public class PartecipaManager implements PartecipaModelInterface {
 			prepared.close();
 			rs1.close();
 		}catch(Exception e) {
-			e.printStackTrace();			
+			return false;			
 		}
-		finally {
-			if (prepared != null)
-				prepared.close();
-		}
-		return b;
+		return true;
 	}
 
 	@Override
-	public ArrayList<Partecipa> getListaPartecipazione(ArrayList<PropostaTesi> list) throws SQLException {
+	public ArrayList<Partecipa> getListaPartecipazione(ArrayList<PropostaTesi> list) {
 		String selectSQL="SELECT * FROM PARTECIPA WHERE PROPOSTATESI_ID=?";
-		connection=DatabaseManager.getIstance();
-		ArrayList<Partecipa> lista = new ArrayList<Partecipa>();
-		for(int i=0;i<list.size();i++) {
-			prepared=connection.prepareStatement(selectSQL);
-			prepared.setInt(1, list.get(i).getId());
-			rs=prepared.executeQuery();
-			while(rs.next()) {
-				Partecipa partecipa=new Partecipa();
-				partecipa.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
-				partecipa.setUtenteEmail(rs.getString("UTENTE_EMAIL"));
-				lista.add(partecipa);
+		try {
+			connection=DatabaseManager.getIstance();
+			ArrayList<Partecipa> lista = new ArrayList<Partecipa>();
+			for(int i=0;i<list.size();i++) {
+				prepared=connection.prepareStatement(selectSQL);
+				prepared.setInt(1, list.get(i).getId());
+				rs=prepared.executeQuery();
+				while(rs.next()) {
+					Partecipa partecipa=new Partecipa();
+					partecipa.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
+					partecipa.setUtenteEmail(rs.getString("UTENTE_EMAIL"));
+					lista.add(partecipa);
+				}
+				prepared.close();
+				rs.close();
 			}
-			prepared.close();
-			rs.close();
+			return lista;
+		} catch (SQLException e) {
+			return null;
 		}
-		return lista;	
+	
 	}
 
 	private ResultSet rs;

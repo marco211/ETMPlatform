@@ -38,14 +38,11 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
 		ManagerFactory em=new ManagerFactory();
 		ConsegnaManager consegna=(ConsegnaManager) em.createConsegnaManager();
 		PropostaTesiManager tesi=(PropostaTesiManager) em.createPropostaTesiManager();
-		try {
+		
 			PropostaTesi propostaTesi=tesi.getPropostaTesi(propostaTesiId);
 			request.getSession().setAttribute("propostaTesi", propostaTesi);
 			ArrayList<Consegna> consegne=consegna.getListaConsegne(propostaTesiId);
-			request.getSession().setAttribute("listaConsegne", consegne);
-		} catch (SQLException e) {
-			response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
-		}
+			request.getSession().setAttribute("listaConsegne", consegne);		
 		response.sendRedirect(request.getContextPath()+"/VisualizzaListaFileServlet?idTesi="+utente.getPropostaTesi_ID()+"&utenteEmail="+utente.getEmail());
 	}
 
