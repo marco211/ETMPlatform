@@ -1,17 +1,13 @@
 package it.unisa.etm.user;
 
 import java.io.IOException;
-import java.util.logging.Logger;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
-
 import it.unisa.etm.model.manager.UtenteManager;
 
 /**
@@ -26,35 +22,27 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 */
 	public ModificaProfiloUtenteServlet() {
 		super();
-		log = Logger.getLogger("global");
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		Utente utente = (Utente) request.getSession().getAttribute("utente");
-				
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+		Utente utente=(Utente) request.getSession().getAttribute("utente");
 		utente.setNome(request.getParameter("nome"));
 		utente.setCognome(request.getParameter("cognome"));
 		utente.setDataDiNascita(request.getParameter("data"));
-		log.info(utente.getNome());
-		if(utente.getTipo().equals("s")) utente.setMatricola(Long.parseLong(request.getParameter("matricola")));
+		if(utente.getTipo().equals("s")) 
+			utente.setMatricola(Long.parseLong(request.getParameter("matricola")));
 		else {
-
 			utente.setInsegnamento(request.getParameter("insegnamento").toLowerCase());
 			utente.setUfficio(request.getParameter("ufficio"));
 		}
-		
-		
-		if(modificaProfiloUtente(utente) == true) {
+		if(modificaProfiloUtente(utente)==true) {
 			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
-		}else{			
+		} else {			
 			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");					
 		}
-
 	}
 	/**
 	 * Riceve le modifiche effettuate dall'utente e le appliche al profilo di quest'ultimo.
@@ -68,9 +56,6 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 		ManagerFactory mf=new ManagerFactory();
 		UtenteManager um=(UtenteManager) mf.createUtenteManager();
 		return um.modificaUtente(utente);
-
 	}
 	
-	private Logger log;
-
 }
