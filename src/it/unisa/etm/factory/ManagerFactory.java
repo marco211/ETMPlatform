@@ -6,7 +6,6 @@ import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 import it.unisa.etm.model.interfaces.FileModelInterface;
-import it.unisa.etm.model.interfaces.HaModelInterface;
 import it.unisa.etm.model.interfaces.PartecipaModelInterface;
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
@@ -16,7 +15,6 @@ import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 import it.unisa.etm.model.manager.ConsegnaManager;
 import it.unisa.etm.model.manager.FileManager;
-import it.unisa.etm.model.manager.HaManager;
 import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import it.unisa.etm.model.manager.UtenteManager;
@@ -68,8 +66,5 @@ public class ManagerFactory implements AbstractFactory{
 		return new AttivitaManager();
 	}
 
-	@Override
-	public HaModelInterface createHaManager() {
-		return new HaManager();
-	}
+	
 }
