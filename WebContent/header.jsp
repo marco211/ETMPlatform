@@ -83,10 +83,11 @@
 						condivisa</a></li>
 				<%} %>
 
-
+				<!-- 
 				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
+				 -->
 				<%}else if(admin!=null){ %>
 
 				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
@@ -112,14 +113,19 @@
 					</form>
 				</div>
 			</form>
-			<!-- 
+			
           <ul class="navbar-nav d-none d-lg-block d-xl-block">
-          <li class="nav-item">
-          	<a>Benvenuto, </a>
-          	<a class="nav-link text-dark"
-					href="#">Visualizza profilo</a></li>
+          		<li class="nav-item">
+          		<form action="VisualizzaProfiloUtenteServlet" method="post">
+          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
+						<button class="btn btn-inline mr-3 bg-warning"
+							type="submit">
+							<span class="fa fa-user-circle"></span>
+						</button>
+					</form>
+          		</li>
 			</ul>
-			 -->
+			 
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
