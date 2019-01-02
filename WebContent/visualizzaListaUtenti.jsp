@@ -47,14 +47,15 @@
 					<%
 							for (int i = 0; i < utenti.size(); i++) {
 					%>
-					<tbody>
-							<tr>
+					<tbody id="lista">
+							<tr >
 								<td>
 								<a href="VisualizzaDettagliUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>">
 								<%=utenti.get(i).getNome()+" "+utenti.get(i).getCognome()%>
 								</a>
+								
 								</td>
-								<td><a class="col-3" href="EliminaUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>"><i class="fas fa-user-minus"></i></a></td>
+								<td><a class="col-3" href="EliminaUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%utenti.get(i).getEmail();%>"></i></a></td>
 								
 							</tr>
 							
