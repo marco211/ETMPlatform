@@ -104,7 +104,7 @@
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
 				<div class="container">
-					<form action="CercaUtenteServlet"  method="get" name="cercaProfilo">
+					<form action="CercaUtenteServlet" method="get">
 					<input class="form-control mr-sm-2 border-dark" type="email" name="cerca"
 						placeholder="Cerca" aria-label="Cerca">
 					<button type="submit" class="btn btn-inline my-2 my-sm-0 bg-warning " id="exampleButton1">
