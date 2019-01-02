@@ -63,14 +63,14 @@ if(utente==null){
     						
     			<tr class="pt-1" id="lista">
 								<td style="border-style: none">
-    			<p class="lead">Descrizione:
-    			 <%=propostatesi.getDecrizione()%></p>
+    			<h5 class="font-weight-normal">Descrizione:
+    			 <%=propostatesi.getDecrizione()%></h5>
     			 </td>
     			 </tr>
     			
     			<tr class="pt-1" id="lista">
 								<td style="border-style: none">
-				<p class="lead">Ambito: <%=propostatesi.getAmbito()%></p>
+				<p>Ambito: <%=propostatesi.getAmbito()%></p>
 				</td>
 					
     			</table>
