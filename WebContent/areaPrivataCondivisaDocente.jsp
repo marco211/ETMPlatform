@@ -163,6 +163,7 @@
 					<div class="col">
 						<b>Proposta Tesi</b>
 					</div>
+					
 					<div class="col">
 						<b>Nome Proposta Tesi</b>
 					</div>
