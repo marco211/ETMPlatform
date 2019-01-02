@@ -1,7 +1,6 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.*;
-
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.bean.Utente;

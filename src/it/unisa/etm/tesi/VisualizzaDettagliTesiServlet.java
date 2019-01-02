@@ -40,8 +40,8 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 		HttpSession session=request.getSession();
 		Utente utente = (Utente) session.getAttribute("utente");
 		ArrayList<RichiestaPartecipazione> richieste= this.getRichieste(utente);
-		session.setAttribute("propostatesi", propostaTesi);
-		session.setAttribute("utenti", utenti);
+		request.setAttribute("propostatesi", propostaTesi);
+		request.setAttribute("utenti", utenti);
 		request.setAttribute("richiesteproposte", richieste);	
 		Utente docente = new Utente();
 		for(Utente u : utenti){
