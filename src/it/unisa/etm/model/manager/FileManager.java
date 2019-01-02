@@ -24,6 +24,10 @@ public class FileManager implements FileModelInterface {
 			try {
 				connection=DatabaseManager.getIstance();
 				prepared=connection.prepareStatement("INSERT INTO FILE (NOME,PROPOSTATESI_ID,FILE,DESCRIZIONE,UTENTE_EMAIL) VALUES (?,?,?,?,?)");
+				int i=c.getNome().indexOf(".");
+				if(i+1==c.getNome().length()) {
+					return false;
+				}
 				prepared.setString(1, c.getNome());
 				prepared.setInt(2, c.getPropostaTesiId());
 				InputStream stream=c.getFilePart().getInputStream();

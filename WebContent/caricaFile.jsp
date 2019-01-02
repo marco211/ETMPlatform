@@ -72,7 +72,7 @@
 							<%
 								if (errore != null) {
 							%>
-							<div>
+							<div class="alert alert-danger form-group">
 								<p><%=errore.toString()%></p>
 							</div>
 							<%
