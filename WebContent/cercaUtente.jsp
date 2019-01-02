@@ -18,7 +18,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 <link rel="stylesheet" href="css/stile.css">
-<title>ETM Platform - Area privata condivisa</title>
+<title>ETM Platform</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
 </head>
@@ -41,11 +41,11 @@
 						<table class="table table-striped">
 							<thead>
 								<tr>
-									<th scope="col">#</th>
 									<th scope="col">Nome</th>
 									<th scope="col">Cognome</th>
 									<th scope="col">Email</th>
 									<th scope="col">M/U</th>
+									<th scope="col">#</th>
 								</tr>
 							</thead>
 							<%		
@@ -53,8 +53,6 @@
 							%>
 							<tbody>
 								<tr>
-									<th scope="row"><i class="fa fa-file fa"
-										aria-hidden="true"></i></th>
 									<td>
 											<%=utenti.get(i).getNome()%>
 									</td>
@@ -69,7 +67,10 @@
 									<%} else if(utenti.get(i).getTipo().equals("d")){%>
 									<td><%=utenti.get(i).getUfficio()%></td>
 									<%} %>
-								</tr>
+									<td>
+										<a href="VisualizzaProfiloUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>">visualizza</a>
+									</td>
+									</tr>
 
 							</tbody>
 							<%
