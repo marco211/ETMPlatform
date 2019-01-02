@@ -103,12 +103,14 @@ if(utente==null || utenteToShow == null){
                                                 <a class="col-3"><%=utenteToShow.getUfficio()%></a>
                                             </div>
                                         </div><% }%>
+                                        <%if(utente.getEmail().equals(utenteToShow.getEmail())){ %>
                                         <div class="row">
                                           <div class="col-md-6">
                                       		    <form method="get" action="modificaPassword.jsp?utente_email="<%=utente.getEmail()%>>
                                                 <button type="submit" class="btn btn-primary" name="invio">Cambia Password</button></form>
                                           </div>
                                         </div>
+                                        <%} %>
                             </div>
                            
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
