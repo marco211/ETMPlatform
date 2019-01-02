@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
@@ -147,6 +148,64 @@ public  class UtenteManager implements UtenteModelInterface{
 			return true;
 		}catch(SQLException e) {
 			return false;
+		}
+	}
+	
+	@Override
+	public ArrayList<Utente> cercaListaUtenteNome(String nome){
+		Connection istance;
+		try {
+			istance = DatabaseManager.getIstance();
+			PreparedStatement pr=istance.prepareStatement("SELECT * FROM UTENTE WHERE NOME=?");
+			pr.setString(1, nome);
+			ArrayList<Utente> list=new ArrayList<Utente>();
+			ResultSet rs=pr.executeQuery();
+			while(rs.next()) {
+			Utente utente=new Utente();
+			utente.setEmail(rs.getString("EMAIL"));
+			utente.setCognome(rs.getString("COGNOME"));
+			utente.setNome(rs.getString("NOME"));
+			utente.setTipo(rs.getString("TIPO"));
+			if(utente.getTipo().equals("s")) {
+				utente.setMatricola(rs.getLong("MATRICOLA"));
+			}
+			else {
+				utente.setUfficio(rs.getString("UFFICIO"));
+			}
+			list.add(utente);
+			}
+			return list;
+		} catch (SQLException e) {
+			return null;
+		}
+	}
+	
+	@Override
+	public ArrayList<Utente> cercaListaUtenteCognome(String cognome){
+		Connection istance;
+		try {
+			istance = DatabaseManager.getIstance();
+			PreparedStatement pr=istance.prepareStatement("SELECT * FROM UTENTE WHERE COGNOME=?");
+			pr.setString(1, cognome);
+			ArrayList<Utente> list=new ArrayList<Utente>();
+			ResultSet rs=pr.executeQuery();
+			while(rs.next()) {
+			Utente utente=new Utente();
+			utente.setEmail(rs.getString("EMAIL"));
+			utente.setCognome(rs.getString("COGNOME"));
+			utente.setNome(rs.getString("NOME"));
+			utente.setTipo(rs.getString("TIPO"));
+			if(utente.getTipo().equals("s")) {
+				utente.setMatricola(rs.getLong("MATRICOLA"));
+			}
+			else {
+				utente.setUfficio(rs.getString("UFFICIO"));
+			}
+			list.add(utente);
+			}
+			return list;
+		} catch (SQLException e) {
+			return null;
 		}
 	}
 

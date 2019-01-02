@@ -1,7 +1,6 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -49,9 +48,11 @@ public class CaricaFileServlet extends HttpServlet {
 		Utente utente=(Utente)request.getSession().getAttribute("utente");
 		File file=new File();
 		file.setDescrizione(descrizione);
-		file.setNome(nome);
 		file.setEmail(utente.getEmail());
 		Part filePart=request.getPart("uploadFile");
+		String fileName = extractFileName(filePart);
+		String estensione=extractExtension(fileName);
+		file.setNome(nome+"."+estensione);
 		file.setFilePart(filePart);
 		int tesi=0;
 		if(utente.getTipo().equals("s")) {
@@ -82,5 +83,24 @@ public class CaricaFileServlet extends HttpServlet {
 			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/caricaFile.jsp");
 			requestDispatcher.forward(request, response);
 		}
+	}
+	
+	
+	private String extractFileName(Part part) {
+		//content-disposition: form-data; name="file"; filename="file.txt"
+		String contentDisp = part.getHeader("content-disposition");
+		String[] items = contentDisp.split(";");
+		for (String s : items) {
+			if (s.trim().startsWith("filename")) {
+				return s.substring(s.indexOf("=") + 2, s.length() - 1);
+			}
+		}
+		return "";
+	}
+	
+	private String extractExtension(String name) {
+		int i=name.indexOf(".");
+		String temp=name.substring(i+1, name.length());
+		return temp;
 	}
 }

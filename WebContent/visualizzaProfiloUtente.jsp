@@ -103,12 +103,14 @@ if(utente==null || utenteToShow == null){
                                                 <a class="col-3"><%=utenteToShow.getUfficio()%></a>
                                             </div>
                                         </div><% }%>
+                                        <%if(utente.getEmail().equals(utenteToShow.getEmail())){ %>
                                         <div class="row">
                                           <div class="col-md-6">
                                       		    <form method="get" action="modificaPassword.jsp?utente_email="<%=utente.getEmail()%>>
                                                 <button type="submit" class="btn btn-primary" name="invio">Cambia Password</button></form>
                                           </div>
                                         </div>
+                                        <%} %>
                             </div>
                            
                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
@@ -118,7 +120,7 @@ if(utente==null || utenteToShow == null){
                                                 <label>Nome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" name="nome" onchange="controlloNome()"placeholder="<%utenteToShow.getNome(); %>">
+                                                <input type="text" class="form-control" name="nome" onchange="controlloNome()"placeholder="<%=utenteToShow.getNome()%>" required>
                                                 
                                             </div>
                                         </div>
@@ -127,7 +129,7 @@ if(utente==null || utenteToShow == null){
                                                 <label>Cognome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="cognome" onchange="controlloCognome()" placeholder=<%utenteToShow.getCognome(); %>>
+                                                 <input type="text" class="form-control" name="cognome" onchange="controlloCognome()" placeholder="<%=utenteToShow.getCognome()%>" required>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -135,7 +137,7 @@ if(utente==null || utenteToShow == null){
                                                 <label>Data di Nascita</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="date" class="form-control" name="data" onchange="controlloData()" placeholder="Data di Nascita">
+                                                 <input type="date" class="form-control" name="data" onchange="controlloData()" placeholder="<%=utenteToShow.getDataDiNascita()%>" required>
                                             </div>
                                         </div>
                                         <%if(utente.getTipo().equals("s")){%>
@@ -144,7 +146,7 @@ if(utente==null || utenteToShow == null){
                                                 <label>Matricola</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="matricola" onchange="controlloMatricola()"placeholder="Matricola">
+                                                 <input type="text" class="form-control" name="matricola" onchange="controlloMatricola()"placeholder="<%=utenteToShow.getMatricola()%>" required>
                                             </div>
                                         </div><% }%>
                                         <%if(utente.getTipo().equals("d")){%>
@@ -153,11 +155,11 @@ if(utente==null || utenteToShow == null){
                                                 <label>Ufficio</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="Ufficio">
+                                                 <input type="text" class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="<%=utenteToShow.getUfficio()%>" required>
                                             </div>
                                         </div><% }%>
                                     <div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
-									<button type="submit" class="btn btn-primary" name="invio">Salva</button></form>
+									<button type="submit" class="btn btn-primary" name="invio" onclick="validazione()">Salva</button></form>
                             </div>
                         </div>
                     </div>
@@ -185,7 +187,7 @@ if(utente==null || utenteToShow == null){
     
 <jsp:include page="footer.jsp" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/validazioneRegistrazione.js"></script>
+<script src="js/modificaProfilo.js"></script>
 
 </body>
 </html>

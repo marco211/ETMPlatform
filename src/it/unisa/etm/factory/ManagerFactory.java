@@ -65,6 +65,9 @@ public class ManagerFactory implements AbstractFactory{
 	public AttivitaModelInterface createAttivitaManager() {
 		return new AttivitaManager();
 	}
+<<<<<<< HEAD
 
 	
+=======
+>>>>>>> branch 'master' of https://github.com/marco211/ETMPlatform
 }

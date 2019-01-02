@@ -11,7 +11,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.UtenteManager;
 
 /**
- * Estende la casse HttpServlet e fornisce all'utente la funzionalità di poter modificare il proprio profilo.
+ * Estende la casse HttpServlet e fornisce all'utente la funzionalitï¿½ di poter modificare il proprio profilo.
  */
 @WebServlet("/ModificaProfiloUtenteServlet")
 public class ModificaProfiloUtenteServlet extends HttpServlet {
@@ -35,7 +35,6 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 		if(utente.getTipo().equals("s")) 
 			utente.setMatricola(Long.parseLong(request.getParameter("matricola")));
 		else {
-			utente.setInsegnamento(request.getParameter("insegnamento").toLowerCase());
 			utente.setUfficio(request.getParameter("ufficio"));
 		}
 		if(modificaProfiloUtente(utente)==true) {

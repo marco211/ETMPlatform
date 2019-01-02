@@ -1,7 +1,6 @@
 package it.unisa.etm.areacondivisa;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.time.LocalDate;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;

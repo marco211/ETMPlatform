@@ -28,6 +28,11 @@
 	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
 	crossorigin="anonymous">
 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.js"
+  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+  crossorigin="anonymous"></script>
+
 <title>ETM Platform</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
@@ -83,10 +88,11 @@
 						condivisa</a></li>
 				<%} %>
 
-
+				<!-- 
 				<li><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
 				</li>
+				 -->
 				<%}else if(admin!=null){ %>
 
 				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
@@ -101,25 +107,34 @@
 
 				
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
+			<div class="form-inline my-2 my-lg-0">
 				<div class="container">
-					<form action="CercaUtenteServlet"  method="get" name="cercaProfilo">
-					<input class="form-control mr-sm-2 border-dark" type="email" name="cerca"
+					<form action="CercaListaUtentiServlet" method="post">
+					<input class="form-control mr-sm-2 border-dark" type="text" name="cerca"
 						placeholder="Cerca" aria-label="Cerca">
+					<select class="form-control mr-sm-2 border-dark" name="option">
+					<option value="nome">Nome</option>
+					<option value="cognome">Cognome</option>
+					</select>
 					<button type="submit" class="btn btn-inline my-2 my-sm-0 bg-warning " id="exampleButton1">
 						<span class="fa fa-search"></span>
 					</button>
 					</form>
 				</div>
-			</form>
-			<!-- 
+			</div>
+			
           <ul class="navbar-nav d-none d-lg-block d-xl-block">
-          <li class="nav-item">
-          	<a>Benvenuto, </a>
-          	<a class="nav-link text-dark"
-					href="#">Visualizza profilo</a></li>
+          		<li class="nav-item">
+          		<form action="VisualizzaProfiloUtenteServlet" method="post">
+          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
+						<button class="btn btn-inline mr-3 bg-warning"
+							type="submit">
+							<span class="fa fa-user-circle"></span>
+						</button>
+					</form>
+          		</li>
 			</ul>
-			 -->
+			 
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
