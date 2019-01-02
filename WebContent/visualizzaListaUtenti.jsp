@@ -33,19 +33,37 @@
 			</form>
 			
     		 <div class="container">
-    		        <% ArrayList<Utente> utenti =(ArrayList<Utente>)request.getAttribute("utenti");
-		   			for(Utente u : utenti)
-		 			  { if(utente.getEmail().equals(request.getParameter("utente_email"))) {
+      			 <% ArrayList<Utente> utenti =(ArrayList<Utente>)request.getAttribute("utenti");%>
+    		        <table class="table table-striped">
+					<%
+						if (utenti != null) {
 					%>
-					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a> <a class="col-3" href="EliminaUtenteServlet?utente_email=<%=u.getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%u.getEmail();%>"></i></a>	
-		       </div>
-					<%}else{ %>
-					<div class="row" id="lista">
-						<a class="col-3" href="VisualizzaProfiloUtenteServlet?utente_email=<%=u.getEmail() %>"><%= u.getNome()+" "+u.getCognome()%></a>	
-		       </div>
-		       <% } }%>
-      
+					<thead>
+							<tr>
+								<th scope="col">Nome e Cognome</th>
+								<th scope="col">Elimina</th>
+							</tr>
+						</thead>
+					<%
+							for (int i = 0; i < utenti.size(); i++) {
+					%>
+					<tbody>
+							<tr>
+								<td>
+								<a href="VisualizzaDettagliUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>">
+								<%=utenti.get(i).getNome()+" "+utenti.get(i).getCognome()%>
+								</a>
+								</td>
+								<td><a class="col-3" href="EliminaUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>"><i class="fas fa-user-minus"></i></a></td>
+								
+							</tr>
+							
+						</tbody>
+					<%
+						}
+						}
+					%>
+				</table>
             </div>
  		    </div>
 </div>
