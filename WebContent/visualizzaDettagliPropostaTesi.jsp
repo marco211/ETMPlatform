@@ -38,36 +38,29 @@ if(utente==null){
   		<div class="col-md-8 my-4">
         <div class="card mb-3">
         <div class="card-body">
-        <table class="table table-striped">
+    			<div class="border-bottom border-solid mb-3 py-1">
+    					<h3 class="card-title"><%=propostatesi.getTitolo()%></h3>
     			<%
-    			ArrayList<Utente> utenti = (ArrayList<Utente>)request.getAttribute("utenti");
-    			if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
-    			boolean b = false;
-    			for(Utente u : utenti){
-    					if(u.getPropostaTesi_ID()==propostatesi.getId())
-    						b = true;
-    			}if(b){
-    			%>
-    			<tr class="pt-1" id="lista">
-								<td style="border-style: none">
-    			<p style="font-size: small; margin:0"><i class="fas fa-exclamation pr-2 mt-1"></i>Non puoi eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
-    			</td>
-    			</tr>
-    			<%}}%>
-    			<%if(propostatesi.isChiuso()){%>
-    			<tr class="pt-1" id="lista">
-								<td style="border-style: none">
-    			<p style="font-size: small; margin:0"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è chiusa</p>
-    			</td>
-    			</tr>
-    			<%} %>
-    			 
-    			   <tr class="pt-1" id="lista">
-								<td style="border-style: none">
-    			<h1 class="display-4"><%=propostatesi.getTitolo()%></h1>
-    			</td>
-    			</tr>
+    				ArrayList<Utente> utenti = (ArrayList<Utente>)request.getAttribute("utenti");
+    				if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
+    				boolean b = false;
+    				for(Utente u : utenti){
+    						if(u.getPropostaTesi_ID()==propostatesi.getId())
+    							b = true;
+    				}if(b){
+    				%>
+    						
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>Non puoi eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
+  
     			
+    				<%}}%> 
+    				<%if(propostatesi.isChiuso()){%>
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è chiusa</p>
+    				<%} %>
+    			</div>
+        <table class="table border-bottom border-solid mb-3 py-1">
+        
+    						
     			<tr class="pt-1" id="lista">
 								<td style="border-style: none">
     			<p class="lead">Descrizione:
@@ -79,14 +72,10 @@ if(utente==null){
 								<td style="border-style: none">
 				<p class="lead">Ambito: <%=propostatesi.getAmbito()%></p>
 				</td>
-				</tr>
-    			<tr class="pt-1" id="lista">
-								<td style="border-style: none">
-    			<p class="blockquote-footer pt-3">Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></p>
-    			</td>
-    			</tr>
-
+					
     			</table>
+				<small class="pt-3 font-weight-bold">Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></small>
+				
   		</div>
   	</div>	
   </div>		
