@@ -440,5 +440,34 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 	}
 
+	@Override
+	public ArrayList<PropostaTesi> getTesiRecenti() {
+		String SQL="SELECT * FROM PROPOSTATESI ORDER BY ID DESC LIMIT 8;";
+		Connection connection=null;
+		PreparedStatement statement=null;
+		ArrayList<PropostaTesi> list=new ArrayList<PropostaTesi>();
+		try {
+			connection=DatabaseManager.getIstance();
+			statement=connection.prepareStatement(SQL);
+			ResultSet rs=statement.executeQuery(SQL);
+			while(rs.next()) {
+				PropostaTesi proposta=new PropostaTesi();
+				proposta.setId(rs.getInt(1));
+				proposta.setUtenteEmail(rs.getString(2));
+				proposta.setTitolo(rs.getString(3));
+				proposta.setChiuso(rs.getBoolean(4));
+				proposta.setAmbito(rs.getString(5));
+				proposta.setTempoDiSviluppo(rs.getInt(6));
+				proposta.setDecrizione(rs.getString(7));
+				proposta.setArchiviato(rs.getBoolean(8));
+				proposta.setMaterie(rs.getString(9));
+				list.add(proposta);
+			}
+			return list;
+		}catch (SQLException e) {
+			return null;
+		}
+	}
+
 }
 

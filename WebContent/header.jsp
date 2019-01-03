@@ -70,12 +70,12 @@
 			
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="homePage.jsp">Home <span class="sr-only"></span>
+					href="homePage.jsp" id="home">Home <span class="sr-only"></span>
 				</a></li>
-				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area proposta tesi</a>
+				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet" id="areaTesi">Area proposta tesi</a>
 				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaConsegneServlet">Area privata condivisa</a></li>
+					href="VisualizzaListaConsegneServlet" id="areaCondivisa">Area privata condivisa</a></li>
 				<%
 				}
 				%>
@@ -84,7 +84,7 @@
 					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata
+					href="VisualizzaListaPartecipazioneServlet" id="areaCondivisa">Area privata
 						condivisa</a></li>
 				<%} %>
 

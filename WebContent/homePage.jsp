@@ -28,6 +28,32 @@ if(utente==null){
     <link rel="stylesheet" href="css/stile.css">
     <title>ETM Platform - Home</title>
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ <script >
+ $(document).ready(function(){
+	 cambiaColore();
+	 getTesiRecenti();
+	});
+
+
+  function getTesiRecenti(){
+	  var request=new XMLHttpRequest();
+		var url="TesiRecentiServlet";
+		request.onreadystatechange=function(){
+			if(request.readyState==4){
+				var val=request.responseText;
+				$("#recenti").html(val);
+			}
+		}
+		
+		request.open("GET",url,true);
+		request.send(null);
+  };
+function cambiaColore(){
+	document.getElementById("home").className = "nav-link text-primary";
+};
+</script>
+  
 </head>
 <body>
 
@@ -96,12 +122,10 @@ if(utente==null){
         </div>
         <aside class="col-md-4 my-4">
           <div class="p-3 card">
-            <h4 class="font-italic">Nome Sezione</h4>
-            <ol class="list-unstyled mb-0">
-              <li><a href="#">Primo elemento</a></li>
-              <li><a href="#">Secondo elemento</a></li>
-              <li><a href="#">Terzo elemento</a></li>
-            </ol>
+            <h4 class="font-italic">Tesi Recenti</h4>
+            <div id="recenti">
+            
+            </div>
           </div>
    
         </aside>
