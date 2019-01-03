@@ -8,7 +8,11 @@ import java.util.List;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AreaCondivisaModelInterface;
-
+/**
+ * Classe che implementa le funzionnalità dedicate agli utenti che fanno parte di un'area privata condivisa
+ * @author ETM
+ *
+ */
 public class AreaCondivisaManager implements AreaCondivisaModelInterface {
 	public AreaCondivisaManager() {
 		
