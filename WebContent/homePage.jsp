@@ -67,7 +67,16 @@ if(utente==null){
   			</div>
  			
    			 <h5 class="card-title">Descrizione del Sito</h5>
-    		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
+    		 <p class="card-text">
+    		 	ETM Platform é una piattaforma Web, creata per facilitare il processo di stesura tesi degli studenti dell'Universitá degli Studi di Salerno.
+    		 	 
+    		 </p>
+    		 <p class="card-text">
+    		 	Infatti ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
+    		 </p>
+    		 <p class="card-text">
+    		 	Invia subito una richesta ad un docente, per partecipare ad una Tesi, é semplice ci vogliono solo pochi minuti.
+    		 </p>
  		    </div>
 </div>
          
