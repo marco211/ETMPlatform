@@ -12,6 +12,6 @@ public interface UtenteModelInterface {
 	public boolean modificaUtente(Utente u) throws SQLException;
 	public Utente getInfo(String email) throws SQLException;
 	public Utente cercaUtente(String email) throws SQLException;
-	public ArrayList<Utente> cercaListaUtenteNome(String nome) throws SQLException;
-	public ArrayList<Utente> cercaListaUtenteCognome(String cognome) throws SQLException;
+	public ArrayList<Utente> cercaListaUtenteNome(String nome);
+	public ArrayList<Utente> cercaListaUtenteCognome(String cognome);
 }

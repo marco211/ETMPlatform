@@ -12,12 +12,12 @@ public interface AreaCondivisaModelInterface {
 	/**
 	 * Permette all'utente di poter inserire un file nell'area privata condivisa
 	 * @param f File da inserire nell'area privata condivisa.
-	 * @return boolean che è true se l'inserimento è avvenuto con successo;
+	 * @return boolean che ï¿½ true se l'inserimento ï¿½ avvenuto con successo;
 	 * <p>
 	 * false altrimenti.
 	 * @throws SQLException
 	 */
-	public boolean inserisciFile(File f) throws SQLException;
+	public boolean inserisciFile(File f);
 	
 	/**
 	 * Permette all'utente di poter visualizzare una lista dei File presenti nell'area privata condivisa
@@ -27,7 +27,7 @@ public interface AreaCondivisaModelInterface {
 	 * null in caso di nessun file o insuccesso.
 	 * @throws SQLException
 	 */
-	public List<File> getFileByPropostaTesi(int idProposta) throws SQLException;
+	public List<File> getFileByPropostaTesi(int idProposta);
 	
 	/**
 	 * Permette all'utente di rimuovere i file presente nell'area privata condivisa a cui partecipa.
@@ -37,5 +37,5 @@ public interface AreaCondivisaModelInterface {
 	 * false in caso d'insuccesso.
 	 * @throws SQLException
 	 */
-	public boolean rimuoviFile(int idFile) throws SQLException;
+	public boolean rimuoviFile(int idFile);
 }

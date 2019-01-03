@@ -268,7 +268,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException {
+	public List<Attivita> getStoricoAttivita(String titoloProposta){
 		String SQL="SELECT * FROM Attivita;";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -281,15 +281,15 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			while(rs.next()) {
 				Attivita attivita=new Attivita();
 			}
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return allActivity;
 	}
 
 	@Override
-	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException {
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail){
 		String SQL="SELECT * FROM PropostaTesi where Utente_Email=?";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -313,9 +313,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
 			}
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return proposte;
 	}
@@ -372,7 +372,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public String getNomeDocente(int id) throws SQLException {
+	public String getNomeDocente(int id){
 		String SQL="SELECT UTENTE_EMAIL FROM PROPOSTATESI WHERE id=?";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -384,9 +384,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ResultSet rs=statement.executeQuery();
 			rs.next();
 			nome=rs.getString("UTENTE_EMAIL");
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return nome;
 	}

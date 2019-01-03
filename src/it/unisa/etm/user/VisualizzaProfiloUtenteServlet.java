@@ -38,14 +38,9 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 			ManagerFactory em = new ManagerFactory();
 			PropostaTesiManager pt = (PropostaTesiManager) em.createPropostaTesiManager();
 			ArrayList<PropostaTesi> proposte;
-			try {
 				proposte = pt.getProposteTesiDocente(email);
 				request.setAttribute("proposte", proposte);
 				request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}else {
 		request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
 		}
