@@ -38,8 +38,6 @@ public class CercaListaUtentiServlet extends HttpServlet {
 	}
 
 	/**
-	 * @throws IOException 
-	 * @throws ServletException 
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
