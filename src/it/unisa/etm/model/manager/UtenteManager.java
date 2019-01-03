@@ -9,7 +9,11 @@ import java.util.List;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
-
+/**
+ * Classe che implementa le funzionalità dedicate all'utente registrato.
+ * @author ETM
+ *
+ */
 public  class UtenteManager implements UtenteModelInterface{
 
 	public UtenteManager() {

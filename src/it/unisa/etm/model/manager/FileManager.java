@@ -12,7 +12,11 @@ import java.util.ArrayList;
 import it.unisa.etm.bean.File;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.FileModelInterface;
-
+/**
+ * Classe che implementa le funzionalità dedicate ai file di un'area privata condivisa.
+ * @author ETM
+ *
+ */
 public class FileManager implements FileModelInterface {
 	public FileManager() {
 

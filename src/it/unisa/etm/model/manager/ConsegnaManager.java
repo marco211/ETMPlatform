@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import it.unisa.etm.bean.Consegna;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
-
+/**
+ * Classe che implementa le funzionalità dedicate alle consegne di un'area privata condivisa.
+ * @author ETM
+ *
+ */
 public class ConsegnaManager implements ConsegnaModelInterface {
 	public ConsegnaManager() {
 		

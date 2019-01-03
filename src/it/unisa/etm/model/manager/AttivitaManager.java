@@ -8,6 +8,11 @@ import java.util.ArrayList;
 import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AttivitaModelInterface;
+/**
+ * Classe che implementa le funzionalità dedicate alle attività effettuate da parte degli utenti che fanno parte di un'area privata condivisa
+ * @author ETM
+ *
+ */
 
 public class AttivitaManager implements AttivitaModelInterface {
 

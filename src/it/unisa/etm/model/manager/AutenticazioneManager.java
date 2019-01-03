@@ -8,7 +8,11 @@ import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
-
+/**
+ * Classe che implementa le funzionalità dedicate alla registrazione e al login.
+ * @author ETM
+ *
+ */
 public class AutenticazioneManager implements AutenticazioneModelInterface{
 
 	@Override

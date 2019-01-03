@@ -13,7 +13,11 @@ import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
-
+/**
+ * Classe che implementa le funzionalità dedicate alle proposte di tesi.
+ * @author ETM
+ *
+ */
 public class PropostaTesiManager implements PropostaTesiModelInterface {
 
 	public PropostaTesiManager() {

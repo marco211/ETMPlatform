@@ -9,7 +9,7 @@ import it.unisa.etm.bean.File;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AreaCondivisaModelInterface;
 /**
- * Classe che implementa le funzionnalitï¿½ dedicate agli utenti che fanno parte di un'area privata condivisa
+ * Classe che implementa le funzionalità dedicate agli utenti che fanno parte di un'area privata condivisa.
  * @author ETM
  *
  */
