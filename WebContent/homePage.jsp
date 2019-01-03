@@ -47,13 +47,13 @@ if(utente==null){
   					</ol>
  			 		<div class="carousel-inner">
     					<div class="carousel-item active">
-      						<img  src="https://a4b6t7q4.stackpathcdn.com/wp-content/uploads/sites/8/2017/06/unisa-_0-696x361.png">
+      						<img  src="img/SlideShow1.png">
     					</div>
    					    <div class="carousel-item">
-     					  	<img src="http://www.gazzettadisalerno.it/wp-content/uploads/2018/06/univsalerno-696x291.jpg">
+     					  	<img src="img/SlideShow2.jpg">
     					</div>
    						<div class="carousel-item">
-     					 	<img src="https://www.unisa.it/uploads/rescue/__thumbs/800x300_be459113aba7821dcbc63577fbafa913.jpg">
+     					 	<img src="img/SlideShow3.jpg">
    						</div>
   					</div>
  					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
