@@ -87,7 +87,7 @@
 
 
 				<li><a class="nav-link text-dark"
-					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
+					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>" id="profilo">Profilo</a>
 				</li>
 				<%}else if(admin!=null){ %>
 
