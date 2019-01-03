@@ -96,7 +96,8 @@ function cambiaColore(){
     		 <p class="card-text">
     		 	ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
     		 </p>
-    		 <%if(utente.getTipo().equals("s")){ %>
+    		 <%if(admin==null){
+    		 if(utente.getTipo().equals("s")){ %>
     		 <p class="card-text">
     		 	Clicca su <b>Area Proposta Tesi</b> per per inviare una richiesta di partecipazione ad una Proposta Tesi caricata da un docente.
     		 </p>
@@ -112,7 +113,8 @@ function cambiaColore(){
     		 <p class="card-text">
     		 	Una volta accettata una richiesta di partecipazione, potrai gestire le Proposte Tesi tramite l'<b>Area Privata Condivisa</b>.
     		 </p>
-    		 <%} %>
+    		 <%}
+    		 }%>
     		 <p class="card-text">
     		 	Puoi utilizzare la barra di ricerca per cercare un utente in modo semplice e veloce.
     		 </p>
