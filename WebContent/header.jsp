@@ -86,7 +86,7 @@
 				<%} %>
 
 
-				<li><a class="nav-link text-dark"
+				<li class="nav-item d-lg-none d-xl-none"><a class="nav-link text-dark"
 					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>" id="profilo">Profilo</a>
 				</li>
 				<%}else if(admin!=null){ %>
@@ -122,7 +122,15 @@
 					href="#">Visualizza profilo</a></li>
 			</ul>
 			 -->
+			 <form action="VisualizzaProfiloUtenteServlet" method="post" class="d-none d-lg-block d-xl-block">
+	          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
+							<button class="btn btn-inline mr-3 bg-warning"
+								type="submit">
+								<span class="fa fa-user-circle"></span>
+							</button>
+						</form>
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
+			
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
 						<button class="btn btn-inline my-2 my-sm-0 bg-warning"
