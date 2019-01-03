@@ -47,14 +47,15 @@
 					<%
 							for (int i = 0; i < utenti.size(); i++) {
 					%>
-					<tbody>
-							<tr>
+					<tbody >
+							<tr class="lista">
 								<td>
 								<a href="VisualizzaDettagliUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>">
 								<%=utenti.get(i).getNome()+" "+utenti.get(i).getCognome()%>
 								</a>
+								
 								</td>
-								<td><a class="col-3" href="EliminaUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>"><i class="fas fa-user-minus"></i></a></td>
+								<td><a class="col-3" href="EliminaUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>"><i class="fas fa-user-minus" href="EliminaUtenteServlet?utente_email=<%utenti.get(i).getEmail();%>"></i></a></td>
 								
 							</tr>
 							
@@ -85,13 +86,19 @@
 </div>
 <script>
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#lista *").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+	  $("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $(".lista").filter(function() {
+	      var tableRow = $(this);
+	      var anchorWithUserName = tableRow.find('a').first();
+	      if(anchorWithUserName.text().toLowerCase().indexOf(value) > -1){
+	        tableRow.show();
+	      }else{
+	        tableRow.hide();
+	      }
+	    });
+	  });
+	});
 </script>
     
 <jsp:include page="footer.jsp" />

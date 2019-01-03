@@ -99,10 +99,9 @@
 								}
 							%>
 						</table>
-					<%} 
-					else{%>
+					<%} else{ %>
 						<p>Non ci sono consegne assegnate</p>
-					<%} %>
+					<% } %>
 				
 			</div>
 			
