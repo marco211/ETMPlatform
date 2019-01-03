@@ -122,9 +122,14 @@
 		<div class="row">
 			<div class="col my-4 mx-4 d-none d-lg-block d-xl-block">
 				<div class="mx-auto my-5" style="width: 50%">
-					<label>ETM Platform:</label> <label>Un modo semplice e
-						veloce per gestire le tue tesi</label> <img alt="load" src="img/logo.png"
+						<img alt="load" src="img/logo_intero.png"
 						width="100%">
+						<label>ETM Platform é una piattaforma Web creata, 
+						in collaborazione dell'Universitá degli Studi di Salerno, 
+						per facilitare il processo di stesura tesi degli studenti 
+						dell'ateneo. Registrati subito per iniziare ad utilizzare 
+						la nostra piattaforma. Per registrarti utilizza l'email 
+						istituzionale.</label> 
 				</div>
 			</div>
 			<div class="col my-4 mx-4">

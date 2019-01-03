@@ -68,21 +68,33 @@ if(utente==null){
  			
    			 <h5 class="card-title">Descrizione del Sito</h5>
     		 <p class="card-text">
-    		 	ETM Platform é una piattaforma Web, creata per facilitare il processo di stesura tesi degli studenti dell'Universitá degli Studi di Salerno.
-    		 	 
+    		 	ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
+    		 </p>
+    		 <%if(utente.getTipo().equals("s")){ %>
+    		 <p class="card-text">
+    		 	Clicca su <b>Area Proposta Tesi</b> per per inviare una richiesta di partecipazione ad una Proposta Tesi caricata da un docente.
     		 </p>
     		 <p class="card-text">
-    		 	Infatti ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
+    		 	Appena un docente avrá accettato la tua richiesta di partecipazione, avrai libero accesso all'<b>Area Privata Condivisa</b> nella quale
+    		 	potrai svolgere in modo Smart la tua Tesi, seguendo le linee guida caricate dal Docente.
+    		 </p>
+    		 <%}else if(utente.getTipo().equals("d")){ %>
+    		 <p class="card-text">
+    		 	Clicca su <b>Area Proposta Tesi</b> per per caricare una nuova Proposta Tesi, o per accettare 
+    		 	una richiesta di partecipazione ad un Proposta Tesi ricevuta precedentemente.
     		 </p>
     		 <p class="card-text">
-    		 	Invia subito una richesta ad un docente, per partecipare ad una Tesi, é semplice ci vogliono solo pochi minuti.
+    		 	Una volta accettata una richiesta di partecipazione, potrai gestire le Proposte Tesi tramite l'<b>Area Privata Condivisa</b>.
+    		 </p>
+    		 <%} %>
+    		 <p class="card-text">
+    		 	Puoi utilizzare la barra di ricerca per cercare un utente in modo semplice e veloce.
     		 </p>
  		    </div>
-</div>
+			</div>
          
         </div>
         <aside class="col-md-4 my-4">
-
           <div class="p-3 card">
             <h4 class="font-italic">Nome Sezione</h4>
             <ol class="list-unstyled mb-0">
