@@ -10,7 +10,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Area Proposta Tesi</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script >
+ $(document).ready(function(){
+	 cambiaColore();
+	});
 
+function cambiaColore(){
+	document.getElementById("areaTesi").className = "nav-link text-primary";
+};
+</script>
 </head>
 <body>
 

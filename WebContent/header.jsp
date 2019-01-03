@@ -63,16 +63,16 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
-			<%if(utente!=null){ %>
-			
+				
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="homePage.jsp">Home <span class="sr-only"></span>
+					href="homePage.jsp" id="home">Home <span class="sr-only"></span>
 				</a></li>
-				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area proposta tesi</a>
+				<%if(utente!=null){ %>
+				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet" id="areaTesi">Area proposta tesi</a>
 				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaConsegneServlet">Area privata condivisa</a></li>
+					href="VisualizzaListaConsegneServlet" id="areaCondivisa">Area privata condivisa</a></li>
 				<%
 				}
 				%>
@@ -81,17 +81,17 @@
 					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata
+					href="VisualizzaListaPartecipazioneServlet" id="areaCondivisa">Area privata
 						condivisa</a></li>
 				<%} %>
 
 
-				<li><a class="nav-link text-dark"
-					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
+				<li class="nav-item d-lg-none d-xl-none"><a class="nav-link text-dark"
+					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>" id="profilo">Profilo</a>
 				</li>
 				<%}else if(admin!=null){ %>
 
-				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
+				<li><a class="nav-link text-dark" href="ListaUtentiServlet" id="admin">Area
 						Admin</a></li>
 			
 
@@ -122,7 +122,15 @@
 					href="#">Visualizza profilo</a></li>
 			</ul>
 			 -->
+			 <form action="VisualizzaProfiloUtenteServlet" method="post" class="d-none d-lg-block d-xl-block">
+	          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
+							<button class="btn btn-inline mr-3 bg-warning"
+								type="submit">
+								<span class="fa fa-user-circle"></span>
+							</button>
+						</form>
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
+			
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
 						<button class="btn btn-inline my-2 my-sm-0 bg-warning"

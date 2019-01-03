@@ -268,7 +268,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException {
+	public List<Attivita> getStoricoAttivita(String titoloProposta){
 		String SQL="SELECT * FROM Attivita;";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -281,15 +281,15 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			while(rs.next()) {
 				Attivita attivita=new Attivita();
 			}
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return allActivity;
 	}
 
 	@Override
-	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException {
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail){
 		String SQL="SELECT * FROM PropostaTesi where Utente_Email=?";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -313,9 +313,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 				proposta.setMaterie(rs.getString(9));
 				proposte.add(proposta);
 			}
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return proposte;
 	}
@@ -372,7 +372,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 	
 	@Override
-	public String getNomeDocente(int id) throws SQLException {
+	public String getNomeDocente(int id){
 		String SQL="SELECT UTENTE_EMAIL FROM PROPOSTATESI WHERE id=?";
 		Connection connection=null;
 		PreparedStatement statement=null;
@@ -384,9 +384,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ResultSet rs=statement.executeQuery();
 			rs.next();
 			nome=rs.getString("UTENTE_EMAIL");
-		} finally {
-			if(statement!=null)
-				statement.close();
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return null;
 		}
 		return nome;
 	}
@@ -436,6 +436,35 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return insegnamenti;
 		}catch (SQLException e) {
 			e.printStackTrace();
+			return null;
+		}
+	}
+
+	@Override
+	public ArrayList<PropostaTesi> getTesiRecenti() {
+		String SQL="SELECT * FROM PROPOSTATESI ORDER BY ID DESC LIMIT 8;";
+		Connection connection=null;
+		PreparedStatement statement=null;
+		ArrayList<PropostaTesi> list=new ArrayList<PropostaTesi>();
+		try {
+			connection=DatabaseManager.getIstance();
+			statement=connection.prepareStatement(SQL);
+			ResultSet rs=statement.executeQuery(SQL);
+			while(rs.next()) {
+				PropostaTesi proposta=new PropostaTesi();
+				proposta.setId(rs.getInt(1));
+				proposta.setUtenteEmail(rs.getString(2));
+				proposta.setTitolo(rs.getString(3));
+				proposta.setChiuso(rs.getBoolean(4));
+				proposta.setAmbito(rs.getString(5));
+				proposta.setTempoDiSviluppo(rs.getInt(6));
+				proposta.setDecrizione(rs.getString(7));
+				proposta.setArchiviato(rs.getBoolean(8));
+				proposta.setMaterie(rs.getString(9));
+				list.add(proposta);
+			}
+			return list;
+		}catch (SQLException e) {
 			return null;
 		}
 	}

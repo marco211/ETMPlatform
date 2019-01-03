@@ -37,7 +37,6 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 		ManagerFactory em=new ManagerFactory();
 		PropostaTesiManager tesi=(PropostaTesiManager) em.createPropostaTesiManager();
 		ArrayList<PropostaTesi> list=null;
-		try {
 			list=tesi.getProposteTesiDocente(utente.getEmail());
 			PartecipaManager partecipa=(PartecipaManager) em.createPartecipaManager();
 			ArrayList<Partecipa> partecipazioni;
@@ -45,9 +44,7 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 			request.getSession().setAttribute("listaPartecipazione", partecipazioni);
 			request.getSession().removeAttribute("listaFile");
 			request.getSession().removeAttribute("disabilita");
-		} catch (SQLException e1) {
-			e1.printStackTrace();
-		}
+		
 		String action=request.getParameter("action");
 		if (action!=null) {
 			RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher("/homePage.jsp");

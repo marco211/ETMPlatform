@@ -20,11 +20,12 @@ public interface PropostaTesiModelInterface {
 	public boolean chiudiPropostaTesi(int id);
 	public boolean rimuoviPropostaTesi(int id);
 	public ArrayList<PropostaTesi> getProposteTesiAttive();
-	public List<Attivita> getStoricoAttivita(String titoloProposta) throws SQLException;
-	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail) throws SQLException;
+	public List<Attivita> getStoricoAttivita(String titoloProposta);
+	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail);
 	public boolean modificaPropostaTesi(PropostaTesi proposta);
-	public String getNomeDocente(int id) throws SQLException;
+	public String getNomeDocente(int id);
 	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail);
 	public ArrayList<Insegnamento> getInsegnamenti();
+	public ArrayList<PropostaTesi> getTesiRecenti();
 }
 

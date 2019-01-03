@@ -11,6 +11,11 @@ import it.unisa.etm.bean.Partecipa;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.database.DatabaseManager;
+/**
+ * Classe che implementa le funzionnalità dedicate all'utente registrato come amministratore
+ * @author ETM
+ *
+ */
 
 public class AmministratoreManager implements AmministratoreModelInterface{
 
