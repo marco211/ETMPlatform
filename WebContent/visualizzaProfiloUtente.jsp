@@ -21,6 +21,16 @@ if(utente==null || utenteToShow == null){
     <link rel="stylesheet" href="css/stile.css">
     <title>ETM Platform - Profilo utente</title>
   	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script >
+ $(document).ready(function(){
+	 cambiaColore();
+	});
+
+function cambiaColore(){
+	document.getElementById("profilo").className = "nav-link text-primary";
+};
+</script>
 </head>
 <body>
 

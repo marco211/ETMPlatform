@@ -26,5 +26,6 @@ public interface PropostaTesiModelInterface {
 	public String getNomeDocente(int id) throws SQLException;
 	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail);
 	public ArrayList<Insegnamento> getInsegnamenti();
+	public ArrayList<PropostaTesi> getTesiRecenti();
 }
 

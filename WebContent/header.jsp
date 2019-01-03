@@ -8,6 +8,8 @@
 	    return;
 	}
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
+	if(partecipazioni == null)
+		partecipazioni = new ArrayList();
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,11 +29,6 @@
 	href="https://use.fontawesome.com/releases/v5.6.1/css/all.css"
 	integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
 	crossorigin="anonymous">
-
-<script
-  src="https://code.jquery.com/jquery-3.3.1.js"
-  integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-  crossorigin="anonymous"></script>
 
 <title>ETM Platform</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
@@ -66,16 +63,16 @@
 
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 
-			<%if(utente!=null){ %>
-			
+				
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="homePage.jsp">Home <span class="sr-only"></span>
+					href="homePage.jsp" id="home">Home <span class="sr-only"></span>
 				</a></li>
-				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet">Area proposta tesi</a>
+				<%if(utente!=null){ %>
+				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet" id="areaTesi">Area proposta tesi</a>
 				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaConsegneServlet">Area privata condivisa</a></li>
+					href="VisualizzaListaConsegneServlet" id="areaCondivisa">Area privata condivisa</a></li>
 				<%
 				}
 				%>
@@ -84,18 +81,17 @@
 					if (utente.getTipo().equals("d")&&(partecipazioni.size()>0)) { 
  					%>
 				<li class="nav-item"><a class="nav-link text-dark"
-					href="VisualizzaListaPartecipazioneServlet">Area privata
+					href="VisualizzaListaPartecipazioneServlet" id="areaCondivisa">Area privata
 						condivisa</a></li>
 				<%} %>
 
-				<!-- 
+
 				<li><a class="nav-link text-dark"
-					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>">Profilo</a>
+					href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>" id="profilo">Profilo</a>
 				</li>
-				 -->
 				<%}else if(admin!=null){ %>
 
-				<li><a class="nav-link text-dark" href="ListaUtentiServlet">Area
+				<li><a class="nav-link text-dark" href="ListaUtentiServlet" id="admin">Area
 						Admin</a></li>
 			
 
@@ -107,34 +103,25 @@
 
 				
 			</ul>
-			<div class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0">
 				<div class="container">
-					<form action="CercaListaUtentiServlet" method="post">
-					<input class="form-control mr-sm-2 border-dark" type="text" name="cerca"
+					<form action="CercaUtenteServlet"  method="get" name="cercaProfilo">
+					<input class="form-control mr-sm-2 border-dark" type="email" name="cerca"
 						placeholder="Cerca" aria-label="Cerca">
-					<select class="form-control mr-sm-2 border-dark" name="option">
-					<option value="nome">Nome</option>
-					<option value="cognome">Cognome</option>
-					</select>
 					<button type="submit" class="btn btn-inline my-2 my-sm-0 bg-warning " id="exampleButton1">
 						<span class="fa fa-search"></span>
 					</button>
 					</form>
 				</div>
-			</div>
-			
+			</form>
+			<!-- 
           <ul class="navbar-nav d-none d-lg-block d-xl-block">
-          		<li class="nav-item">
-          		<form action="VisualizzaProfiloUtenteServlet" method="post">
-          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
-						<button class="btn btn-inline mr-3 bg-warning"
-							type="submit">
-							<span class="fa fa-user-circle"></span>
-						</button>
-					</form>
-          		</li>
+          <li class="nav-item">
+          	<a>Benvenuto, </a>
+          	<a class="nav-link text-dark"
+					href="#">Visualizza profilo</a></li>
 			</ul>
-			 
+			 -->
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 				<li class="nav-item">
 					<form action="LogoutServlet" method="post">
