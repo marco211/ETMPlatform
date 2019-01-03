@@ -1,6 +1,4 @@
 package it.unisa.etm.model.interfaces;
-
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import it.unisa.etm.bean.Consegna;
@@ -13,7 +11,7 @@ public interface ConsegnaModelInterface {
 /**
  * Aggiunge una consegna, creata da parte di un utente registrato come docente, all'area privata condivisa.
  * @param c Consegna da aggiungere all'area privata condivisa.
- * @return boolean che è true se la consegna viene aggiunta con successo;
+ * @return boolean che ï¿½ true se la consegna viene aggiunta con successo;
  * <p>
  * false altrimenti.
  */
@@ -23,7 +21,7 @@ public interface ConsegnaModelInterface {
 	 * Effettua la modifica da parte del docente di una consegna da lui creata nell'area privata condivisa.
 	 * @param scadenza stringa che indica la scadenza della consegna;
 	 * @param id identificativo della consegna.
-	 * @return boolean che è true se la modifica è avvenuta con successo;
+	 * @return boolean che ï¿½ true se la modifica ï¿½ avvenuta con successo;
 	 * <p>
 	 * false in caso d'insuccesso.
 	 */
@@ -32,7 +30,7 @@ public interface ConsegnaModelInterface {
 	/**
 	 * Si occupa dell'eliminazione, da parte di un docente, di una consegna creata da lui in precedenza,
 	 * @param id identificativo della consegna da eliminare.
-	 * @return boolean true se l'eliminazione è avvenuta con successo;
+	 * @return boolean true se l'eliminazione ï¿½ avvenuta con successo;
 	 * <p>
 	 * false in caso contrario.
 	 */
@@ -49,7 +47,7 @@ public interface ConsegnaModelInterface {
 	
 	/**
 	 * Ritorna all'utente tutte le consegne presenti nell'area privata condivisa.
-	 * @param propostaTesiId identificativo della proposta tesi per la quale è attiva l'area privata condivisa.
+	 * @param propostaTesiId identificativo della proposta tesi per la quale ï¿½ attiva l'area privata condivisa.
 	 * @return ArrayList di oggetti Consegna che rappresenta tutte le consegne presenti nell'area privata condivisa, in caso di successo.
 	 * <p>
 	 * null in caso in cui d'insuccesso o di nessuna consegna presente nell'area.
