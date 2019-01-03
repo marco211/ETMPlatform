@@ -47,8 +47,8 @@
 					<%
 							for (int i = 0; i < utenti.size(); i++) {
 					%>
-					<tbody id="lista">
-							<tr >
+					<tbody >
+							<tr class="lista">
 								<td>
 								<a href="VisualizzaDettagliUtenteServlet?utente_email=<%=utenti.get(i).getEmail()%>">
 								<%=utenti.get(i).getNome()+" "+utenti.get(i).getCognome()%>
@@ -86,13 +86,19 @@
 </div>
 <script>
 $(document).ready(function(){
-  $("#myInput").on("keyup", function() {
-    var value = $(this).val().toLowerCase();
-    $("#lista *").filter(function() {
-      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-    });
-  });
-});
+	  $("#myInput").on("keyup", function() {
+	    var value = $(this).val().toLowerCase();
+	    $(".lista").filter(function() {
+	      var tableRow = $(this);
+	      var anchorWithUserName = tableRow.find('a').first();
+	      if(anchorWithUserName.text().toLowerCase().indexOf(value) > -1){
+	        tableRow.show();
+	      }else{
+	        tableRow.hide();
+	      }
+	    });
+	  });
+	});
 </script>
     
 <jsp:include page="footer.jsp" />
