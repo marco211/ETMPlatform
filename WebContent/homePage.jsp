@@ -47,13 +47,13 @@ if(utente==null){
   					</ol>
  			 		<div class="carousel-inner">
     					<div class="carousel-item active">
-      						<img  src="https://a4b6t7q4.stackpathcdn.com/wp-content/uploads/sites/8/2017/06/unisa-_0-696x361.png">
+      						<img  src="img/SlideShow1.png">
     					</div>
    					    <div class="carousel-item">
-     					  	<img src="http://www.gazzettadisalerno.it/wp-content/uploads/2018/06/univsalerno-696x291.jpg">
+     					  	<img src="img/SlideShow2.jpg">
     					</div>
    						<div class="carousel-item">
-     					 	<img src="https://www.unisa.it/uploads/rescue/__thumbs/800x300_be459113aba7821dcbc63577fbafa913.jpg">
+     					 	<img src="img/SlideShow3.jpg">
    						</div>
   					</div>
  					<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -67,13 +67,34 @@ if(utente==null){
   			</div>
  			
    			 <h5 class="card-title">Descrizione del Sito</h5>
-    		 <p class="card-text">Il servizio offerto da questo sito cerca di agevolare gli studenti che sono in cerca di un docente il quale possa curare la proposta di tesi.</p>
+    		 <p class="card-text">
+    		 	ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
+    		 </p>
+    		 <%if(utente.getTipo().equals("s")){ %>
+    		 <p class="card-text">
+    		 	Clicca su <b>Area Proposta Tesi</b> per per inviare una richiesta di partecipazione ad una Proposta Tesi caricata da un docente.
+    		 </p>
+    		 <p class="card-text">
+    		 	Appena un docente avrá accettato la tua richiesta di partecipazione, avrai libero accesso all'<b>Area Privata Condivisa</b> nella quale
+    		 	potrai svolgere in modo Smart la tua Tesi, seguendo le linee guida caricate dal Docente.
+    		 </p>
+    		 <%}else if(utente.getTipo().equals("d")){ %>
+    		 <p class="card-text">
+    		 	Clicca su <b>Area Proposta Tesi</b> per per caricare una nuova Proposta Tesi, o per accettare 
+    		 	una richiesta di partecipazione ad un Proposta Tesi ricevuta precedentemente.
+    		 </p>
+    		 <p class="card-text">
+    		 	Una volta accettata una richiesta di partecipazione, potrai gestire le Proposte Tesi tramite l'<b>Area Privata Condivisa</b>.
+    		 </p>
+    		 <%} %>
+    		 <p class="card-text">
+    		 	Puoi utilizzare la barra di ricerca per cercare un utente in modo semplice e veloce.
+    		 </p>
  		    </div>
-</div>
+			</div>
          
         </div>
         <aside class="col-md-4 my-4">
-
           <div class="p-3 card">
             <h4 class="font-italic">Nome Sezione</h4>
             <ol class="list-unstyled mb-0">
