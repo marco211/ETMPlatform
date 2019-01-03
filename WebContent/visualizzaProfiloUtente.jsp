@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.* "%>
+<%@ page import="it.unisa.etm.bean.*,java.util.* "%>
 
 <%
 Utente utente = (Utente) session.getAttribute("utente");
@@ -168,14 +168,53 @@ if(utente==null || utenteToShow == null){
  		  </div>
  		  </div>
  		  </div>
+ 		  
    <aside class="col-md-4 my-4">
           <div class="p-3 card">
-            <h4 class="font-italic">Nome Sezione</h4>
+          <%if(utente.getEmail().equals(request.getParameter("utente_email")) && utente.getTipo().equals("d")){
+          ArrayList<PropostaTesi> proposte = (ArrayList<PropostaTesi>) request.getAttribute("proposte");%>
+              <h4 class="font-italic"><b>Le mie Proposte Tesi Attive</b></h4>   
+            <%
+								if (proposte != null) {
+							%>
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									
+									<th scope="col">Titolo</th>
+									<th scope="col">Materia</th>
+									
+								</tr>
+							</thead>
+							<%		
+									for (int i = 0; i < proposte.size(); i++) {
+							%>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposte.get(i).getId()%>"><%= proposte.get(i).getTitolo() %></a>
+									</th>
+									<td>
+										<%= proposte.get(i).getMaterie() %>
+									</td>
+									
+								</tr>
+
+							</tbody>
+							<%
+								}
+								}
+							%>
+						</table>
+					</div>             
+          <% }else{%>
+            <h4 class="font-italic">Nome Sezione</h4>   
             <ol class="list-unstyled mb-0">
               <li><a href="#">Primo elemento</a></li>
               <li><a href="#">Secondo elemento</a></li>
               <li><a href="#">Terzo elemento</a></li>
-            </ol>
+            </ol> 
+            <%} %>
           </div>
    
         </aside>
