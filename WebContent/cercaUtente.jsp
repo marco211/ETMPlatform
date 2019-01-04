@@ -29,7 +29,7 @@
 	<div style="background-color: #FF9C08; min-height: 81vh;">
 		<main role="main" class="container">
 		<div class="row">
-			<div class="col-md-8 my-4">
+			<div class="col-md-12 my-4">
 				<div class="card mb-3">
 					<div class="card-body" style="min-height: 80vh;">
 						<div class="form-inline mb-3 pb-3"
@@ -83,20 +83,7 @@
 
 				</div>
 			</div>
-
-			<aside class="col-md-4 my-4">
-			<div class="p-3 card" style="min-height: 30vh;">
-				<div class="form-inline mb-3 pb-3" style="border-bottom: 1px solid">
-					<h4 class="font-italic">
-						Inserire cose:
-				</div>
-			</div>
-
-			<div class="p-3 card my-4" style="min-height: 40vh;">
-				<h4 class="font-italic">Aree</h4>
-			</div>
-
-			</aside>
+		</div>
 		</div>
 		</main>
 	</div>
