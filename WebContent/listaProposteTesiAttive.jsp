@@ -56,7 +56,7 @@ function cambiaColore(){
 									<%
 										if ((p.isArchiviato()) && (!p.isChiuso())) {
 									%>
-									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è ancora in atto ma non più accessibile a nuove richiesta"">
+									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è ancora in atto ma non più accessibile a nuove richiesta">
 										Archiviata<i class="fas fa-archive my-1 d-none d-md-block"></i>
 									</p> <%
  	} else if (p.isChiuso()) {
