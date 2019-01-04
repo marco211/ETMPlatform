@@ -124,6 +124,7 @@
 					href="#">Visualizza profilo</a></li>
 			</ul>
 			 -->
+			 <%if(utente!=null) {%>
 			 <form action="VisualizzaProfiloUtenteServlet" method="post" class="d-none d-lg-block d-xl-block">
 	          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
 							<button class="btn btn-inline mr-3 bg-warning"
@@ -131,6 +132,7 @@
 								<span class="fa fa-user-circle"></span>
 							</button>
 						</form>
+			<%} %>
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 			
 				<li class="nav-item">
