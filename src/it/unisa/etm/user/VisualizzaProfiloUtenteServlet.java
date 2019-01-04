@@ -10,9 +10,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import it.unisa.etm.bean.Partecipa;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import it.unisa.etm.model.manager.UtenteManager;
 
@@ -41,6 +43,14 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 				proposte = pt.getProposteTesiDocente(email);
 				request.setAttribute("proposte", proposte);
 				request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
+		}else if(utente.getTipo().equals("s")&& utente.getPropostaTesi_ID()>0){
+			ManagerFactory em = new ManagerFactory();
+			PropostaTesiManager pt = (PropostaTesiManager) em.createPropostaTesiManager();
+			PropostaTesi proposta;
+				proposta = pt.getPropostaTesi(utente.getPropostaTesi_ID());
+				request.setAttribute("proposta", proposta);
+				request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
+
 		}else {
 		request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
 		}

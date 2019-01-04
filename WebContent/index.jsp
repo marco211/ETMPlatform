@@ -124,10 +124,9 @@
 				<div class="mx-auto my-5" style="width: 50%">
 						<img alt="load" src="img/logo_intero.png"
 						width="100%">
-						<label>ETM Platform é una piattaforma Web creata, 
-						in collaborazione dell'Universitá degli Studi di Salerno, 
-						per facilitare il processo di stesura tesi degli studenti 
-						dell'ateneo. Registrati subito per iniziare ad utilizzare 
+						<label>ETM Platform sta per Easy Thesis Management, un 
+						acronimo che la dice lunga su questa piattaforma. 
+						Registrati subito per iniziare ad utilizzare 
 						la nostra piattaforma. Per registrarti utilizza l'email 
 						istituzionale.</label> 
 				</div>

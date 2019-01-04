@@ -92,10 +92,8 @@ function cambiaColore(){
  					</a>
   			</div>
  			
-   			 <h5 class="card-title">Descrizione del Sito</h5>
-    		 <p class="card-text">
-    		 	ETM sta per Easy Thesis Management, un acronimo che dice tutto riguardo a questa piattaforma.
-    		 </p>
+   			 <h5 class="card-title">Benevenuto in <b>ETM Platform</b>.</h5>
+   			 
     		 <%if(admin==null){
     		 if(utente.getTipo().equals("s")){ %>
     		 <p class="card-text">

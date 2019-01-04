@@ -215,16 +215,44 @@ function cambiaColore(){
 								}
 								}
 							%>
+						</table>            
+          <% }else if(utente.getEmail().equals(request.getParameter("utente_email")) && utente.getTipo().equals("s")){%>
+              <h4 class="font-italic"><b>La mia Proposta Tesi</b></h4>   
+            <%
+								if (utente.getPropostaTesi_ID()==0) {
+							%>
+							<a>Al momento non stai partecipando a nessuna proposta tesi.</a>
+							<%}else if(utente.getPropostaTesi_ID()>0){ 
+							PropostaTesi proposta = (PropostaTesi) request.getAttribute("proposta");%>
+								<table class="table table-striped">
+									<thead>
+										<tr>
+									
+										<th scope="col">Titolo</th>
+										<th scope="col">Descrizione</th>
+									
+									</tr>
+								</thead>
+							<tbody>
+								<tr>
+									<th scope="row">
+										<a href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId()%>"><%= proposta.getTitolo() %></a>
+									</th>
+									<td>
+										<%= proposta.getDecrizione() %>
+									</td>
+									
+								</tr>
+
+							</tbody>
+							<%
+								}
+							%>
 						</table>
-					</div>             
-          <% }else{%>
-            <h4 class="font-italic">Nome Sezione</h4>   
-            <ol class="list-unstyled mb-0">
-              <li><a href="#">Primo elemento</a></li>
-              <li><a href="#">Secondo elemento</a></li>
-              <li><a href="#">Terzo elemento</a></li>
-            </ol> 
-            <%} %>
+						<%}else{ %>
+							<h4 class="font-italic"><b>Inserire Cose</b></h4>
+							 <a>inserire cose</a> 
+						<%} %>
           </div>
    
         </aside>
