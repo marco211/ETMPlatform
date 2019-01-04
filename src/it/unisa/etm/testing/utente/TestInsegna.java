@@ -13,19 +13,19 @@ public class TestInsegna {
 		this.insegna=insegna;
 	}
 	
-	public String TestGetUtenteEmail() {
+	public String testGetUtenteEmail() {
 		return insegna.getUtenteEmail();
 	}
 
-	public void TestSetUtenteEmail(String utenteEmail) {
+	public void testSetUtenteEmail(String utenteEmail) {
 		insegna.setUtenteEmail(utenteEmail);
 	}
 
-	public String TestGetInsegnamentoNome() {
+	public String testGetInsegnamentoNome() {
 		return insegna.getInsegnamentoNome();
 	}
 
-	public void TestSetInsegnamentoNome(String insegnamentoNome) {
+	public void testSetInsegnamentoNome(String insegnamentoNome) {
 		insegna.setInsegnamentoNome(insegnamentoNome);
 	}
 

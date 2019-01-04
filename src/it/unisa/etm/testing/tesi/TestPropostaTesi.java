@@ -13,75 +13,75 @@ public class TestPropostaTesi {
 		this.proposta_tesi=proposta_tesi;
 	}
 	
-	public String TestGetTitolo() {
+	public String testGetTitolo() {
 		return proposta_tesi.getTitolo();
 	}
 
-	public void TestSetTitolo(String titolo) {
+	public void testSetTitolo(String titolo) {
 		proposta_tesi.setTitolo(titolo);
 	}
 
-	public String TestGetAmbito() {
+	public String testGetAmbito() {
 		return proposta_tesi.getAmbito();
 	}
 
-	public void TestSetAmbito(String ambito) {
+	public void testSetAmbito(String ambito) {
 		proposta_tesi.setAmbito(ambito);
 	}
 
-	public int TestGetTempoDiSviluppo() {
+	public int testGetTempoDiSviluppo() {
 		return proposta_tesi.getTempoDiSviluppo();
 	}
 
-	public void TestSetTempoDiSviluppo(int tempoDiSviluppo) {
+	public void testSetTempoDiSviluppo(int tempoDiSviluppo) {
 		proposta_tesi.setTempoDiSviluppo(tempoDiSviluppo);
 	}
 
-	public String TestGetMaterie() {
+	public String testGetMaterie() {
 		return proposta_tesi.getMaterie();
 	}
 
-	public void TestSetMaterie(String materie) {
+	public void testSetMaterie(String materie) {
 		proposta_tesi.setMaterie(materie);
 	}
 
-	public String TestGetDecrizione() {
+	public String testGetDecrizione() {
 		return proposta_tesi.getDecrizione();
 	}
 
-	public void TestSetDecrizione(String decrizione) {
+	public void testSetDecrizione(String decrizione) {
 		proposta_tesi.setDecrizione(decrizione);
 	}
 
-	public int TestGetId() {
+	public int testGetId() {
 		return proposta_tesi.getId();
 	}
 
-	public void TestSetId(int id) {
+	public void testSetId(int id) {
 		proposta_tesi.setId(id);
 	}
 
-	public String TestGetUtenteEmail() {
+	public String testGetUtenteEmail() {
 		return proposta_tesi.getUtenteEmail();
 	}
 
-	public void TestSetUtenteEmail(String utenteEmail) {
+	public void testSetUtenteEmail(String utenteEmail) {
 		proposta_tesi.setUtenteEmail(utenteEmail);
 	}
 
-	public boolean TestIsChiuso() {
+	public boolean testIsChiuso() {
 		return proposta_tesi.isChiuso();
 	}
 
-	public void TestSetChiuso(boolean chiuso) {
+	public void testSetChiuso(boolean chiuso) {
 		proposta_tesi.setChiuso(chiuso);
 	}
 
-	public boolean TestIsArchiviato() {
+	public boolean testIsArchiviato() {
 		return proposta_tesi.isArchiviato();
 	}
 
-	public void TestSetArchiviato(boolean archiviato) {
+	public void testSetArchiviato(boolean archiviato) {
 		proposta_tesi.setArchiviato(archiviato);
 	}
 }

@@ -17,67 +17,67 @@ public class TestFile {
 		this.file=file;
 	}
 	
-	public String TestGetNome() {
+	public String testGetNome() {
 		return file.getNome();
 	}
 
-	public void TestSetNome(String nome) {
+	public void testSetNome(String nome) {
 		file.setNome(nome);
 	}
 
-	public String TestGetEmail() {
+	public String testGetEmail() {
 		return file.getEmail();
 	}
 
-	public void TestSetEmail(String email) {
+	public void testSetEmail(String email) {
 		file.setEmail(email);
 	}
 
-	public int TestGetVoto() {
+	public int testGetVoto() {
 		return file.getVoto();
 	}
 
-	public void TestSetVoto(int voto) {
+	public void testSetVoto(int voto) {
 		file.setVoto(voto);
 	}
 	
-	public String TestGetDescrizione() {
+	public String testGetDescrizione() {
 		return file.getDescrizione();
 	}
 
-	public void TestSetDescrizione(String descrizione) {
+	public void testSetDescrizione(String descrizione) {
 		file.setDescrizione(descrizione);
 	}
 
-	public String TestGetDescrizioneVoto() {
+	public String testGetDescrizioneVoto() {
 		return file.getDescrizioneVoto();
 	}
 
-	public void TestSetDescrizioneVoto(String descrizioneVoto) {
+	public void testSetDescrizioneVoto(String descrizioneVoto) {
 		file.setDescrizioneVoto(descrizioneVoto);
 	}
 	
-	public int TestGetPropostaTesiId() {
+	public int testGetPropostaTesiId() {
 		return file.getPropostaTesiId();
 	}
 
-	public void TestSetPropostaTesiId(int propostaTesiId) {
+	public void testSetPropostaTesiId(int propostaTesiId) {
 		file.setPropostaTesiId(propostaTesiId);
 	}
 	
-	public Part TestGetFilePart() {
+	public Part testGetFilePart() {
 		return file.getFilePart();
 	}
 
-	public void TestSetFilePart(Part filePart) {
+	public void testSetFilePart(Part filePart) {
 		file.setFilePart(filePart);
 	}
 
-	public InputStream TestGetInputStream() {
+	public InputStream testGetInputStream() {
 		return file.getInputStream();
 	}
 
-	public void TestSetInputStream(InputStream stream) {
+	public void testSetInputStream(InputStream stream) {
 		file.setInputStream(stream);
 	}
 }

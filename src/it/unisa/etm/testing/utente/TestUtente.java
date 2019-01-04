@@ -15,92 +15,92 @@ public class TestUtente {
 		this.utente=utente;
 	}
 	
-	public String TestGetCognome() {
+	public String testGetCognome() {
 		return utente.getCognome();
 	}
 
-	public void TestSetCognome(String cognome) {
+	public void testSetCognome(String cognome) {
 		utente.setCognome(cognome);
 	}
 
-	public String TestGetDataDiNascita() {
+	public String testGetDataDiNascita() {
 		return utente.getDataDiNascita();
 	}
 
-	public void TestSetDataDiNascita(String dataDiNascita) {
+	public void testSetDataDiNascita(String dataDiNascita) {
 		utente.setDataDiNascita(dataDiNascita);
 	}
 
-	public String TestGetMatricola() {
+	public String testGetMatricola() {
 		return utente.getMatricola();
 	}
 
-	public void TestSetMatricola(String matricola) {
+	public void testSetMatricola(String matricola) {
 		utente.setMatricola(matricola);
 	}
 
-	public String TestGetUfficio() {
+	public String testGetUfficio() {
 		return utente.getUfficio();
 	}
 
-	public void TestSetUfficio(String ufficio) {
+	public void testSetUfficio(String ufficio) {
 		utente.setUfficio(ufficio);
 	}
 
-	public String TestGetTipo() {
+	public String testGetTipo() {
 		return utente.getTipo();
 	}
 
-	public void TestSetTipo(String tipo) {
+	public void testSetTipo(String tipo) {
 		utente.setTipo(tipo);
 	}
 
-	public String TestGetNome() {
+	public String testGetNome() {
 		return utente.getNome();
 	}
 
-	public void TestSetNome(String nome) {
+	public void testSetNome(String nome) {
 		utente.setNome(nome);
 	}
 
-	public String TestGetEmail() {
+	public String testGetEmail() {
 		return utente.getEmail();
 	}
 
-	public void TestSetEmail(String email) {
+	public void testSetEmail(String email) {
 		utente.setEmail(email);
 	}
 
-	public String TestGetPassword() {
+	public String testGetPassword() {
 		return utente.getPassword();
 	}
 
-	public void TestSetPassword(String password) {
+	public void testSetPassword(String password) {
 		utente.setPassword(password);
 	}
 		
-	public ArrayList<String> TestGetInsegnamento() {
+	public ArrayList<String> testGetInsegnamento() {
 		return utente.getInsegnamento();
 	}
 
-	public void TestSetInsegnamento(String insegnamento) {
+	public void testSetInsegnamento(String insegnamento) {
 		utente.setInsegnamento(insegnamento);
 	}
 
-	public int TestGetPropostaTesi_ID() {
+	public int testGetPropostaTesi_ID() {
 		return utente.getPropostaTesi_ID();
 	}
 
-	public void TestSetPropostaTesi_ID(int propostaTesi_ID) {
+	public void testSetPropostaTesi_ID(int propostaTesi_ID) {
 		utente.setPropostaTesi_ID(propostaTesi_ID);
 	}
 
-	public String TestGetValidazione()
+	public String testGetValidazione()
 	{
 		return utente.getValidazione();
 	}
 	
-	public void TestSetValidazione(String validazione)
+	public void testSetValidazione(String validazione)
 	{
 		utente.setValidazione(validazione);
 	}

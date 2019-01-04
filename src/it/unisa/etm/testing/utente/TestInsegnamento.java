@@ -13,19 +13,19 @@ public class TestInsegnamento {
 		this.insegnamento=insegnamento;
 	}
 	
-	public int TestGetCfu() {
+	public int testGetCfu() {
 		return insegnamento.getCfu();
 	}
 
-	public void TestSetCfu(int cfu) {
+	public void testSetCfu(int cfu) {
 		insegnamento.setCfu(cfu);
 	}
 
-	public String TestGetNome() {
+	public String testGetNome() {
 		return insegnamento.getNome();
 	}
 
-	public void TestSetNome(String nome) {
+	public void testSetNome(String nome) {
 		insegnamento.setNome(nome);
 	}
 }

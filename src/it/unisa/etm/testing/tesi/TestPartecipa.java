@@ -13,19 +13,19 @@ public class TestPartecipa {
 		this.partecipa=partecipa;
 	}
 	
-	public int TestGetPropostaTesiId() {
+	public int testGetPropostaTesiId() {
 		return partecipa.getPropostaTesiId();
 	}
 
-	public void TestSetPropostaTesiId(int propostaTesiId) {
+	public void testSetPropostaTesiId(int propostaTesiId) {
 		partecipa.setPropostaTesiId(propostaTesiId);
 	}
 
-	public String TestGetUtenteEmail() {
+	public String testGetUtenteEmail() {
 		return partecipa.getUtenteEmail();
 	}
 
-	public void TestSetUtenteEmail(String utenteEmail) {
+	public void testSetUtenteEmail(String utenteEmail) {
 		partecipa.setUtenteEmail(utenteEmail);
 	}
 

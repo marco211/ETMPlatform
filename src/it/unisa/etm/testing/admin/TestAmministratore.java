@@ -14,35 +14,35 @@ public class TestAmministratore {
 		this.admin=admin;
 	}
 	
-	public String TestGetPassword(){
+	public String testGetPassword(){
 		return admin.getPassword();
 	}
 	
-	public void TestsetPassword(String password) {
+	public void testSetPassword(String password) {
 		admin.setPassword(password);
 	}
 	
-	public String TestGetNome() {
+	public String testGetNome() {
 		return admin.getNome();
 	}
 
-	public void TestSetNome(String nome) {
+	public void testSetNome(String nome) {
 		this.admin.setNome(nome);
 	}
 
-	public String TestGetCognome() {
+	public String testGetCognome() {
 		return admin.getCognome();
 	}
 
-	public void TestSetCognome(String cognome) {
+	public void testSetCognome(String cognome) {
 		this.admin.setCognome(cognome);
 	}
 
-	public String TestGetEmail() {
+	public String testGetEmail() {
 		return admin.getEmail();
 	}
 
-	public void TestSetEmail(String email) {
+	public void testSetEmail(String email) {
 		this.admin.setEmail(email);
 	}
 	

@@ -15,35 +15,35 @@ public class TestRichiestaPartecipazione {
 		this.partecipazione=partecipazione;
 	}	
 	
-	public int TestGetId() {
+	public int testGetId() {
 		return partecipazione.getId();
 	}
 	
-	public void TestSetId(int id) {
+	public void testSetId(int id) {
 		partecipazione.setId(id);
 	}
 	
-	public LocalDate TestGetData() {
+	public LocalDate testGetData() {
 		return partecipazione.getData();
 	}
 	
-	public void TestSetData(LocalDate data) {
+	public void testSetData(LocalDate data) {
 		partecipazione.setData(data);
 	}
 	
-	public int TestGetPropostatesi_id() {
+	public int testGetPropostatesi_id() {
 		return partecipazione.getPropostatesi_id();
 	}
 	
-	public void TestSetPropostatesi_id(int propostatesi_id) {
+	public void testSetPropostatesi_id(int propostatesi_id) {
 		partecipazione.setPropostatesi_id(propostatesi_id);
 	}
 	
-	public String TestGetUtente_mail() {
+	public String testGetUtente_mail() {
 		return partecipazione.getUtente_mail();
 	}
 	
-	public void TestSetUtente_mail(String utente_mail) {
+	public void testSetUtente_mail(String utente_mail) {
 		partecipazione.setUtente_mail(utente_mail);
 	}
 }

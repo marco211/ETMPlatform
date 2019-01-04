@@ -15,51 +15,51 @@ public class TestAttivita {
 		this.attivita=attivita;
 	}
 	
-	public int TestGetId() {
+	public int testGetId() {
 		return attivita.getId();
 	}
 
-	public void TestSetId(int id) {
+	public void testSetId(int id) {
 		attivita.setId(id);
 	}
 
-	public String TestGetUtente_Email() {
+	public String testGetUtente_Email() {
 		return attivita.getUtente_Email();
 	}
 
-	public void TestSetUtente_Email(String utente_Email) {
+	public void testSetUtente_Email(String utente_Email) {
 		attivita.setUtente_Email(utente_Email);	
 	}
 
-	public String TestGetNomeFile() {
+	public String testGetNomeFile() {
 		return attivita.getNomeFile();
 	}
 
-	public void TestSetNomeFile(String nomeFile) {
+	public void testSetNomeFile(String nomeFile) {
 		attivita.setNomeFile(nomeFile);
 	}
 
-	public LocalDate TestGetData() {
+	public LocalDate testGetData() {
 		return attivita.getData();
 	}
 
-	public void TestSetData(LocalDate data) {
+	public void testSetData(LocalDate data) {
 		attivita.setData(data);
 	}
 
-	public String TestGetTipo() {
+	public String testGetTipo() {
 		return attivita.getTipo();
 	}
 
-	public void TestSetTipo(String tipo) {
+	public void testSetTipo(String tipo) {
 		attivita.setTipo(tipo);
 	}
 
-	public int TestGetPropostatesi_id() {
+	public int testGetPropostatesi_id() {
 		return attivita.getPropostatesi_id();
 	}
 
-	public void TestSetPropostatesi_id(int propostatesi_id) {
+	public void testSetPropostatesi_id(int propostatesi_id) {
 		attivita.setPropostatesi_id(propostatesi_id);;
 	}
 	

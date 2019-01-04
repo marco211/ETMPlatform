@@ -13,43 +13,43 @@ public class TestConsegna {
 		this.consegna=consegna;
 	}
 	
-	public int TestGetId() {
+	public int testGetId() {
 		return consegna.getId();
 	}
 	
-	public void TestSetId(int id) {
+	public void testSetId(int id) {
 		consegna.setId(id);
 	}
 	
-	public String TestGetNome() {
+	public String testGetNome() {
 		return consegna.getNome();
 	}
 	
-	public void TestSetNome(String nome) {
+	public void testSetNome(String nome) {
 		consegna.setNome(nome);
 	}
 	
-	public String TestGetDescrzione() {
+	public String testGetDescrzione() {
 		return consegna.getDescrzione();
 	}
 	
-	public void TestSetDescrzione(String descrzione) {
+	public void testSetDescrzione(String descrzione) {
 		consegna.setDescrzione(descrzione);
 	}
 	
-	public String TestGetScadenza() {
+	public String testGetScadenza() {
 		return consegna.getScadenza();
 	}
 	
-	public void TestSetScadenza(String scadenza) {
+	public void testSetScadenza(String scadenza) {
 		consegna.setScadenza(scadenza);
 	}
 	
-	public int TestGetPropostaTesiId() {
+	public int testGetPropostaTesiId() {
 		return consegna.getPropostaTesiId();
 	}
 
-	public void TestSetPropostaTesiId(int propostaTesiId) {
+	public void testSetPropostaTesiId(int propostaTesiId) {
 		consegna.setPropostaTesiId(propostaTesiId);
 	}
 
