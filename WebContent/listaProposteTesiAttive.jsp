@@ -120,7 +120,7 @@ function cambiaColore(){
 								class="text-xs-center mt-1"
 								href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id()%>"><%=titolop%></a>
 							</td>
-							<td class="w-25" style="text-align: center; word-wrap: break-word;">
+							<td class="w-25 pt-4" style="text-align: center; word-wrap: break-word;">
 								<div class="p-0 m-0" style="font-size: 12px">
 									<%
 										if (LocalDate.now().getYear() == r.getData().getYear()) {
