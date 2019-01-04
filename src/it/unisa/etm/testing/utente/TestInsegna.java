@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.bean;
+package it.unisa.etm.testing.utente;
 
 import it.unisa.etm.bean.Insegna;
 

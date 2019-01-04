@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.bean;
+package it.unisa.etm.testing.tesi;
 
 import it.unisa.etm.bean.PropostaTesi;
 
