@@ -103,15 +103,17 @@
 
 				
 			</ul>
-			<form class="form-inline my-2 my-lg-0">
+			<form class="form-inline my-2 my-lg-0" action="CercaListaUtentiServlet"  method="post" name="cercaProfilo">
 				<div class="container">
-					<form action="CercaUtenteServlet"  method="get" name="cercaProfilo">
-					<input class="form-control mr-sm-2 border-dark" type="email" name="cerca"
+					<input class="form-control mr-sm-2 border-dark" type="text" name="cerca"
 						placeholder="Cerca" aria-label="Cerca">
+					<select class="form-control mr-sm-2 border-dark" name="option">
+						<option value="nome">Nome</option>
+						<option value="cognome">Cognome</option>
+					</select>
 					<button type="submit" class="btn btn-inline my-2 my-sm-0 bg-warning " id="exampleButton1">
 						<span class="fa fa-search"></span>
 					</button>
-					</form>
 				</div>
 			</form>
 			<!-- 
