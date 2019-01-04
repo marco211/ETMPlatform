@@ -12,7 +12,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
 /**
- * Servlet implementation class ModificaConsegnaServlet
+ * Estende HttpServlet fornisce la funzionalità di modificare una consegna dell'area privata condivisa.
  */
 @WebServlet("/ModificaConsegnaServlet")
 public class ModificaConsegnaServlet extends HttpServlet {

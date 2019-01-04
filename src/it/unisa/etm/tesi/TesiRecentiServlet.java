@@ -14,7 +14,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Servlet implementation class TesiRecentiServlet
+ *  Estende HttpServlet fornisce la funzionalità di visualizzazione delle ultime 8 tesi recenti all'interno della home page.
  */
 @WebServlet("/TesiRecentiServlet")
 public class TesiRecentiServlet extends HttpServlet {

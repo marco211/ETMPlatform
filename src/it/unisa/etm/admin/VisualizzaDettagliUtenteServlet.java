@@ -31,6 +31,13 @@ public class VisualizzaDettagliUtenteServlet extends HttpServlet{
 		doGet(request, response);
 	}
 	
+	/**
+	 * Torna le informazioni generali dell'utente desiderato
+	 * @param email rappresenta l'email dell'utente per il quale si vogliono conoscere le informazioni
+	 * @return Utente oggetto che rappresenta l'utente per il quale si vogliono conoscere le informaioni, in caso di successo;
+	 * <p>
+	 * null in caso contrario.
+	 */
 	private Utente visualizzaDettagliUtente(String email){
 		ManagerFactory em=new ManagerFactory();
 		AmministratoreManager am=(AmministratoreManager) em.createAmministratoreManager();

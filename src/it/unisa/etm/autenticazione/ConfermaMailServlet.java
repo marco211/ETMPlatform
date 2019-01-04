@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 
 /**
- * Servlet implementation class ConfermaMailServlet
+ * Estende HttpServlet permette all'utente di confermare la propria registrazione inviando una mail alla sua posta elettronica.
  */
 @WebServlet("/ConfermaMailServlet")
 public class ConfermaMailServlet extends HttpServlet {

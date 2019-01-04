@@ -7,5 +7,8 @@ it.unisa.etm.factory
 it.unisa.etm.model.interfaces
 it.unisa.etm.model.manager
 it.unisa.etm.tesi
-it.unisa.etm.testing.bean
+it.unisa.etm.testing.admin
+it.unisa.etm.testing.areacondivisa
+it.unisa.etm.testing.tesi
+it.unisa.etm.testing.utente
 it.unisa.etm.user

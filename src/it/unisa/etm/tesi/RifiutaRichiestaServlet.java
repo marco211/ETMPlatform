@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Servlet implementation class RifiutaRichiestaServlet
+ * Estende HttpServlet fornisce la funzionalità di rifiutare una richiesta di un untente registrato come studente da parte di un utente registrato come docente.
  */
 @WebServlet("/RifiutaRichiestaServlet")
 public class RifiutaRichiestaServlet extends HttpServlet {
