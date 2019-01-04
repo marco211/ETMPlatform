@@ -55,7 +55,7 @@ if(utente==null){
     			
     				<%}}%> 
     				<%if(propostatesi.isChiuso()){%>
-    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è chiusa</p>
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">chiusa</u></p>
     				<%} %>
     			</div>
         <table class="table border-bottom border-solid mb-3 py-1">
@@ -85,19 +85,19 @@ if(utente==null){
   		 	<div class="card-body">
   		 	<%if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
     			if(!propostatesi.isChiuso()){%>
-    			<a class = "btn bg-warning " href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>"  id="ChiudiProposta"><i class="fas fa-door-closed "></i></a>
+    			<a class = "btn bg-warning " href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>"  id="ChiudiProposta" data-toggle="tooltip" data-placement="bottom" title="Chiudi la proposta tesi: essa è terminata e non più accessibile a nuove richiesta"><i class="fas fa-door-closed "></i></a>
     			<%} %>
     			<%if(!propostatesi.isArchiviato()){ %>				
-    	    	<a class = "btn bg-warning " href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" id="ArchiviaProposta"><i class="fas fa-archive " style="display: inline"></i></a>				
+    	    	<a class = "btn bg-warning " href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" id="ArchiviaProposta" data-toggle="tooltip" data-placement="bottom" title="Archivia la proposta tesi: essa è ancora in atto ma non più accessibile a nuove richiesta"><i class="fas fa-archive " style="display: inline"></i></a>				
     			<% }%>
-    		        <a class = "btn bg-warning "href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>&propostatesi_titolo=<%=propostatesi.getTitolo()%>&propostatesi_ambito=<%=propostatesi.getAmbito()%>&propostatesi_tempo=<%=propostatesi.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=propostatesi.getDecrizione()%>&propostatesi_materia=<%=propostatesi.getMaterie()%>"  id="ModificaProposta"><i class="fas fa-edit" style="display: inline"></i></a>
+    		        <a class = "btn bg-warning "href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>&propostatesi_titolo=<%=propostatesi.getTitolo()%>&propostatesi_ambito=<%=propostatesi.getAmbito()%>&propostatesi_tempo=<%=propostatesi.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=propostatesi.getDecrizione()%>&propostatesi_materia=<%=propostatesi.getMaterie()%>"  id="ModificaProposta" data-toggle="tooltip" data-placement="bottom" title="Modifica la proposta tesi"><i class="fas fa-edit" style="display: inline"></i></a>
     			<%boolean b1 = false;
     			for(Utente u : utenti){
     					if(u.getPropostaTesi_ID()==propostatesi.getId())
     						b1 = true;
     			}if(!b1){
     			%>
-    			<a  class = "btn bg-warning "  href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" " id="RimuoviProposta"><i class="fas fa-trash-alt"></i></a>
+    			<a  class = "btn bg-warning "  href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" " id="RimuoviProposta" data-toggle="tooltip" data-placement="bottom" title="Rimuovi la proposta tesi"><i class="fas fa-trash-alt"></i></a>
     			
     			<%}}else if(utente.getTipo().equals("d")){%>
     			<p>Questa non è una tua proposta di tesi</p>
@@ -112,7 +112,7 @@ if(utente==null){
     						b2 = true;
     					}
     				}if(!b2){ %>
-    			<a class="alert-link" href="InviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle">Invia Richiesta Proposta Tesi&nbsp;</i></a>
+    			<a class="alert-link" href="InviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle">Invia richiesta di partecipazione&nbsp;</i></a>
     			<%}else{%>
     			<p>Hai già inviato una richiesta di partecipazione</p>
     			<%}}}}} %>
