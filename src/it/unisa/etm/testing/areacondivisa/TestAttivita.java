@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.bean;
+package it.unisa.etm.testing.areacondivisa;
 
 import java.time.LocalDate;
 
