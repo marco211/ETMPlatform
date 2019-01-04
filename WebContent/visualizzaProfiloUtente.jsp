@@ -130,7 +130,7 @@ function cambiaColore(){
                                                 <label>Nome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <input type="text" class="form-control" name="nome" onchange="controlloNome()"placeholder="<%=utenteToShow.getNome()%>" required>
+                                                <a><%=utenteToShow.getNome()%></a>
                                                 
                                             </div>
                                         </div>
@@ -139,7 +139,8 @@ function cambiaColore(){
                                                 <label>Cognome</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="cognome" onchange="controlloCognome()" placeholder="<%=utenteToShow.getCognome()%>" required>
+                                            	<a><%=utenteToShow.getCognome()%></a>
+                                                 
                                             </div>
                                         </div>
                                         <div class="row">
@@ -147,7 +148,7 @@ function cambiaColore(){
                                                 <label>Data di Nascita</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="date" class="form-control" name="data" onchange="controlloData()" placeholder="<%=utenteToShow.getDataDiNascita()%>" required>
+                                                 <a><%=utenteToShow.getDataDiNascita() %></a>
                                             </div>
                                         </div>
                                         <%if(utente.getTipo().equals("s")){%>
@@ -156,7 +157,7 @@ function cambiaColore(){
                                                 <label>Matricola</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="matricola" onchange="controlloMatricola()"placeholder="<%=utenteToShow.getMatricola()%>" required>
+                                                 <input type="text" class="form-control" name="matricola" placeholder="<%=utenteToShow.getMatricola()%>" required>
                                             </div>
                                         </div><% }%>
                                         <%if(utente.getTipo().equals("d")){%>
@@ -165,11 +166,10 @@ function cambiaColore(){
                                                 <label>Ufficio</label>
                                             </div>
                                             <div class="col-md-6">
-                                                 <input type="text" class="form-control" name="ufficio" onchange="controlloUfficio()" placeholder="<%=utenteToShow.getUfficio()%>" required>
+                                                 <input type="text" class="form-control" name="ufficio" placeholder="<%=utenteToShow.getUfficio()%>" required>
                                             </div>
                                         </div><% }%>
-                                    <div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
-									<button type="submit" class="btn btn-primary" name="invio" onclick="validazione()">Salva</button></form>
+									<button type="submit" class="btn btn-primary" name="invio">Salva</button></form>
                             </div>
                         </div>
                     </div>
@@ -264,7 +264,6 @@ function cambiaColore(){
     
 <jsp:include page="footer.jsp" />
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/modificaProfilo.js"></script>
 
 </body>
 </html>
