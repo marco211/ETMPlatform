@@ -15,7 +15,7 @@ import it.unisa.etm.model.manager.ConsegnaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Servlet implementation class VisualizzaListaConsegneServlet
+ * Estende HttpServlet fornisce la funzionalità di visualizzare tutte le consegne dell'area privata condivisa.
  */
 @WebServlet("/VisualizzaListaConsegneServlet")
 public class VisualizzaListaConsegneServlet extends HttpServlet {

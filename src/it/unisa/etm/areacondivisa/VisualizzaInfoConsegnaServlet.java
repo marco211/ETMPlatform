@@ -13,7 +13,7 @@ import it.unisa.etm.model.manager.ConsegnaManager;
 
 
 /**
- * Servlet implementation class VisualizzaInfoConsegnaServlet
+ * Estende HttpServlet fornisce la funzionalità di visualizzare le informazioni di una consegna dell'area privata condivisa.
  */
 @WebServlet("/VisualizzaInfoConsegnaServlet")
 public class VisualizzaInfoConsegnaServlet extends HttpServlet {

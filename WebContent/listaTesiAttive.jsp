@@ -59,7 +59,7 @@ function cambiaColore(){
 		               if(richieste_studente.size()==0){
 		            	   b=true;
 		            	   %>
-		            	   <a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>	
+		            	   <a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta" data-toggle="tooltip" data-placement="bottom" title="Invia richiesta di partecipazione"><i class="fas fa-plus-circle"></i></a>	
 		            	   <% }
 		               else{b=false;
 		               for (RichiestaPartecipazione r : richieste_studente){
@@ -67,7 +67,7 @@ function cambiaColore(){
 		            		   b=true;
 		               }if((!b)&&(utente.getPropostaTesi_ID()==0)){
 		               %>
-		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta"><i class="fas fa-plus-circle"></i></a>			
+		           			<a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta" data-toggle="tooltip" data-placement="bottom" title="Invia richiesta di partecipazione"><i class="fas fa-plus-circle"></i></a>			
 		              	<%}} %>
 		              	<%} %>
 		              </td>

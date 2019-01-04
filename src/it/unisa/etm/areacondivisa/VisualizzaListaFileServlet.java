@@ -14,7 +14,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.FileManager;
 
 /**
- * Servlet implementation class VisualizzaListaFileServlet
+ * Estende HttpServlet fornisce la funzionalità di visualizzare tutti i file presenti nell'area privata condivisa.
  */
 @WebServlet("/VisualizzaListaFileServlet")
 public class VisualizzaListaFileServlet extends HttpServlet {

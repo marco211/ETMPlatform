@@ -12,7 +12,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
 /**
- * Servlet implementation class AggiungiConsegnaServlet
+ *  Estende HttpServlet fornisce la funzionalità di aggiungere una consegna nell'area privata condivisa.
  */
 @WebServlet("/AggiungiConsegnaServlet")
 public class AggiungiConsegnaServlet extends HttpServlet {

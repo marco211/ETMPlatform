@@ -64,7 +64,7 @@ function cambiaColore(){
       <div class="row">  
         <div class="col-md-8 my-4">
         <div class="card mb-3">
-        <div class="card-body">
+        <div class="card-body" style="height: 84vh">
   				<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   					<ol class="carousel-indicators">
    					 <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
