@@ -31,11 +31,11 @@ public class TestUtente {
 		utente.setDataDiNascita(dataDiNascita);
 	}
 
-	public long TestGetMatricola() {
+	public String TestGetMatricola() {
 		return utente.getMatricola();
 	}
 
-	public void TestSetMatricola(long matricola) {
+	public void TestSetMatricola(String matricola) {
 		utente.setMatricola(matricola);
 	}
 
