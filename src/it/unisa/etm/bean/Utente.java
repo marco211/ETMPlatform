@@ -11,7 +11,7 @@ public class Utente implements Serializable	 {
 	}
 	
 	//studente
-	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, long matricola2, String validazione) {
+	public Utente(String cognome, String dataDiNascita, String nome, String tipo, String email, String password, String matricola2, String validazione) {
 		this.cognome = cognome;
 		this.dataDiNascita = dataDiNascita;
 		this.nome = nome;
@@ -53,11 +53,11 @@ public class Utente implements Serializable	 {
 		this.dataDiNascita = dataDiNascita;
 	}
 
-	public long getMatricola() {
+	public String getMatricola() {
 		return matricola;
 	}
 
-	public void setMatricola(long matricola) {
+	public void setMatricola(String matricola) {
 		this.matricola = matricola;
 	}
 
@@ -129,7 +129,7 @@ public class Utente implements Serializable	 {
 
 	private String cognome;
 	private String dataDiNascita;
-	private long matricola;
+	private String matricola;
 	private String ufficio;
 	private String tipo;
 	private String nome;

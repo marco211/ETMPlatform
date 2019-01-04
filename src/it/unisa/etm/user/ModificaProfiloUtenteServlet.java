@@ -30,7 +30,7 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		Utente utente=(Utente) request.getSession().getAttribute("utente");
 		if(utente.getTipo().equals("s")) 
-			utente.setMatricola(Long.parseLong(request.getParameter("matricola")));
+			utente.setMatricola(request.getParameter("matricola"));
 		else {
 			utente.setUfficio(request.getParameter("ufficio"));
 		}

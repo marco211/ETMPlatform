@@ -42,7 +42,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 				utente.setPassword(rs.getString(4));
 				utente.setDataDiNascita(rs.getString(5));
 				utente.setPropostaTesi_ID(rs.getInt(6));
-				utente.setMatricola(rs.getLong(7));
+				utente.setMatricola(rs.getString(7));
 				utente.setUfficio(rs.getString(8));
 				utente.setTipo(rs.getString(9));
 				utenti.add(utente);
@@ -153,7 +153,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 				utente.setPassword(rs.getString(4));
 				utente.setDataDiNascita(rs.getString(5));
 				utente.setPropostaTesi_ID(rs.getInt(6));
-				utente.setMatricola(rs.getLong(7));
+				utente.setMatricola(rs.getString(7));
 				utente.setUfficio(rs.getString(8));
 				utente.setTipo(rs.getString(9));
 				utenti.add(utente);

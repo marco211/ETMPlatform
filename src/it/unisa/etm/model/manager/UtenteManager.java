@@ -31,7 +31,7 @@ public  class UtenteManager implements UtenteModelInterface{
 		if(rs.getString("TIPO").equals("s")){
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
-			utente.setMatricola(rs.getLong("MATRICOLA"));
+			utente.setMatricola(rs.getString("MATRICOLA"));
 			utente.setTipo(rs.getString("TIPO"));
 			if(rs.getInt("PROPOSTATESI_ID")!=0)
 				utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
@@ -70,7 +70,7 @@ public  class UtenteManager implements UtenteModelInterface{
 		if(rs.getString("TIPO").equals("s")){
 			utente.setNome(rs.getString("NOME"));
 			utente.setCognome(rs.getString("COGNOME"));
-			utente.setMatricola(rs.getLong("MATRICOLA"));
+			utente.setMatricola(rs.getString("MATRICOLA"));
 			utente.setTipo(rs.getString("TIPO"));
 			if(rs.getInt("PROPOSTATESI_ID")!=0)
 				utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
@@ -135,7 +135,7 @@ public  class UtenteManager implements UtenteModelInterface{
 				ps.setString(1, utente.getNome());;
 				ps.setString(2, utente.getCognome());
 				ps.setString(3, utente.getDataDiNascita());
-				ps.setLong(4, utente.getMatricola());
+				ps.setString(4, utente.getMatricola());
 				ps.executeUpdate();
 			}
 			else
@@ -171,7 +171,7 @@ public  class UtenteManager implements UtenteModelInterface{
 			utente.setNome(rs.getString("NOME"));
 			utente.setTipo(rs.getString("TIPO"));
 			if(utente.getTipo().equals("s")) {
-				utente.setMatricola(rs.getLong("MATRICOLA"));
+				utente.setMatricola(rs.getString("MATRICOLA"));
 			}
 			else {
 				utente.setUfficio(rs.getString("UFFICIO"));
@@ -200,7 +200,7 @@ public  class UtenteManager implements UtenteModelInterface{
 			utente.setNome(rs.getString("NOME"));
 			utente.setTipo(rs.getString("TIPO"));
 			if(utente.getTipo().equals("s")) {
-				utente.setMatricola(rs.getLong("MATRICOLA"));
+				utente.setMatricola(rs.getString("MATRICOLA"));
 			}
 			else {
 				utente.setUfficio(rs.getString("UFFICIO"));

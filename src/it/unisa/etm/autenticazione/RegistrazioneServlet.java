@@ -48,9 +48,9 @@ public class RegistrazioneServlet extends HttpServlet {
 		String data=request.getParameter("data");
 		String tipo=request.getParameter("tipo");
 		String validazione=UUID.randomUUID().toString();
-		Utente utente = null;
+		Utente utente=null;
 		if(tipo.equals("s")){
-			long matricola=Long.parseLong(request.getParameter("matricola"));
+			String matricola=request.getParameter("matricola");
 			utente=new Utente(cognome, data, nome, tipo, email, password, matricola, validazione);
 		} else {
 			String insegnamento=request.getParameter("insegnamento").toLowerCase();

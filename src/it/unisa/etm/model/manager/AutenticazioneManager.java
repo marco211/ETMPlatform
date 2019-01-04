@@ -31,7 +31,7 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 				ps.setString(3, utente.getCognome());
 				ps.setString(4, utente.getPassword());
 				ps.setString(5, utente.getDataDiNascita());
-				ps.setLong(6, utente.getMatricola());
+				ps.setString(6, utente.getMatricola());
 				ps.setString(7, String.valueOf(utente.getTipo()));
 				ps.setString(8, utente.getValidazione());
 				ps.executeUpdate();
@@ -87,7 +87,7 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 				if(rs.getString("TIPO").equals("s")){
 				utente.setNome(rs.getString("NOME"));
 				utente.setCognome(rs.getString("COGNOME"));
-				utente.setMatricola(rs.getLong("MATRICOLA"));
+				utente.setMatricola(rs.getString("MATRICOLA"));
 				utente.setTipo(rs.getString("TIPO"));
 				if(rs.getInt("PROPOSTATESI_ID")!=0)
 				utente.setPropostaTesi_ID(rs.getInt("PROPOSTATESI_ID"));
