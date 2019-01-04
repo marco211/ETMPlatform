@@ -1,6 +1,7 @@
 package it.unisa.etm.user;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,13 +30,17 @@ public class ModificaProfiloUtenteServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		Utente utente=(Utente) request.getSession().getAttribute("utente");
+		//utente.setNome( request.getParameter("nome"));
+		//utente.setCognome( request.getParameter("cognome"));
+		//utente.setDataDiNascita(request.getParameter("data"));
 		if(utente.getTipo().equals("s")) 
 			utente.setMatricola(request.getParameter("matricola"));
 		else {
 			utente.setUfficio(request.getParameter("ufficio"));
 		}
 		if(modificaProfiloUtente(utente)==true) {
-			response.sendRedirect(request.getContextPath()+"/homePage.jsp");
+			RequestDispatcher requestDispatcher=getServletContext().getRequestDispatcher("/visualizzaProfiloUtente.jsp");
+			requestDispatcher.forward(request, response);
 		} else {			
 			response.sendRedirect(request.getContextPath()+"/registrazioneFallita.jsp");					
 		}
