@@ -80,15 +80,6 @@ function cambiaColore(){
          
         </div>
 
-        <aside class="col-md-4 my-4">
-
-          <div class="p-3 card">
-            <h4 class="font-italic">Informazioni</h4>
-            Informazioni tecniche per l'admin.
-          </div>
-   
-        </aside>
-
       </div>
 
     </main>
