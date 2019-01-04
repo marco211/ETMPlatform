@@ -271,26 +271,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 	}
 	
-	@Override
-	public List<Attivita> getStoricoAttivita(String titoloProposta){
-		String SQL="SELECT * FROM Attivita;";
-		Connection connection=null;
-		PreparedStatement statement=null;
-		ArrayList <Attivita> allActivity=null;
-		try {
-			connection=DatabaseManager.getIstance();
-			statement=connection.prepareStatement(SQL);
-			ResultSet rs=statement.executeQuery(SQL);
-			allActivity=new ArrayList<Attivita>();
-			while(rs.next()) {
-				Attivita attivita=new Attivita();
-			}
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return allActivity;
-	}
+	
 
 	@Override
 	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail){
@@ -375,26 +356,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 	}
 	
-	@Override
-	public String getNomeDocente(int id){
-		String SQL="SELECT UTENTE_EMAIL FROM PROPOSTATESI WHERE id=?";
-		Connection connection=null;
-		PreparedStatement statement=null;
-		String nome=null;
-		try {
-			connection=DatabaseManager.getIstance();
-			statement=connection.prepareStatement(SQL);
-			statement.setInt(1, id);
-			ResultSet rs=statement.executeQuery();
-			rs.next();
-			nome=rs.getString("UTENTE_EMAIL");
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return nome;
-	}
-
+	
 	@Override
 	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail){
 		Connection connection=null;

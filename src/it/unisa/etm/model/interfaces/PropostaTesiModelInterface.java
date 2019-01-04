@@ -110,8 +110,7 @@ public interface PropostaTesiModelInterface {
 	 * null in caso d'insuccesso o di nessuna proposta tesi attiva.
 	 */
 	public ArrayList<PropostaTesi> getProposteTesiAttive();
-	public List<Attivita> getStoricoAttivita(String titoloProposta);
-	
+
 	/**
 	 * Torna all'utente registrato come docente tutte le proposte tesi da lui create.
 	 * @param utenteEmail email dell'utente registrato come docente.
@@ -129,7 +128,6 @@ public interface PropostaTesiModelInterface {
 	 * false altrimenti.
 	 */
 	public boolean modificaPropostaTesi(PropostaTesi proposta);
-	public String getNomeDocente(int id);
 	
 	/**
 	 * Ritorna le richieste di partecipazione di un determinato utente registrato come studente.
