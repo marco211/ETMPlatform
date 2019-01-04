@@ -83,16 +83,16 @@ function cambiaColore(){
 				</div>
 			</div>
 			<aside class="col-md-4 my-4">
-				<div class="list-group p-3 card">
-					<h4 class="font-italic">Richieste ricevute</h4>
-					<table>
+				<div class="list-group p-1 card">
+					<h4 class="font-italic pt-3 pl-3 pr-3 pb-1">Richieste ricevute</h4>
+					<table class="table" style="table-layout: fixed; width: 100%;">
 
 						<%
 							ArrayList<RichiestaPartecipazione> richieste = (ArrayList<RichiestaPartecipazione>) request.getAttribute("richieste");
 							if (richieste.isEmpty()) {
 						%>
 						<tr class="border">
-							<td
+							<td 
 								style="font-size: 14px; padding: 10px; margin-right: 15px; text-align: center">
 								<p class="text-xs-center mb-1">Non hai ricevuto alcuna richiesta attualmente.</p>
 							</td>
@@ -110,9 +110,9 @@ function cambiaColore(){
 
 									Period tempo = Period.between(r.getData(), LocalDate.now());
 						%>
-						<tr class="border">
+						<tr class="border" style="word-wrap: break-word;">
 							<td
-								style="font-size: 14px; padding: 5px; margin-right: 15px; text-align: center">
+								style="font-size: 14px; padding: 5px; margin-right: 2px; text-align: center; word-wrap: break-word;">
 								<p class="text-xs-center mb-1">Nome</p> <a
 								class="text-xs-center mt-1"
 								href="VisualizzaProfiloUtenteServlet?utente_email=<%=r.getUtente_mail()%>"><%=r.getUtente_mail()%></a><br>
@@ -120,8 +120,8 @@ function cambiaColore(){
 								class="text-xs-center mt-1"
 								href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=r.getPropostatesi_id()%>"><%=titolop%></a>
 							</td>
-							<td class="px-1 w-50">
-								<div class="px-1" style="font-size: 12px">
+							<td class="w-25" style="text-align: center; word-wrap: break-word;">
+								<div class="p-0 m-0" style="font-size: 12px">
 									<%
 										if (LocalDate.now().getYear() == r.getData().getYear()) {
 													if (LocalDate.now().getMonth().equals(r.getData().getMonth())) {
@@ -143,7 +143,7 @@ function cambiaColore(){
 										}
 									%>
 								</div>
-								<div class="mt-2">
+								<div class="mt-2" style="diplay:inline">
 									<a
 										style="display: inline; font-family: Arial Black, Gadget, sans-serif;"
 										href="AccettaRichiestaServlet?richiesta_id=<%=r.getId()%>&utente_email=<%=r.getUtente_mail()%>"
