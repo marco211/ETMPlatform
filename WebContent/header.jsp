@@ -69,7 +69,9 @@
 					href="homePage.jsp" id="home">Home <span class="sr-only"></span>
 				</a></li>
 				<%if(utente!=null){ %>
+				<li class="nav-item">
 				<a class="nav-link text-dark" href="ListaProposteTesiAttiveServlet" id="areaTesi">Area proposta tesi</a>
+				</li>
 				<%if (utente.getTipo().equals("s")&&(utente.getPropostaTesi_ID()>0)) { %>
 				<li class="nav-item"><a class="nav-link text-dark"
 					href="VisualizzaListaConsegneServlet" id="areaCondivisa">Area privata condivisa</a></li>
