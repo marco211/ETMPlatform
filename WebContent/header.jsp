@@ -145,8 +145,12 @@
 						</button>
 					</form>
 				</li>
-
 			</ul>
+					<%if(utente!=null) {%>
+			<p class="my-2 ml-3">Benvenuto, <%=utente.getNome() %></p>
+			<%}else if(admin!=null){ %>
+			<p class="my-2 ml-3">Benvenuto, <%=admin.getNome() %></p>
+			<%} %>
 		</div>
 	</nav>
 
