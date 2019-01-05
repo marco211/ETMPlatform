@@ -1,31 +1,61 @@
 package it.unisa.etm.testing.utente;
 
 import it.unisa.etm.bean.Insegnamento;
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 public class TestInsegnamento {
-	private Insegnamento insegnamento;
+	private Insegnamento insegnamentoOk;
+	private Insegnamento insegnamentoNotOk;
 	
-	public TestInsegnamento() {
+	@BeforeAll
+	public void setUp() {
+		insegnamentoOk= new Insegnamento("Informatica",12);
+		insegnamentoNotOk= new Insegnamento("PastaConIlTonno",142);
 		
 	}
-	
-	public TestInsegnamento(Insegnamento insegnamento) {
-		this.insegnamento=insegnamento;
+	@AfterAll
+	public void tearDown() {
+		insegnamentoOk=null;
+		insegnamentoNotOk=null;
+		
 	}
-	
-	public int testGetCfu() {
-		return insegnamento.getCfu();
+	@Test
+	public void testGetCfu() {
+		int cfu= insegnamentoOk.getCfu();
+		assertEquals(cfu,12); //CFU giusti
+		cfu= insegnamentoNotOk.getCfu();
+		assertEquals(cfu,142);//CFU errati
+	}
+	@Test
+	public void testSetCfu() {
+		int cfu= 12;
+		insegnamentoOk.setCfu(cfu);
+		assertEquals(12,insegnamentoOk.getCfu());
+		
+		cfu= 142;
+		insegnamentoNotOk.setCfu(cfu);
+		assertEquals(142,insegnamentoNotOk.getCfu());
 	}
 
-	public void testSetCfu(int cfu) {
-		insegnamento.setCfu(cfu);
+	public void testGetNome() {
+		String nome= insegnamentoOk.getNome();
+		assertEquals(nome, "Informatica");
+		
+		nome= insegnamentoNotOk.getNome();
+		assertEquals(nome, "PastaConIlTonno");
+		
 	}
 
-	public String testGetNome() {
-		return insegnamento.getNome();
-	}
-
-	public void testSetNome(String nome) {
-		insegnamento.setNome(nome);
+	public void testSetNome() {
+		String nome= "Informatica";
+		insegnamentoOk.setNome(nome);
+		assertEquals("Informatica",insegnamentoOk.getNome());
+		
+		nome= "PastaConIlTonno";
+		insegnamentoNotOk.setNome(nome);
+		assertEquals(nome,"PastaConIlTonno");
 	}
 }
