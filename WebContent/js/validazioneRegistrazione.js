@@ -1,7 +1,7 @@
 function controlloNome()
 {
 	var nome=document.registrazione.nome.value;
-	if(nome.length==0)
+	if(nome.length==0 || nome.length>30)
 	{
 		document.registrazione.nome.style.borderColor="red";
 		return false;
@@ -16,7 +16,7 @@ function controlloNome()
 function controlloCognome()
 {
 	var cognome=document.registrazione.cognome.value;
-	if(cognome.length==0)
+	if(cognome.length==0 || cognome.length>30)
 	{
 		document.registrazione.cognome.style.borderColor="red";
 		return false;
@@ -32,7 +32,12 @@ function controlloEmail()
 {
 	var lettere5=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
 	var email=document.registrazione.email.value;
-	if(!email.match(lettere5))
+	if(email.length<10 || email.length>40)
+	{
+		document.registrazione.email.style.borderColor="red";
+		return false;
+	}
+	else if(!email.match(lettere5))
 	{
 		document.registrazione.email.style.borderColor="red";
 		return false;
@@ -63,7 +68,7 @@ function controlloMatricola()
 function controlloInsegnamento()
 {
 	var insegnamento=document.registrazione.insegnamento.value;
-	if(insegnamento.length==0)
+	if(insegnamento.length==0 || insegnamento.length>50)
 	{
 		document.registrazione.insegnamento.style.borderColor="red";
 		return false;
@@ -78,7 +83,7 @@ function controlloInsegnamento()
 function controlloUfficio()
 {
 	var ufficio=document.registrazione.ufficio.value;
-	if(ufficio.length==0)
+	if(ufficio.length==0 || ufficio.length>50)
 	{
 		document.registrazione.ufficio.style.borderColor="red";
 		return false;
@@ -146,9 +151,18 @@ function validazione()
 	div.text("");
 	
 	if(!controlloNome()){
-		
-		document.registrazione.nome.focus();
-		div.append("Inserisci un nome");
+		var nome=document.registrazione.nome.value;
+		if(nome.length>30)
+		{
+			document.registrazione.nome.focus();
+			div.append("Nome inserito troppo lungo");
+		}
+		else
+		{
+			document.registrazione.nome.focus();
+			div.append("Inserisci un nome");
+		}
+
 	}
 	else if(!controlloCognome())
 	{
@@ -156,7 +170,15 @@ function validazione()
 			document.registrazione.cognome.focus();
 			focused = true;
 		}
-		div.append("Inserisci un cognome");
+		var cognome=document.registrazione.cognome.value;
+		if(cognome.length>30)
+		{
+			div.append("Cognome inserito troppo lungo");
+		}
+		else
+		{
+			div.append("Inserisci un cognome");
+		}
 	}
 	else if(!controlloEmail())
 	{
@@ -189,7 +211,15 @@ function validazione()
 					document.registrazione.insegnamento.focus();
 					focused = true;
 				}
-				div.append("Inserisci un insegnamento");
+				var insegnamento=document.registrazione.insegnamento.value;
+				if(insegnamento.length>50)
+				{
+					div.append("Insegnamento inserito troppo lungo");
+				}
+				else
+				{
+					div.append("Inserisci un insegnamento");
+				}
 				return false;
 			}
 			else if(!controlloUfficio())
@@ -198,7 +228,15 @@ function validazione()
 					document.registrazione.ufficio.focus();
 					focused = true;
 				}
-				div.append("Inserisci l'ufficio");
+				var ufficio=document.registrazione.ufficio.value;
+				if(ufficio.length>50)
+				{
+					div.append("Ufficio inserito troppo lungo");
+				}
+				else
+				{
+					div.append("Inserisci l'ufficio");
+				}
 				return false;
 			}
 		}

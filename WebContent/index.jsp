@@ -58,7 +58,7 @@
 		<ul class="nav justify-content-center">
 			<li class="nav-item d-none d-lg-block">
 
-				<form action="LoginServlet" method="post">
+				<form action="LoginServlet" method="post" name="login">
 					<div class="form-row">
 						<div class="col">
 							<input type="email" class="form-control mb-2 mr-sm-2"
@@ -91,7 +91,7 @@
 						aria-haspopup="true" aria-expanded="false">Effettua il
 						login</button>
 
-					<form class="dropdown-menu p-4" action="LoginServlet" method="post">
+					<form class="dropdown-menu p-4" action="LoginServlet" method="post" name="login">
 						<div class="form-group">
 							<label for="exampleDropdownFormEmail2">E-mail</label> <input
 								type="email" class="form-control" name="emailLogin"
