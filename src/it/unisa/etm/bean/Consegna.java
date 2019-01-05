@@ -11,7 +11,7 @@ public class Consegna implements Serializable {
 	
 	public Consegna(String nome, String descrizione, String scadenza, int propostaId) {
 		this.nome=nome;
-		this.descrzione=descrizione;
+		this.descrizione=descrizione;
 		this.scadenza=scadenza;
 		this.setPropostaTesiId(propostaId);
 	}
@@ -33,11 +33,11 @@ public class Consegna implements Serializable {
 	}
 	
 	public String getDescrzione() {
-		return descrzione;
+		return descrizione;
 	}
 	
-	public void setDescrzione(String descrzione) {
-		this.descrzione = descrzione;
+	public void setDescrzione(String descrione) {
+		this.descrizione = descrizione;
 	}
 	
 	public String getScadenza() {
@@ -58,7 +58,7 @@ public class Consegna implements Serializable {
 
 	private int id;
 	private String nome;
-	private String descrzione;
+	private String descrizione;
 	private String scadenza;
 	private int propostaTesiId;
 }
