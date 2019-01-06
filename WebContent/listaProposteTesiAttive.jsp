@@ -39,7 +39,7 @@ function cambiaColore(){
 								aria-label="Cerca proposta"> <a
 								href="AggiungiPropostaTesiServlet"
 								class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
-								id="AddProposta"><i class="fas fa-plus-circle"></i></a>
+								id="AddProposta" data-toggle="tooltip" data-placement="bottom" title="Aggiungi una proposta di tesi"><i class="fas fa-plus-circle"></i></a>
 
 						</form>
 

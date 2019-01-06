@@ -1,7 +1,7 @@
 function controlloTitolo()
 {
 	var titolo=document.aggiungiproposta.titolo.value;
-	if(titolo.length==0)
+	if(titolo.length==0 || titolo.length>=100)
 	{
 		document.aggiungiproposta.titolo.style.borderColor="red";
 		return false;
@@ -16,7 +16,7 @@ function controlloTitolo()
 function controlloAmbito()
 {
 	var ambito=document.aggiungiproposta.ambito.value;
-	if(ambito.length==0)
+	if(ambito.length==0 || ambito.length>40)
 	{
 		document.aggiungiproposta.ambito.style.borderColor="red";
 		return false;
@@ -31,7 +31,7 @@ function controlloAmbito()
 function controlloDescrizione()
 {
 	var descrizione=document.aggiungiproposta.descrizione.value;
-	if(descrizione.length==0)
+	if(descrizione.length==0 || descrizione.length>5000)
 	{
 		document.aggiungiproposta.descrizione.style.borderColor="red";
 		return false;
@@ -68,7 +68,7 @@ function validazione()
 	
 	if(!controlloTitolo()){
 		document.aggiungiproposta.titolo.focus();
-		div.append("Inserisci un titolo");
+		div.append("Inserisci un titolo (non superiore a 100 caratteri)");
 	}
 	else if(!controlloAmbito())
 	{
@@ -76,7 +76,7 @@ function validazione()
 			document.aggiungiproposta.ambito.focus();
 			focused = true;
 		}
-		div.append("Inserisci un ambito");
+		div.append("Inserisci un ambito (non superiore a 40 caratteri)");
 	}
 	else if(!controlloDescrizione())
 	{
@@ -84,7 +84,7 @@ function validazione()
 			document.aggiungiproposta.descrizione.focus();
 			focused = true;
 		}	
-		div.append("Inserisci una descrizione");
+		div.append("Inserisci una descrizione (non superiore a 5000 caratteri)");
 	}
 	else if(!controlloTempo())
 	{
