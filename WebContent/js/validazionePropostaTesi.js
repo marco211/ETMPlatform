@@ -46,7 +46,7 @@ function controlloDescrizione()
 function controlloTempo()
 {
 	var tempo=document.aggiungiproposta.tempo.value;
-	if(tempo.length==0 || tempo<=0)
+	if(tempo=="" || tempo<=0 || tempo>365)
 	{
 		document.aggiungiproposta.descrizione.style.borderColor="red";
 		return false;
@@ -78,6 +78,14 @@ function validazione()
 		}
 		div.append("Inserisci un ambito (non superiore a 40 caratteri)");
 	}
+	else if(!controlloTempo())
+	{
+		if(!focused){
+			document.aggiungiproposta.tempo.focus();
+			focused = true;
+		}	
+		div.append("La proposta tesi deve avere una durata di almeno 1 e massimo 365 giorni");
+	}
 	else if(!controlloDescrizione())
 	{
 		if(!focused){
@@ -86,15 +94,7 @@ function validazione()
 		}	
 		div.append("Inserisci una descrizione (non superiore a 5000 caratteri)");
 	}
-	else if(!controlloTempo())
-	{
-		if(!focused){
-			document.aggiungiproposta.tempo.focus();
-			focused = true;
-		}	
-		div.append("La proposta tesi deve avere una durata di almeno 1 giorno");
-	}
-		else
+	else
 		{
 			document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
 			document.aggiungiproposta.submit();

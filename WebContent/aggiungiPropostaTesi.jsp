@@ -64,7 +64,7 @@
 						</div>
 
 					<div class="form-group">
-                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1" min="1"> giorni
+                        <label for="inputTempo">Durata</label> <input type="number" class="count" name="tempo" value="1" min="1" max="365"> giorni
 					</div>
 					
 					<div class="form-group" >
