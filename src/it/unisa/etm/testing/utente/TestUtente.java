@@ -300,7 +300,7 @@ public class TestUtente {
 		valida2="!valido";
 		studenteNotOk.setValidazione(valida);
 		docenteNotOk.setValidazione(valida2);
-		assertEquals("valido",studenteNotOk.getValidazione());
-		assertEquals("valido", docenteNotOk.getValidazione());
+		assertEquals("!valido",studenteNotOk.getValidazione());
+		assertEquals("!valido", docenteNotOk.getValidazione());
 	}
 }
