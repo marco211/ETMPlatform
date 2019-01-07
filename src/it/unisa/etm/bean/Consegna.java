@@ -37,7 +37,7 @@ public class Consegna implements Serializable {
 	}
 	
 	public void setDescrzione(String descrione) {
-		this.descrizione = descrizione;
+		this.descrizione = descrione;
 	}
 	
 	public String getScadenza() {
