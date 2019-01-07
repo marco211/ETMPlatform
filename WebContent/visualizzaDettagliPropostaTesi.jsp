@@ -48,16 +48,18 @@ if(utente==null){
     						if(u.getPropostaTesi_ID()==propostatesi.getId())
     							b = true;
     				}if(b){
+    					if(!propostatesi.isArchiviato()){
     				%>
     						
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>Non puoi eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
   
     			
-    				<%}}%> 
+    				<%}}} %>
     				<%if((propostatesi.isChiuso())&&(!propostatesi.isArchiviato())){%>
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">chiusa</u></p>
     				<%} %>
     				<%if(propostatesi.isArchiviato()){%>
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>Questa proposta di tesi è stata completata</p>
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">archiviata</u></p>
     				<%} %>
     			</div>
@@ -87,14 +89,15 @@ if(utente==null){
   		 	<div class="list-group p-3 card">
   		 	<div class="card-body">
   		 	<%if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
+  		 		boolean c = false;
     			if((!propostatesi.isChiuso())&&(!propostatesi.isArchiviato())){%>
     			<a class = "btn bg-warning " href="ChiudiPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>"  id="ChiudiProposta" data-toggle="tooltip" data-placement="bottom" title="Chiudi la proposta tesi: essa è terminata e non più accessibile a nuove richiesta"><i class="fas fa-door-closed "></i></a>
-    			<%} %>
+    			<%c=true;} %>
     			<%if(!propostatesi.isArchiviato()){ %>				
     	    	<a class = "btn bg-warning " href="ArchiviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>" id="ArchiviaProposta" data-toggle="tooltip" data-placement="bottom" title="Archivia la proposta tesi: essa è ancora in atto ma non più accessibile a nuove richiesta"><i class="fas fa-archive " style="display: inline"></i></a>				
     			
     		        <a class = "btn bg-warning "href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>&propostatesi_titolo=<%=propostatesi.getTitolo()%>&propostatesi_ambito=<%=propostatesi.getAmbito()%>&propostatesi_tempo=<%=propostatesi.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=propostatesi.getDecrizione()%>&propostatesi_materia=<%=propostatesi.getMaterie()%>"  id="ModificaProposta" data-toggle="tooltip" data-placement="bottom" title="Modifica la proposta tesi"><i class="fas fa-edit" style="display: inline"></i></a>
-    			<% }%>
+    			<% c=true;}%>
     			<%boolean b1 = false;
     			for(Utente u : utenti){
     					if(u.getPropostaTesi_ID()==propostatesi.getId())
@@ -103,7 +106,12 @@ if(utente==null){
     			%>
     			<a  class = "btn bg-warning "  href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" " id="RimuoviProposta" data-toggle="tooltip" data-placement="bottom" title="Rimuovi la proposta tesi"><i class="fas fa-trash-alt"></i></a>
     			
-    			<%}}else if(utente.getTipo().equals("d")){%>
+    			<%c=true;}
+    			if(!c){
+    				%>
+    				<p>Questa proposta di tesi è stata completata</p>
+    			<%}
+    			}else if(utente.getTipo().equals("d")){%>
     			<p>Questa non è una tua proposta di tesi</p>
     			<%}else{
     				boolean b2 = false;

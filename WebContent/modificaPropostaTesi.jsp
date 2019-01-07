@@ -44,7 +44,7 @@
 				
 			<main role="main" class="container">
 		<div class="row">
-			<div class="col-md-8 my-4">
+			<div class="col-md-12 my-4">
 				<div class="card mb-3">
 					<div class="card-body " style="min-height: 80vh;">
 						<div class="form-inline mb-3 pb-3"
@@ -93,31 +93,7 @@
 				</form></div>
 				</div>
 			</div>
-			<aside class="col-md-4 my-4">
-			<div class="p-3 card" style="min-height: 25vh;">
-			<h4 class="font-italic">Utente</h4>
-				<div class="row">
-					<div class="col">
-						<b>email</b>
-					</div>
-					<div class="col">
-						<b>Nome e Cognome</b>
-					</div>
-					<div class="w-100" style="border-bottom: 1px solid"></div>
-					<div class="col">
-						<a
-							href="VisualizzaProfiloUtenteServlet?utente_email=<%=utente.getEmail()%>"><%=utente.getEmail() %></a>
-					</div>
-					<div class="col">
-					<%=utente.getNome()%>&nbsp;<%=utente.getCognome() %>
-					</div>
-					<div class="w-100" style="border-bottom: 1px solid"></div>
-					
-				</div>
 
-			</div>
-		</div>
-		</aside>
 	</div>
 	</main>
 	</div>
