@@ -48,12 +48,12 @@ function controlloTempo()
 	var tempo=document.aggiungiproposta.tempo.value;
 	if(tempo=="" || tempo<=0 || tempo>365)
 	{
-		document.aggiungiproposta.descrizione.style.borderColor="red";
+		document.aggiungiproposta.tempo.style.borderColor="red";
 		return false;
 	}
 	else
 	{
-		document.aggiungiproposta.descrizione.style.borderColor="green";
+		document.aggiungiproposta.tempo.style.borderColor="green";
 		return true;
 	}
 }
