@@ -118,14 +118,6 @@
 					</button>
 				</div>
 			</form>
-			<!-- 
-          <ul class="navbar-nav d-none d-lg-block d-xl-block">
-          <li class="nav-item">
-          	<a>Benvenuto, </a>
-          	<a class="nav-link text-dark"
-					href="#">Visualizza profilo</a></li>
-			</ul>
-			 -->
 			 <%if(utente!=null) {%>
 			 <form action="VisualizzaProfiloUtenteServlet" method="post" class="d-none d-lg-block d-xl-block">
 	          		<input type="hidden" name="utente_email" value="<%=utente.getEmail()%>">
@@ -147,9 +139,9 @@
 				</li>
 			</ul>
 					<%if(utente!=null) {%>
-			<p class="my-2 ml-3">Benvenuto, <%=utente.getNome() %></p>
+			<i class="my-2 ml-3" style="color: orange;">Benvenuto, <%=utente.getNome() %></i>
 			<%}else if(admin!=null){ %>
-			<p class="my-2 ml-3">Benvenuto, <%=admin.getNome() %></p>
+			<i class="my-2 ml-3" style="color: orange;">Benvenuto, <%=admin.getNome() %></i>
 			<%} %>
 		</div>
 	</nav>
