@@ -1,24 +1,26 @@
 package it.unisa.etm.testing.utente;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+
 
 import it.unisa.etm.bean.Insegna;
 
 public class TestInsegna {
-	private Insegna insegnaOk,insegnaNotOk;
+	private static Insegna insegnaOk,insegnaNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		insegnaOk=new Insegna("utente1@unisa.it","Insegnamento1");
 		insegnaNotOk=new Insegna("utente2@unisa.it","Insegnamento2");
 	}
 	
-	@AfterAll
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		insegnaOk=null;
 		insegnaNotOk=null;
 	}
@@ -29,7 +31,7 @@ public class TestInsegna {
 		assertEquals(email,"utente1@unisa.it"); //utente email corretta
 		
 		email=insegnaNotOk.getUtenteEmail();
-		assertEquals(email,"utente2@unisa.it"); //utente email sbagliata, l'utente email corretta è utente2@unisa.it
+		assertNotEquals(email,"utente3@unisa.it"); //utente email sbagliata, l'utente email corretta è utente2@unisa.it
 	}
 
 	@Test
@@ -49,7 +51,7 @@ public class TestInsegna {
 		assertEquals(nome,"Insegnamento1"); //nome insegamento corretto
 		
 		nome=insegnaNotOk.getInsegnamentoNome();
-		assertEquals(nome,"Insegnamento2"); //nome insegamento sbagliato, il nome dell'insegnamento corretto è Insegnamento2
+		assertNotEquals(nome,"Insegnamento3"); //nome insegamento sbagliato, il nome dell'insegnamento corretto è Insegnamento2
 	}
 
 	@Test

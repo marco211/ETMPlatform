@@ -1,26 +1,26 @@
 package it.unisa.etm.testing.areacondivisa;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-
-
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+
 
 import it.unisa.etm.bean.File;
 
 public class TestFile {
-	private File fileOk,fileNotOk;
+	private static File fileOk,fileNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		fileOk=new File("File1",1, "descrizione1", 30,"descrizione voto1","email1@unisa.it");
 		fileNotOk=new File("File2",2, "descrizione2", 18,"descrizione voto2","email2@unisa.it");
 	}
 	
-	@AfterAll
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		fileOk=null;
 		fileNotOk=null;
 	}
@@ -31,7 +31,7 @@ public class TestFile {
 		assertEquals(nome,"File1"); //nome corretto
 		
 		nome=fileNotOk.getNome();
-		assertEquals(nome,"File3"); //nome sbagliato, il nome giusto è File2
+		assertNotEquals(nome,"File3"); //nome sbagliato, il nome giusto è File2
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class TestFile {
 		assertEquals(email,"email1@unisa.it"); //email corretta
 		
 		email=fileNotOk.getEmail();
-		assertEquals(email,"email2@unisa.it"); //email sbagliata, l'email giusta è email2@unisa.it
+		assertNotEquals(email,"email3@unisa.it"); //email sbagliata, l'email giusta è email2@unisa.it
 		
 	}
 
@@ -72,7 +72,7 @@ public class TestFile {
 		assertEquals(voto,30); //voto corretto
 		
 		voto=fileNotOk.getVoto();
-		assertEquals(voto,23); //voto sbagliato, il voto corretto è 18
+		assertNotEquals(voto,23); //voto sbagliato, il voto corretto è 18
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TestFile {
 		assertEquals(descrizione,"descrizione1");//descrizione corretta
 		
 		descrizione=fileNotOk.getDescrizione();
-		assertEquals(descrizione,"descrizione3");//descrzione sbagliata, la descrizione giusta è descrizione2
+		assertNotEquals(descrizione,"descrizione3");//descrzione sbagliata, la descrizione giusta è descrizione2
 	}
 	
 	@Test
@@ -112,7 +112,7 @@ public class TestFile {
 		assertEquals(descrizione,"descrizione voto1"); //descrizione voto corretta
 		
 		descrizione=fileNotOk.getDescrizioneVoto();
-		assertEquals(descrizione,"descrizione voto3"); //descrizione voto sbagliata, la descrizione voto giusta è descrizione voto2
+		assertNotEquals(descrizione,"descrizione voto3"); //descrizione voto sbagliata, la descrizione voto giusta è descrizione voto2
 	}
 
 	@Test
@@ -132,7 +132,7 @@ public class TestFile {
 		assertEquals(id,1); //proposta tesi id corretto
 		
 		id=fileNotOk.getPropostaTesiId();
-		assertEquals(id,3); //proposta tesi id sbagliato, il proposta tesi id corretto è 2
+		assertNotEquals(id,3); //proposta tesi id sbagliato, il proposta tesi id corretto è 2
 	}
 	@Test
 	public void testSetPropostaTesiId() {

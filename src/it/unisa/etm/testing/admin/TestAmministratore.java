@@ -3,24 +3,24 @@ package it.unisa.etm.testing.admin;
 import it.unisa.etm.bean.Amministratore;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
-
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class TestAmministratore {
 
-	private Amministratore adminOk, adminNotOk;
+	private static Amministratore adminOk, adminNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		adminOk=new Amministratore("boss@admin.it","Marco","Della Medaglia","qwert");
 		adminNotOk=new Amministratore("false@admin.it","Paolo","Bonolis","qwert");
 	}
 	
-	@AfterAll
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		adminOk=null;
 		adminNotOk=null;
 	}
@@ -31,7 +31,7 @@ public class TestAmministratore {
 		assertEquals(password,"qwert"); //password giusta
 		
 		password=adminNotOk.getPassword();
-		assertEquals(password,"ciao"); //password sbagliata, la password giusta è qwert
+		assertNotEquals(password,"ciao"); //password sbagliata, la password giusta è qwert
 	}
 	
 	
@@ -52,7 +52,7 @@ public class TestAmministratore {
 		assertEquals(nome,"Marco"); //nome giusto
 		
 		nome=adminNotOk.getNome();
-		assertEquals(nome,"Domenico"); //nome sbagliato, il nome giusto è Paolo
+		assertNotEquals(nome,"Domenico"); //nome sbagliato, il nome giusto è Paolo
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class TestAmministratore {
 		assertEquals(cognome,"Della Medaglia");//cognome giusto
 		
 		cognome=adminNotOk.getCognome();
-		assertEquals(cognome,"Nappi"); //cognome sbagliato, il cognome giusto è Bonolis
+		assertNotEquals(cognome,"Nappi"); //cognome sbagliato, il cognome giusto è Bonolis
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TestAmministratore {
 		assertEquals(email,"boss@admin.it");//email giusta
 		
 		email=adminNotOk.getEmail();
-		assertEquals(email,"false@admin.it"); //email sbagliata, l'email giusta è false@admin.it
+		assertNotEquals(email,"false0303@admin.it"); //email sbagliata, l'email giusta è false@admin.it
 	}
 
 	@Test

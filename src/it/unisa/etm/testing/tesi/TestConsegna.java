@@ -1,6 +1,7 @@
 package it.unisa.etm.testing.tesi;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -30,7 +31,7 @@ public class TestConsegna {
 		assertEquals(nome,"Consegna1");// nome giusto
 		
 		nome=consegnaNotOk.getNome();
-		assertEquals(nome,"Consegna2");// nome sbagliato, il nome giusto è Consegna2
+		assertNotEquals(nome,"Consegna0303");// nome sbagliato, il nome giusto è Consegna2
 	}
 	
 	@Test
@@ -50,7 +51,7 @@ public class TestConsegna {
 		assertEquals(descrizione,"Descrizione consegna1");// descrizione giusta
 		
 		descrizione=consegnaNotOk.getDescrzione();
-		assertEquals(descrizione,"Descrizione consegna0303");// descrizione sbagliata, la descrizione giusta è "Descrizione consegna2"
+		assertNotEquals(descrizione,"Descrizione consegna0303");// descrizione sbagliata, la descrizione giusta è "Descrizione consegna2"
 	}
 	
 	@Test
@@ -70,7 +71,7 @@ public class TestConsegna {
 		assertEquals(scadenza,"scadenza1");//scadenza giusta
 		
 		scadenza=consegnaNotOk.getScadenza();
-		assertEquals(scadenza,"scadenza0303");//scadenza sbaglita, la descrizione corretta è scadenza2
+		assertNotEquals(scadenza,"scadenza0303");//scadenza sbaglita, la descrizione corretta è scadenza2
 	}
 	
 	@Test
@@ -90,7 +91,7 @@ public class TestConsegna {
 		assertEquals(id,1); //proposta tesi id giusto
 		
 		id=consegnaNotOk.getPropostaTesiId();
-		assertEquals(id,3); //proposta tesi id sbagliato, quello giusto è 3
+		assertNotEquals(id,3); //proposta tesi id sbagliato, quello giusto è 3
 	}
 
 	@Test

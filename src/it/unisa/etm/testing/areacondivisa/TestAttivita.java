@@ -5,30 +5,28 @@ import it.unisa.etm.bean.Attivita;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class TestAttivita {
 	
-	private Attivita attivitaOk;
-	private Attivita attivitaNotOk;
-	private LocalDate date=LocalDate.now();
+	private static Attivita attivitaOk, attivitaNotOk;
 	
-	@BeforeAll
-	public void setUp() {
-		attivitaOk=new Attivita("email@unisa.it","File1",this.date,"A",1);
-		attivitaNotOk=new Attivita("false@unisa.it","File2",this.date,"B",2);
+	@BeforeClass
+	public static void setUp() {
+		attivitaOk=new Attivita("email@unisa.it","File1",LocalDate.now(),"A",1);
+		attivitaNotOk=new Attivita("false@unisa.it","File2",LocalDate.now(),"B",2);
 	}
 	
-	@AfterAll
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		attivitaOk=null;
 		attivitaNotOk=null;
 	}
 	
 	@Test
-	void testGetId() {
+	public void testGetId() {
 		//non è implementato nel costruttore di Attivita
 	}
 
@@ -43,7 +41,7 @@ public class TestAttivita {
 		assertEquals(email,"email@unisa.it"); //email giusta
 		
 		email=attivitaNotOk.getUtente_Email();
-		assertEquals(email,"sbagliata@email.it"); //email sbagliata, l'ìemail giusta è false@unisa.it
+		assertNotEquals(email,"sbagliata@email.it"); //email sbagliata, l'ìemail giusta è false@unisa.it
 		
 		
 	}
@@ -65,7 +63,7 @@ public class TestAttivita {
 		assertEquals(nomeFile,"File1");//nome file giusto
 		
 		nomeFile=attivitaNotOk.getNomeFile();
-		assertEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto è File2
+		assertNotEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto è File2
 	}
 
 	@Test
@@ -85,7 +83,7 @@ public class TestAttivita {
 		assertEquals(date,attivitaOk.getData());// data giusta
 		
 		date=attivitaNotOk.getData();
-		assertEquals(date,"2001-01-01");// data sbagliata, poiché la data inserita nel test è già passata
+		assertNotEquals(date,"2001-01-01");// data sbagliata, poiché la data inserita nel test è già passata
 	}
 
 	@Test
@@ -104,7 +102,7 @@ public class TestAttivita {
 		assertEquals(tipo,"A");// tipo giusto
 		
 		tipo=attivitaNotOk.getTipo();
-		assertEquals(tipo,"C"); // tipo sbagliato, il tipo giusto è B
+		assertNotEquals(tipo,"C"); // tipo sbagliato, il tipo giusto è B
 	}
 
 	@Test
@@ -124,7 +122,7 @@ public class TestAttivita {
 		assertEquals(id,1);// proposta tesi id giusto
 		
 		id=attivitaNotOk.getPropostatesi_id();
-		assertEquals(id,3);// proposta tesi id sbagliato, il proposta tesi id giusto è 2
+		assertNotEquals(id,3);// proposta tesi id sbagliato, il proposta tesi id giusto è 2
 	}
 
 	@Test
@@ -135,7 +133,7 @@ public class TestAttivita {
 		
 		id=2;
 		attivitaNotOk.setPropostatesi_id(id);
-		assertEquals(1,attivitaNotOk.getPropostatesi_id());
+		assertEquals(2,attivitaNotOk.getPropostatesi_id());
 	}
 	
 		
