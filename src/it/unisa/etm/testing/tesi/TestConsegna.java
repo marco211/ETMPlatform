@@ -2,36 +2,26 @@ package it.unisa.etm.testing.tesi;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
 
 import it.unisa.etm.bean.Consegna;
 
 public class TestConsegna {
-	private Consegna consegnaOk, consegnaNotOk;
+	private static Consegna consegnaOk, consegnaNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		consegnaOk=new Consegna("Consegna1","Descrizione consegna1","scadenza1",1);
 		consegnaNotOk=new Consegna("Consegna2","Descrizione consegna2","scadenza2",2);
 	}
 	
-	@AfterAll
+	@AfterClass
 	public void tearDown() {
 		consegnaOk=null;
 		consegnaNotOk=null;
-	}
-	
-	@Test
-	public void testGetId() {
-		//non è implementato nel costruttore di Consegna
-
-	}
-	
-	@Test
-	public void testSetId() {
-		//non è implementato nel costruttore di Consegna
+		
 	}
 	
 	@Test
