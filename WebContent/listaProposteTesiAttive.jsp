@@ -47,19 +47,15 @@ function cambiaColore(){
 							<%
 								ArrayList<PropostaTesi> proposte = (ArrayList<PropostaTesi>) request.getAttribute("proposte");
 								for (PropostaTesi p : proposte) {
+									if(!p.isArchiviato()){
 							%>
 							<tr class="pt-1" id="lista">
 								<td style="border-style: none"><a
 									href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=p.getId()%>"><%=p.getTitolo()%></a>
 								</td>
 								<td style="border-style: none">
-									<%
-										if ((p.isArchiviato()) && (!p.isChiuso())) {
-									%>
-									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è ancora in atto ma non più accessibile a nuove richiesta">
-										Archiviata<i class="fas fa-archive my-1 d-none d-md-block"></i>
-									</p> <%
- 	} else if (p.isChiuso()) {
+									 <%
+ 	if (p.isChiuso()) {
  %>
 									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">
 										Chiusa<i class="fas fa-door-closed my-1 d-none d-md-block"></i>
@@ -77,7 +73,7 @@ function cambiaColore(){
 								</td>
 							</tr>
 							<%
-								}
+								}}
 							%>
 						</table>
 				</div>

@@ -408,7 +408,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 
 	@Override
 	public ArrayList<PropostaTesi> getTesiRecenti() {
-		String SQL="SELECT * FROM PROPOSTATESI ORDER BY ID DESC LIMIT 8;";
+		String SQL="SELECT * FROM PROPOSTATESI WHERE Archiviato = false ORDER BY ID DESC LIMIT 8;";
 		Connection connection=null;
 		PreparedStatement statement=null;
 		ArrayList<PropostaTesi> list=new ArrayList<PropostaTesi>();
