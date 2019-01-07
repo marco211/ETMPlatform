@@ -18,7 +18,7 @@ public class TestConsegna {
 	}
 	
 	@AfterClass
-	public void tearDown() {
+	public static void tearDown() {
 		consegnaOk=null;
 		consegnaNotOk=null;
 		
@@ -30,7 +30,7 @@ public class TestConsegna {
 		assertEquals(nome,"Consegna1");// nome giusto
 		
 		nome=consegnaNotOk.getNome();
-		assertEquals(nome,"Consegna3");// nome sbagliato, il nome giusto è Consegna2
+		assertEquals(nome,"Consegna2");// nome sbagliato, il nome giusto è Consegna2
 	}
 	
 	@Test
@@ -77,11 +77,11 @@ public class TestConsegna {
 	public void testSetScadenza() {
 		String scadenza="scadenza1";
 		consegnaOk.setScadenza(scadenza);
-		assertEquals("scandenza1",consegnaOk.getScadenza());
+		assertEquals("scadenza1",consegnaOk.getScadenza());
 		
 		scadenza="scadenza2";
 		consegnaNotOk.setScadenza(scadenza);
-		assertEquals("scandenza2",consegnaNotOk.getScadenza());
+		assertEquals("scadenza2",consegnaNotOk.getScadenza());
 	}
 	
 	@Test

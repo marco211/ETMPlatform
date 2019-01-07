@@ -2,26 +2,27 @@ package it.unisa.etm.testing.tesi;
 
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 import it.unisa.etm.bean.RichiestaPartecipazione;
 
 public class TestRichiestaPartecipazione {
-	private RichiestaPartecipazione richiestaOk;
-	private RichiestaPartecipazione richiestaNotOk;
-	private LocalDate date=LocalDate.now();
+	private static RichiestaPartecipazione richiestaOk;
+	private static RichiestaPartecipazione richiestaNotOk;
+	
 	
 
-	@BeforeAll
-	public void setUp() {
-		richiestaOk= new RichiestaPartecipazione(this.date,11,"umberto@unisa,it");
-		richiestaNotOk= new RichiestaPartecipazione(this.date,999,"error@fail.com");
+	@BeforeClass
+	public static void setUp() {
+		LocalDate date=LocalDate.now();
+		richiestaOk= new RichiestaPartecipazione(date,11,"umberto@unisa,it");
+		richiestaNotOk= new RichiestaPartecipazione(date,999,"error@fail.com");
 		
 	}
 	
-	@AfterAll
+	@AfterClass
 	public void tearDown() {
 		richiestaOk=null;
 		richiestaNotOk=null;

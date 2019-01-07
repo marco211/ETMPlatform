@@ -10,7 +10,6 @@ public class Partecipa implements Serializable {
 	}
 	
 	public Partecipa(int propostaTesiId, String utenteEmail) {
-		super();
 		this.propostaTesiId = propostaTesiId;
 		this.utenteEmail = utenteEmail;
 	}

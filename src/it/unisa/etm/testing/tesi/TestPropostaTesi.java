@@ -3,23 +3,23 @@ package it.unisa.etm.testing.tesi;
 import it.unisa.etm.bean.PropostaTesi;
 
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 public class TestPropostaTesi {
-	private PropostaTesi propostaOk;
-	private PropostaTesi propostaNotOk;
+	private static PropostaTesi propostaOk;
+	private static PropostaTesi propostaNotOk;
 	
 
-	@BeforeAll
+	@BeforeClass
 	public void setUp() {
 		propostaOk= new PropostaTesi("I sistemi Operativi", "Informatica", 20,"Architettura","Breve Descrizione","umberto@unisa.it",false,false );
 		propostaNotOk= new PropostaTesi("Errori a non finire 123","Pasta E Patate",120,"Fallimentare","Nessuna Descrizione","error@fail.com", true, true);
 		
 	}
 	
-	@AfterAll
+	@AfterClass
 	public void tearDown() {
 		propostaOk=null;
 		propostaNotOk=null;

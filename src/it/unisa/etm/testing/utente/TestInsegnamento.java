@@ -2,21 +2,21 @@ package it.unisa.etm.testing.utente;
 
 import it.unisa.etm.bean.Insegnamento;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 
 public class TestInsegnamento {
-	private Insegnamento insegnamentoOk;
-	private Insegnamento insegnamentoNotOk;
+	private static Insegnamento insegnamentoOk;
+	private static Insegnamento insegnamentoNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		insegnamentoOk= new Insegnamento("Informatica",12);
 		insegnamentoNotOk= new Insegnamento("PastaConIlTonno",142);
 		
 	}
-	@AfterAll
+	@AfterClass
 	public void tearDown() {
 		insegnamentoOk=null;
 		insegnamentoNotOk=null;

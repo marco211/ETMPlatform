@@ -3,17 +3,14 @@ package it.unisa.etm.testing.utente;
 import java.util.ArrayList;
 import it.unisa.etm.bean.Utente;
 import static org.junit.jupiter.api.Assertions.*;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.Test;
 public class TestUtente {
-	private Utente studenteOk;
-	private Utente studenteNotOk;
-	private Utente docenteOk;
-	private Utente docenteNotOk;
+	private static Utente studenteOk, studenteNotOk, docenteOk, docenteNotOk;
 	
-	@BeforeAll
-	public void setUp() {
+	@BeforeClass
+	public static void setUp() {
 		studenteOk= new Utente("Carpio","1993-05-25","Umberto","s","umberto@unisa.it","umberto123","123456","valido");
 		studenteNotOk= new Utente("Error","1900-01-02","Fail","x","error@fail.com","error123","111111","!valido");
 		docenteOk= new Utente("Ferrucci","1974-11-14","3B","d","Filomena","f.ferrucci@unisa.it","is2019","Ingegneria del Software","valido");
@@ -21,8 +18,8 @@ public class TestUtente {
 		
 	}
 	
-	@AfterAll
-	public void tearDown() {
+	@AfterClass
+	public static void tearDown() {
 		studenteOk=null;
 		studenteNotOk=null;
 		docenteOk= null;
@@ -263,14 +260,6 @@ public class TestUtente {
 		assertEquals("Errore del Software", docenteNotOk.getInsegnamento());
 		
 		
-	}
-	@Test
-	public void testGetPropostaTesi_ID() {
-		// Non Implementato dal Costruttore
-	}
-	@Test
-	public void testSetPropostaTesi_ID() {
-		//Non Implementato dal Costruttore
 	}
 	@Test
 	public void testGetValidazione(){
