@@ -54,8 +54,11 @@ if(utente==null){
   
     			
     				<%}}%> 
-    				<%if(propostatesi.isChiuso()){%>
+    				<%if((propostatesi.isChiuso())&&(!propostatesi.isArchiviato())){%>
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">chiusa</u></p>
+    				<%} %>
+    				<%if(propostatesi.isArchiviato()){%>
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">archiviata</u></p>
     				<%} %>
     			</div>
         <table class="table border-bottom border-solid mb-3 py-1">

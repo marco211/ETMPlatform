@@ -191,7 +191,7 @@ function cambiaColore(){
           ArrayList<PropostaTesi> proposte = (ArrayList<PropostaTesi>) request.getAttribute("proposte");%>
            <aside class="col-md-4 my-4">
           <div class="p-3 card">
-              <h4 class="font-italic"><b>Le mie Proposte Tesi Attive</b></h4>   
+              <h4 class="font-italic"><b>Le mie Proposte Tesi</b></h4>   
             <%
 								if (proposte != null) {
 							%>
