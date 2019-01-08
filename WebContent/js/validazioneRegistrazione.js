@@ -30,8 +30,18 @@ function controlloCognome()
 
 function controlloEmail()
 {
+
 	var lettere5=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
 	var email=document.registrazione.email.value;
+	
+	
+	var startIndex = email.indexOf("@");
+	
+    var finalPart = email.substring(startIndex, email.length);
+	if(finalPart === '@studenti.unisa.it' || finalPart === '@unisa.it'){
+		document.registrazione.email.style.borderColor="green";
+	}
+	/*
 	if(email.length<10 || email.length>40)
 	{
 		document.registrazione.email.style.borderColor="red";
@@ -42,11 +52,13 @@ function controlloEmail()
 		document.registrazione.email.style.borderColor="red";
 		return false;
 	}
+	*/
 	else
 	{
-		document.registrazione.email.style.borderColor="green";
+		document.registrazione.email.style.borderColor="red";
 		return true;
 	}
+	
 }
 
 function controlloMatricola()
