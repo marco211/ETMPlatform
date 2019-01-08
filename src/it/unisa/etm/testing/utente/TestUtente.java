@@ -2,10 +2,11 @@ package it.unisa.etm.testing.utente;
 
 import java.util.ArrayList;
 import it.unisa.etm.bean.Utente;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 public class TestUtente {
 	private static Utente studenteOk, studenteNotOk, docenteOk, docenteNotOk;
 	
@@ -34,8 +35,8 @@ public class TestUtente {
 		
 		cognome= studenteNotOk.getCognome();
 		cognome2= docenteNotOk.getCognome();
-		assertEquals(cognome,"Error");//Cognome Studente Errato
-		assertEquals(cognome2, "Error");//Cognome Docente Errato
+		assertNotEquals(cognome,"Error2");//Cognome Studente Errato
+		assertNotEquals(cognome2, "Err3or");//Cognome Docente Errato
 	}
 	@Test
 	public void testSetCognome() {
@@ -64,8 +65,8 @@ public class TestUtente {
 		
 		data= studenteNotOk.getDataDiNascita();
 		data2= docenteNotOk.getDataDiNascita();
-		assertEquals(data,"1900-01-02");
-		assertEquals(data2,"1900-01-02");//Data Errata
+		assertNotEquals(data,"1900-02-02");
+		assertNotEquals(data2,"1900-01-04");//Data Errata
 		
 	}
 	@Test
@@ -91,7 +92,7 @@ public class TestUtente {
 		assertEquals(matricola, "123456");// Matricola Corretta
 		
 		matricola= studenteNotOk.getMatricola();
-		assertEquals(matricola, "111111");// Matricola Errata
+		assertNotEquals(matricola, "1113341");// Matricola Errata
 	}
 	@Test
 	public void testSetMatricola() {
@@ -110,7 +111,7 @@ public class TestUtente {
 		assertEquals(ufficio, "3B");// Ufficio Corretto
 		
 		ufficio= docenteNotOk.getUfficio();
-		assertEquals(ufficio, "XX");// Ufficio Errato
+		assertNotEquals(ufficio, "X3X");// Ufficio Errato
 	}
 	@Test
 	public void testSetUfficio() {
@@ -133,8 +134,8 @@ public class TestUtente {
 		tipo= studenteNotOk.getTipo();
 		tipo2= docenteNotOk.getTipo();
 		
-		assertEquals(tipo, "x");//Tipo Errato
-		assertEquals(tipo2, "x");//Tipo Errato
+		assertNotEquals(tipo, "b");//Tipo Errato
+		assertNotEquals(tipo2, "b");//Tipo Errato
 	}
 	@Test
 	public void testSetTipo() {
@@ -162,8 +163,8 @@ public class TestUtente {
 		
 		nome= studenteNotOk.getNome();
 		nome2= docenteNotOk.getNome();
-		assertEquals(nome,"Fail");// Nome Studente Errato
-		assertEquals(nome2, "Fail");// Nome Docente Errato
+		assertNotEquals(nome,"Fai23l");// Nome Studente Errato
+		assertNotEquals(nome2, "Fail2");// Nome Docente Errato
 	}
 	@Test
 	public void testSetNome() {
@@ -191,8 +192,8 @@ public class TestUtente {
 		
 		email= studenteNotOk.getEmail();
 		email2= docenteNotOk.getEmail();
-		assertEquals(email,"Fail");// Email Studente Errato
-		assertEquals(email2, "Fail");// Email Docente Errato
+		assertNotEquals(email,"error@fail2.com");// Email Studente Errato
+		assertNotEquals(email2, "error@fa3il.com");// Email Docente Errato
 		
 	}
 	@Test
@@ -220,8 +221,8 @@ public class TestUtente {
 		
 		password= studenteNotOk.getPassword();
 		password2= docenteNotOk.getPassword();
-		assertEquals(password,"error123");//Password Studente Errato
-		assertEquals(password2, "error123");//Password Docente Errato
+		assertNotEquals(password,"error12309");//Password Studente Errato
+		assertNotEquals(password2, "error12893");//Password Docente Errato
 		
 	}
 	@Test
@@ -243,11 +244,11 @@ public class TestUtente {
 	}
 	@Test	
 	public void testGetInsegnamento() {
-		ArrayList<String> insegnamento= docenteOk.getInsegnamento();
+		ArrayList <String> insegnamento= docenteOk.getInsegnamento();
 		assertEquals(insegnamento,"Ingegneria del Software");// Insegnamento Corretto
 		
 		insegnamento= docenteNotOk.getInsegnamento();
-		assertEquals(insegnamento, "Errore del Software");// Insegnamento Errato
+		assertNotEquals(insegnamento, "Errore del23 Software");// Insegnamento Errato
 	}
 	@Test
 	public void testSetInsegnamento() {
@@ -271,8 +272,8 @@ public class TestUtente {
 		valida= studenteNotOk.getValidazione();
 		valida2= docenteNotOk.getValidazione();
 		
-		assertEquals(valida,"!valido");// Studente Validato in modo Errato
-		assertEquals(valida2,"!valido");// Docente Validato in modo Errato
+		assertNotEquals(valida,"!3valido");// Studente Validato in modo Errato
+		assertNotEquals(valida2,"!2valido");// Docente Validato in modo Errato
 		
 		
 	}

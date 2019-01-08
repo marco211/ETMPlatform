@@ -1,10 +1,11 @@
 package it.unisa.etm.testing.utente;
 
 import it.unisa.etm.bean.Insegnamento;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class TestInsegnamento {
 	private static Insegnamento insegnamentoOk;
@@ -17,7 +18,7 @@ public class TestInsegnamento {
 		
 	}
 	@AfterClass
-	public void tearDown() {
+	public static void tearDown() {
 		insegnamentoOk=null;
 		insegnamentoNotOk=null;
 		
@@ -27,7 +28,7 @@ public class TestInsegnamento {
 		int cfu= insegnamentoOk.getCfu();
 		assertEquals(cfu,12); //CFU giusti
 		cfu= insegnamentoNotOk.getCfu();
-		assertEquals(cfu,142);//CFU errati
+		assertNotEquals(cfu,1434);//CFU errati
 	}
 	@Test
 	public void testSetCfu() {
@@ -45,7 +46,7 @@ public class TestInsegnamento {
 		assertEquals(nome, "Informatica");
 		
 		nome= insegnamentoNotOk.getNome();
-		assertEquals(nome, "PastaConIlTonno");
+		assertNotEquals(nome, "PastaConIlTonn34o");
 		
 	}
 

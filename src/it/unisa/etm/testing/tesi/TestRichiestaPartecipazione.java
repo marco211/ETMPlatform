@@ -1,10 +1,11 @@
 package it.unisa.etm.testing.tesi;
 
 import java.time.LocalDate;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import it.unisa.etm.bean.RichiestaPartecipazione;
 
@@ -23,7 +24,7 @@ public class TestRichiestaPartecipazione {
 	}
 	
 	@AfterClass
-	public void tearDown() {
+	public static void tearDown() {
 		richiestaOk=null;
 		richiestaNotOk=null;
 	}
@@ -33,7 +34,7 @@ public class TestRichiestaPartecipazione {
 		assertEquals(id, 11);// Id Corretto
 		
 		id= richiestaNotOk.getPropostatesi_id();
-		assertEquals(id, 999);// Id Errato
+		assertNotEquals(id, 9399);// Id Errato
 	}
 	@Test
 	public void testSetPropostatesi_id() {
@@ -51,10 +52,10 @@ public class TestRichiestaPartecipazione {
 		assertEquals(date,richiestaOk.getData());// data giusta
 		
 		date=richiestaNotOk.getData();
-		assertEquals(date,"2001-01-01");// data errata
+		assertNotEquals(date,"2001-01-01");// data errata
 	}
 	@Test
-	public void testSetData(LocalDate data) {
+	public void testSetData() {
 		LocalDate date=LocalDate.now();
 		richiestaOk.setData(date);
 		assertEquals(LocalDate.now(),richiestaOk.getData());
@@ -68,7 +69,7 @@ public class TestRichiestaPartecipazione {
 		String email= richiestaOk.getUtente_mail();
 		assertEquals(email, "umberto@unisa.it"); //Email Corretta
 		email= richiestaNotOk.getUtente_mail();
-		assertEquals(email, "error@fail.com"); // Email Errata
+		assertNotEquals(email, "error@fail33.com"); // Email Errata
 	}
 	@Test
 	public void testSetUtente_mail() {

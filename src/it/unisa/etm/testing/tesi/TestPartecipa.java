@@ -3,16 +3,15 @@ package it.unisa.etm.testing.tesi;
 import it.unisa.etm.bean.Partecipa;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
-
+import static org.junit.Assert.assertNotEquals;
 public class TestPartecipa {
-	private static Partecipa partecipaOk;
-	private static Partecipa partecipaNotOk;
+	private static Partecipa partecipaOk, partecipaNotOk;
 	
 	@BeforeClass
 	public static void setUp() {
-		partecipaOk= new Partecipa(1,"umberto@unisa,it");
+		partecipaOk= new Partecipa(1,"umberto@unisa.it");
 		partecipaNotOk= new Partecipa(2,"error@fail.com");
 		
 	}
@@ -28,7 +27,7 @@ public class TestPartecipa {
 		assertEquals(id,1); // Id Corretto
 		
 		id= partecipaNotOk.getPropostaTesiId();
-		assertEquals(id,2); // Id Errato
+		assertNotEquals(id,32); // Id Errato
 		
 	}	
 	@Test
@@ -45,7 +44,7 @@ public class TestPartecipa {
 		String utenteEmail= partecipaOk.getUtenteEmail();
 		assertEquals(utenteEmail, "umberto@unisa.it"); //Email Corretta
 		utenteEmail= partecipaNotOk.getUtenteEmail();
-		assertEquals(utenteEmail, "error@fail.com"); // Email Errata
+		assertNotEquals(utenteEmail, "error@fa3il.com"); // Email Errata
 		
 		
 	}

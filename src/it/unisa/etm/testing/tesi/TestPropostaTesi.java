@@ -2,10 +2,11 @@ package it.unisa.etm.testing.tesi;
 
 import it.unisa.etm.bean.PropostaTesi;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class TestPropostaTesi {
 	private static PropostaTesi propostaOk;
@@ -13,14 +14,14 @@ public class TestPropostaTesi {
 	
 
 	@BeforeClass
-	public void setUp() {
+	public static void setUp() {
 		propostaOk= new PropostaTesi("I sistemi Operativi", "Informatica", 20,"Architettura","Breve Descrizione","umberto@unisa.it",false,false );
 		propostaNotOk= new PropostaTesi("Errori a non finire 123","Pasta E Patate",120,"Fallimentare","Nessuna Descrizione","error@fail.com", true, true);
 		
 	}
 	
 	@AfterClass
-	public void tearDown() {
+	public static void tearDown() {
 		propostaOk=null;
 		propostaNotOk=null;
 	}
@@ -29,7 +30,7 @@ public class TestPropostaTesi {
 		String titolo = propostaOk.getTitolo();
 		assertEquals(titolo, "I sistemi Operativi");// Titolo Corretto
 		titolo = propostaNotOk.getTitolo();
-		assertEquals(titolo, "Errori a non finire 123"); // Titolo errato
+		assertNotEquals(titolo, "Errori a nweon finire 123"); // Titolo errato
 	}
 	@Test
 	public void testSetTitolo() {
@@ -46,7 +47,7 @@ public class TestPropostaTesi {
 		String ambito = propostaOk.getAmbito();
 		assertEquals(ambito, "Informatica");// Ambito Corretto
 		ambito = propostaNotOk.getAmbito();
-		assertEquals(ambito, "Pasta E Patate"); // Ambito errato
+		assertNotEquals(ambito, "Pasta ewE Patate"); // Ambito errato
 	}
 	@Test
 	public void testSetAmbito() {
@@ -63,7 +64,7 @@ public class TestPropostaTesi {
 		int tempo = propostaOk.getTempoDiSviluppo();
 		assertEquals(tempo, 20);// Tempo  di sviluppo Corretto
 		tempo = propostaNotOk.getTempoDiSviluppo();
-		assertEquals(tempo, 120); // Tempo di sviluppo errato
+		assertNotEquals(tempo, 12340); // Tempo di sviluppo errato
 	}
 	@Test
 	public void testSetTempoDiSviluppo() {
@@ -80,10 +81,10 @@ public class TestPropostaTesi {
 		String materia = propostaOk.getMaterie();
 		assertEquals(materia, "Architettura");// Materia Corretto
 		materia = propostaNotOk.getMaterie();
-		assertEquals(materia, "Fallimentare"); // Materia errato
+		assertNotEquals(materia, "Fall43imentare"); // Materia errato
 	}
 	@Test
-	public void testSetMaterie(String materie) {
+	public void testSetMaterie() {
 		String materia = "Architettura";
 		propostaOk.setMaterie(materia);
 		assertEquals("Architettura", propostaOk.getMaterie());
@@ -97,7 +98,7 @@ public class TestPropostaTesi {
 		String descrizione = propostaOk.getDecrizione();
 		assertEquals(descrizione, "Breve Descrizione");// Materia Corretto
 		descrizione = propostaNotOk.getDecrizione();
-		assertEquals(descrizione, "Nessuna Descrizione"); // Materia errato
+		assertNotEquals(descrizione, "Nessuna Descr34izione"); // Materia errato
 	}
 	@Test
 	public void testSetDecrizione() {
@@ -115,7 +116,7 @@ public class TestPropostaTesi {
 		assertEquals(email,"umberto@unisa.it"); // Email corretta
 		
 		email = propostaNotOk.getUtenteEmail();
-		assertEquals(email, "error@fail.com"); // Email errata
+		assertNotEquals(email, "error@fail32.com"); // Email errata
 	}
 	@Test
 	public void testSetUtenteEmail() {
@@ -133,7 +134,7 @@ public class TestPropostaTesi {
 		assertEquals(chiuso, false);
 		
 		chiuso = propostaNotOk.isChiuso();
-		assertEquals(chiuso, true);
+		assertNotEquals(chiuso, false);
 	}
 	@Test
 	public void testSetChiuso() {
@@ -152,7 +153,7 @@ public class TestPropostaTesi {
 		assertEquals(archiviato, false);
 		
 		archiviato = propostaNotOk.isArchiviato();
-		assertEquals(archiviato, true);
+		assertNotEquals(archiviato, false);
 		
 	}
 	@Test
