@@ -16,6 +16,7 @@
 <body>
 <%int count = (int)request.getAttribute("count"); %>
 <jsp:include page="header.jsp"/>
+<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
 <section id="cover">
     <div id="cover-caption">
         <div id="container" class="container">
@@ -76,6 +77,7 @@
     </div>
 
 </section>
+</div>
 <jsp:include page="footer.jsp" />
 </body>
 </html>

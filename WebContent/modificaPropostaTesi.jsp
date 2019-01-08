@@ -39,7 +39,7 @@
 
 
 <%PropostaTesi proposta = (PropostaTesi) request.getAttribute("propostacorrente"); %>
-	<div style="background-color: #FF9C08; min-height: 81vh;">
+	<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
 			<%ArrayList<Insegnamento> insegnamenti =(ArrayList<Insegnamento>) request.getAttribute("insegnamenti"); %>
 				
 			<main role="main" class="container">

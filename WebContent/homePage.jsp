@@ -59,7 +59,7 @@ function cambiaColore(){
 
 <jsp:include page="header.jsp"/>
 
-<div style="background-image: linear-gradient(to bottom right, orange, yellow);; min-height: 81vh;">
+<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);; min-height: 81vh;">
 <main role="main" class="container">
       <div class="row">  
         <div class="col-md-8 my-4">

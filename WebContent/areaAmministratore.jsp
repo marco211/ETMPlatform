@@ -24,7 +24,7 @@ if(utente == null || !(utente.getTipo().equals("a"))){
 
 <jsp:include page="header.jsp"/>
 
-<div style="background-color: #FF9C08">
+<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
 <main role="main" class="container">
 
       <div class="row">  
