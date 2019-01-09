@@ -38,8 +38,24 @@ if(utente==null){
   		<div class="col-md-8 my-4">
         <div class="card mb-3">
         <div class="card-body">
-    			<div class="border-bottom border-solid mb-3 py-1">
-    					<h3 class="card-title"><%=propostatesi.getTitolo()%></h3>
+    			<div class="container emp-profile">
+    			<div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img alt="load" src="img/logo.png"	width="100%">
+                        </div>
+                    </div>
+                     <div class="col-md-6">
+                        <div class="profile-head">
+    					<h5 class="card-title"><%=propostatesi.getTitolo()%></h5>
+    					<ul class="nav nav-tabs" id="myTab" role="tablist">
+                                <li class="nav-item">
+                                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Informazioni della proposta di tesi</a>
+                                </li>
+                                </ul>
+                                </div>
+                    </div>
+                </div>
     			<%
     				ArrayList<Utente> utenti = (ArrayList<Utente>)request.getAttribute("utenti");
     				if(utente.getEmail().equals(propostatesi.getUtenteEmail())){
@@ -50,41 +66,75 @@ if(utente==null){
     				}if(b){
     					if(!propostatesi.isArchiviato()){
     				%>
-    						
-    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>Non puoi eliminare questa proposta di tesi perchè uno o più studenti vi stanno partecipando</p>
+    				
+    					<div class="col-md-6">
+                                               
+    				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>A questa proposta di tesi vi stanno partecipando uno o più studenti.</p>
   
-    			
+    			</div>
     				<%}}} %>
     				<%if((propostatesi.isChiuso())&&(!propostatesi.isArchiviato())){%>
+    				 <div class="col-md-6">
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">chiusa</u></p>
+    				</div>
     				<%} %>
     				<%if(propostatesi.isArchiviato()){%>
+    				    					<div class="col-md-6">
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2 mt-1"></i>Questa proposta di tesi è stata completata</p>
     				<p class="py-0 my-0" style="font-size: small;"><i class="fas fa-exclamation pr-2"></i>La proposta di tesi è <u data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">archiviata</u></p>
+    				</div>
     				<%} %>
-    			</div>
-        <table class="table border-bottom border-solid mb-3 py-1">
-        
-    						
-    			<tr class="pt-1" id="lista">
-								<td style="border-style: none">
-    			<h5 class="font-weight-normal">Descrizione:
-    			 <%=propostatesi.getDecrizione()%></h5>
-    			 </td>
-    			 </tr>
+        <div class="row">
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Descrizione:
+    											 </label>
+                                            </div>
+    										<div class="col-md-6">
+                                                <p><%=propostatesi.getDecrizione()%></p>
+                                            </div>
+                                            </div>
     			
-    			<tr class="pt-1" id="lista">
-								<td style="border-style: none">
-				<p>Ambito: <%=propostatesi.getAmbito()%></p>
-				</td>
-					
-    			</table>
-				<small class="pt-3 font-weight-bold">Autore: <%=docente.getCognome()%>, <%=docente.getNome() %></small>
+    										<div class="row">
+                                            <div class="col-md-6">
+                                                <label>Ambito:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%=propostatesi.getAmbito()%></p>
+                                            </div>
+                                            </div>
+                                            
+											<div class="row">
+                                            <div class="col-md-6">
+                                                <label>Cognome dell'autore:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%=docente.getCognome()%></p>
+                                            </div>
+                                            </div>
+                                            
+                                            <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nome dell'autore:</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p><%=docente.getNome() %></p>
+                                            </div>
+                                            </div>
 				
   		</div>
-  	</div>	
-  </div>		
-  
+                        </div>
+                    </div>
+                </div>
+        </div>
+ 		  </div>
+ 		  </div>
+ 		  </div>
+  		
+ 
   		 <aside class="col-md-4 my-4">
   		 	<div class="list-group p-3 card">
   		 	<div class="card-body">
@@ -98,15 +148,10 @@ if(utente==null){
     			
     		        <a class = "btn bg-warning "href="ModificaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>&propostatesi_titolo=<%=propostatesi.getTitolo()%>&propostatesi_ambito=<%=propostatesi.getAmbito()%>&propostatesi_tempo=<%=propostatesi.getTempoDiSviluppo()%>&propostatesi_descrizione=<%=propostatesi.getDecrizione()%>&propostatesi_materia=<%=propostatesi.getMaterie()%>"  id="ModificaProposta" data-toggle="tooltip" data-placement="bottom" title="Modifica la proposta tesi"><i class="fas fa-edit" style="display: inline"></i></a>
     			<% c=true;}%>
-    			<%boolean b1 = false;
-    			for(Utente u : utenti){
-    					if(u.getPropostaTesi_ID()==propostatesi.getId())
-    						b1 = true;
-    			}if(!b1){
-    			%>
+    			
     			<a  class = "btn bg-warning "  href="RimuoviPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId()%>" " id="RimuoviProposta" data-toggle="tooltip" data-placement="bottom" title="Rimuovi la proposta tesi"><i class="fas fa-trash-alt"></i></a>
     			
-    			<%c=true;}
+    			<%
     			if(!c){
     				%>
     				<p>Questa proposta di tesi è stata completata</p>
