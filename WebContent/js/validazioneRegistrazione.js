@@ -1,7 +1,14 @@
 function controlloNome()
 {
+	var lettere=/^[a-z A-Z]+$/;
+	var lettere2=/^[ ]+$/;
 	var nome=document.registrazione.nome.value;
-	if(nome.length==0 || nome.length>30)
+	if(nome.length==0 || nome.length>30 || !nome.match(lettere))
+	{
+		document.registrazione.nome.style.borderColor="red";
+		return false;
+	}
+	else if(nome.match(lettere2))
 	{
 		document.registrazione.nome.style.borderColor="red";
 		return false;
@@ -15,8 +22,15 @@ function controlloNome()
 
 function controlloCognome()
 {
+	var lettere=/^[a-z A-Z]+$/;
+	var lettere2=/^[ ]+$/;
 	var cognome=document.registrazione.cognome.value;
-	if(cognome.length==0 || cognome.length>30)
+	if(cognome.length==0 || cognome.length>30 || !cognome.match(lettere))
+	{
+		document.registrazione.cognome.style.borderColor="red";
+		return false;
+	}
+	else if(cognome.match(lettere2))
 	{
 		document.registrazione.cognome.style.borderColor="red";
 		return false;
@@ -30,18 +44,8 @@ function controlloCognome()
 
 function controlloEmail()
 {
-
 	var lettere5=/^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-]{2,})+\.)+([a-zA-Z0-9]{2,})+$/;
 	var email=document.registrazione.email.value;
-	
-	
-	var startIndex = email.indexOf("@");
-	
-    var finalPart = email.substring(startIndex, email.length);
-	if(finalPart === '@studenti.unisa.it' || finalPart === '@unisa.it'){
-		document.registrazione.email.style.borderColor="green";
-	}
-	/*
 	if(email.length<10 || email.length>40)
 	{
 		document.registrazione.email.style.borderColor="red";
@@ -52,13 +56,36 @@ function controlloEmail()
 		document.registrazione.email.style.borderColor="red";
 		return false;
 	}
-	*/
 	else
 	{
-		document.registrazione.email.style.borderColor="red";
-		return true;
+		var tipo=document.registrazione.tipo.value;
+		if(tipo=="s")
+		{
+			if(email.substring(email.indexOf("@"), email.length)==='@studenti.unisa.it')
+			{
+				document.registrazione.email.style.borderColor="green";
+				return true;
+			}
+			else
+			{
+				document.registrazione.email.style.borderColor="red";
+				return false;
+			}
+		}
+		else
+		{
+			if(email.substring(email.indexOf("@"), email.length)==='@unisa.it')
+			{
+				document.registrazione.email.style.borderColor="green";
+				return true;
+			}
+			else
+			{
+				document.registrazione.email.style.borderColor="red";
+				return false;
+			}
+		}	
 	}
-	
 }
 
 function controlloMatricola()
