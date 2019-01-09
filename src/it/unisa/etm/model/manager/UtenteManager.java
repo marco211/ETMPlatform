@@ -113,9 +113,10 @@ public  class UtenteManager implements UtenteModelInterface{
 			Connection istance=DatabaseManager.getIstance();
 			PreparedStatement ps=null;
 			String insertSQL=null;
-			insertSQL = "UPDATE utente SET password=? WHERE email='"+ utente.getEmail()+"';";
+			insertSQL = "UPDATE utente SET password=? WHERE email=?;";
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getPassword());
+			ps.setString(2, utente.getEmail());
 			return true;
 		} catch(SQLException e) {
 			return false;
@@ -130,12 +131,13 @@ public  class UtenteManager implements UtenteModelInterface{
 			String insertSQL=null;
 			if(utente.getTipo().equals("s"))
 			{
-				insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=?, matricola=? WHERE email='"+ utente.getEmail() +"';";
+				insertSQL = "UPDATE utente SET nome=? , cognome=? , data_nascita=?, matricola=? WHERE email=?;";
 				ps=istance.prepareStatement(insertSQL);
 				ps.setString(1, utente.getNome());;
 				ps.setString(2, utente.getCognome());
 				ps.setString(3, utente.getDataDiNascita());
 				ps.setString(4, utente.getMatricola());
+				ps.setString(5,  utente.getEmail());
 				ps.executeUpdate();
 			}
 			else
