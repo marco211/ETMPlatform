@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.unisa.etm.bean.Partecipa;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.database.DatabaseManager;
@@ -65,6 +64,9 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 	@Override
 	public boolean eliminaUtente(String email){
 		Utente utente= this.getUtente(email);
+		if(utente==null)
+			return false;
+		
 		Connection connection=null;
 		PreparedStatement prepared1=null;
 		PreparedStatement prepared2=null;
@@ -134,43 +136,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 		return null;
 	}
 
-	@Override
-	public List<Utente> cercaUtente(String nome){
-		String SQL="SELECT u FROM Utente WHERE u.nome="+nome+";";
-		Connection connection=null;
-		PreparedStatement statement=null;
-		ArrayList <Utente> utenti=null;
-		try {
-			connection=DatabaseManager.getIstance();
-			statement=connection.prepareStatement(SQL);
-			ResultSet rs=statement.executeQuery(SQL);
-			utenti=new ArrayList<Utente>();
-			while(rs.next()) {
-				Utente utente=new Utente();
-				utente.setEmail(rs.getString(1));
-				utente.setNome(rs.getString(2));
-				utente.setCognome(rs.getString(3));
-				utente.setPassword(rs.getString(4));
-				utente.setDataDiNascita(rs.getString(5));
-				utente.setPropostaTesi_ID(rs.getInt(6));
-				utente.setMatricola(rs.getString(7));
-				utente.setUfficio(rs.getString(8));
-				utente.setTipo(rs.getString(9));
-				utenti.add(utente);
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try{
-				statement.close();
-			}catch(SQLException e) {
-				e.printStackTrace();
-				return null;
-			}
-		}
-		return utenti;
-	}
-
+	
 }
 	
 	

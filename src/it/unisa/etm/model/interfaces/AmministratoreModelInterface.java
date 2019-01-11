@@ -41,6 +41,6 @@ public interface AmministratoreModelInterface{
 	 * <p>
 	 * null in caso di insuccesso.
 	 */
-	public List<Utente> cercaUtente(String nome);
+	
 }
 

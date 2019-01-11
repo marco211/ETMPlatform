@@ -53,6 +53,10 @@ public class FileManager implements FileModelInterface {
 
 	@Override
 	public boolean modificaFile(int idTesi, String nomeFile, int voto, String descrizioneVoto) {
+		File file=this.getFile(idTesi, nomeFile);
+		if(file==null)
+			return false;
+		
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement("UPDATE FILE SET Voto=?,Descrizione_Voto=?  Where Nome=? AND PropostaTesi_Id=?");
@@ -70,6 +74,9 @@ public class FileManager implements FileModelInterface {
 	
 	@Override
 	public boolean eliminaFile(int idTesi, String nomeFile) {
+		File file=this.getFile(idTesi, nomeFile);
+		if(file==null)
+			return false;
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement("DELETE FROM FILE Where Nome=? AND PropostaTesi_Id=?");
@@ -110,6 +117,10 @@ public class FileManager implements FileModelInterface {
 
 	@Override
 	public File scaricaFile(int idTesi, String nomeFile){
+		File file=this.getFile(idTesi, nomeFile);
+		if(file==null)
+			return null;
+		
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement("SELECT * FROM FILE WHERE NOME=? AND PROPOSTATESI_ID=?");
@@ -134,6 +145,9 @@ public class FileManager implements FileModelInterface {
 
 	@Override
 	public ArrayList<File> getListaFile(int idTesi){
+		if(idTesi < 0)
+			return null;
+		
 		String sql="SELECT * FROM FILE WHERE PROPOSTATESI_ID=?";
 		try {
 			connection=DatabaseManager.getIstance();

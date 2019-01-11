@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.tesi;
+package it.unisa.etm.testing.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;

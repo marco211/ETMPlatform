@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.autentificazione;
+package it.unisa.etm.testing.integration;
 
 public class AutentificazioneManagerTest {
 

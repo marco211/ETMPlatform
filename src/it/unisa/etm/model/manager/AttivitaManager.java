@@ -18,6 +18,7 @@ public class AttivitaManager implements AttivitaModelInterface {
 
 	@Override
 	public boolean aggiungiAttivita(Attivita attivita) {
+		
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement("INSERT INTO ATTIVITA (UTENTE_EMAIL,NOMEFILE,DATA,TIPO,PROPOSTATESI_ID) VALUES (?,?,?,?,?)");

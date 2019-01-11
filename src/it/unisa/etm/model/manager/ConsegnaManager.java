@@ -40,6 +40,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 
 	@Override
 	public boolean modificaConsegna(String scadenza, int id){
+		Consegna consegna=this.getConsegna(id);
+		if(consegna==null)
+			return false;
 		try {
 			connection=DatabaseManager.getIstance();
 			prepared=connection.prepareStatement("UPDATE CONSEGNA SET Scadenza=? Where Id=?");
@@ -56,6 +59,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	
 	@Override
 	public boolean eliminaConsegna(int id){
+		if(id<0)
+			return false;
+		
 		String selectSQL="DELETE FROM Consegna WHERE ID=?";
 		try {
 			connection=DatabaseManager.getIstance();
@@ -94,6 +100,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	
 	@Override
 	public ArrayList<Consegna> getListaConsegne(int propostaTesiId){
+		if(propostaTesiId<0)
+			return null;
+		
 		String selectSQL="SELECT * FROM CONSEGNA WHERE PROPOSTATESI_ID=?";
 		try {
 			connection=DatabaseManager.getIstance();

@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.admin;
+package it.unisa.etm.testing.unit;
 
 import it.unisa.etm.bean.Amministratore;
 

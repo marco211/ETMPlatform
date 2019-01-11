@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.tesi;
+package it.unisa.etm.testing.unit;
 
 import it.unisa.etm.bean.Partecipa;
 import org.junit.AfterClass;

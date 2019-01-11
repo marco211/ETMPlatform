@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.areacondivisa;
+package it.unisa.etm.testing.integration;
 
 public class AreaCondivisaManagerTest {
 

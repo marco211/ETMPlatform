@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.utente;
+package it.unisa.etm.testing.unit;
 
 import it.unisa.etm.bean.Insegnamento;
 import static org.junit.Assert.assertNotEquals;

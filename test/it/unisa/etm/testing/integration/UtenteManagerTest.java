@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.utente;
+package it.unisa.etm.testing.integration;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.manager.AmministratoreManager;

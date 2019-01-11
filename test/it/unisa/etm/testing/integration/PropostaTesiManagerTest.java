@@ -1,4 +1,4 @@
-package it.unisa.etm.testing.tesi;
+package it.unisa.etm.testing.integration;
 
 public class PropostaTesiManagerTest {
 
