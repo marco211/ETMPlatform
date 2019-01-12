@@ -19,14 +19,6 @@ public class Attivita implements Serializable{
 		this.propostatesi_id = propostatesi_id;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	public String getUtente_Email() {
 		return utente_Email;
 	}

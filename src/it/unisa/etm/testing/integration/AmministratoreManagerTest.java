@@ -12,6 +12,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import it.unisa.etm.bean.Utente;
+import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 import it.unisa.etm.model.manager.UtenteManager;
@@ -21,7 +22,7 @@ public class AmministratoreManagerTest {
 	
 	@BeforeClass
 	public static void setUp() {
-		amministratoreManager= new AmministratoreManager();
+		amministratoreManager= (AmministratoreManager) new ManagerFactory().createAmministratoreManager();
 	}
 	
 	@AfterClass

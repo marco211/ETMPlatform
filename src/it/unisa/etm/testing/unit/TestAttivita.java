@@ -127,5 +127,14 @@ public class TestAttivita {
 		assertEquals(2,attivitaNotOk.getPropostatesi_id());
 	}
 	
+	@Test
+	public void testGetId() {
+		
+	}
+	
+	@Test
+	public void testSetId() {
+		
+	}
 		
 }
