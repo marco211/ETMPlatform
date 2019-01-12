@@ -15,29 +15,27 @@ import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.model.manager.AttivitaManager;
 
 public class AttivitaManagerTest {
-	private static AttivitaManager attivitaOk, attivitaNotOk;
+	private static AttivitaManager attivitaManager;
 	
 	@BeforeClass
 	public static void setUp() {
-		attivitaOk=new AttivitaManager();
-		attivitaNotOk=new AttivitaManager();
+		attivitaManager = new AttivitaManager();
 	}
 	
 	@AfterClass
 	public static void tearDown() {
-		attivitaOk=null;
-		attivitaNotOk=null;
+		attivitaManager = null;
 	}
 	
 	
 	@Test
 	public void testAggiungiAttivita() {
 		Attivita attivita=new Attivita("etm.utente@studenti.unisa.it","File1.pdf",LocalDate.now(),"A",1);
-		boolean test=attivitaOk.aggiungiAttivita(attivita); //restituisce true
+		boolean test = attivitaManager.aggiungiAttivita(attivita); //restituisce true
 		assertTrue(test); 
 		
-		attivita=new Attivita("email1@unisa.it","File2",LocalDate.now(),"B",2);
-		test=attivitaNotOk.aggiungiAttivita(attivita);
+		attivita = new Attivita("email1@unisa.it","File2",LocalDate.now(),"B",2);
+		test=attivitaManager.aggiungiAttivita(attivita);
 		assertFalse(test); //restituisce false perché aggiungiAttivita lancia una SQLException
 	}
 	
@@ -46,8 +44,6 @@ public class AttivitaManagerTest {
 		ArrayList<Attivita> lista=attivitaOk.getListaAttivita(1);
 		assertNotEquals(lista,null); //restituisce la lista
 		
-		lista=attivitaNotOk.getListaAttivita(1);
-		assertNotEquals(lista,null); //restituisce la lista
 	}
 	
 	

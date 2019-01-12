@@ -13,51 +13,51 @@ import org.junit.Test;
 
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.manager.AmministratoreManager;
+import it.unisa.etm.model.manager.AutenticazioneManager;
+import it.unisa.etm.model.manager.UtenteManager;
 
 public class AmministratoreManagerTest {
-	private static AmministratoreManager amministratoreOk, amministratoreNotOk;
+	private static AmministratoreManager amministratoreManager;
 	
 	@BeforeClass
 	public static void setUp() {
-		amministratoreOk= new AmministratoreManager();
-		amministratoreNotOk= new AmministratoreManager();
-		
+		amministratoreManager= new AmministratoreManager();
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("ProvaTest", "21/02/2000", "Test", "s", "emailtest@unisa.it")));
 	}
 	
 	@AfterClass
 	public static void tearDown() {
-		amministratoreOk=null;
-		amministratoreNotOk=null;
+		amministratoreManager = null;
 	}
 	
 	@Test
 	public void testGetListaUtente() {
-		ArrayList<Utente> lista=(ArrayList<Utente>) amministratoreOk.getListaUtenti();
+		ArrayList<Utente> lista=(ArrayList<Utente>) amministratoreManager.getListaUtenti();
 		assertNotEquals(null,lista); //restituisce la lista
-		
-		lista=(ArrayList<Utente>) amministratoreNotOk.getListaUtenti();
-		assertNotEquals(null,lista); //restituisce la lista
-	}
-	
-	@Test
-	public void testEliminaUtente() {
-		boolean test=amministratoreOk.eliminaUtente(amministratoreOk.getListaUtenti().get(0).getEmail());
-		assertTrue(test); //ritorna true 
-		
-		test=amministratoreNotOk.eliminaUtente("fakeemail@email.it");
-		assertFalse(test); //ritorna false poiché non esiste nessun utente associato alla email fakeemail@email.it
 		
 	}
 	
 	@Test
 	public void testGetUtente() {
-		Utente utente=amministratoreOk.getUtente(amministratoreOk.getListaUtenti().get(0).getEmail());
-		assertEquals(utente.getEmail(),amministratoreOk.getListaUtenti().get(0).getEmail()); //ritorna true
+		Utente utente = amministratoreManager.getUtente("emailtest@unisa.it");
+		assertNotEquals(null, utente);
 		
 		
-		utente=amministratoreNotOk.getUtente("fakeemail@email.it");
+		utente=amministratoreManager.getUtente("fakeemail@email.it");
 		assertEquals(utente,null); //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
 	}
+	
+	@Test
+	public void testEliminaUtente() {
+		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");
+		assertTrue(test); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)
+		
+		test=amministratoreManager.eliminaUtente("fakeemail@email.it");
+		assertFalse(test); //ritorna false poiché non esiste nessun utente associato alla email fakeemail@email.it
+		
+	}
+	
+
 	
 	
 }
