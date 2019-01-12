@@ -1,5 +1,5 @@
 package it.unisa.etm.testing.integration;
 
-public class AutentificazioneManagerTest {
+public class AutenticazioneManagerTest {
 
 }
