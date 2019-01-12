@@ -18,7 +18,7 @@ import it.unisa.etm.model.manager.FileManager;
 
 public class FileManagerTest {
 	private static FileManager filem;
-	//private File file=fileOk.scaricaFile(1, "File1.pdf");
+	//private File file=filem.scaricaFile(1, "File1.pdf");
 
 	@BeforeClass
 	public static void setUp() {

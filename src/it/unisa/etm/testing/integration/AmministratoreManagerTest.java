@@ -15,7 +15,6 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.AutenticazioneManager;
-import it.unisa.etm.model.manager.UtenteManager;
 
 public class AmministratoreManagerTest {
 	private static AmministratoreManager amministratoreManager;

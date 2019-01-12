@@ -71,6 +71,14 @@ public class Attivita implements Serializable{
 		return "L'utente: "+utente_Email+" ha "+t+" il file: "+NomeFile+" il giorno: "+data+"";
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	private int id;
 	private String utente_Email;
 	private String NomeFile;

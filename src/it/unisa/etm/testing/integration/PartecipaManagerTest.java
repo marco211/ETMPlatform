@@ -17,6 +17,7 @@ public class PartecipaManagerTest {
 	private static PropostaTesiManager pm;
 	private static  PartecipaManager partecipaManager;
 	private static Partecipa partecipaOk;
+	
 	@BeforeClass
 	public static void setUp() {
 		partecipaManager= (PartecipaManager) new ManagerFactory().createPartecipaManager();
