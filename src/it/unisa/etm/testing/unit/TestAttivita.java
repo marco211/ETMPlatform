@@ -1,6 +1,8 @@
 package it.unisa.etm.testing.unit;
 
 import java.time.LocalDate;
+import java.util.logging.Logger;
+
 import it.unisa.etm.bean.Attivita;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -17,6 +19,7 @@ public class TestAttivita {
 	public static void setUp() {
 		attivitaOk=new Attivita("email@unisa.it","File1",LocalDate.now(),"A",1);
 		attivitaNotOk=new Attivita("false@unisa.it","File2",LocalDate.now(),"B",2);
+		Logger.getLogger("log").info(attivitaOk.toString());
 	}
 	
 	@AfterClass
@@ -127,14 +130,5 @@ public class TestAttivita {
 		assertEquals(2,attivitaNotOk.getPropostatesi_id());
 	}
 	
-	@Test
-	public void testGetId() {
-		
-	}
-	
-	@Test
-	public void testSetId() {
-		
-	}
 		
 }
