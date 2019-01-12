@@ -47,12 +47,6 @@ public class TestUtente {
 		assertEquals("Carpio",studenteOk.getCognome());
 		assertEquals("Ferrucci", docenteOk.getCognome());
 		
-		cognome="Error";
-		cognome2="Error";
-		studenteNotOk.setCognome(cognome);
-		docenteNotOk.setCognome(cognome2);
-		assertEquals("Error", studenteNotOk.getCognome());
-		assertEquals("Error", docenteNotOk.getCognome());
 		
 		
 	}
@@ -78,12 +72,6 @@ public class TestUtente {
 		assertEquals("1993-05-25", studenteOk.getDataDiNascita());
 		assertEquals("1974-11-14", docenteOk.getDataDiNascita());
 		
-		data="1900-01-02";
-		data2="1900-01-02";
-		studenteNotOk.setDataDiNascita(data);
-		docenteNotOk.setDataDiNascita(data2);
-		assertEquals("1900-01-02",studenteNotOk.getDataDiNascita());
-		assertEquals("1900-01-02", docenteNotOk.getDataDiNascita());
 		
 	}
 	@Test
@@ -100,10 +88,6 @@ public class TestUtente {
 		studenteOk.setMatricola(matricola);
 		assertEquals("123456", studenteOk.getMatricola());
 		
-		matricola= "111111";
-		studenteNotOk.setMatricola(matricola);
-		assertEquals("111111", studenteNotOk.getMatricola());
-		
 	}
 	@Test
 	public void testGetUfficio() {
@@ -119,9 +103,6 @@ public class TestUtente {
 		docenteOk.setUfficio(ufficio);
 		assertEquals("3B", docenteOk.getUfficio());
 		
-		ufficio="XX";
-		docenteNotOk.setUfficio(ufficio);
-		assertEquals("XX", docenteNotOk.getUfficio());
 	}
 	@Test
 	public void testGetTipo() {
@@ -146,13 +127,6 @@ public class TestUtente {
 		assertEquals("s", studenteOk.getTipo());
 		assertEquals("d", docenteOk.getTipo());
 		
-		tipo="x";
-		tipo2="x";
-		studenteNotOk.setTipo(tipo);
-		docenteNotOk.setTipo(tipo2);
-		assertEquals("x", studenteNotOk.getTipo());
-		assertEquals("x", docenteNotOk.getTipo());
-		
 	}
 	@Test
 	public void testGetNome() {
@@ -175,12 +149,6 @@ public class TestUtente {
 		assertEquals("Umberto", studenteOk.getNome());
 		assertEquals("Filomena", docenteOk.getNome());
 		
-		nome= "Fail";
-		nome2="Fail";
-		studenteNotOk.setNome(nome);
-		docenteNotOk.setNome(nome2);
-		assertEquals("Fail", studenteNotOk.getNome());
-		assertEquals("Fail", docenteNotOk.getNome());
 		
 	}
 	@Test
@@ -204,13 +172,6 @@ public class TestUtente {
 		docenteOk.setEmail(email2);
 		assertEquals("umberto@unisa.it", studenteOk.getEmail());
 		assertEquals("f.ferrucci@unisa.it", docenteOk.getEmail());
-		
-		email= "error@fail.com";
-		email2="error@fail.com";
-		studenteNotOk.setEmail(email);
-		docenteNotOk.setEmail(email2);
-		assertEquals("error@fail.com", studenteNotOk.getEmail());
-		assertEquals("error@fail.com", docenteNotOk.getEmail());
 	}
 	@Test
 	public void testGetPassword() {
@@ -234,12 +195,6 @@ public class TestUtente {
 		assertEquals("umberto123", studenteOk.getPassword());
 		assertEquals("is2019", docenteOk.getPassword());
 		
-		password= "error123";
-		password2="error123";
-		studenteNotOk.setEmail(password);
-		docenteNotOk.setEmail(password2);
-		assertEquals("error123", studenteNotOk.getPassword());
-		assertEquals("error123", docenteNotOk.getPassword());
 		
 	}
 	@Test	
@@ -256,9 +211,6 @@ public class TestUtente {
 		docenteOk.setInsegnamento(insegnamento);
 		assertNotEquals(null, docenteOk.getInsegnamento());
 		
-		insegnamento= "Errore del Software";
-		docenteNotOk.setInsegnamento(insegnamento);
-		assertNotEquals(null, docenteNotOk.getInsegnamento());
 		
 		
 	}
@@ -286,11 +238,5 @@ public class TestUtente {
 		assertEquals("valido", studenteOk.getValidazione());
 		assertEquals("valido", docenteOk.getValidazione());
 		
-		valida="!valido";
-		valida2="!valido";
-		studenteNotOk.setValidazione(valida);
-		docenteNotOk.setValidazione(valida2);
-		assertEquals("!valido",studenteNotOk.getValidazione());
-		assertEquals("!valido", docenteNotOk.getValidazione());
 	}
 }

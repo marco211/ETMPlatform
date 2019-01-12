@@ -81,9 +81,6 @@ public class TestFile {
 		fileOk.setVoto(voto);
 		assertEquals(30,fileOk.getVoto());
 		
-		voto=18;
-		fileNotOk.setVoto(voto);
-		assertEquals(18,fileNotOk.getVoto());
 	}
 	
 	@Test
@@ -101,9 +98,6 @@ public class TestFile {
 		fileOk.setDescrizione(descrizione);
 		assertEquals("descrizione1",fileOk.getDescrizione());
 		
-		descrizione="descrizione2";
-		fileNotOk.setDescrizione(descrizione);
-		assertEquals("descrizione2",fileNotOk.getDescrizione());
 	}
 
 	@Test
@@ -120,10 +114,6 @@ public class TestFile {
 		String descrizione="descrizione voto1";
 		fileOk.setDescrizioneVoto(descrizione);
 		assertEquals("descrizione voto1",fileOk.getDescrizioneVoto());
-		
-		descrizione="descrizione voto2";
-		fileNotOk.setDescrizioneVoto(descrizione);
-		assertEquals("descrizione voto2",fileNotOk.getDescrizioneVoto());
 	}
 	
 	@Test
@@ -140,28 +130,6 @@ public class TestFile {
 		fileOk.setPropostaTesiId(id);
 		assertEquals(1,fileOk.getPropostaTesiId());
 		
-		id=2;
-		fileNotOk.setPropostaTesiId(id);
-		assertEquals(2,fileNotOk.getPropostaTesiId());
 	}
 	
-	@Test
-	public void testGetFilePart() {
-		//non è implementato nel costruttore di File
-	}
-
-	@Test
-	public void testSetFilePart() {
-		//non è implementato nel costruttore di File
-	}
-
-	@Test
-	public void testGetInputStream() {
-		//non è implementato nel costruttore di File
-	}
-
-	@Test
-	public void testSetInputStream() {
-		//non è implementato nel costruttore di File
-	}
 }

@@ -25,15 +25,6 @@ public class TestAttivita {
 		attivitaNotOk=null;
 	}
 	
-	@Test
-	public void testGetId() {
-		//non è implementato nel costruttore di Attivita
-	}
-
-	@Test
-	public void testSetId() {
-		//non è implementato nel costruttore di Attivita
-	}
 
 	@Test
 	public void testGetUtente_Email() {

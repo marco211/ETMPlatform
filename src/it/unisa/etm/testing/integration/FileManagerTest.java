@@ -15,20 +15,18 @@ import it.unisa.etm.bean.File;
 import it.unisa.etm.model.manager.FileManager;
 
 public class FileManagerTest {
-	private static FileManager fileOk,fileNotOk;
+	private static FileManager filem;
 	//private File file=fileOk.scaricaFile(1, "File1.pdf");
 
 	@BeforeClass
 	public static void setUp() {
-		fileOk= new FileManager();
-		fileNotOk= new FileManager();
+		filem= new FileManager();
 		
 	}
 	
 	@AfterClass
 	public static void tearDown() {
-		fileOk=null;
-		fileNotOk=null;
+		filem=null;
 	}
 	
 	
@@ -47,48 +45,48 @@ public class FileManagerTest {
 	
 	@Test
 	public void testModificaFile() {
-		boolean test=fileOk.modificaFile(1, "File1.pdf", 25, "descrizione modificata1"); //restituisce true
+		boolean test=filem.modificaFile(1, "File1.pdf", 25, "descrizione modificata1"); //restituisce true
 		assertTrue(test); 
 		
-		test=fileNotOk.modificaFile(2, "File010101", 25, "descrizione modificata1"); //restituisce false poché non esiste un file associato a questo nome
+		test=filem.modificaFile(2, "File010101", 25, "descrizione modificata1"); //restituisce false poché non esiste un file associato a questo nome
 		assertFalse(test); 
 		
 	}
 	
 	@Test
 	public void testEliminaFile() {
-		boolean test= fileOk.eliminaFile(1, "File2.pdf"); //restituiscee true
+		boolean test= filem.eliminaFile(1, "File2.pdf"); //restituiscee true
 		assertTrue(test);
 		
-		test= fileNotOk.eliminaFile(1, "File03030"); //restituiscee false poiché non esiste un file associato a questo nome
+		test= filem.eliminaFile(1, "File03030"); //restituiscee false poiché non esiste un file associato a questo nome
 		assertFalse(test);
 	}
 	
 	@Test
 	public void testGetFile() {
-		File file=fileOk.getFile(1, "File1.pdf"); //restituisce il file corrispondente
+		File file=filem.getFile(1, "File1.pdf"); //restituisce il file corrispondente
 		assertNotEquals(file,null);
 		
-		file=fileNotOk.getFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome
+		file=filem.getFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome
 		assertEquals(file,null);
 	}
 	
 	@Test
 	public void TestScaricaFile() {
 		
-		File file=fileOk.scaricaFile(1, "File1.pdf"); //restituisce il file corrispondente
+		File file=filem.scaricaFile(1, "File1.pdf"); //restituisce il file corrispondente
 		assertNotEquals(file,null);
 		
-		file=fileNotOk.scaricaFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome
+		file=filem.scaricaFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome
 		assertEquals(file,null);
 	}
 	
 	@Test
 	public void testGetListaFile() {
-		ArrayList<File> lista=fileOk.getListaFile(1); //restituisce una lista file
+		ArrayList<File> lista=filem.getListaFile(1); //restituisce una lista file
 		assertNotEquals(lista,null);
 		
-		lista=fileNotOk.getListaFile(-1); //restituisce null poché l'id proposta tesi non è corretto
+		lista=filem.getListaFile(-1); //restituisce null poché l'id proposta tesi non è corretto
 		assertEquals(lista,null); 
 	}
 }

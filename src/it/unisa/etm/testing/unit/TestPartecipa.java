@@ -35,9 +35,6 @@ public class TestPartecipa {
 		int id=1;
 		partecipaOk.setPropostaTesiId(id);
 		assertEquals(1,partecipaOk.getPropostaTesiId());
-		id=2;
-		partecipaNotOk.setPropostaTesiId(id);
-		assertEquals(2,partecipaNotOk.getPropostaTesiId());
 	} 
 	@Test
 	public void testGetUtenteEmail() {
@@ -54,9 +51,6 @@ public class TestPartecipa {
 		partecipaOk.setUtenteEmail(email);
 		assertEquals("umberto@unisa.it",email);
 		
-		email= "error@fail.com";
-		partecipaNotOk.setUtenteEmail(email);
-		assertEquals("error@fail.com",email);
 	}
 
 }

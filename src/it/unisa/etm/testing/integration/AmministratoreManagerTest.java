@@ -22,7 +22,6 @@ public class AmministratoreManagerTest {
 	@BeforeClass
 	public static void setUp() {
 		amministratoreManager= new AmministratoreManager();
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("TestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
 	}
 	
 	@AfterClass
@@ -39,9 +38,14 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testGetUtente() {
-		Utente utente = amministratoreManager.getUtente("emailtest@unisa.it");
+		Utente utente = new Utente("TestProva","1900-01-02","Prova","s","test@unisa.it","error123","111111","valido");
+		assertTrue(new AutenticazioneManager().registraUtente(utente));
+		
+		utente = amministratoreManager.getUtente("test@unisa.it");
 		assertNotEquals(null, utente);
 		
+		boolean test=amministratoreManager.eliminaUtente("test@unisa.it");
+		assertTrue(test); 
 		
 		utente=amministratoreManager.getUtente("fakeemail@email.it");
 		assertEquals(utente,null); //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
@@ -49,6 +53,8 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testEliminaUtente() {
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("TestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
+		
 		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");
 		assertTrue(test); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)
 		

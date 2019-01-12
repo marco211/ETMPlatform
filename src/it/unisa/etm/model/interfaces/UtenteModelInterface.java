@@ -10,14 +10,7 @@ import it.unisa.etm.bean.Utente;
  *
  */
 public interface UtenteModelInterface {
-	/**
-	 * Torna gli utenti con quel determinato nome.
-	 * @param name indica il nome dell'utente che di vuole cercare.
-	 * @return lista di oggetti Utente che rappresentano gli utenti con in nome cercato, in caso di successo;
-	 * <p>
-	 * null nel caso che nessun utente abbia quel nome o in caso d'insuccesso.
-	 */
-	public List<Utente> getUtenti(String name) throws SQLException;	
+	
 	
 	/**
 	 * Si occupa della modifica della propria password da parte di un determinato utente.

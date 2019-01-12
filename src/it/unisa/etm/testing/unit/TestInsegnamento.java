@@ -14,7 +14,7 @@ public class TestInsegnamento {
 	@BeforeClass
 	public static void setUp() {
 		insegnamentoOk= new Insegnamento("Informatica",12);
-		insegnamentoNotOk= new Insegnamento("PastaConIlTonno",142);
+		insegnamentoNotOk= new Insegnamento("Pasta",142);
 		
 	}
 	@AfterClass
@@ -36,9 +36,6 @@ public class TestInsegnamento {
 		insegnamentoOk.setCfu(cfu);
 		assertEquals(12,insegnamentoOk.getCfu());
 		
-		cfu= 142;
-		insegnamentoNotOk.setCfu(cfu);
-		assertEquals(142,insegnamentoNotOk.getCfu());
 	}
 
 	public void testGetNome() {
@@ -55,8 +52,5 @@ public class TestInsegnamento {
 		insegnamentoOk.setNome(nome);
 		assertEquals("Informatica",insegnamentoOk.getNome());
 		
-		nome= "PastaConIlTonno";
-		insegnamentoNotOk.setNome(nome);
-		assertEquals(nome,"PastaConIlTonno");
 	}
 }

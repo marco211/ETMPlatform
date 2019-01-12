@@ -39,10 +39,6 @@ public class TestInsegna {
 		String email="utente1@unisa.it";
 		insegnaOk.setUtenteEmail(email);
 		assertEquals("utente1@unisa.it", insegnaOk.getUtenteEmail());
-		
-		email="utente2@unisa.it";
-		insegnaNotOk.setUtenteEmail(email);
-		assertEquals("utente2@unisa.it", insegnaNotOk.getUtenteEmail());
 	}
 
 	@Test
@@ -60,9 +56,6 @@ public class TestInsegna {
 		insegnaOk.setInsegnamentoNome(nome);
 		assertEquals("Insegnamento1",insegnaOk.getInsegnamentoNome());
 		
-		nome="Insegnamento2";
-		insegnaNotOk.setInsegnamentoNome(nome);
-		assertEquals("Insegnamento2",insegnaNotOk.getInsegnamentoNome());
 	}
 
 }

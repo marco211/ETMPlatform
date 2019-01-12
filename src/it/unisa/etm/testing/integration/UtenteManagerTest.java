@@ -7,135 +7,107 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertTrue;
 import java.sql.SQLException;
 import java.util.ArrayList;
 public class UtenteManagerTest {
-	private static UtenteManager utenteOk, utenteNotOk;
-	private AmministratoreManager am= new AmministratoreManager();
-	private static Utente studenteNotOk;
-	
+	private static UtenteManager um;
+	private static AmministratoreManager am;
+
 	@BeforeClass
 	public static void setUp() {
-		utenteOk= new UtenteManager();
-		utenteNotOk= new UtenteManager();
-		studenteNotOk= new Utente("Error","1900-01-02","Fail","x","error@fail.com","error123","111111","!valido");
+		um= new UtenteManager();
+		am= new AmministratoreManager();
 	}
-	
-    @AfterClass
-    public static void tearDown() {
-    	utenteOk=null;
-    	utenteNotOk=null;
-    }
-    
-    @Test
-    public void testGetInfo() {
-    	try {
-    		String test=am.getListaUtenti().get(0).getEmail();
-			Utente info= utenteOk.getInfo(test);
-			assertNotEquals(info,null);
-		} catch (SQLException e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    	
-    	try {
-			Utente info=utenteNotOk.getInfo("ciaoneproprio@email.it");
-			assertEquals(info,null);
-		} catch (SQLException e) {
-		}
-    	
-    }
-    @Test
-    public void testCercaUtente() {
-    	String test=am.getListaUtenti().get(0).getEmail();
-    	Utente cerca;
-		try {
-			cerca = utenteOk.cercaUtente(test);
-			assertNotEquals(cerca,null);
-		} catch (SQLException e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-		try {
-			cerca=utenteNotOk.cercaUtente("ciaoneproprio@email.it");
-			assertEquals(cerca, null);
-		} catch (SQLException e) {
-		}
-    	
-    }
-    @Test
-    public void testModificaPassword() {
-    	try {
-			Utente utente=am.getListaUtenti().get(0);
-			boolean modifica= utenteOk.modificaPassword(utente);
-			assertTrue(modifica);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    	try {
-    		boolean modifica= utenteNotOk.modificaPassword(studenteNotOk);
-    		assertTrue(modifica);
-    	}catch (Exception e) {
-		}
-    	
-    	
-    }
-    @Test
-    public void testModificaUtente() {
-    	try {
-			Utente utente=am.getListaUtenti().get(0);
-			boolean modifica= utenteOk.modificaUtente(utente);
-			assertTrue(modifica);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    	try {
-    		boolean modifica=utenteNotOk.modificaUtente(studenteNotOk);
-    		assertTrue(modifica);
-    	}catch (Exception e) {
-		}
-    }
-    @Test
-    public void testCercaListaUtenteNome() {
-    	try {
-			String nome=am.getListaUtenti().get(0).getNome();
-			ArrayList<Utente> modifica= utenteOk.cercaListaUtenteNome(nome);
-			assertNotEquals(modifica, null);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    	try {
-			String nome="giova32nni";
-			ArrayList<Utente> modifica= utenteOk.cercaListaUtenteNome(nome);
-			assertNotEquals(modifica, null);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    }
-    @Test
-    public void testCercaListaUtenteCognome() {
-    	try {
-			String cognome=am.getListaUtenti().get(0).getNome();
-			ArrayList<Utente> modifica= utenteOk.cercaListaUtenteCognome(cognome);
-			assertNotEquals(modifica, null);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    	try {
-			String cognome="giova32nni";
-			ArrayList<Utente> modifica= utenteOk.cercaListaUtenteCognome(cognome);
-			assertNotEquals(modifica, null);
-		} catch (Exception e) {
-			fail("non deve lanciare eccezioni");
-			e.printStackTrace();
-		}
-    }
+
+	@AfterClass
+	public static void tearDown() {
+		um=null;
+		am=null;
+	}
+
+	@Test
+	public void testGetInfo() {
+
+		String email=am.getListaUtenti().get(0).getEmail();
+		Utente info= um.getInfo(email);
+		assertNotEquals(info,null);
+
+		if(!info.getEmail().equals(email)) fail("L'email deve essere uguale a quella inserita");
+
+
+		info=um.getInfo("questaemailnonesiste@email.it");
+		assertEquals(info,null);
+
+
+	}
+	@Test
+	public void testCercaUtente() {
+		String email=am.getListaUtenti().get(0).getEmail();
+		Utente cerca;
+		cerca = um.cercaUtente(email);
+		assertNotEquals(cerca,null);
+
+		cerca=um.cercaUtente("Emailchenonesiste@email.it");
+		assertEquals(cerca, null);
+
+
+	}
+	@Test
+	public void testModificaPassword() {
+		Utente utente=am.getListaUtenti().get(0);
+
+
+		boolean modifica= um.modificaPassword(utente);
+		assertTrue(modifica);
+
+
+		utente.setEmail("emailfake@email.it");
+		modifica= um.modificaPassword(utente);
+		assertFalse(modifica);
+
+
+
+	}
+	@Test
+	public void testModificaUtente() {
+		Utente utente=am.getListaUtenti().get(0);
+
+		boolean modifica= um.modificaUtente(utente);
+		assertTrue(modifica);
+
+
+		utente.setEmail("emailfake@email.it");
+		modifica=um.modificaUtente(utente);
+		assertFalse(modifica);
+
+	}
+	@Test
+	public void testCercaListaUtenteNome() {
+
+		String nome=am.getListaUtenti().get(0).getNome();
+		ArrayList<Utente> modifica= um.cercaListaUtenteNome(nome);
+		assertNotEquals(modifica, null);
+
+		nome="giovaawdaa32nni";
+		modifica= um.cercaListaUtenteNome(nome);
+		assertEquals(0, modifica.size());
+
+	}
+	@Test
+	public void testCercaListaUtenteCognome() {
+
+		String cognome=am.getListaUtenti().get(0).getCognome();
+		ArrayList<Utente> modifica= um.cercaListaUtenteCognome(cognome);
+		assertNotEquals(modifica, null);
+
+
+		cognome="gwdawiova32nni";
+		modifica= um.cercaListaUtenteCognome(cognome);
+		assertEquals(0, modifica.size());
+
+	}
 }

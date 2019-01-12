@@ -67,14 +67,9 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 	private Utente visualizzaProfiloUtente(String email){
 		ManagerFactory em=new ManagerFactory();
 		UtenteManager um=(UtenteManager) em.createUtenteManager();
-		Utente utente;
-		try {
-			utente=um.getInfo(email);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-		return utente;	
+		
+		return um.getInfo(email);
+		
 	}
 	
 }

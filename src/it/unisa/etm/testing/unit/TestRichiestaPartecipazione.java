@@ -42,9 +42,6 @@ public class TestRichiestaPartecipazione {
 		richiestaOk.setPropostatesi_id(id);
 		assertEquals(11, richiestaOk.getPropostatesi_id());
 		
-		id= 999;
-		richiestaNotOk.setPropostatesi_id(id);
-		assertEquals(999, richiestaNotOk.getPropostatesi_id());
 	}
 	@Test
 	public void testGetData() {
@@ -60,8 +57,6 @@ public class TestRichiestaPartecipazione {
 		richiestaOk.setData(date);
 		assertEquals(LocalDate.now(),richiestaOk.getData());
 		
-		richiestaNotOk.setData(date);
-		assertEquals(LocalDate.now(),richiestaNotOk.getData());
 	}
 	
 	@Test
@@ -77,8 +72,5 @@ public class TestRichiestaPartecipazione {
 		richiestaOk.setUtente_mail(email);
 		assertEquals("umberto@unisa.it",email);
 		
-		email= "error@fail.com";
-		richiestaNotOk.setUtente_mail(email);
-		assertEquals("error@fail.com",email);
 	}
 }

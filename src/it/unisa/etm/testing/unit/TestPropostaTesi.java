@@ -38,9 +38,6 @@ public class TestPropostaTesi {
 		propostaOk.setTitolo(titolo);
 		assertEquals("I sistemi Operativi", propostaOk.getTitolo());
 		
-		titolo = "Errori a non finire 123";
-		propostaNotOk.setTitolo(titolo);
-		assertEquals("Errori a non finire 123", propostaNotOk.getTitolo());
 	}
 	@Test
 	public void testGetAmbito() {
@@ -55,9 +52,6 @@ public class TestPropostaTesi {
 		propostaOk.setAmbito(ambito);
 		assertEquals("Informatica", propostaOk.getAmbito());
 		
-		ambito = "Pasta E Patate";
-		propostaNotOk.setAmbito(ambito);
-		assertEquals("Pasta E Patate", propostaNotOk.getAmbito());
 	}
 	@Test
 	public void testGetTempoDiSviluppo() {
@@ -72,9 +66,6 @@ public class TestPropostaTesi {
 		propostaOk.setTempoDiSviluppo(tempo);
 		assertEquals(20, propostaOk.getTempoDiSviluppo());
 		
-		tempo = 120;
-		propostaNotOk.setTempoDiSviluppo(tempo);
-		assertEquals(120, propostaNotOk.getTempoDiSviluppo());
 	}
 	@Test
 	public void testGetMaterie() {
@@ -89,9 +80,6 @@ public class TestPropostaTesi {
 		propostaOk.setMaterie(materia);
 		assertEquals("Architettura", propostaOk.getMaterie());
 		
-		materia = "Fallimentare";
-		propostaNotOk.setMaterie(materia);
-		assertEquals("Fallimentare", propostaNotOk.getMaterie());
 	}
 	@Test
 	public void testGetDecrizione() {
@@ -105,10 +93,6 @@ public class TestPropostaTesi {
 		String descrizione = "Breve Descrizione";
 		propostaOk.setDecrizione(descrizione);
 		assertEquals("Breve Descrizione", propostaOk.getDecrizione());
-		
-		descrizione = "Nessuna Descrizione";
-		propostaNotOk.setDecrizione(descrizione);
-		assertEquals("Nessuna Descrizione", propostaNotOk.getDecrizione());
 	}
 	@Test
 	public void testGetUtenteEmail() {
@@ -124,9 +108,6 @@ public class TestPropostaTesi {
 		propostaOk.setUtenteEmail(email);
 		assertEquals("umberto@unisa.it", propostaOk.getUtenteEmail());
 		
-		email= "error@fail.com";
-		propostaNotOk.setUtenteEmail(email);
-		assertEquals("error@fail.com", propostaNotOk.getUtenteEmail());
 	}
 	@Test
 	public void testIsChiuso() {
@@ -142,9 +123,6 @@ public class TestPropostaTesi {
 		propostaOk.setChiuso(chiuso);
 		assertEquals(false, chiuso);
 
-		chiuso = true;
-		propostaNotOk.setChiuso(chiuso);
-		assertEquals(true,chiuso);
 		
 	}
 	@Test
@@ -162,8 +140,5 @@ public class TestPropostaTesi {
 		propostaOk.setArchiviato(archiviato);
 		assertEquals(false, propostaOk.isArchiviato());
 		
-		archiviato = true ;
-		propostaNotOk.setArchiviato(archiviato);
-		assertEquals(true, propostaNotOk.isArchiviato());
 	}
 }

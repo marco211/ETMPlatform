@@ -114,7 +114,6 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 			prepared.executeUpdate();
 			return true;
 		}catch(SQLException e){
-			e.printStackTrace();
 			return false;
 		}/*finally {
 			try{
