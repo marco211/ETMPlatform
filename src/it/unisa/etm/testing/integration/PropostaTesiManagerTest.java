@@ -73,7 +73,7 @@ public class PropostaTesiManagerTest {
 		boolean inserisciRichiesta= pm.inserisciRichiestaPartecipazione(richiestaOk);
 		assertTrue(inserisciRichiesta);// Inserisce la richiesta correttamente		
 		
-		RichiestaPartecipazione richiestaNotOk= new RichiestaPartecipazione(null,999,null);
+		RichiestaPartecipazione richiestaNotOk= new RichiestaPartecipazione(null,999,"error@fail.it");
 		inserisciRichiesta= pm.inserisciRichiestaPartecipazione(richiestaNotOk);
 		assertFalse(inserisciRichiesta);// L'inserimento non va a buon fine
 	}
