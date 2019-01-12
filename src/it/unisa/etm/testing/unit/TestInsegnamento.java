@@ -38,6 +38,7 @@ public class TestInsegnamento {
 		
 	}
 
+	@Test
 	public void testGetNome() {
 		String nome= insegnamentoOk.getNome();
 		assertEquals(nome, "Informatica");
@@ -47,6 +48,7 @@ public class TestInsegnamento {
 		
 	}
 
+	@Test
 	public void testSetNome() {
 		String nome= "Informatica";
 		insegnamentoOk.setNome(nome);

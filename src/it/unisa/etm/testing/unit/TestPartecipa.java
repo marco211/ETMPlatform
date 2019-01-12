@@ -46,6 +46,7 @@ public class TestPartecipa {
 		
 	}
 
+	@Test
 	public void testSetUtenteEmail() {
 		String email = "umberto@unisa.it";
 		partecipaOk.setUtenteEmail(email);
