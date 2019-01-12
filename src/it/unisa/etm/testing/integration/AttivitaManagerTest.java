@@ -41,7 +41,7 @@ public class AttivitaManagerTest {
 	
 	@Test
 	public void testGetListaAttivita() {
-		ArrayList<Attivita> lista=attivitaOk.getListaAttivita(1);
+		ArrayList<Attivita> lista= attivitaManager.getListaAttivita(1);
 		assertNotEquals(lista,null); //restituisce la lista
 		
 	}

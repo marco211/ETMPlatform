@@ -22,7 +22,7 @@ public class AmministratoreManagerTest {
 	@BeforeClass
 	public static void setUp() {
 		amministratoreManager= new AmministratoreManager();
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("ProvaTest", "21/02/2000", "Test", "s", "emailtest@unisa.it")));
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("TestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
 	}
 	
 	@AfterClass
