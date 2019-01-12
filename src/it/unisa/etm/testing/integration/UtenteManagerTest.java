@@ -11,7 +11,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.fail;
 import static org.junit.Assert.assertTrue;
-import java.sql.SQLException;
 import java.util.ArrayList;
 public class UtenteManagerTest {
 	private static UtenteManager um;
