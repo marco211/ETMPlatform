@@ -34,7 +34,7 @@ public class AttivitaManagerTest {
 		boolean test = attivitaManager.aggiungiAttivita(attivita); //restituisce true
 		assertTrue(test); 
 		
-		attivita = new Attivita("email1@unisa.it","File2",LocalDate.now(),"B",2);
+		attivita = new Attivita("email1@unisa.it","File2.pdf",LocalDate.now(),"B",2);
 		test=attivitaManager.aggiungiAttivita(attivita);
 		assertFalse(test); //restituisce false perché aggiungiAttivita lancia una SQLException
 	}
