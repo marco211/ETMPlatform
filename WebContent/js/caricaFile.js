@@ -16,14 +16,12 @@ function controlloNome()
 function controlloDescrizione()
 {
 	var descrizione=document.carica.descrizioneFile.value;
-
-	if(descrizione.length==0 || descrizione.lenght>5 )
+	var c=descrizione.length;
+	if(descrizione.length==0 || c>1000 )
 	{
 		document.carica.descrizioneFile.style.borderColor="red";
 		return false;
-		if(!descrizione.lenght>5){
-			alert("mammt");
-		}
+		
 	}
 	else
 	{
@@ -53,24 +51,26 @@ function validazione()
 	else if(!controlloDescrizione())
 	{
 		if(!focused){
-			
-	
+			document.carica.descrizioneFile.focus();
+			focused = true;
+		}
 		var descrizione=document.carica.descrizioneFile.value;
-		if(descrizione.length<1)
+		var c=descrizione.length;
+		if(c<1)
 		{
 			div.append("Inserisci una descrizione");
 			document.carica.descrizioneFile.focus();
+			focused=true;
 			
 		}
-		else if(descrizione.length>5)
+		else if(c>1000)
 		{
 			div.append("La descrizione deve essere minore di mille caratteri");
 			document.carica.descrizioneFile.focus();
-			
+			focused=true;
 		}
-		focused = true;
 		}
-	}else
+		else
 	{
 		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
 		document.carica.submit();

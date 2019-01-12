@@ -16,10 +16,12 @@ function controlloVoto()
 function controlloDescrizione()
 {
 	var descrizione=document.valuta.descrizione.value;
-	if(descrizione.length<1 || descrizione.lenght>1000)
+	var c=descrizione.length;
+	if(descrizione.length==0 || c>1000 )
 	{
 		document.valuta.descrizione.style.borderColor="red";
 		return false;
+		
 	}
 	else
 	{
@@ -41,15 +43,28 @@ function validazione()
 		document.valuta.voto.focus();
 		div.append("Inserisci una valutazione");
 	}
-	else if(!controlloDescrizione())
-	{
+	else if(!controlloDescrizione()){
 		if(!focused){
-			document.valuta.voto.focus();
+			document.valuta.descrizione.focus();
 			focused = true;
 		}
-		div.append("Inserisci una descrizione");
-	}
-	else
+		var descrizione=document.valuta.descrizione.value;
+		var c=descrizione.length;
+		if(c<1)
+		{
+			div.append("Inserisci una descrizione");
+			document.valuta.descrizione.focus();
+			focused=true;
+			
+		}
+		else if(c>1000)
+		{
+			div.append("La descrizione deve essere minore di mille caratteri");
+			document.valuta.descrizione.focus();
+			focused=true;
+		}
+		
+	}else
 	{
 		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
 		document.valuta.submit();
