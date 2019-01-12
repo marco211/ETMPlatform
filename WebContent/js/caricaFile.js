@@ -16,10 +16,14 @@ function controlloNome()
 function controlloDescrizione()
 {
 	var descrizione=document.carica.descrizioneFile.value;
-	if(descrizione.length<1 || descrizione.lenght>1000)
+
+	if(descrizione.length==0 || descrizione.lenght>5 )
 	{
 		document.carica.descrizioneFile.style.borderColor="red";
 		return false;
+		if(!descrizione.lenght>5){
+			alert("mammt");
+		}
 	}
 	else
 	{
@@ -37,17 +41,35 @@ function validazione()
 	div.text("");
 	
 	if(!controlloNome()){
-		
-		document.carica.nomeFile.focus();
-		div.append("Inserisci un nome");
+		var nome=document.carica.nomeFile.value;
+		if(nome.length==0){
+			document.carica.nomeFile.focus();
+			div.append("Inserisci un nome");
+		} else if(nome.length>30){
+			document.carica.nomeFile.focus();
+			div.append("Il nome del file deve essere minore di trenta caratteri");	
+		}
 	}
 	else if(!controlloDescrizione())
 	{
 		if(!focused){
+			
+	
+		var descrizione=document.carica.descrizioneFile.value;
+		if(descrizione.length<1)
+		{
+			div.append("Inserisci una descrizione");
 			document.carica.descrizioneFile.focus();
-			focused = true;
+			
 		}
-		div.append("Inserisci una descrizione");
+		else if(descrizione.length>5)
+		{
+			div.append("La descrizione deve essere minore di mille caratteri");
+			document.carica.descrizioneFile.focus();
+			
+		}
+		focused = true;
+		}
 	}else
 	{
 		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";

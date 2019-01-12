@@ -54,8 +54,8 @@
 							</div>
 							<div class="form-group">
 								<label for="descrizioneFile"><b>Descrizione:</b></label>
-								<textarea class="form-control" onchange="controlloDescrizione()"
-									name="descrizioneFile" rows="4" required></textarea>
+								<input type="text" class="form-control" onchange="controlloDescrizione()"
+									name="descrizioneFile" rows="6" required>
 							</div>
 							<div>
 								<label for="File"><b>File:</b></label>
