@@ -7,6 +7,8 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
+import javax.servlet.http.Part;
+
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -30,16 +32,15 @@ public class FileManagerTest {
 	}
 	
 	
-	/*@Test
+	@Test
 	public void testAggiungiFile() {
-		file.setFilePart(fileOk.getFile(1, "File1.pdf").getFilePart());
-		boolean test=fileOk.aggiungiFile(file); //restituisce true
-		assertTrue(test);
-		
+		/*
+			non testabile l'inserimento di file in quanto necessita di un driver che generi un file da caricare
+		*/
 		File file_test=new File("File2",1, "descrizione2", -1,"descrizione voto2","email2@unisa.it");
-		test=fileOk.aggiungiFile(file_test); //restituisce false poiché il voto non è valido
+		boolean test=filem.aggiungiFile(file_test); //restituisce false poiché il voto non è valido
 		assertFalse(test);
-	}*/
+	}
 	
 	
 	
@@ -64,7 +65,9 @@ public class FileManagerTest {
 	
 	@Test
 	public void testGetFile() {
-		File file=filem.getFile(1, "File1.pdf"); //restituisce il file corrispondente
+		File f = filem.getListaFile(10).get(0);
+		
+		File file=filem.getFile(f.getPropostaTesiId(), f.getNome()); //restituisce il file corrispondente
 		assertNotEquals(file,null);
 		
 		file=filem.getFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome
@@ -73,8 +76,9 @@ public class FileManagerTest {
 	
 	@Test
 	public void TestScaricaFile() {
+		File f = filem.getListaFile(1).get(0);
 		
-		File file=filem.scaricaFile(1, "File1.pdf"); //restituisce il file corrispondente
+		File file=filem.scaricaFile(f.getPropostaTesiId(), f.getNome()); //restituisce il file corrispondente
 		assertNotEquals(file,null);
 		
 		file=filem.scaricaFile(1, "File0303"); //restituisce null poché non esiste un file associato a questo nome

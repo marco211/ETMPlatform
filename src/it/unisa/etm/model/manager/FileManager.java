@@ -47,7 +47,7 @@ public class FileManager implements FileModelInterface {
 				return false;
 			} catch (IOException e) {
 				return false;
-			}
+			} 
 		return true;
 	}
 

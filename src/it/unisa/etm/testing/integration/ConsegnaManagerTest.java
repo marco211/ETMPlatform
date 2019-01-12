@@ -44,7 +44,14 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testModificaConsegna() {
-		boolean test=consegnam.modificaConsegna("2019-05-01", 1); //restituisce true
+		Consegna consegna = null;
+		int i = 1;
+		while(consegna==null) {
+			consegna = consegnam.getConsegna(i);
+			i++;
+		}
+		
+		boolean test=consegnam.modificaConsegna("2019-05-01", consegna.getId()); //restituisce true
 		assertTrue(test); 
 		
 		test=consegnam.modificaConsegna("ciao", 2); //restituisce false perché la data inserita è sbagliata
@@ -54,11 +61,14 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testEliminaConsegna() {
-		Consegna consegna=new Consegna("Consegnaa","consegna1","2019-01-06",10);
+		Consegna consegna = null;
+		int i = 1;
+		while(consegna==null) {
+			consegna = consegnam.getConsegna(i);
+			i++;
+		}
 		
-		assertTrue(consegnam.aggiungiConsegna(consegna)); //restituisce true
-		
-		boolean test=consegnam.eliminaConsegna(10); //restituisce true
+		boolean test=consegnam.eliminaConsegna(consegna.getId());//restituisce true, elimina la prima consegna
 		assertTrue(test);
 		
 		test=consegnam.eliminaConsegna(-1); //restiruisce false poiché l'id non è valido
@@ -67,7 +77,13 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testGetConsegna() {
-		Consegna consegna=consegnam.getConsegna(1); //restituisce  la consegna corrispondente all'id inserito
+		Consegna consegna = null;
+		int i = 1;
+		while(consegna==null) {
+			consegna = consegnam.getConsegna(i);
+			i++;
+		} //restituisce  la prima consegna
+		
 		assertNotEquals(consegna,null); 
 		
 		consegna=consegnam.getConsegna(-1); //restituisce null poiché l'id inserito non è valido
