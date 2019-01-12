@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*, it.unisa.etm.tesi.*,  it.unisa.etm.bean.*, java.time.* "%>  
+<%@ page import="java.util.*, it.unisa.etm.control.tesi.*,  it.unisa.etm.bean.*, java.time.* "%>  
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
 %>
