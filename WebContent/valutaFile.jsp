@@ -45,9 +45,9 @@
 								<textarea class="form-control" name="descrizione" rows="4" onchange="controlloDescrizione()" required></textarea>
 							</div>
 							<div class="col text-center">
-							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
+							<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert"></div>
 								<button type="submit" id="valutaFile" name="valutaFile"
-									class="btn btn-primary" onclick="validazione()">Valuta</button>
+									class="btn btn-primary" onclick="return validazione()">Valuta</button>
 							</div>
 						</form>
 					</div>

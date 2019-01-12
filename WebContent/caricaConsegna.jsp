@@ -61,7 +61,7 @@
 								<div id="infoDiv" class="alert alert-danger form-group d-none"
 									role="alert"></div>
 								<button type="submit" id="caricaFile" name="caricaFile"
-									class="btn btn-primary" onclick="validazione()">Aggiungi</button>
+									class="btn btn-primary" onclick="return validazione()">Aggiungi</button>
 							</div> 
 							<%}else{ %>
 							<h4>Hai raggiunto il numero massimo di consegne</h4>

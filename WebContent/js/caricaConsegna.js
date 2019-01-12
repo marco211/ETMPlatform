@@ -13,13 +13,16 @@ function controlloNomeConsegna()
 	}
 }
 
+
 function controlloDescrizioneConsegna()
 {
 	var descrizione=document.caricaConsegna.descrizioneConsegna.value;
-	if(descrizione.length<1 || descrizione.lenght>1000)
+	var c=descrizione.length;
+	if(descrizione.length==0 || c>1000 )
 	{
 		document.caricaConsegna.descrizioneConsegna.style.borderColor="red";
 		return false;
+		
 	}
 	else
 	{
@@ -61,9 +64,9 @@ function controlloScadenzaConsegna(){
 
 function validazione()
 {
-	document.getElementById("infoDivConsegna").className = "alert alert-danger form-group d-block";
+	document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 	var focused = false;
-	var div = $("#infoDivConsegna");
+	var div = $("#infoDiv");
 	
 	div.text("");
 	
@@ -74,22 +77,32 @@ function validazione()
 	}
 	else if(!controlloDescrizioneConsegna())
 	{
-		if(!focused){
+		var descrizione=document.caricaConsegna.descrizioneConsegna.value;
+		var c=descrizione.length;
+		if(c<1)
+		{
+			div.append("Inserisci una descrizione");
 			document.caricaConsegna.descrizioneConsegna.focus();
-			focused = true;
+			focused=true;
 		}
-		div.append("Inserisci una descrizione");
+		else if(c>1000)
+		{
+			div.append("La descrizione deve essere minore di mille caratteri");
+			document.caricaConsegna.descrizioneConsegna.focus();
+			focused=true;
+		}
 	}
 	else if(!controlloScadenzaConsegna()){
-		if(!focused){
 			document.caricaConsegna.scadenzaConsegna.focus();
-			focused = true;
-		}
 		div.append("Inserisci una data valida");
 	}
-	else
-	{
-		document.getElementById("infoDivConsegna").className = "alert alert-danger form-group d-none";
-		document.caricaConsegna.submit();
+	
+	
+	if(focused=true){
+		return false;
+	}
+	else{
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
+		return true;
 	}
 }

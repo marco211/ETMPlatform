@@ -42,12 +42,10 @@ function validazione()
 		
 		document.valuta.voto.focus();
 		div.append("Inserisci una valutazione");
+		focused=true;
 	}
-	else if(!controlloDescrizione()){
-		if(!focused){
-			document.valuta.descrizione.focus();
-			focused = true;
-		}
+	else if(!controlloDescrizione())
+	{
 		var descrizione=document.valuta.descrizione.value;
 		var c=descrizione.length;
 		if(c<1)
@@ -55,7 +53,6 @@ function validazione()
 			div.append("Inserisci una descrizione");
 			document.valuta.descrizione.focus();
 			focused=true;
-			
 		}
 		else if(c>1000)
 		{
@@ -63,10 +60,12 @@ function validazione()
 			document.valuta.descrizione.focus();
 			focused=true;
 		}
-		
-	}else
-	{
+	}
+	if(focused=true){
+		return false;
+	}
+	else{
 		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
-		document.valuta.submit();
+		return true;
 	}
 }
