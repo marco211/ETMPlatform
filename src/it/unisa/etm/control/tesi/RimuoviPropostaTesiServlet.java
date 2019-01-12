@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende HttpServlet ed offre all'utente registrato come docente la funzionalità di poter eliminare una proposta di tesi caricata da lui precedentemente.
+ * Estende HttpServlet ed offre all'utente registrato come docente la funzionalita di poter eliminare una proposta di tesi caricata da lui precedentemente.
  */
 @WebServlet("/RimuoviPropostaTesiServlet")
 public class RimuoviPropostaTesiServlet extends HttpServlet {
@@ -47,9 +47,9 @@ public class RimuoviPropostaTesiServlet extends HttpServlet {
 	/**
 	 * Rimuove la proposta di tesi individuata dal utente registrato come docente e passata come input al metodo.
 	 * @param tesi rappresenta la proposta di tesi da rimuovere;
-	 * @return boolean true se la proposta di tesi è stata rimossa correttamente;
+	 * @return boolean true se la proposta di tesi e stata rimossa correttamente;
 	 * <p>
-	 * false se la rimozione non è riuscita.
+	 * false se la rimozione non e riuscita.
 	 */
 	private boolean rimuoviPropostaTesi(int proposta_id){
 		ManagerFactory mf=new ManagerFactory();

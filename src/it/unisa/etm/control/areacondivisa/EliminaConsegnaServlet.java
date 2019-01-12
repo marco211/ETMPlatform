@@ -11,7 +11,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di eliminare una consegna dell'area privata condivisa.
+ * Estende HttpServlet fornisce la funzionalita di eliminare una consegna dell'area privata condivisa.
  */
 @WebServlet("/EliminaConsegnaServlet")
 public class EliminaConsegnaServlet extends HttpServlet {

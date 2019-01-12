@@ -11,7 +11,7 @@ public interface AutenticazioneModelInterface {
 	/**
 	 * Effettua la registrazione di un utente.
 	 * @param utente da registrare.
-	 * @return boolean che è true se la resgistrazione è avvenuta con successo.
+	 * @return boolean che e true se la resgistrazione e avvenuta con successo.
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -39,7 +39,7 @@ public interface AutenticazioneModelInterface {
 	/**
 	 * Si occupa di settare la validazione di un account dopo che l'utente abbia usato il link di validazione.
 	 * @param validazione che rappresenta il link utilizzato dall'utente per confermare il suo account.
-	 * @return boolean che è true se la validazione avviene con successo;
+	 * @return boolean che e true se la validazione avviene con successo;
 	 * <p>
 	 * false in caso d'insuccesso.
 	 */

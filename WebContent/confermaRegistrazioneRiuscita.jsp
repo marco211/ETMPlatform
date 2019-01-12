@@ -116,8 +116,8 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-					<h1>La registrazione è stata confermata con successo</h1>
-					<h6>Adesso è possibile effettuare l'accesso</h6>
+					<h1>La registrazione e stata confermata con successo</h1>
+					<h6>Adesso e possibile effettuare l'accesso</h6>
 					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
 			</div>
 		</div>

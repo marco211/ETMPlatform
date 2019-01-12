@@ -21,7 +21,7 @@ import it.unisa.etm.model.manager.AutenticazioneManager;
 
 
 /**
- * Estende la classe HttpServlet e fornisce all'utente la funzionalità di poter recuperare la sua password.
+ * Estende la classe HttpServlet e fornisce all'utente la funzionalita di poter recuperare la sua password.
  */
 @WebServlet("/RecuperaPasswordServlet")
 public class RecuperaPasswordServlet extends HttpServlet {
@@ -59,9 +59,9 @@ public class RecuperaPasswordServlet extends HttpServlet {
 	/**
 	 * Permette il recupero della password dell'utente prendendo in input la mail di quest'ultimo
 	 * @param email dell'utente registrato
-	 * @return boolean true se il rest è riuscito;
+	 * @return boolean true se il rest e riuscito;
 	 * <p>
-	 * false se non è riusito.
+	 * false se non e riusito.
 	 */
 	private boolean inviaPassword(String email){
 		ManagerFactory mf=new ManagerFactory();
@@ -115,7 +115,7 @@ public class RecuperaPasswordServlet extends HttpServlet {
 					"Gentile utente,<br>" +
 					"abbiamo ricevuto la vostra richiesta di recupero password. <br>" +
 					"Password: \"" + testo + "\".<br>" +
-					"Le ricordiamo che è possibile cambiare la password una volta effettuato l'accesso con il vostro account all'apposita sezione.<br>" +
+					"Le ricordiamo che e possibile cambiare la password una volta effettuato l'accesso con il vostro account all'apposita sezione.<br>" +
 					"Cordiali saluti.<br>" +
 					"\r\n" + 
 					"</body>\r\n" + 

@@ -57,7 +57,7 @@ function cambiaColore(){
 									 <%
  	if (p.isChiuso()) {
  %>
-									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi è terminata e non più accessibile a nuove richiesta">
+									<p style="font-size: small; display: inline" data-toggle="tooltip" data-placement="bottom" title="La proposta tesi e terminata e non piu accessibile a nuove richiesta">
 										Chiusa<i class="fas fa-door-closed my-1 d-none d-md-block"></i>
 									</p> <%
  	}

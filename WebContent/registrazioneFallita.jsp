@@ -117,8 +117,8 @@
 			</div>
 			<div class="col my-4 mx-4">
 					<h1>Registrazione non riuscita</h1>
-					<h6>Una registrazione è già stata effettuata con l'indirizzo e-mail inserito</h6>
-					<h6>Se non si ricorda la password è possibile recuperarla tramite l'apposita sezione in alto</h6>
+					<h6>Una registrazione e gia stata effettuata con l'indirizzo e-mail inserito</h6>
+					<h6>Se non si ricorda la password e possibile recuperarla tramite l'apposita sezione in alto</h6>
 					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
 			</div>
 		</div>

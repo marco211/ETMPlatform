@@ -31,7 +31,7 @@ public class TestInsegna {
 		assertEquals(email,"utente1@unisa.it"); //utente email corretta
 		
 		email=insegnaNotOk.getUtenteEmail();
-		assertNotEquals(email,"utente3@unisa.it"); //utente email sbagliata, l'utente email corretta è utente2@unisa.it
+		assertNotEquals(email,"utente3@unisa.it"); //utente email sbagliata, l'utente email corretta e utente2@unisa.it
 	}
 
 	@Test
@@ -47,7 +47,7 @@ public class TestInsegna {
 		assertEquals(nome,"Insegnamento1"); //nome insegamento corretto
 		
 		nome=insegnaNotOk.getInsegnamentoNome();
-		assertNotEquals(nome,"Insegnamento3"); //nome insegamento sbagliato, il nome dell'insegnamento corretto è Insegnamento2
+		assertNotEquals(nome,"Insegnamento3"); //nome insegamento sbagliato, il nome dell'insegnamento corretto e Insegnamento2
 	}
 
 	@Test

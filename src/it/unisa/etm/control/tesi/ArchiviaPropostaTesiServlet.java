@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende la classe HttpServlet ed offre all'utente registrato come docente la possibilità di archiviare una propria proposta di tesi.
+ * Estende la classe HttpServlet ed offre all'utente registrato come docente la possibilita di archiviare una propria proposta di tesi.
  */
 @WebServlet("/ArchiviaPropostaTesiServlet")
 public class ArchiviaPropostaTesiServlet extends HttpServlet {
@@ -44,7 +44,7 @@ public class ArchiviaPropostaTesiServlet extends HttpServlet {
 	/**
 	 * Archivia la proposta di tesi scelta dall'utente registrato come docente, aggiungendola alla lista di quelle archiviate.
 	 * @param propostatesi_id rappresenta 'identificativo della proposta di tesi scelta dall'utente registrato come docente.
-	 * @return boolean true se l'archiviazione è avvenuta con successo;
+	 * @return boolean true se l'archiviazione e avvenuta con successo;
 	 * <p>
 	 * false in caso di fallimento.
 	 */

@@ -66,7 +66,7 @@ public class RegistrazioneServlet extends HttpServlet {
 				"\r\n" + 
 				"<h1>Benvenuto su ETM-Platform</h1>" +
 				"Gentile utente,<br>" +
-				"abbiamo ricevuto la vostra richiesta di registrazione ed è richiesta la vostra conferma per completare la procedura. <br>" +
+				"abbiamo ricevuto la vostra richiesta di registrazione ed e richiesta la vostra conferma per completare la procedura. <br>" +
 				"La invitiamo a cliccare sul link in basso per confermare la registrazione ad ETM-Platform:<br>" +
 				"<a href=\"http://localhost:8080/ETMPlatform/ConfermaMailServlet?validazione=" + validazione + "\"" + ">Conferma registrazione</a> <br>" +
 				"Cordiali saluti.<br>" +

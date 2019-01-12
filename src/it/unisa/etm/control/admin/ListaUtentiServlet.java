@@ -11,7 +11,7 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.model.manager.AmministratoreManager;
 
 /**
- * Estende HttpServlet fornisce all'amministratore la funzionalità di visualizzare gli utenti registrati.
+ * Estende HttpServlet fornisce all'amministratore la funzionalita di visualizzare gli utenti registrati.
  */
 @WebServlet("/ListaUtentiServlet")
 public class ListaUtentiServlet extends HttpServlet {

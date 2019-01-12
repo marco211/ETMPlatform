@@ -10,7 +10,7 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
 /**
- * Classe che implementa le funzionalità dedicate all'utente registrato.
+ * Classe che implementa le funzionalita dedicate all'utente registrato.
  * @author ETM
  *
  */

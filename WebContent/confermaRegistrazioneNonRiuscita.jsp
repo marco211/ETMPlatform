@@ -116,8 +116,8 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-					<h1>Non è stato possibile confermare la registrazione</h1>
-					<h6>La preghiamo di riprovare più tardi</h6>
+					<h1>Non e stato possibile confermare la registrazione</h1>
+					<h6>La preghiamo di riprovare piu tardi</h6>
 					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
 			</div>
 		</div>

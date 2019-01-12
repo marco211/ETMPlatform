@@ -38,7 +38,7 @@ public class FileManagerTest {
 			non testabile l'inserimento di file in quanto necessita di un driver che generi un file da caricare
 		*/
 		File file_test=new File("File2",1, "descrizione2", -1,"descrizione voto2","email2@unisa.it");
-		boolean test=filem.aggiungiFile(file_test); //restituisce false poiché il voto non è valido
+		boolean test=filem.aggiungiFile(file_test); //restituisce false poiché il voto non e valido
 		assertFalse(test);
 	}
 	
@@ -90,7 +90,7 @@ public class FileManagerTest {
 		ArrayList<File> lista=filem.getListaFile(1); //restituisce una lista file
 		assertNotEquals(lista,null);
 		
-		lista=filem.getListaFile(-1); //restituisce null poché l'id proposta tesi non è corretto
+		lista=filem.getListaFile(-1); //restituisce null poché l'id proposta tesi non e corretto
 		assertEquals(lista,null); 
 	}
 }

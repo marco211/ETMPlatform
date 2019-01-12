@@ -17,7 +17,7 @@ import it.unisa.etm.model.manager.PropostaTesiManager;
 
 
 /**
- * Estende la classe HttpServlet ed offre all'utente la possibilità di visualizzare i dettagli di una determinata proposta di tesi.
+ * Estende la classe HttpServlet ed offre all'utente la possibilita di visualizzare i dettagli di una determinata proposta di tesi.
  */
 @WebServlet("/VisualizzaDettagliTesiServlet")
 public class VisualizzaDettagliTesiServlet extends HttpServlet {
@@ -91,8 +91,8 @@ public class VisualizzaDettagliTesiServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Restituisce tutte le richieste di proposte di tesi: se l'utente è un docente restituisce tutte le richieste
-	 * effettuate da parte degli studenti; se l'utente è uno studente restituisce tutte le richieste effettuate.
+	 * Restituisce tutte le richieste di proposte di tesi: se l'utente e un docente restituisce tutte le richieste
+	 * effettuate da parte degli studenti; se l'utente e uno studente restituisce tutte le richieste effettuate.
 	 * @param
 	 * @return ArrayList<RichiestaPartecipazione> rappresenta tutte le richieste per le proposte tesi;
 	 * <p>

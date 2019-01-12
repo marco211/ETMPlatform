@@ -19,7 +19,7 @@ import it.unisa.etm.model.manager.FileManager;
 
 
 /**
- * Estende HttpServlet fornisce la funzionalità di caricare un file nell'area privata condivisa.
+ * Estende HttpServlet fornisce la funzionalita di caricare un file nell'area privata condivisa.
  */
 @WebServlet("/CaricaFileServlet")
 /*@MultipartConfig(maxFileSize = 16177215)*/

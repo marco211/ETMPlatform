@@ -27,7 +27,7 @@
 <footer class="bg-white">
  <div class="mx-auto" style="width: 200px;">
  <h6 class="font-weight-bold" style="font-size: 10px">© Copyright 2019 ETM Platform</h6>
- <h6 class="font-weight-bold" style="font-size: 10px">Università Degli Studi di Salerno</h6>
+ <h6 class="font-weight-bold" style="font-size: 10px">Universita Degli Studi di Salerno</h6>
  </div>
  </footer>  
 

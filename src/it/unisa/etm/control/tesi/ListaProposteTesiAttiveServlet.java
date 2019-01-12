@@ -15,7 +15,7 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di visualizzare la lista delle proposte tesi attive sia del docente che per lo studente.
+ * Estende HttpServlet fornisce la funzionalita di visualizzare la lista delle proposte tesi attive sia del docente che per lo studente.
  */
 @WebServlet("/ListaProposteTesiAttiveServlet")
 public class ListaProposteTesiAttiveServlet extends HttpServlet {
@@ -69,8 +69,8 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	}
 	
 	/**
-	 * Restituisce tutte le richieste di proposte di tesi: se l'utente è un docente restituisce tutte le richieste
-	 * effettuate da parte degli studenti; se l'utente è uno studente restituisce tutte le richieste effettuate.
+	 * Restituisce tutte le richieste di proposte di tesi: se l'utente e un docente restituisce tutte le richieste
+	 * effettuate da parte degli studenti; se l'utente e uno studente restituisce tutte le richieste effettuate.
 	 * @param
 	 * @return ArrayList<RichiestaPartecipazione> rappresenta tutte le richieste per le proposte tesi;
 	 * <p>

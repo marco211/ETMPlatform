@@ -14,7 +14,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende la classe HttpServlet ed offre all'utente registrato come studente la funzionalità di poter inviare all'utente registrato come docente una richiesta di tesi per una determinata proposta tesi.
+ * Estende la classe HttpServlet ed offre all'utente registrato come studente la funzionalita di poter inviare all'utente registrato come docente una richiesta di tesi per una determinata proposta tesi.
  */
 @WebServlet("/InviaPropostaTesiServlet")
 public class InviaPropostaTesiServlet extends HttpServlet {
@@ -59,9 +59,9 @@ public class InviaPropostaTesiServlet extends HttpServlet {
 	/**
 	 * Invia al docente la richiesta di proposta tesi fatta dall'utente registrato come studente e passata come input al metodo.
 	 * @param richiesta rappresenta la richesta per la proposta di tesi effettuata dall'utente registrato come studente.
-	 * @return boolean true se l'invio è avvenuto con successo;
+	 * @return boolean true se l'invio e avvenuto con successo;
 	 * <p>
-	 * false se non è avvenuto con successo.
+	 * false se non e avvenuto con successo.
 	 */
 	private boolean inviaRichiestaPropostaTesi(RichiestaPartecipazione richiesta){
 		ManagerFactory mf=new ManagerFactory();

@@ -13,7 +13,7 @@ public interface PartecipaModelInterface {
 	 * Inserisce la partecipazione ad una proposta di tesi di un'utente registrato come studente dopo l'accettazione di un'utente registrato come docente.
 	 * @param propostaTesiId identificaivo della proposta di tesi alla quale inserire la partecipazione.
 	 * @param utenteEmail email dell'utente registrato come studente.
-	 * @return boolean che è true se l'inserimento avviene con successo;
+	 * @return boolean che e true se l'inserimento avviene con successo;
 	 * <p>
 	 * false in caso contrario.
 	 */

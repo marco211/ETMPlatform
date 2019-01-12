@@ -31,7 +31,7 @@ public class TestConsegna {
 		assertEquals(nome,"Consegna1");// nome giusto
 		
 		nome=consegnaNotOk.getNome();
-		assertNotEquals(nome,"Consegna0303");// nome sbagliato, il nome giusto è Consegna2
+		assertNotEquals(nome,"Consegna0303");// nome sbagliato, il nome giusto e Consegna2
 	}
 	
 	@Test
@@ -51,7 +51,7 @@ public class TestConsegna {
 		assertEquals(descrizione,"Descrizione consegna1");// descrizione giusta
 		
 		descrizione=consegnaNotOk.getDescrzione();
-		assertNotEquals(descrizione,"Descrizione consegna0303");// descrizione sbagliata, la descrizione giusta è "Descrizione consegna2"
+		assertNotEquals(descrizione,"Descrizione consegna0303");// descrizione sbagliata, la descrizione giusta e "Descrizione consegna2"
 	}
 	
 	@Test
@@ -71,7 +71,7 @@ public class TestConsegna {
 		assertEquals(scadenza,"scadenza1");//scadenza giusta
 		
 		scadenza=consegnaNotOk.getScadenza();
-		assertNotEquals(scadenza,"scadenza0303");//scadenza sbaglita, la descrizione corretta è scadenza2
+		assertNotEquals(scadenza,"scadenza0303");//scadenza sbaglita, la descrizione corretta e scadenza2
 	}
 	
 	@Test
@@ -91,7 +91,7 @@ public class TestConsegna {
 		assertEquals(id,1); //proposta tesi id giusto
 		
 		id=consegnaNotOk.getPropostaTesiId();
-		assertNotEquals(id,3); //proposta tesi id sbagliato, quello giusto è 3
+		assertNotEquals(id,3); //proposta tesi id sbagliato, quello giusto e 3
 	}
 
 	@Test

@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di rifiutare una richiesta di un untente registrato come studente da parte di un utente registrato come docente.
+ * Estende HttpServlet fornisce la funzionalita di rifiutare una richiesta di un untente registrato come studente da parte di un utente registrato come docente.
  */
 @WebServlet("/RifiutaRichiestaServlet")
 public class RifiutaRichiestaServlet extends HttpServlet {
@@ -37,7 +37,7 @@ public class RifiutaRichiestaServlet extends HttpServlet {
 /**
  * Permette all'utente registrato come docente di rifiutare una richiesta di partecipazione per una proposta di tesi
  * @param id che identifica la proposta di tesi alla quale l'utente registrato come studente vuole partecipare
- * @return booleano che è true se il rifiuto della richiesta è andato a buon fine
+ * @return booleano che e true se il rifiuto della richiesta e andato a buon fine
  * <p>
  * false altrimenti;
  */

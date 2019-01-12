@@ -19,7 +19,7 @@ public interface FileModelInterface {
 	
 	/**
 	 * Si occupa della valutazione di un file da parte dell'utente registrato come docente.
-	 * @param idTesi identificativo della proposta di tesi per la quale è attiva l'area privata condivisa.
+	 * @param idTesi identificativo della proposta di tesi per la quale e attiva l'area privata condivisa.
 	 * @param nomeFile nome de file che si vuole modificare.
 	 * @param voto voto da dare al file.
 	 * @param descrizioneVoto descrizione della votazione che si vuole dare al file.
@@ -31,9 +31,9 @@ public interface FileModelInterface {
 	
 	/**
 	 * Elimina un file presente nell'area privata condivisa.
-	 * @param idTesi identificativo della proposta di tesi per la quale è attiva l'area privata condivisa.
+	 * @param idTesi identificativo della proposta di tesi per la quale e attiva l'area privata condivisa.
 	 * @param nomeFile nome de file che si vuole eliminare.
-	 * @return boolean true se l'eliminazione è avvenuta con successo;
+	 * @return boolean true se l'eliminazione e avvenuta con successo;
 	 * <p>
 	 * false in caso d'insuccesso.
 	 */
@@ -41,7 +41,7 @@ public interface FileModelInterface {
 	
 	/**
 	 * Ritorna un determinato file.
-	 * @param id identificativo della proposta di tesi per la quale è attiva l'area privata condivisa.
+	 * @param id identificativo della proposta di tesi per la quale e attiva l'area privata condivisa.
 	 * @param nomeFile nome de file che si vuole ottenere.
 	 * @return il File desiderato se esiste e se l'opezione ha successo;
 	 * <p>
@@ -51,7 +51,7 @@ public interface FileModelInterface {
 	
 	/**
 	 * Ritorna i File presenti all'interno dell'area privata condivisa.
-	 * @param idTesi identificativo della proposta di tesi per la quale è attiva l'area privata condivisa.
+	 * @param idTesi identificativo della proposta di tesi per la quale e attiva l'area privata condivisa.
 	 * @return lista di oggetti File che rappresentano i file presenti nell'area privata condivisa, in caso di successo.
 	 * <p>
 	 * null nel caso di nessun file presente o d'insuccesso.
@@ -60,7 +60,7 @@ public interface FileModelInterface {
 	
 	/**
 	 * Si occupa del download di un file presente dell'area privata condivisa.
-	 * @param idTesi identificativo della proposta di tesi per la quale è attiva l'area privata condivisa.
+	 * @param idTesi identificativo della proposta di tesi per la quale e attiva l'area privata condivisa.
 	 * @param nomeFile nome de file che si vuole scaricare.
 	 * @return oggetto File che rappresenta il file scaricato, in caso di successo.
 	 * <p>

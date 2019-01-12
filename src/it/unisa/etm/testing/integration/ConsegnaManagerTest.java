@@ -54,7 +54,7 @@ public class ConsegnaManagerTest {
 		boolean test=consegnam.modificaConsegna("2019-05-01", consegna.getId()); //restituisce true
 		assertTrue(test); 
 		
-		test=consegnam.modificaConsegna("ciao", 2); //restituisce false perché la data inserita è sbagliata
+		test=consegnam.modificaConsegna("ciao", 2); //restituisce false perché la data inserita e sbagliata
 		assertFalse(test); 
 	}
 	
@@ -71,7 +71,7 @@ public class ConsegnaManagerTest {
 		boolean test=consegnam.eliminaConsegna(consegna.getId());//restituisce true, elimina la prima consegna
 		assertTrue(test);
 		
-		test=consegnam.eliminaConsegna(-1); //restiruisce false poiché l'id non è valido
+		test=consegnam.eliminaConsegna(-1); //restiruisce false poiché l'id non e valido
 		assertFalse(test);
 	}
 	
@@ -86,7 +86,7 @@ public class ConsegnaManagerTest {
 		
 		assertNotEquals(consegna,null); 
 		
-		consegna=consegnam.getConsegna(-1); //restituisce null poiché l'id inserito non è valido
+		consegna=consegnam.getConsegna(-1); //restituisce null poiché l'id inserito non e valido
 		assertEquals(consegna,null);
 	}
 	
@@ -95,7 +95,7 @@ public class ConsegnaManagerTest {
 		ArrayList<Consegna> lista=consegnam.getListaConsegne(1); //restituisce una lista
 		assertNotEquals(lista,null);
 		
-		lista=consegnam.getListaConsegne(-1); //restituisce null poiché l'id della proposta tesi inserito non è valido
+		lista=consegnam.getListaConsegne(-1); //restituisce null poiché l'id della proposta tesi inserito non e valido
 		assertEquals(lista,null);
 		
 	}

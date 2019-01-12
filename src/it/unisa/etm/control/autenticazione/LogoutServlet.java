@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 
 
 /**
- * Offre la funzionalità di poter effettuare il logout
+ * Offre la funzionalita di poter effettuare il logout
  */
 @WebServlet("/LogoutServlet")
 public class LogoutServlet extends HttpServlet {

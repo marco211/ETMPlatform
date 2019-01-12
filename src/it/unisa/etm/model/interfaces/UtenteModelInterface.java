@@ -15,7 +15,7 @@ public interface UtenteModelInterface {
 	/**
 	 * Si occupa della modifica della propria password da parte di un determinato utente.
 	 * @param u Utente che vuole eseguire l'operazione.
-	 * @return boolean true se la modifica è avvenuta con successo;
+	 * @return boolean true se la modifica e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -24,7 +24,7 @@ public interface UtenteModelInterface {
 	/**
 	 * Si occupa della modifica del proprio profilo da parte di un utente.
 	 * @param u Utente che vuole modificare il profilo.
-	 * @return boolean true se la modifica è avvenuta con successo;
+	 * @return boolean true se la modifica e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
 	 */

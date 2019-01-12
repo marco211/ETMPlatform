@@ -32,7 +32,7 @@ public class TestAttivita {
 		assertEquals(email,"email@unisa.it"); //email giusta
 		
 		email=attivitaNotOk.getUtente_Email();
-		assertNotEquals(email,"sbagliata@email.it"); //email sbagliata, l'ìemail giusta è false@unisa.it
+		assertNotEquals(email,"sbagliata@email.it"); //email sbagliata, l'iemail giusta e false@unisa.it
 		
 		
 	}
@@ -54,7 +54,7 @@ public class TestAttivita {
 		assertEquals(nomeFile,"File1");//nome file giusto
 		
 		nomeFile=attivitaNotOk.getNomeFile();
-		assertNotEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto è File2
+		assertNotEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto e File2
 	}
 
 	@Test
@@ -74,7 +74,7 @@ public class TestAttivita {
 		assertEquals(date,attivitaOk.getData());// data giusta
 		
 		date=attivitaNotOk.getData();
-		assertNotEquals(date,"2001-01-01");// data sbagliata, poiché la data inserita nel test è già passata
+		assertNotEquals(date,"2001-01-01");// data sbagliata, poiché la data inserita nel test e gia passata
 	}
 
 	@Test
@@ -93,7 +93,7 @@ public class TestAttivita {
 		assertEquals(tipo,"A");// tipo giusto
 		
 		tipo=attivitaNotOk.getTipo();
-		assertNotEquals(tipo,"C"); // tipo sbagliato, il tipo giusto è B
+		assertNotEquals(tipo,"C"); // tipo sbagliato, il tipo giusto e B
 	}
 
 	@Test
@@ -113,7 +113,7 @@ public class TestAttivita {
 		assertEquals(id,1);// proposta tesi id giusto
 		
 		id=attivitaNotOk.getPropostatesi_id();
-		assertNotEquals(id,3);// proposta tesi id sbagliato, il proposta tesi id giusto è 2
+		assertNotEquals(id,3);// proposta tesi id sbagliato, il proposta tesi id giusto e 2
 	}
 
 	@Test

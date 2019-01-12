@@ -10,7 +10,7 @@ import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.PartecipaModelInterface;
 /**
- * Classe che implementa le funzionalità dedicate alle partecipazioni ad una proposta di tesi.
+ * Classe che implementa le funzionalita dedicate alle partecipazioni ad una proposta di tesi.
  * @author ETM
  *
  */

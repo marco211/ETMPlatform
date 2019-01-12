@@ -15,7 +15,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.*;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di visualizzare tutti i partecipanti all'area privata condivisa.
+ * Estende HttpServlet fornisce la funzionalita di visualizzare tutti i partecipanti all'area privata condivisa.
  */
 @WebServlet("/VisualizzaListaPartecipazioneServlet")
 public class VisualizzaListaPartecipazioneServlet extends HttpServlet {

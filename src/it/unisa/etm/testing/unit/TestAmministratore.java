@@ -31,7 +31,7 @@ public class TestAmministratore {
 		assertEquals(password,"qwert"); //password giusta
 		
 		password=adminNotOk.getPassword();
-		assertNotEquals(password,"ciao"); //password sbagliata, la password giusta è qwert
+		assertNotEquals(password,"ciao"); //password sbagliata, la password giusta e qwert
 	}
 	
 	
@@ -52,7 +52,7 @@ public class TestAmministratore {
 		assertEquals(nome,"Marco"); //nome giusto
 		
 		nome=adminNotOk.getNome();
-		assertNotEquals(nome,"Domenico"); //nome sbagliato, il nome giusto è Paolo
+		assertNotEquals(nome,"Domenico"); //nome sbagliato, il nome giusto e Paolo
 	}
 
 	@Test
@@ -72,7 +72,7 @@ public class TestAmministratore {
 		assertEquals(cognome,"Della Medaglia");//cognome giusto
 		
 		cognome=adminNotOk.getCognome();
-		assertNotEquals(cognome,"Nappi"); //cognome sbagliato, il cognome giusto è Bonolis
+		assertNotEquals(cognome,"Nappi"); //cognome sbagliato, il cognome giusto e Bonolis
 	}
 
 	@Test
@@ -92,7 +92,7 @@ public class TestAmministratore {
 		assertEquals(email,"boss@admin.it");//email giusta
 		
 		email=adminNotOk.getEmail();
-		assertNotEquals(email,"false0303@admin.it"); //email sbagliata, l'email giusta è false@admin.it
+		assertNotEquals(email,"false0303@admin.it"); //email sbagliata, l'email giusta e false@admin.it
 	}
 
 	@Test

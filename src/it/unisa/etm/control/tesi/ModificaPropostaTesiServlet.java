@@ -13,7 +13,7 @@ import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
- * Estende la classe HttpServlet e fornisce all'utente registrato come docente la possibilità di aggiungere una nuova proposta di tesi.
+ * Estende la classe HttpServlet e fornisce all'utente registrato come docente la possibilita di aggiungere una nuova proposta di tesi.
  */
 @WebServlet("/ModificaPropostaTesiServlet")
 public class ModificaPropostaTesiServlet extends HttpServlet {

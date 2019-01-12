@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.factory.ManagerFactory;
 
 /**
- * Estende HttpServlet fornisce all'amministratore la possibilità di eliminare un utente.
+ * Estende HttpServlet fornisce all'amministratore la possibilita di eliminare un utente.
  */
 @WebServlet("/EliminaUtenteServlet")
 public class EliminaUtenteServlet extends HttpServlet {
@@ -50,7 +50,7 @@ public class EliminaUtenteServlet extends HttpServlet {
 	 * Il metodo ritorna un booleano.
 	 * @param utente da cercare
 	 * @return boolean: true se l'eliminazione viene eliminata con successo;
-	 * 					false se l'eliminazione non è andata a buon fine;
+	 * 					false se l'eliminazione non e andata a buon fine;
 	 * @throws SQLException 
 	 */
 

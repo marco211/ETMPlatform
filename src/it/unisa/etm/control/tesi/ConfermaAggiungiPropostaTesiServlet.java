@@ -13,7 +13,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di confermare l'aggiunta di una nuova proposta di tesi.
+ * Estende HttpServlet fornisce la funzionalita di confermare l'aggiunta di una nuova proposta di tesi.
  */
 @WebServlet("/ConfermaAggiungiPropostaTesiServlet")
 public class ConfermaAggiungiPropostaTesiServlet extends HttpServlet {
@@ -58,7 +58,7 @@ public class ConfermaAggiungiPropostaTesiServlet extends HttpServlet {
 	/**
 	 * Aggiunge alla lista delle proposte di tesi, una nuova proposta creata dal docente.
 	 * @param tesi rappresenta la proposta di tesi che il docente vuole aggiungere
-	 * @return boolean true se l'aggiunta è avvenuta con successo;
+	 * @return boolean true se l'aggiunta e avvenuta con successo;
 	 * <p>
 	 * false in caso contrario.
 	 */

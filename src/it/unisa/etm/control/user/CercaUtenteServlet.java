@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import it.unisa.etm.bean.Utente;
 
 /**
- * Estende la classe HttpServlet e fornisce ad un utente la funzionalità di poter cercare un altro utente.
+ * Estende la classe HttpServlet e fornisce ad un utente la funzionalita di poter cercare un altro utente.
  */
 @WebServlet("/CercaUtenteServlet")
 public class CercaUtenteServlet extends HttpServlet {

@@ -10,7 +10,7 @@ import it.unisa.etm.bean.Utente;
 import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.UtenteManager;
 /**
- * Estende a classe HttpServlet e fornisce all'utente la funzionalità di poter modificare la password precedente.
+ * Estende a classe HttpServlet e fornisce all'utente la funzionalita di poter modificare la password precedente.
  */
 @WebServlet("/ModificaPasswordServlet")
 public class ModificaPasswordServlet extends HttpServlet {
@@ -46,7 +46,7 @@ public class ModificaPasswordServlet extends HttpServlet {
 	/**
 	 * Modifica la password precedentemente settata con quella nuova digitata dall'utente.
 	 * @param password stringa che rappresenta la password digitata dall'utente
-	 * @return boolean true se la modifica è andata a buon fine;
+	 * @return boolean true se la modifica e andata a buon fine;
 	 * <p>
 	 * false in caso contrario
 	 */

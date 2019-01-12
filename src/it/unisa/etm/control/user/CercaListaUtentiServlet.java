@@ -15,7 +15,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.UtenteManager;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di effettuare una ricerca di un utente indicando il nome ed il cognome di questo.
+ * Estende HttpServlet fornisce la funzionalita di effettuare una ricerca di un utente indicando il nome ed il cognome di questo.
  */
 @WebServlet("/CercaListaUtentiServlet")
 public class CercaListaUtentiServlet extends HttpServlet {

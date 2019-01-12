@@ -10,7 +10,7 @@ import it.unisa.etm.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende la classe HttpServlet ed offre all'utente registrato come docente la funzionalità di poter chiudere una propria proposta di tesi.
+ * Estende la classe HttpServlet ed offre all'utente registrato come docente la funzionalita di poter chiudere una propria proposta di tesi.
  */
 @WebServlet("/ChiudiPropostaTesiServlet")
 public class ChiudiPropostaTesiServlet extends HttpServlet {
@@ -44,9 +44,9 @@ public class ChiudiPropostaTesiServlet extends HttpServlet {
 	/**
 	 * Chiude la proposta di tesi presa in input ritornado.
 	 * @param propostatesi_id rappresenta l'identificativo della proposta di tesi che si vuole chiusere;
-	 * @return boolean true se la proposta è stata chiusa con successo;
+	 * @return boolean true se la proposta e stata chiusa con successo;
 	 * <p>
-	 * false se la proposta non è stata chiusa.
+	 * false se la proposta non e stata chiusa.
 	 */
 	private boolean chiudiPropostaTesi(int propostatesi_id) {
 		ManagerFactory mf=new ManagerFactory();

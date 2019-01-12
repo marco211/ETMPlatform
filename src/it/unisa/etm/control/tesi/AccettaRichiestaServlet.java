@@ -12,7 +12,7 @@ import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 /**
- * Estende HttpServlet fornisce la funzionalità di accettazione di una richiesta di un untente registrato come studente da parte di un utente registrato come docente.
+ * Estende HttpServlet fornisce la funzionalita di accettazione di una richiesta di un untente registrato come studente da parte di un utente registrato come docente.
  */
 @WebServlet("/AccettaRichiestaServlet")
 public class AccettaRichiestaServlet extends HttpServlet {

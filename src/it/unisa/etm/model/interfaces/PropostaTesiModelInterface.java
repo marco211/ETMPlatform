@@ -16,7 +16,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa dell'accettazione, da parte di un utente registrato come docente, di una richiesta di partecipazione effettuata da un utente registrato come studente.
 	 * @param id identificativo della richiesta di partecipazione.
-	 * @return boolean true se l'accettazione è avvenuta con successo;
+	 * @return boolean true se l'accettazione e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -25,7 +25,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa del rifiuto, da parte di un utente registrato come docente, di una richiesta di partecipazione effettuata da un utente registrato come studente.
 	 * @param id identificativo della richiesta di partecipazione.
-	 * @return boolean true se il rifiuto della richiesta è avvenuta con successo;
+	 * @return boolean true se il rifiuto della richiesta e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -52,7 +52,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Salva in memoria una richiesta di partecipazione per una determinata proposta di tesi, da parte di un utente registrato come docente.
 	 * @param richiestaPartecipazione rappresenta la richiesta di partecipazione da salavare.
-	 * @return boolean che è true se l'operazione è avvenuta con successo;
+	 * @return boolean che e true se l'operazione e avvenuta con successo;
 	 * <p>
 	 * false in caso contrario.
 	 */
@@ -61,7 +61,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Inserisce una proposta di tesi creata da un utente registrato come docente.
 	 * @param proposta proposta di tesi creata dall'utente registrato come docente.
-	 * @return boolean che è true se la proposta di tesi viene inserita con successo;
+	 * @return boolean che e true se la proposta di tesi viene inserita con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -70,7 +70,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa dell'archiviazione di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
 	 * @param id identificativo della proposta di tesi da archiviare.
-	 * @return boolean che è true se la proposta di tesi è stata archiviata con successo;
+	 * @return boolean che e true se la proposta di tesi e stata archiviata con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -88,7 +88,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa della chiusura di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
 	 * @param id identificativo della proposta di tesi da chiudere.
-	 * @return boolean che è true se la proposta di tesi è stata chiusa con successo;
+	 * @return boolean che e true se la proposta di tesi e stata chiusa con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -97,7 +97,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa della rimozione di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
 	 * @param id identificativo della proposta di tesi da rimuovere.
-	 * @return boolean che è true se la proposta di tesi è stata rimossa con successo;
+	 * @return boolean che e true se la proposta di tesi e stata rimossa con successo;
 	 * <p>
 	 * false altrimenti.
 	 */
@@ -123,7 +123,7 @@ public interface PropostaTesiModelInterface {
 	/**
 	 * Si occupa della modifica, da parte di un utente registrato come docente, di una propria proposta di tesi.
 	 * @param proposta proposta di tesi da modificare.
-	 * @return boolean che è true se la modifica è avvenuta con successo;
+	 * @return boolean che e true se la modifica e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
 	 */

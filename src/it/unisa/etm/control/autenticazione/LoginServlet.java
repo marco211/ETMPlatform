@@ -15,7 +15,7 @@ import it.unisa.etm.factory.ManagerFactory;
 
 
 /**
- * Estende la classe HttpServlet e fonisce la funzionalità di login.
+ * Estende la classe HttpServlet e fonisce la funzionalita di login.
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {

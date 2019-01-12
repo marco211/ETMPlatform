@@ -31,7 +31,7 @@ public class TestFile {
 		assertEquals(nome,"File1"); //nome corretto
 		
 		nome=fileNotOk.getNome();
-		assertNotEquals(nome,"File3"); //nome sbagliato, il nome giusto è File2
+		assertNotEquals(nome,"File3"); //nome sbagliato, il nome giusto e File2
 	}
 
 	@Test
@@ -51,7 +51,7 @@ public class TestFile {
 		assertEquals(email,"email1@unisa.it"); //email corretta
 		
 		email=fileNotOk.getEmail();
-		assertNotEquals(email,"email3@unisa.it"); //email sbagliata, l'email giusta è email2@unisa.it
+		assertNotEquals(email,"email3@unisa.it"); //email sbagliata, l'email giusta e email2@unisa.it
 		
 	}
 
@@ -72,7 +72,7 @@ public class TestFile {
 		assertEquals(voto,30); //voto corretto
 		
 		voto=fileNotOk.getVoto();
-		assertNotEquals(voto,23); //voto sbagliato, il voto corretto è 18
+		assertNotEquals(voto,23); //voto sbagliato, il voto corretto e 18
 	}
 
 	@Test
@@ -89,7 +89,7 @@ public class TestFile {
 		assertEquals(descrizione,"descrizione1");//descrizione corretta
 		
 		descrizione=fileNotOk.getDescrizione();
-		assertNotEquals(descrizione,"descrizione3");//descrzione sbagliata, la descrizione giusta è descrizione2
+		assertNotEquals(descrizione,"descrizione3");//descrzione sbagliata, la descrizione giusta e descrizione2
 	}
 	
 	@Test
@@ -106,7 +106,7 @@ public class TestFile {
 		assertEquals(descrizione,"descrizione voto1"); //descrizione voto corretta
 		
 		descrizione=fileNotOk.getDescrizioneVoto();
-		assertNotEquals(descrizione,"descrizione voto3"); //descrizione voto sbagliata, la descrizione voto giusta è descrizione voto2
+		assertNotEquals(descrizione,"descrizione voto3"); //descrizione voto sbagliata, la descrizione voto giusta e descrizione voto2
 	}
 
 	@Test
@@ -122,7 +122,7 @@ public class TestFile {
 		assertEquals(id,1); //proposta tesi id corretto
 		
 		id=fileNotOk.getPropostaTesiId();
-		assertNotEquals(id,3); //proposta tesi id sbagliato, il proposta tesi id corretto è 2
+		assertNotEquals(id,3); //proposta tesi id sbagliato, il proposta tesi id corretto e 2
 	}
 	@Test
 	public void testSetPropostaTesiId() {

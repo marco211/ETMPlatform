@@ -19,7 +19,7 @@ public interface AmministratoreModelInterface{
 	/**
 	 * Permette di eliminare un determinato utente.
 	 * @param email dell'utente da eliminare.
-	 * @return boolean che è true se l'eliminazione ha avuto successo;
+	 * @return boolean che e true se l'eliminazione ha avuto successo;
 	 * <p>
 	 * false altrimenti.
 	 */

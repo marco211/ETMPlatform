@@ -118,7 +118,7 @@
 			<div class="col my-4 mx-4">
 					<h1>Iscrizione effettuata con successo</h1>
 					<h6>Abbiamo inviato una mail di conferma all'indirizzo e-mail da te inserito</h6>
-					<h6>Ti preghiamo di confermare la registrazione al più presto</h6>
+					<h6>Ti preghiamo di confermare la registrazione al piu presto</h6>
 					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
 			</div>
 		</div>
