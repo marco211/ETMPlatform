@@ -2,6 +2,8 @@ package it.unisa.etm.testing.integration;
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -32,21 +34,18 @@ public class PartecipaManagerTest {
 	
 	@Test
 	public void  testInserisciPartecipazione() {
-		int id= partecipaOk.getPropostaTesiId();
-		String email=partecipaOk.getUtenteEmail();
-		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(id,email);
+		
+		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(1,"etm.utentedieci@studenti.unisa.it");
 		assertTrue(inserisciPartecipazione);
 		
-		id=999;
-		email="facekemail@bho.it";
-		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(id, email);
-		assertTrue(inserisciPartecipazione);
+		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh");
+		assertFalse(inserisciPartecipazione);
 				
 	}
 	
 	@Test
 	public void testGetListaPartecipazione() {
-		ArrayList<PropostaTesi> lista=  pm.getTesiRecenti();
+		ArrayList<PropostaTesi> lista=  pm.getProposteTesiAttive();
 		ArrayList<Partecipa> partecipazioni= partecipaManager.getListaPartecipazione(lista);
 		assertNotEquals(partecipazioni, null);
 	}
