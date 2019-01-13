@@ -99,16 +99,7 @@ public class PropostaTesiManagerTest {
 		assertTrue(archivia);// Non archivia poichè l'ID è inesistente
 	}
 	
-	@Test
-	public void testCercaPropostaTesi() {
-		String titolo= propostaOk.getTitolo();
-		ArrayList<PropostaTesi> cercaProposta= pm.cercaProposteTesi(titolo);
-		assertNotEquals(cercaProposta, null);// La ricerca va a buon fine
-		
-		titolo= "TitoloInesistente";
-		cercaProposta=pm.cercaProposteTesi(titolo);
-		assertEquals(cercaProposta, null);// Ritorna null poichè il titolo cerca non esiste
-	}
+	
 	
 	@Test
 	public void testChiudiPropostaTesi() {
@@ -122,16 +113,7 @@ public class PropostaTesiManagerTest {
 		
 	}
 	
-	@Test
-	public void testRimuoviPropostatesi() {
-		int id = propostaOk.getId();
-		boolean rimuoviProposta= pm.rimuoviPropostaTesi(id);
-		assertTrue(rimuoviProposta);// la proposta viene rimossa correttamente
-		
-		id= 999;
-		rimuoviProposta=pm.rimuoviPropostaTesi(id);
-		assertTrue(rimuoviProposta);// la proposta non viene rimossa correttamente
-	}
+
 	
 	@Test
 	public void testGetProposteTesiAttive() {

@@ -77,15 +77,6 @@ public interface PropostaTesiModelInterface {
 	public boolean archiviaPropostaTesi(int id);
 	
 	/**
-	 * Si occupa della ricerca di una proposta di tesi tramite.
-	 * @param titolo rappresenta il titolo della proposta di tesi da cercare.
-	 * @return ArrayList delle proposte di tesi che contengono quel titolo, in caso di successo;
-	 * <p>
-	 * null se non vi sono proposte di tesi con quel titolo o in caso d'insuccesso.
-	 */
-	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo);
-	
-	/**
 	 * Si occupa della chiusura di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
 	 * @param id identificativo della proposta di tesi da chiudere.
 	 * @return boolean che e true se la proposta di tesi e stata chiusa con successo;
@@ -94,14 +85,6 @@ public interface PropostaTesiModelInterface {
 	 */
 	public boolean chiudiPropostaTesi(int id);
 	
-	/**
-	 * Si occupa della rimozione di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
-	 * @param id identificativo della proposta di tesi da rimuovere.
-	 * @return boolean che e true se la proposta di tesi e stata rimossa con successo;
-	 * <p>
-	 * false altrimenti.
-	 */
-	public boolean rimuoviPropostaTesi(int id);
 	
 	/**
 	 * Torna all'utente le proposte attive in questo momento

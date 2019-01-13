@@ -161,36 +161,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	@Override
-	public ArrayList<PropostaTesi> cercaProposteTesi(String titolo){
-		String SQL="SELECT p FROM PropostaTesi WHERE p.titolo="+titolo+";";
-		Connection connection=null;
-		PreparedStatement statement=null;
-		ArrayList <PropostaTesi> proposte=null;
-		try {
-			connection=DatabaseManager.getIstance();
-			statement=connection.prepareStatement(SQL);
-			ResultSet rs=statement.executeQuery(SQL);
-			proposte=new ArrayList<PropostaTesi>();
-			while(rs.next()) {
-				PropostaTesi proposta=new PropostaTesi();
-				proposta.setId(rs.getInt(1));
-				proposta.setUtenteEmail(rs.getString(2));
-				proposta.setTitolo(rs.getString(3));
-				proposta.setChiuso(rs.getBoolean(4));
-				proposta.setAmbito(rs.getString(5));
-				proposta.setTempoDiSviluppo(rs.getInt(6));
-				proposta.setDecrizione(rs.getString(7));
-				proposta.setArchiviato(rs.getBoolean(8));
-				proposta.setMaterie(rs.getString(9));
-				proposte.add(proposta);
-			}
-			return proposte;
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}
 	
 	@Override
 	public boolean chiudiPropostaTesi(int id){
@@ -210,52 +180,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		}
 	}
 	
-	@Override
-	public boolean rimuoviPropostaTesi(int id){
-		String SQL="Delete FROM PropostaTesi WHERE id="+id+";";
-		String SQL2="Select * FROM RichiestaPartecipazione";
-		String file = "Delete FROM File WHERE PropostaTesi_id="+id+";";
-		String consegnad = "Delete FROM Consegna WHERE PropostaTesi_id="+id+";";
-		String attivita = "Delete FROM Attivita WHERE PropostaTesi_id="+id+";";
-		String partecipa = "Delete FROM Partecipa WHERE PropostaTesi_id="+id+";";
-		String utente="UPDATE Utente SET PropostaTesi_id = 0 WHERE PropostaTesi_id="+id+";";
-		Connection connection=null;
-		PreparedStatement statement1=null;
-		PreparedStatement statement=null;
-		boolean b;
-		try {
-			connection=DatabaseManager.getIstance();
-			statement1=connection.prepareStatement(SQL);
-			statement1.executeQuery(SQL2);
-			ResultSet rs=statement1.getResultSet();
-			PreparedStatement f = connection.prepareStatement(file);
-			f.executeUpdate();
-			PreparedStatement a = connection.prepareStatement(attivita);
-			a.executeUpdate();
-			PreparedStatement c = connection.prepareStatement(consegnad);
-			c.executeUpdate();
-			PreparedStatement p = connection.prepareStatement(partecipa);
-			p.executeUpdate();
-			PreparedStatement u = connection.prepareStatement(utente);
-			u.executeUpdate();
-			while(rs.next()) {
-				int id_proposta=rs.getInt(3);
-				if(id_proposta==id) {
-					
-					String SQL3="Delete FROM RichiestaPartecipazione WHERE id="+id_proposta+";";
-					PreparedStatement statement2=connection.prepareStatement(SQL3);
-					statement2.executeUpdate();
-				}
-			}
-			statement=connection.prepareStatement(SQL);
-			statement.executeUpdate();
-			b=true;
-			return b;
-		}catch (SQLException e) {
-			e.printStackTrace();
-			return false;
-		}
-	}
+	
 	
 	@Override
 	public ArrayList<PropostaTesi> getProposteTesiAttive(){

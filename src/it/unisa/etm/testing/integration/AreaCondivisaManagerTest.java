@@ -1,8 +1,11 @@
 package it.unisa.etm.testing.integration;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -30,5 +33,15 @@ public class AreaCondivisaManagerTest {
 		assertFalse(am.inserisciFile(f));
 	}
 	
+	@Test
+	public void rimuoviFileTest() {
+		//assertTrue(am.rimuoviFile(1));
+	}
+	
+	@Test
+	public void getFileByPropostaTesiTest() {
+		List<File> files = am.getFileByPropostaTesi(1);
+		assertNotEquals(files,null);
+	}
 	private static AreaCondivisaManager am;
 }

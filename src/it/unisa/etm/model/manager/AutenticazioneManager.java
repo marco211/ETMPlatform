@@ -49,8 +49,10 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 				ps.setString(8, utente.getValidazione());
 				ps.executeUpdate();
 				
-				String SQL = "select nome from insegnamento where nome='" + utente.getInsegnamento().get(0) + "';";
+				String SQL = "select nome from insegnamento where nome=?;";
+				
 				PreparedStatement preparedStatement=istance.prepareStatement(SQL);
+				preparedStatement.setString(1, utente.getInsegnamento().get(0));
 				ResultSet rs=preparedStatement.executeQuery(SQL);
 				if(!rs.next()) {
 					String insertSQL1="insert into insegnamento (nome) values(?);";

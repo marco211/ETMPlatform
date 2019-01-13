@@ -38,14 +38,8 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testGetUtente() {
-		Utente utente = new Utente("TestProva","1900-01-02","Prova","s","test@unisa.it","error123","111111","valido");
-		assertTrue(new AutenticazioneManager().registraUtente(utente));
-		
-		utente = amministratoreManager.getUtente("test@unisa.it");
+		Utente utente = amministratoreManager.getUtente("etm.utente@studenti.unisa.it");
 		assertNotEquals(null, utente);
-		
-		boolean test=amministratoreManager.eliminaUtente("test@unisa.it");
-		assertTrue(test); 
 		
 		utente=amministratoreManager.getUtente("fakeemail@email.it");
 		assertEquals(utente,null); //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
@@ -53,8 +47,10 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testEliminaUtente() {
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("StudenteTestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("DocenteTestProva","1900-01-02","Prova","d","emailtest2@unisa.it","error123","ETC","valido")));
+		
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("StudenteTestPr","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Domenico","Ufficiomio", "d","emailtest2@unisa.it","ciao","ETC","valido")));
+		
 		
 		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");
 		assertTrue(test); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)

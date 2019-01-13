@@ -30,26 +30,28 @@ public class UtenteManagerTest {
 
 	@Test
 	public void testGetInfo() {
+		
+			
+		Utente infoUtente = um.getInfo("etm.utente@studenti.unisa.it");
+		Utente infoDoc = um.getInfo("etm.docente@unisa.it");
+		
+		assertNotEquals(infoUtente,null);
 
-		String email=am.getListaUtenti().get(0).getEmail();
-		Utente info= um.getInfo(email);
-		assertNotEquals(info,null);
-
-		if(!info.getEmail().equals(email)) fail("L'email deve essere uguale a quella inserita");
-
-
-		info=um.getInfo("questaemailnonesiste@email.it");
-		assertEquals(info,null);
+		assertNotEquals(infoDoc,null);
+		
+		infoUtente=um.getInfo("questaemailnonesiste@email.it");
+		assertEquals(infoUtente,null);
 
 
 	}
 	@Test
 	public void testCercaUtente() {
-		String email=am.getListaUtenti().get(0).getEmail();
-		Utente cerca;
-		cerca = um.cercaUtente(email);
+		Utente cerca = um.cercaUtente("etm.utente@studenti.unisa.it");
 		assertNotEquals(cerca,null);
 
+		cerca = um.cercaUtente("etm.docente@unisa.it");
+		assertNotEquals(cerca,null);
+		
 		cerca=um.cercaUtente("Emailchenonesiste@email.it");
 		assertEquals(cerca, null);
 
@@ -57,6 +59,7 @@ public class UtenteManagerTest {
 	}
 	@Test
 	public void testModificaPassword() {
+		
 		Utente utente=am.getListaUtenti().get(0);
 
 
@@ -78,6 +81,8 @@ public class UtenteManagerTest {
 		boolean modifica= um.modificaUtente(utente);
 		assertTrue(modifica);
 
+		utente = am.getUtente("etm.docente@unisa.it");
+		assertTrue(um.modificaUtente(utente));
 
 		utente.setEmail("emailfake@email.it");
 		modifica=um.modificaUtente(utente);
@@ -96,6 +101,7 @@ public class UtenteManagerTest {
 		assertEquals(0, modifica.size());
 
 	}
+	
 	@Test
 	public void testCercaListaUtenteCognome() {
 
