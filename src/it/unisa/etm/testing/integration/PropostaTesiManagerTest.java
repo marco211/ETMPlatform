@@ -65,7 +65,7 @@ public class PropostaTesiManagerTest {
 		
 		email= "Emailinesistente@fail.it";
 		cercaRichiesta= pm.cercaRichiestePartecipazione(email);
-		assertEquals(cercaRichiesta, null); //Ritorna Null poichè l'email è inesistente
+		assertEquals(cercaRichiesta.size(),0); //Ritorna Null poichè l'email è inesistente
 	}
 	
 	@Test 
@@ -129,13 +129,13 @@ public class PropostaTesiManagerTest {
 		
 		email="emailinesistente@ciao.it";
 		proposteDocente= pm.getProposteTesiDocente(email);
-		assertEquals(proposteDocente, null);// Non restituisce la lista poichè l'email è inesistente
+		assertEquals(proposteDocente.size(),0);// Non restituisce la lista poichè l'email è inesistente
 		
 	}
 	
 	@Test
 	public void testGetPropostaTesi() {
-		int id= propostaOk.getId();
+		int id= 10;
 		PropostaTesi proposta= pm.getPropostaTesi(id);
 		assertNotEquals(proposta, null);// Proposta tesi correttamente selezionata	
 		
@@ -163,7 +163,7 @@ public class PropostaTesiManagerTest {
 		
 		email="emailinesistente@ciao.it";
 		richiesta= pm.getRichiestaStudente(email);
-		assertEquals(richiesta, null);// Richiesta per studente errata per l'Email
+		assertEquals(richiesta.size(), 0);// Richiesta per studente errata per l'Email
 		
 	}
 	@Test
