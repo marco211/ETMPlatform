@@ -43,15 +43,17 @@
 							<h4>Scadenza Consegna:</h4>
 							<div id="scadenzaConsegna"><%=consegna.getScadenza() %></div>
 							<div class="d-none" id="modificaConsegnaDiv">
-								<form action="ModificaConsegnaServlet" method="post">
+								<form action="ModificaConsegnaServlet" method="post" name="caricaConsegna">
 									<input type="hidden" name="idConsegna" value="<%=consegna.getId()%>">
 									<input type="hidden" name="nomeConsegna" value="<%=consegna.getNome()%>">
 									<input type="hidden" name="descrizioneConsegna" value="<%=consegna.getDescrzione()%>">
 									<div class="form-group">
-									<input type="date" class="form-control" name="scadenzaConsegna" required>
+									<input type="date" class="form-control" onchange="controlloScadenzaConsegna()" name="scadenzaConsegna" required>
 									</div>
+									<div id="infoDiv" class="alert alert-danger form-group d-none"
+									role="alert"></div>
 									<div>
-									<input type="submit" class="btn btn-primary" value="modificaScadenza">
+									<input type="submit" class="btn btn-primary" onclick="return validazione()" value="modificaScadenza">
 									</div>
 								</form>
 							</div>

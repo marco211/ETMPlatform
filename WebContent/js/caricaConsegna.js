@@ -74,6 +74,8 @@ function validazione()
 		
 		document.caricaConsegna.nomeConsegna.focus();
 		div.append("Inserisci un nome");
+		focused=true;
+		
 	}
 	else if(!controlloDescrizioneConsegna())
 	{
@@ -84,21 +86,24 @@ function validazione()
 			div.append("Inserisci una descrizione");
 			document.caricaConsegna.descrizioneConsegna.focus();
 			focused=true;
+			
 		}
 		else if(c>1000)
 		{
 			div.append("La descrizione deve essere minore di mille caratteri");
 			document.caricaConsegna.descrizioneConsegna.focus();
 			focused=true;
+			
 		}
 	}
 	else if(!controlloScadenzaConsegna()){
 			document.caricaConsegna.scadenzaConsegna.focus();
 		div.append("Inserisci una data valida");
+		focused=true;
+		
 	}
-	
-	
-	if(focused=true){
+
+	if(focused==true){
 		return false;
 	}
 	else{
