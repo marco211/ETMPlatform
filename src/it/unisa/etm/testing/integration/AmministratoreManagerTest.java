@@ -53,10 +53,13 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testEliminaUtente() {
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("TestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("StudenteTestProva","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("DocenteTestProva","1900-01-02","Prova","d","emailtest2@unisa.it","error123","ETC","valido")));
 		
 		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");
 		assertTrue(test); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)
+		test=amministratoreManager.eliminaUtente("emailtest2@unisa.it");
+		assertTrue(test); 
 		
 		test=amministratoreManager.eliminaUtente("fakeemail@email.it");
 		assertFalse(test); //ritorna false poiché non esiste nessun utente associato alla email fakeemail@email.it

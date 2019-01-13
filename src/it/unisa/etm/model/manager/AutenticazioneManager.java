@@ -37,8 +37,7 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 				ps.executeUpdate();
 			}
 			else {
-				insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo, validazione) "
-						+ "values(?,?,?,?,?,?,?,?);";
+				insertSQL = "insert into utente (email, nome, cognome, password, data_nascita, ufficio,  tipo, validazione) values(?,?,?,?,?,?,?,?);";
 				ps=istance.prepareStatement(insertSQL);
 				ps.setString(1, utente.getEmail());
 				ps.setString(2, utente.getNome());;

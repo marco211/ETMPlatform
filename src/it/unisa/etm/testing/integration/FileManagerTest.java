@@ -7,7 +7,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
-import javax.servlet.http.Part;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

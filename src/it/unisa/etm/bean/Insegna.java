@@ -1,18 +1,18 @@
 package it.unisa.etm.bean;
 
 public class Insegna {
-	
+
 	public Insegna() {
-		
+
 	}
-	
+
 	public Insegna(String utenteEmail, String insegnamentoNome) {
 		super();
 		this.utenteEmail = utenteEmail;
 		this.insegnamentoNome = insegnamentoNome;
 	}
 
-	public String getUtenteEmail() {
+	public 	String getUtenteEmail() {
 		return utenteEmail;
 	}
 

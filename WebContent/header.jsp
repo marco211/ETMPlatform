@@ -9,7 +9,7 @@
 	}
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	if(partecipazioni == null)
-		partecipazioni = new ArrayList();
+		partecipazioni = new ArrayList<>();
 %>
 <!DOCTYPE html>
 <html lang="en">
