@@ -36,16 +36,14 @@ public class PartecipaManagerTest {
 	
 	@Test
 	public void  testInserisciPartecipazione() {		
-		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(2, partecipa.getUtenteEmail());
-		assertTrue(inserisciPartecipazione);
+		assertTrue(partecipaManager.inserisciPartecipazione(2, partecipa.getUtenteEmail()));
 		
-		assertFalse(inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh"));	
+		assertFalse(partecipaManager.inserisciPartecipazione(99, "boh"));	
 	}
 	
 	@Test
 	public void testGetListaPartecipazione() {
 		PropostaTesiManager ptm = (PropostaTesiManager) new ManagerFactory().createPropostaTesiManager();
-		
 		ArrayList<PropostaTesi> lista=  ptm.getProposteTesiDocente("etm.docente@unisa.it");
 		ArrayList<Partecipa> partecipazioni= partecipaManager.getListaPartecipazione(lista);
 		assertNotEquals(partecipazioni, null);
