@@ -88,22 +88,27 @@ public class FileManagerTest {
 	@Test
 	public void testAggiungiFile() {
 			
-		File file_test=new File("File2",1, "descrizione2", 10,"descrizionevoto2","etm.utente@studenti.unisa.it");
+		File file_test=new File("File3",1, "descrizione File3", 24,"descrizione voto","etm.utente@unisa.it");
 		file_test.setFilePart(filePart);
-		 //restituisce true
-		assertTrue(filem.aggiungiFile(file_test));
+		assertTrue(filem.aggiungiFile(file_test));	//restituisce true
+		
+		boolean test= filem.eliminaFile(1, "File3"); //restituiscee true
+		assertTrue(test);
 	}
 	
 	
 	
 	@Test
 	public void testModificaFile() {
-		File file_test=new File("File20",1, "descrizione21", 10,"descrizionevoto2","etm.utente@studenti.unisa.it");
+		File file_test=new File("File4",1, "descrizione File4", 25,"descrizione voto","etm.utente@unisa.it");
 		file_test.setFilePart(filePart);
-		filem.aggiungiFile(file_test);
+		assertTrue(filem.aggiungiFile(file_test));
 		
-		boolean test=filem.modificaFile(1,  "File20", 5, "desc"); //restituisce true
+		boolean test=filem.modificaFile(1,  "File4", 30, "descrizione modificata: voto cambiato"); //restituisce true
 		assertTrue(test); 
+		
+		test= filem.eliminaFile(1, "File4"); //restituiscee true
+		assertTrue(test);
 		
 		test=filem.modificaFile(2, "File010101", 25, "descrizione modificata1"); //restituisce false poché non esiste un file associato a questo nome
 		assertFalse(test); 
@@ -112,10 +117,11 @@ public class FileManagerTest {
 	
 	@Test
 	public void testEliminaFile() {
-		File file_test=new File("File30",1, "descrizione21", 10,"descrizionevoto2","etm.utente@studenti.unisa.it");
+		File file_test=new File("FileDaEliminare",1, "Questo file è da eliminare", 25,"descrizione voto","etm.utente@unisa.it");
 		file_test.setFilePart(filePart);
-		filem.aggiungiFile(file_test);
-		boolean test= filem.eliminaFile(1, "File30"); //restituiscee true
+		assertTrue(filem.aggiungiFile(file_test));
+		
+		boolean test= filem.eliminaFile(1, "FileDaEliminare"); //restituiscee true
 		assertTrue(test);
 		
 		test= filem.eliminaFile(1, "File03030"); //restituiscee false poiché non esiste un file associato a questo nome
@@ -124,7 +130,7 @@ public class FileManagerTest {
 	
 	@Test
 	public void testGetFile() {
-		File f = filem.getListaFile(1).get(0);
+		File f = filem.getFile(1, "File1");
 		
 		File file=filem.getFile(f.getPropostaTesiId(), f.getNome()); //restituisce il file corrispondente
 		assertNotEquals(file,null);
@@ -135,7 +141,7 @@ public class FileManagerTest {
 	
 	@Test
 	public void TestScaricaFile() {
-		File f = filem.getListaFile(1).get(0);
+		File f = filem.getFile(1, "File1");
 		
 		File file=filem.scaricaFile(f.getPropostaTesiId(), f.getNome()); //restituisce il file corrispondente
 		assertNotEquals(file,null);
