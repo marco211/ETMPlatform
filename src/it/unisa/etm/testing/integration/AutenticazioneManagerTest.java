@@ -37,7 +37,7 @@ public class AutenticazioneManagerTest {
 		boolean testdoc = autenticazioneManager.registraUtente(docente);
 		
 		assertTrue(test);
-		assertTrue(test);
+		assertTrue(testdoc);
 		
 		am.eliminaUtente("domenico@studenti.unisa.it");
 		am.eliminaUtente("doc@studenti.unisa.it");
@@ -49,7 +49,7 @@ public class AutenticazioneManagerTest {
 		Utente utente=autenticazioneManager.getUtente("etm.docente@unisa.it", "ciao"); //etm.docente@unisa.it è un docente registrato nel db
 		assertNotEquals(utente,null);
 		
-		utente=autenticazioneManager.getUtente("etm.utente@unisa.it", "ciao");
+		utente=autenticazioneManager.getUtente("etm.utente@studenti.unisa.it", "ciao");
 		assertNotEquals(utente, null);
 	}
 	

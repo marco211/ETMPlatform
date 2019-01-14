@@ -49,7 +49,8 @@ public class AmministratoreManagerTest {
 	public void testEliminaUtente() {
 		
 		assertTrue(new AutenticazioneManager().registraUtente(new Utente("StudenteTestPr","1900-01-02","Prova","s","emailtest@unisa.it","error123","111111","valido")));
-		assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Domenico","Ufficiomio", "d","emailtest2@unisa.it","ciao","ETC","valido")));
+		assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Docmenico","emailtest2@unisa.it","ciao","ETC","valido")));
+		
 		
 		
 		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");

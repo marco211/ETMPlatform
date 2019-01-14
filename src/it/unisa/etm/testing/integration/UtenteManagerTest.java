@@ -76,17 +76,16 @@ public class UtenteManagerTest {
 	}
 	@Test
 	public void testModificaUtente() {
-		Utente utente=am.getListaUtenti().get(0);
+		Utente utente=am.getUtente("etm.utente@studenti.unisa.it");
 
-		boolean modifica= um.modificaUtente(utente);
-		assertTrue(modifica);
+		assertTrue(um.modificaUtente(utente));
 
 		utente = am.getUtente("etm.docente@unisa.it");
 		assertTrue(um.modificaUtente(utente));
 
 		utente.setEmail("emailfake@email.it");
-		modifica=um.modificaUtente(utente);
-		assertFalse(modifica);
+
+		assertFalse(um.modificaUtente(utente));
 
 	}
 	@Test
