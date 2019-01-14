@@ -22,6 +22,7 @@ public class PartecipaManagerTest {
 	
 	@BeforeClass
 	public static void setUp() {
+		pm=new PropostaTesiManager();
 		partecipaManager= (PartecipaManager) new ManagerFactory().createPartecipaManager();
 		partecipaOk= new Partecipa(11,"umberto@unisa.it");
 	}
@@ -30,12 +31,13 @@ public class PartecipaManagerTest {
 	public static void tearDown() {
 		partecipaManager=null;
 		partecipaOk=null;
+		pm=null;
 	}
 	
 	@Test
 	public void  testInserisciPartecipazione() {
 		
-		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(1,"etm.utentedieci@studenti.unisa.it");
+		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(12,partecipaOk.getUtenteEmail());
 		assertTrue(inserisciPartecipazione);
 		
 		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh");

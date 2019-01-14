@@ -21,14 +21,14 @@ public class PartecipaManager implements PartecipaModelInterface {
 		String insertSQL="insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";
 		int propostaTesiId=0;
 		try {
-			connection=DatabaseManager.getIstance();
-			prepared1=connection.prepareStatement(selectSQL);
+			Connection connection=DatabaseManager.getIstance();
+			PreparedStatement prepared1=connection.prepareStatement(selectSQL);
 			prepared1.setInt(1, richiestaId);			
-			rs1 = prepared1.executeQuery();
+			ResultSet rs1 = prepared1.executeQuery();
 			while(rs1.next()) {
 				propostaTesiId = rs1.getInt("PropostaTesi_Id");
 			}
-			prepared=connection.prepareStatement(insertSQL);
+			PreparedStatement prepared=connection.prepareStatement(insertSQL);
 			prepared.setString(1, utenteEmail);
 			prepared.setInt(2, propostaTesiId);
 			prepared.executeUpdate();
@@ -44,12 +44,12 @@ public class PartecipaManager implements PartecipaModelInterface {
 	public ArrayList<Partecipa> getListaPartecipazione(ArrayList<PropostaTesi> list) {
 		String selectSQL="SELECT * FROM PARTECIPA WHERE PROPOSTATESI_ID=?";
 		try {
-			connection=DatabaseManager.getIstance();
+			Connection connection=DatabaseManager.getIstance();
 			ArrayList<Partecipa> lista = new ArrayList<Partecipa>();
 			for(int i=0;i<list.size();i++) {
-				prepared=connection.prepareStatement(selectSQL);
+				PreparedStatement prepared=connection.prepareStatement(selectSQL);
 				prepared.setInt(1, list.get(i).getId());
-				rs=prepared.executeQuery();
+				ResultSet rs=prepared.executeQuery();
 				while(rs.next()) {
 					Partecipa partecipa=new Partecipa();
 					partecipa.setPropostaTesiId(rs.getInt("PROPOSTATESI_ID"));
@@ -65,12 +65,6 @@ public class PartecipaManager implements PartecipaModelInterface {
 		}
 	
 	}
-
-	private ResultSet rs;
-	private ResultSet rs1;
-	private Connection connection=null;
-	private PreparedStatement prepared=null;
-	private PreparedStatement prepared1=null;
 
 }
 
