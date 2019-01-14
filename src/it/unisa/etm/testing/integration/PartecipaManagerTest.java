@@ -21,7 +21,7 @@ public class PartecipaManagerTest {
 	@BeforeClass
 	public static void setUp() {
 		partecipaManager= (PartecipaManager) new ManagerFactory().createPartecipaManager();
-		partecipaOk= new Partecipa(1,"umberto@unisa.it");
+		partecipaOk= new Partecipa(11,"umberto@unisa.it");
 	}
 	
 	@AfterClass
