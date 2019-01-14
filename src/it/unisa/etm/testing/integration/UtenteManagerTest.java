@@ -14,104 +14,108 @@ import static org.junit.Assert.assertTrue;
 import java.util.ArrayList;
 public class UtenteManagerTest {
 	private static UtenteManager um;
-	private static AmministratoreManager am;
-
+	private Utente st,doc;
+	
 	@BeforeClass
 	public static void setUp() {
 		um= new UtenteManager();
-		am= new AmministratoreManager();
 	}
 
 	@AfterClass
 	public static void tearDown() {
 		um=null;
-		am=null;
 	}
 
 	@Test
 	public void testGetInfo() {
 		
 			
-		Utente infoUtente = um.getInfo("etm.utente@studenti.unisa.it");
-		Utente infoDoc = um.getInfo("etm.docente@unisa.it");
+		st = um.getInfo("etm.utente@unisa.it");
+		doc = um.getInfo("etm.docente@unisa.it");
 		
-		assertNotEquals(infoUtente,null);
+		assertNotEquals(st,null);
 
-		assertNotEquals(infoDoc,null);
+		assertNotEquals(doc,null);
 		
-		infoUtente=um.getInfo("questaemailnonesiste@email.it");
-		assertEquals(infoUtente,null);
+		st=um.getInfo("questaemailnonesiste@email.it");
+		assertEquals(st,null);
 
 
 	}
 	@Test
 	public void testCercaUtente() {
-		Utente cerca = um.cercaUtente("etm.utente@studenti.unisa.it");
-		assertNotEquals(cerca,null);
+		st = um.cercaUtente("etm.utente@unisa.it");
+		doc = um.cercaUtente("etm.docente@unisa.it");
 
-		cerca = um.cercaUtente("etm.docente@unisa.it");
-		assertNotEquals(cerca,null);
+		assertNotEquals(st,null);
+		assertNotEquals(doc,null);
 		
-		cerca=um.cercaUtente("Emailchenonesiste@email.it");
-		assertEquals(cerca, null);
+		st=um.cercaUtente("Emailchenonesiste@email.it");
+		assertEquals(st, null);
 
 
 	}
 	@Test
 	public void testModificaPassword() {
 		
-		Utente utente=am.getListaUtenti().get(0);
+		st=um.cercaUtente("etm.utente@unisa.it");
+		doc=um.cercaUtente("etm.docente@unisa.it");
+
+		st.setPassword("prova");
+		doc.setPassword("prova");
+		
+		assertTrue(um.modificaPassword(st));
+		assertTrue(um.modificaPassword(doc));
 
 
-		boolean modifica= um.modificaPassword(utente);
-		assertTrue(modifica);
-
-
-		utente.setEmail("emailfake@email.it");
-		modifica= um.modificaPassword(utente);
-		assertFalse(modifica);
-
-
+		st.setEmail("");
+		assertFalse(um.modificaPassword(st));
 
 	}
+	
 	@Test
 	public void testModificaUtente() {
-		Utente utente=am.getUtente("etm.utente@studenti.unisa.it");
+		st=um.cercaUtente("etm.utente@unisa.it");
+		doc=um.cercaUtente("etm.docente@unisa.it");
 
-		assertTrue(um.modificaUtente(utente));
+		st.setMatricola("0552100552");
+		doc.setUfficio("Ufficio 01");
+		
+		assertTrue(um.modificaUtente(st));
+		assertTrue(um.modificaUtente(doc));
 
-		utente = am.getUtente("etm.docente@unisa.it");
-		assertTrue(um.modificaUtente(utente));
 
-		utente.setEmail("emailfake@email.it");
-
-		assertFalse(um.modificaUtente(utente));
+		st.setEmail("emailfake@email.it");
+		assertFalse(um.modificaUtente(st));
 
 	}
+	
 	@Test
 	public void testCercaListaUtenteNome() {
 
-		String nome=am.getListaUtenti().get(0).getNome();
-		ArrayList<Utente> modifica= um.cercaListaUtenteNome(nome);
-		assertNotEquals(modifica, null);
+		ArrayList<Utente> lista = um.cercaListaUtenteNome("Utente");
+		assertNotEquals(lista, null);
 
-		nome="giovaawdaa32nni";
-		modifica= um.cercaListaUtenteNome(nome);
-		assertEquals(0, modifica.size());
+		 lista = um.cercaListaUtenteNome("Clelia");
+			assertNotEquals(lista, null);
+	
+		lista = um.cercaListaUtenteNome("gkfoeaf");
+		assertEquals(lista, null);
 
 	}
 	
 	@Test
 	public void testCercaListaUtenteCognome() {
 
-		String cognome=am.getListaUtenti().get(0).getCognome();
-		ArrayList<Utente> modifica= um.cercaListaUtenteCognome(cognome);
-		assertNotEquals(modifica, null);
 
+		ArrayList<Utente> lista = um.cercaListaUtenteCognome("Di Prova");
+		assertNotEquals(lista, null);
 
-		cognome="gwdawiova32nni";
-		modifica= um.cercaListaUtenteCognome(cognome);
-		assertEquals(0, modifica.size());
+		lista = um.cercaListaUtenteCognome("De Felice");
+		assertNotEquals(lista, null);
+	
+		lista = um.cercaListaUtenteCognome("gkfoeaf");
+		assertEquals(lista, null);
 
 	}
 }

@@ -47,7 +47,9 @@ public class PartecipaManagerTest {
 	
 	@Test
 	public void testGetListaPartecipazione() {
-		ArrayList<PropostaTesi> lista=  pm.getProposteTesiAttive();
+		PropostaTesiManager ptm = (PropostaTesiManager) new ManagerFactory().createPropostaTesiManager();
+		
+		ArrayList<PropostaTesi> lista=  ptm.getProposteTesiDocente("etm.docente@unisa.it");
 		ArrayList<Partecipa> partecipazioni= partecipaManager.getListaPartecipazione(lista);
 		assertNotEquals(partecipazioni, null);
 	}

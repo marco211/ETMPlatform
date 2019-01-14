@@ -180,21 +180,25 @@ public  class UtenteManager implements UtenteModelInterface{
 			pr.setString(1, nome);
 			ArrayList<Utente> list=new ArrayList<Utente>();
 			ResultSet rs=pr.executeQuery();
-			while(rs.next()) {
-				Utente utente=new Utente();
-				utente.setEmail(rs.getString("EMAIL"));
-				utente.setCognome(rs.getString("COGNOME"));
-				utente.setNome(rs.getString("NOME"));
-				utente.setTipo(rs.getString("TIPO"));
-				if(utente.getTipo().equals("s")) {
-					utente.setMatricola(rs.getString("MATRICOLA"));
-				}
-				else {
-					utente.setUfficio(rs.getString("UFFICIO"));
-				}
-				list.add(utente);
-			}
-			return list;
+			if(rs.next()) {
+				do {
+					Utente utente=new Utente();
+					utente.setEmail(rs.getString("EMAIL"));
+					utente.setCognome(rs.getString("COGNOME"));
+					utente.setNome(rs.getString("NOME"));
+					utente.setTipo(rs.getString("TIPO"));
+					if(utente.getTipo().equals("s")) {
+						utente.setMatricola(rs.getString("MATRICOLA"));
+					}
+					else {
+						utente.setUfficio(rs.getString("UFFICIO"));
+					}
+					list.add(utente);
+				}while(rs.next());
+				
+				return list;
+			}else return null;
+			
 		} catch (SQLException e) {
 			return null;
 		}
@@ -209,21 +213,25 @@ public  class UtenteManager implements UtenteModelInterface{
 			pr.setString(1, cognome);
 			ArrayList<Utente> list=new ArrayList<Utente>();
 			ResultSet rs=pr.executeQuery();
-			while(rs.next()) {
-				Utente utente=new Utente();
-				utente.setEmail(rs.getString("EMAIL"));
-				utente.setCognome(rs.getString("COGNOME"));
-				utente.setNome(rs.getString("NOME"));
-				utente.setTipo(rs.getString("TIPO"));
-				if(utente.getTipo().equals("s")) {
-					utente.setMatricola(rs.getString("MATRICOLA"));
-				}
-				else {
-					utente.setUfficio(rs.getString("UFFICIO"));
-				}
-				list.add(utente);
-			}
-			return list;
+			if(rs.next()) {
+				do {
+					Utente utente=new Utente();
+					utente.setEmail(rs.getString("EMAIL"));
+					utente.setCognome(rs.getString("COGNOME"));
+					utente.setNome(rs.getString("NOME"));
+					utente.setTipo(rs.getString("TIPO"));
+					if(utente.getTipo().equals("s")) {
+						utente.setMatricola(rs.getString("MATRICOLA"));
+					}
+					else {
+						utente.setUfficio(rs.getString("UFFICIO"));
+					}
+					list.add(utente);
+				}while(rs.next());
+				
+				return list;
+			}else return null;
+		
 		} catch (SQLException e) {
 			return null;
 		}

@@ -26,6 +26,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	
 	@Override
 	public boolean accettaRichiestaPartecipazione(int id){
+		
 		Connection istance=null;
 		PreparedStatement ps=null;
 		PreparedStatement ps2=null;
@@ -38,10 +39,10 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
 			ps.setInt(2, id);
-			ps.executeUpdate();		
+			if(ps.executeUpdate()<1) return false;		
 			ps2=istance.prepareStatement(insertSQL2); 
 			ps2.setInt(1, id);
-			ps2.executeUpdate();
+			if(ps2.executeUpdate()<1) return false;
 			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -59,7 +60,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			istance=DatabaseManager.getIstance();
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
-			ps.executeUpdate();
+			if(ps.executeUpdate()<1) return false;
 			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -79,14 +80,20 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(1, email);
 			ResultSet rs=statement.executeQuery();
 			richieste=new ArrayList<RichiestaPartecipazione>();
-			while(rs.next()) {
-				RichiestaPartecipazione richiesta=new RichiestaPartecipazione();
-				richiesta.setId(rs.getInt(1));
-				richiesta.setData(rs.getDate(2).toLocalDate()); 
-				richiesta.setPropostatesi_id(rs.getInt(3)); 
-				richiesta.setUtente_mail(rs.getString(4));
-				richieste.add(richiesta);
-			}return richieste;
+			
+			if(rs.next()) {
+				do {
+					RichiestaPartecipazione richiesta=new RichiestaPartecipazione();
+					richiesta.setId(rs.getInt(1));
+					richiesta.setData(rs.getDate(2).toLocalDate()); 
+					richiesta.setPropostatesi_id(rs.getInt(3)); 
+					richiesta.setUtente_mail(rs.getString(4));
+					richieste.add(richiesta);
+				}while(rs.next());
+				
+				return richieste;
+			}else return null;
+			
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -108,7 +115,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ps.setDate(1, java.sql.Date.valueOf(richiestaPartecipazione.getData()));			
 			ps.setInt(2, richiestaPartecipazione.getPropostatesi_id());			
 			ps.setString(3, richiestaPartecipazione.getUtente_mail());								
-			ps.executeUpdate();
+			if(ps.executeUpdate()<1) return false;
 			return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
@@ -153,7 +160,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		try {
 			connection=DatabaseManager.getIstance();
 			statement=connection.prepareStatement(SQL);
-			statement.executeUpdate();
+			if(statement.executeUpdate()<1) return false;
 			b=true;
 			return b;
 		}catch (SQLException e) {
@@ -171,7 +178,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		try {
 			connection=DatabaseManager.getIstance();
 			statement=connection.prepareStatement(SQL);
-			statement.executeUpdate();
+			if(statement.executeUpdate()<1) return false;
 			b=true;
 			return b;
 		}catch (SQLException e) {
@@ -226,24 +233,30 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(1, utenteEmail);
 			ResultSet rs=statement.executeQuery();
 			proposte=new ArrayList<PropostaTesi>();
-			while(rs.next()) {
-				PropostaTesi proposta=new PropostaTesi();
-				proposta.setId(rs.getInt(1));
-				proposta.setUtenteEmail(rs.getString(2));
-				proposta.setTitolo(rs.getString(3));
-				proposta.setChiuso(rs.getBoolean(4));
-				proposta.setAmbito(rs.getString(5));
-				proposta.setTempoDiSviluppo(rs.getInt(6));
-				proposta.setDecrizione(rs.getString(7));
-				proposta.setArchiviato(rs.getBoolean(8));
-				proposta.setMaterie(rs.getString(9));
-				proposte.add(proposta);
-			}
+			
+			if(rs.next()) {
+				PropostaTesi proposta;
+				do {
+					proposta=new PropostaTesi();
+					proposta.setId(rs.getInt(1));
+					proposta.setUtenteEmail(rs.getString(2));
+					proposta.setTitolo(rs.getString(3));
+					proposta.setChiuso(rs.getBoolean(4));
+					proposta.setAmbito(rs.getString(5));
+					proposta.setTempoDiSviluppo(rs.getInt(6));
+					proposta.setDecrizione(rs.getString(7));
+					proposta.setArchiviato(rs.getBoolean(8));
+					proposta.setMaterie(rs.getString(9));
+					proposte.add(proposta);
+				}while(rs.next());
+				
+				return proposte;
+			}else return null;
+			
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
-		return proposte;
 	}
 
 	public PropostaTesi getPropostaTesi(int id){
@@ -288,9 +301,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(4,proposta.getDecrizione());
 			statement.setString(5,proposta.getMaterie());
 			statement.setInt(6, proposta.getId());
-			statement.executeUpdate();
-			b=true;
-			return b;
+			
+			if(statement.executeUpdate() < 1) return false;
+			else return true;
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return false;
@@ -309,15 +322,20 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement=connection.prepareStatement(SQL);
 			statement.setString(1, utenteEmail);
 			ResultSet rs=statement.executeQuery();
-			while(rs.next()) {
-				RichiestaPartecipazione richiesta=new RichiestaPartecipazione();
-				richiesta.setId(rs.getInt(1));
-				richiesta.setData(rs.getDate(2).toLocalDate()); 
-				richiesta.setPropostatesi_id(rs.getInt(3)); 
-				richiesta.setUtente_mail(rs.getString(4));
-				richieste.add(richiesta);
-			}
-			return richieste;
+			if(rs.next()) {
+				RichiestaPartecipazione richiesta;
+				do {
+					richiesta=new RichiestaPartecipazione();
+					richiesta.setId(rs.getInt(1));
+					richiesta.setData(rs.getDate(2).toLocalDate()); 
+					richiesta.setPropostatesi_id(rs.getInt(3)); 
+					richiesta.setUtente_mail(rs.getString(4));
+					richieste.add(richiesta);
+				}while(rs.next());
+				
+				return richieste;
+			}else return null;
+		
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
