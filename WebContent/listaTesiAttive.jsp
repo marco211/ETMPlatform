@@ -56,7 +56,7 @@ function cambiaColore(){
 		               <div>
 		               <%
 		               ArrayList<RichiestaPartecipazione> richieste_studente = (ArrayList<RichiestaPartecipazione>)request.getAttribute("richieste_studente");
-		               if(richieste_studente.size()==0){
+		               if(richieste_studente==null||richieste_studente.size()==0){
 		            	   b=true;
 		            	   %>
 		            	   <a class="col" href="InviaPropostaTesiServlet?propostatesi_id=<%=p.getId() %>" class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddRichiesta" data-toggle="tooltip" data-placement="bottom" title="Invia richiesta di partecipazione"><i class="fas fa-plus-circle"></i></a>	

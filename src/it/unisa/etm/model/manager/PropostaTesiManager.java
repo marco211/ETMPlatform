@@ -19,12 +19,12 @@ import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 public class PropostaTesiManager implements PropostaTesiModelInterface {
 
 	public PropostaTesiManager() {
-		
+
 	}
-	
+
 	@Override
 	public boolean accettaRichiestaPartecipazione(int id){
-		
+
 		Connection istance=null;
 		PreparedStatement ps=null;
 		PreparedStatement ps2=null;
@@ -47,7 +47,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean rifiutaRichiestaPartecipazione(int id){
 		Connection istance=null;
@@ -65,7 +65,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-		
+
 	@Override
 	public ArrayList<RichiestaPartecipazione> cercaRichiestePartecipazione(String email){		
 		String SQL="SELECT * FROM richiestapartecipazione WHERE propostatesi_id IN (SELECT ID FROM propostatesi WHERE utente_email=?)";
@@ -78,7 +78,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(1, email);
 			ResultSet rs=statement.executeQuery();
 			richieste=new ArrayList<RichiestaPartecipazione>();
-			
+
 			if(rs.next()) {
 				do {
 					RichiestaPartecipazione richiesta=new RichiestaPartecipazione();
@@ -88,25 +88,25 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 					richiesta.setUtente_mail(rs.getString(4));
 					richieste.add(richiesta);
 				}while(rs.next());
-				
+
 				return richieste;
 			}else return null;
-			
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
 		}
 	}
-	
 
-	
+
+
 	@Override
 	public boolean inserisciRichiestaPartecipazione(RichiestaPartecipazione richiestaPartecipazione){
 		Connection istance=null;
 		PreparedStatement ps=null;
 		String insertSQL=null;
 		insertSQL="insert into RichiestaPartecipazione (Data, PropostaTesi_Id, Utente_Email) "
-					+ "values(?,?,?);";
+				+ "values(?,?,?);";
 		try {
 			istance=DatabaseManager.getIstance();
 			ps=istance.prepareStatement(insertSQL); 
@@ -120,7 +120,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean inserisciPropostaTesi(PropostaTesi proposta){
 		Connection connection=null;
@@ -148,7 +148,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean archiviaPropostaTesi(int id){
 		String SQL="UPDATE PropostaTesi SET Archiviato =1 WHERE id="+id+";";
@@ -166,7 +166,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
+
 	@Override
 	public boolean chiudiPropostaTesi(int id){
 		String SQL="UPDATE PropostaTesi SET Chiuso =1 WHERE id="+id+";";
@@ -184,9 +184,9 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
-	
-	
+
+
+
 	@Override
 	public ArrayList<PropostaTesi> getProposteTesiAttive(){
 		String SQL="SELECT * FROM PropostaTesi;";
@@ -216,8 +216,8 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return null;
 		}
 	}
-	
-	
+
+
 
 	@Override
 	public ArrayList<PropostaTesi> getProposteTesiDocente(String utenteEmail){
@@ -231,7 +231,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(1, utenteEmail);
 			ResultSet rs=statement.executeQuery();
 			proposte=new ArrayList<PropostaTesi>();
-			
+
 			if(rs.next()) {
 				PropostaTesi proposta;
 				do {
@@ -247,10 +247,10 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 					proposta.setMaterie(rs.getString(9));
 					proposte.add(proposta);
 				}while(rs.next());
-				
+
 				return proposte;
 			}else return null;
-			
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -268,16 +268,16 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			ResultSet rs=statement.executeQuery(SQL);
 			rs.next();
 			proposta=new PropostaTesi();
-				proposta.setId(rs.getInt(1));
-				proposta.setUtenteEmail(rs.getString(2));
-				proposta.setTitolo(rs.getString(3));
-				proposta.setChiuso(rs.getBoolean(4));
-				proposta.setAmbito(rs.getString(5));
-				proposta.setTempoDiSviluppo(rs.getInt(6));
-				proposta.setDecrizione(rs.getString(7));
-				proposta.setArchiviato(rs.getBoolean(8));
-				proposta.setMaterie(rs.getString(9));
-				return proposta;
+			proposta.setId(rs.getInt(1));
+			proposta.setUtenteEmail(rs.getString(2));
+			proposta.setTitolo(rs.getString(3));
+			proposta.setChiuso(rs.getBoolean(4));
+			proposta.setAmbito(rs.getString(5));
+			proposta.setTempoDiSviluppo(rs.getInt(6));
+			proposta.setDecrizione(rs.getString(7));
+			proposta.setArchiviato(rs.getBoolean(8));
+			proposta.setMaterie(rs.getString(9));
+			return proposta;
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
@@ -298,7 +298,7 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			statement.setString(4,proposta.getDecrizione());
 			statement.setString(5,proposta.getMaterie());
 			statement.setInt(6, proposta.getId());
-			
+
 			if(statement.executeUpdate() < 1) return false;
 			else return true;
 		}catch (SQLException e) {
@@ -306,8 +306,54 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 			return false;
 		}
 	}
-	
-	
+
+	@Override
+	public boolean rimuoviPropostaTesi(int id){
+
+		String SQL="Delete FROM PropostaTesi WHERE id="+id+";";
+		String SQL2="Select * FROM RichiestaPartecipazione";
+		String file = "Delete FROM File WHERE PropostaTesi_id="+id+";";
+		String consegnad = "Delete FROM Consegna WHERE PropostaTesi_id="+id+";";
+		String attivita = "Delete FROM Attivita WHERE PropostaTesi_id="+id+";";
+		String partecipa = "Delete FROM Partecipa WHERE PropostaTesi_id="+id+";";
+		String utente="UPDATE Utente SET PropostaTesi_id = 0 WHERE PropostaTesi_id="+id+";";
+		Connection connection=null;
+		PreparedStatement statement1=null;
+		PreparedStatement statement=null;
+		boolean b;
+		try {
+			connection=DatabaseManager.getIstance();
+			statement1=connection.prepareStatement(SQL);
+			statement1.executeQuery(SQL2);
+			ResultSet rs=statement1.getResultSet();
+			PreparedStatement f = connection.prepareStatement(file);
+			f.executeUpdate();
+			PreparedStatement a = connection.prepareStatement(attivita);
+			a.executeUpdate();
+			PreparedStatement c = connection.prepareStatement(consegnad);
+			c.executeUpdate();
+			PreparedStatement p = connection.prepareStatement(partecipa);
+			p.executeUpdate();
+			PreparedStatement u = connection.prepareStatement(utente);
+			u.executeUpdate();
+			while(rs.next()) {
+				int id_proposta=rs.getInt(3);
+				if(id_proposta==id) {
+
+					String SQL3="Delete FROM RichiestaPartecipazione WHERE id="+id_proposta+";";
+					PreparedStatement statement2=connection.prepareStatement(SQL3);
+					statement2.executeUpdate();
+				}
+			}
+			statement=connection.prepareStatement(SQL);
+			statement.executeUpdate();
+			b=true;
+			return b;
+		}catch (SQLException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
 	@Override
 	public ArrayList<RichiestaPartecipazione> getRichiestaStudente(String utenteEmail){
 		Connection connection=null;
@@ -329,10 +375,10 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 					richiesta.setUtente_mail(rs.getString(4));
 					richieste.add(richiesta);
 				}while(rs.next());
-				
+
 				return richieste;
 			}else return null;
-		
+
 		}catch (SQLException e) {
 			e.printStackTrace();
 			return null;
