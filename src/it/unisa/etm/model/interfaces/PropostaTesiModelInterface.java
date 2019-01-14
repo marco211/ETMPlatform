@@ -50,6 +50,15 @@ public interface PropostaTesiModelInterface {
 	public PropostaTesi getPropostaTesi(int id);
 	
 	/**
+	 * Si occupa della rimozione di una proposta di tesi, effettuata da un utente registrato come docente per una proposta di tesi creata da lui in precedenza.
+	 * @param id identificativo della proposta di tesi da rimuovere.
+	 * @return boolean che e true se la proposta di tesi e stata rimossa con successo;
+	 * <p>
+	 * false altrimenti.
+	 */
+	public boolean rimuoviPropostaTesi(int id);
+	
+	/**
 	 * Salva in memoria una richiesta di partecipazione per una determinata proposta di tesi, da parte di un utente registrato come docente.
 	 * @param richiestaPartecipazione rappresenta la richiesta di partecipazione da salavare.
 	 * @return boolean che e true se l'operazione e avvenuta con successo;
