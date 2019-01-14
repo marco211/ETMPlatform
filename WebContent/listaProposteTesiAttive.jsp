@@ -85,7 +85,7 @@ function cambiaColore(){
 
 						<%
 							ArrayList<RichiestaPartecipazione> richieste = (ArrayList<RichiestaPartecipazione>) request.getAttribute("richieste");
-							if (richieste.isEmpty()) {
+							if ((richieste==null||richieste.isEmpty())) {
 						%>
 						<tr class="border">
 							<td 
