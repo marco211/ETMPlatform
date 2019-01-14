@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Logger;
+
 import it.unisa.etm.bean.Amministratore;
 import it.unisa.etm.bean.Utente;
 import it.unisa.etm.database.DatabaseManager;
@@ -49,11 +51,15 @@ public class AutenticazioneManager implements AutenticazioneModelInterface{
 				ps.setString(8, utente.getValidazione());
 				ps.executeUpdate();
 				
-				String SQL = "select nome from insegnamento where nome=?";
+				String SQL = "select nome from insegnamento where nome = ?";
 				
 				PreparedStatement preparedStatement=istance.prepareStatement(SQL);
+				Logger.getLogger("log").info(utente.getInsegnamento().get(0));
+				
 				preparedStatement.setString(1, utente.getInsegnamento().get(0));
-				ResultSet rs=preparedStatement.executeQuery(SQL);
+				
+				ResultSet rs=preparedStatement.executeQuery();
+				
 				if(!rs.next()) {
 					String insertSQL1="insert into insegnamento (nome) values(?);";
 					PreparedStatement ps1=istance.prepareStatement(insertSQL1);

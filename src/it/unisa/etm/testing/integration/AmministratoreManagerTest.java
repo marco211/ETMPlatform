@@ -38,7 +38,7 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testGetUtente() {
-		Utente utente = amministratoreManager.getUtente("etm.utente@studenti.unisa.it");
+		Utente utente = amministratoreManager.getUtente("etm.utente@unisa.it");
 		assertNotEquals(null, utente);
 		
 		utente=amministratoreManager.getUtente("fakeemail@email.it");

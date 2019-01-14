@@ -30,7 +30,7 @@ public class AttivitaManagerTest {
 	
 	@Test
 	public void testAggiungiAttivita() {
-		Attivita attivita=new Attivita("etm.utente@studenti.unisa.it","File1.pdf",LocalDate.now(),"A",1);
+		Attivita attivita=new Attivita("etm.utente@unisa.it","File1.pdf",LocalDate.now(),"A",1);
 		boolean test = attivitaManager.aggiungiAttivita(attivita); //restituisce true
 		assertTrue(test); 
 		
