@@ -247,14 +247,13 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	}
 
 	public PropostaTesi getPropostaTesi(int id){
-		String SQL="SELECT * FROM PropostaTesi WHERE id=?;";
+		String SQL="SELECT * FROM PropostaTesi WHERE id="+id+";";
 		Connection connection=null;
 		PreparedStatement statement=null;
 		PropostaTesi proposta=null;
 		try {
 			connection=DatabaseManager.getIstance();
 			statement=connection.prepareStatement(SQL);
-			statement.setInt(1,id);
 			ResultSet rs=statement.executeQuery(SQL);
 			rs.next();
 			proposta=new PropostaTesi();

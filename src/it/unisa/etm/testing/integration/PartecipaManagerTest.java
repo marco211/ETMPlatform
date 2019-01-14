@@ -37,7 +37,7 @@ public class PartecipaManagerTest {
 	@Test
 	public void  testInserisciPartecipazione() {
 		
-		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(12,partecipaOk.getUtenteEmail());
+		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(74,partecipaOk.getUtenteEmail());
 		assertTrue(inserisciPartecipazione);
 		
 		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh");

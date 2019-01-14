@@ -137,7 +137,7 @@ public class PropostaTesiManagerTest {
 	public void testGetPropostaTesi() {
 		int id= 10;
 		PropostaTesi proposta= pm.getPropostaTesi(id);
-		assertEquals(proposta, null);// Proposta tesi correttamente selezionata	
+		assertNotEquals(proposta, null);// Proposta tesi correttamente selezionata	
 		
 		id= 999;
 		proposta=pm.getPropostaTesi(id);
