@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -31,18 +30,15 @@ public class AmministratoreManagerTest {
 	
 	@Test
 	public void testGetListaUtente() {
-		ArrayList<Utente> lista=(ArrayList<Utente>) amministratoreManager.getListaUtenti();
-		assertNotEquals(null,lista); //restituisce la lista
 		
+		assertNotEquals(null,amministratoreManager.getListaUtenti()); //restituisce la lista		
 	}
 	
 	@Test
 	public void testGetUtente() {
-		Utente utente = amministratoreManager.getUtente("etm.utente@unisa.it");
-		assertNotEquals(null, utente);
+		assertNotEquals(null, amministratoreManager.getUtente("etm.utente@unisa.it"));
 		
-		utente=amministratoreManager.getUtente("fakeemail@email.it");
-		assertEquals(utente,null); //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
+		assertEquals(amministratoreManager.getUtente("fakeemail@email.it"),null); //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
 	}
 	
 	@Test
@@ -53,13 +49,10 @@ public class AmministratoreManagerTest {
 		
 		
 		
-		boolean test=amministratoreManager.eliminaUtente("emailtest@unisa.it");
-		assertTrue(test); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)
-		test=amministratoreManager.eliminaUtente("emailtest2@unisa.it");
-		assertTrue(test); 
+		assertTrue(amministratoreManager.eliminaUtente("emailtest@unisa.it")); //ritorna true, deve aver eliminato il primo utente (inserito in setUp)
+		assertTrue(amministratoreManager.eliminaUtente("emailtest2@unisa.it")); 
 		
-		test=amministratoreManager.eliminaUtente("fakeemail@email.it");
-		assertFalse(test); //ritorna false poiché non esiste nessun utente associato alla email fakeemail@email.it
+		assertFalse(amministratoreManager.eliminaUtente("fakeemail@email.it")); //ritorna false poiché non esiste nessun utente associato alla email fakeemail@email.it
 		
 	}
 	

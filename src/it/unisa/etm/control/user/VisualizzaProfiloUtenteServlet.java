@@ -1,7 +1,6 @@
 package it.unisa.etm.control.user;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;

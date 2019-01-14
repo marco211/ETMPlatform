@@ -7,8 +7,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.util.ArrayList;
-
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -31,57 +29,40 @@ public class ConsegnaManagerTest {
 	
 	
 	@Test
-	public void testAggiungiConsegna() {
-		Consegna consegna=new Consegna("Consegna1","Descrizione consegna1","2019-01-06",1);
-		boolean test=consegnam.aggiungiConsegna(consegna); //restituisce true
-		assertTrue(test); 
+	public void testAggiungiConsegna() {		
+		assertTrue(new ConsegnaManager().aggiungiConsegna(new Consegna("Consegna1","Descrizione consegna1","2019-01-06",1)));
 		
-		consegna=new Consegna("","Descrizione consegna2","2019-01-06",-2);
-		test=consegnam.aggiungiConsegna(consegna); //restituisce false
-		assertFalse(test); 
+		assertFalse(new ConsegnaManager().aggiungiConsegna(new Consegna("","Descrizione consegna2","2019-01-06",-2)));
 	}
 	
 	
 	@Test
-	public void testModificaConsegna() {
-		Consegna consegna = consegnam.getConsegna(1);
+	public void testModificaConsegna() {		
+		assertTrue(consegnam.modificaConsegna("2019-05-01", consegnam.getConsegna(1).getId())); //restituisce true
 		
-		boolean test=consegnam.modificaConsegna("2019-05-01", consegna.getId()); //restituisce true
-		assertTrue(test); 
-		
-		test=consegnam.modificaConsegna("ciao", 2); //restituisce false perché la data inserita e sbagliata
-		assertFalse(test); 
+		assertFalse(consegnam.modificaConsegna("ciao", 2)); //restituisce false perché la data inserita e sbagliata
 	}
 	
 	
 	@Test
-	public void testEliminaConsegna() {
-		Consegna consegna = consegnam.getConsegna(2);
+	public void testEliminaConsegna() {		
+		assertTrue(consegnam.eliminaConsegna(consegnam.getConsegna(2).getId()));//restituisce true, elimina la prima consegna
 		
-		boolean test=consegnam.eliminaConsegna(consegna.getId());//restituisce true, elimina la prima consegna
-		assertTrue(test);
-		
-		test=consegnam.eliminaConsegna(-1); //restiruisce false poiché l'id non e valido
-		assertFalse(test);
+		assertFalse(consegnam.eliminaConsegna(-1)); //restiruisce false poiché l'id non e valido
 	}
 	
 	@Test
-	public void testGetConsegna() {
-		Consegna consegna = consegnam.getConsegna(1);
+	public void testGetConsegna() {		
+		assertNotEquals(consegnam.getConsegna(1),null); //restituisce la consegna corrispondete all'id 1
 		
-		assertNotEquals(consegna,null); 
+		assertEquals(consegnam.getConsegna(-1),null); //restituisce null poiché l'id inserito non e valido
 		
-		consegna=consegnam.getConsegna(-1); //restituisce null poiché l'id inserito non e valido
-		assertEquals(consegna,null);
 	}
 	
 	@Test
 	public void testGetListaConsegna() {
-		ArrayList<Consegna> lista=consegnam.getListaConsegne(1); //restituisce una lista
-		assertNotEquals(lista,null);
+		assertNotEquals(consegnam.getListaConsegne(1),null); //restituisce una lista
 		
-		lista=consegnam.getListaConsegne(-1); //restituisce null poiché l'id della proposta tesi inserito non e valido
-		assertEquals(lista,null);
-		
+		assertEquals(consegnam.getListaConsegne(-1),null); //restituisce null poiché l'id della proposta tesi inserito non e valido	
 	}
 }

@@ -1,9 +1,7 @@
 package it.unisa.etm.model.interfaces;
 
-import java.util.List;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
-import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;

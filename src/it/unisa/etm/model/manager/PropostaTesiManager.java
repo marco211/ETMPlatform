@@ -6,8 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.List;
-import it.unisa.etm.bean.Attivita;
 import it.unisa.etm.bean.Insegnamento;
 import it.unisa.etm.bean.PropostaTesi;
 import it.unisa.etm.bean.RichiestaPartecipazione;
@@ -290,7 +288,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	public boolean modificaPropostaTesi(PropostaTesi proposta){
 		Connection connection=null;
 		PreparedStatement statement=null;
-		boolean b;
 		try {
 			connection = DatabaseManager.getIstance();
 			String SQL = "UPDATE PropostaTesi SET Titolo = ?, Ambito = ?, Tempo = ?, Descrizione = ?, Materia = ? WHERE Id = ?;";
