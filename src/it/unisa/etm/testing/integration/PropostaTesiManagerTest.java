@@ -155,4 +155,9 @@ public class PropostaTesiManagerTest {
 	public void testGetTesiRecenti() {
 		assertNotEquals( pm.getTesiRecenti(), null);// Restituisce la lista delle Tesi recenti
 	}
+	
+	@Test
+	public void testRimuoviPropostaTesi() {
+		assertTrue(pm.rimuoviPropostaTesi(proposta.getId()));
+	}
 }
