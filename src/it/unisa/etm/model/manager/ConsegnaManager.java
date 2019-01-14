@@ -59,7 +59,7 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	
 	@Override
 	public boolean eliminaConsegna(int id){
-		if(id<0)
+		if(this.getConsegna(id)==null)
 			return false;
 		
 		String selectSQL="DELETE FROM Consegna WHERE ID=?";
@@ -77,6 +77,9 @@ public class ConsegnaManager implements ConsegnaModelInterface {
 	
 	@Override
 	public Consegna getConsegna(int id){
+		if(id<=0)
+			return null;
+		
 		String selectSQL="SELECT * FROM CONSEGNA WHERE ID=?";
 		try {
 		connection=DatabaseManager.getIstance();

@@ -44,12 +44,7 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testModificaConsegna() {
-		Consegna consegna = null;
-		int i = 1;
-		while(consegna==null) {
-			consegna = consegnam.getConsegna(i);
-			i++;
-		}
+		Consegna consegna = consegnam.getConsegna(1);
 		
 		boolean test=consegnam.modificaConsegna("2019-05-01", consegna.getId()); //restituisce true
 		assertTrue(test); 
@@ -61,12 +56,7 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testEliminaConsegna() {
-		Consegna consegna = null;
-		int i = 1;
-		while(consegna==null) {
-			consegna = consegnam.getConsegna(i);
-			i++;
-		}
+		Consegna consegna = consegnam.getConsegna(2);
 		
 		boolean test=consegnam.eliminaConsegna(consegna.getId());//restituisce true, elimina la prima consegna
 		assertTrue(test);
@@ -77,12 +67,7 @@ public class ConsegnaManagerTest {
 	
 	@Test
 	public void testGetConsegna() {
-		Consegna consegna = null;
-		int i = 1;
-		while(consegna==null) {
-			consegna = consegnam.getConsegna(i);
-			i++;
-		} //restituisce  la prima consegna
+		Consegna consegna = consegnam.getConsegna(1);
 		
 		assertNotEquals(consegna,null); 
 		

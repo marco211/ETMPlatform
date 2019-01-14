@@ -35,14 +35,11 @@ public class PartecipaManagerTest {
 	}
 	
 	@Test
-	public void  testInserisciPartecipazione() {
-		
+	public void  testInserisciPartecipazione() {		
 		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(2, partecipa.getUtenteEmail());
 		assertTrue(inserisciPartecipazione);
 		
-		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh");
-		assertFalse(inserisciPartecipazione);
-				
+		assertFalse(inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh"));	
 	}
 	
 	@Test
