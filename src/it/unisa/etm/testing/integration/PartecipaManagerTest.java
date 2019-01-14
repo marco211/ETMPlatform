@@ -18,26 +18,26 @@ import it.unisa.etm.model.manager.PropostaTesiManager;
 public class PartecipaManagerTest {
 	private static PropostaTesiManager pm;
 	private static  PartecipaManager partecipaManager;
-	private static Partecipa partecipaOk;
+	private static Partecipa partecipa;
 	
 	@BeforeClass
 	public static void setUp() {
 		pm=new PropostaTesiManager();
 		partecipaManager= (PartecipaManager) new ManagerFactory().createPartecipaManager();
-		partecipaOk= new Partecipa(11,"umberto@unisa.it");
+		partecipa= new Partecipa(1,"etm.utenteuno@unisa.it");
 	}
 	
 	@AfterClass
 	public static void tearDown() {
 		partecipaManager=null;
-		partecipaOk=null;
+		partecipa=null;
 		pm=null;
 	}
 	
 	@Test
 	public void  testInserisciPartecipazione() {
 		
-		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(74,partecipaOk.getUtenteEmail());
+		boolean inserisciPartecipazione= partecipaManager.inserisciPartecipazione(2, partecipa.getUtenteEmail());
 		assertTrue(inserisciPartecipazione);
 		
 		inserisciPartecipazione=partecipaManager.inserisciPartecipazione(99, "boh");
