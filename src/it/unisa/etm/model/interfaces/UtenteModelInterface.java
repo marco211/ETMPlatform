@@ -17,6 +17,7 @@ public interface UtenteModelInterface {
 	 * @return boolean true se la modifica e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
+	 * @throws SQLException se la query non va a buon fine
 	 */
 	public boolean modificaPassword(Utente u) throws SQLException;
 	
@@ -26,6 +27,7 @@ public interface UtenteModelInterface {
 	 * @return boolean true se la modifica e avvenuta con successo;
 	 * <p>
 	 * false altrimenti.
+	 * @throws SQLException se la query non va a buon fine
 	 */
 	public boolean modificaUtente(Utente u) throws SQLException;
 	
@@ -35,15 +37,15 @@ public interface UtenteModelInterface {
 	 * @return oggetto Utente che rappresenta l'utente del quale si cercavano le informazioni, in caso di successo;
 	 * <p>
 	 * null in caso contrario.
+	 * @throws SQLException se la query non va a buon fine
 	 */
 	public Utente getInfo(String email) throws SQLException;
 	
 	/**
 	 * Si occupa della ricerca di un determinato utente.
 	 * @param email stringa che rappresenta l'email dell'utente che si vuole cercare.
-	 * @return oggetto Utente che rappresenta l'utente cercato in caso di successo;
-	 * <p>
-	 * null in caso contrario.
+	 * @return oggetto Utente che rappresenta l'utente cercato in caso di successo, null altrimenti;
+	 * @throws SQLException se la query non va a buon fine
 	 */
 	public Utente cercaUtente(String email) throws SQLException;
 	
