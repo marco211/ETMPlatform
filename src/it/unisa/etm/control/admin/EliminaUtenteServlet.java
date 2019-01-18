@@ -36,6 +36,7 @@ public class EliminaUtenteServlet extends HttpServlet {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
+			response.sendRedirect(request.getContextPath()+"/index.jsp");
 		}
 	}
 
@@ -58,7 +59,7 @@ public class EliminaUtenteServlet extends HttpServlet {
 	private boolean eliminaUtente(String email) throws SQLException{
 		ManagerFactory mf=new ManagerFactory();
 		AmministratoreManager am=(AmministratoreManager) mf.createAmministratoreManager();	
-		if(email!="") 
+		if(!email.equals("")) 
 			return am.eliminaUtente(email);
 		else 
 			return false;

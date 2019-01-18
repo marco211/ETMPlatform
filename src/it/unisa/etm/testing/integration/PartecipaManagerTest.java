@@ -16,6 +16,7 @@ import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 
 public class PartecipaManagerTest {
+	@SuppressWarnings("unused")
 	private static PropostaTesiManager pm;
 	private static  PartecipaManager partecipaManager;
 	private static Partecipa partecipa;
@@ -44,6 +45,9 @@ public class PartecipaManagerTest {
 	@Test
 	public void testGetListaPartecipazione() {
 		PropostaTesiManager ptm = (PropostaTesiManager) new ManagerFactory().createPropostaTesiManager();
+
+				
+		assertNotEquals(partecipaManager.getListaPartecipazione(ptm.getProposteTesiDocente("etm.docente@unisa.it")), null);
 		ArrayList<PropostaTesi> lista=  ptm.getProposteTesiDocente("etm.docente@unisa.it");
 		ArrayList<Partecipa> partecipazioni= partecipaManager.getListaPartecipazione(lista);
 		assertNotEquals(partecipazioni, null);

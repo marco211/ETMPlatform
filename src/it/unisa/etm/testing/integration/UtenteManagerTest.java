@@ -1,7 +1,11 @@
 package it.unisa.etm.testing.integration;
 
+<<<<<<< HEAD
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.manager.AmministratoreManager;
+=======
+import it.unisa.etm.bean.Utente;
+>>>>>>> 2a745450ee86215a3825235e01c4512d4d13ad89
 import it.unisa.etm.model.manager.UtenteManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -9,9 +13,8 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.fail;
 import static org.junit.Assert.assertTrue;
-import java.util.ArrayList;
+
 public class UtenteManagerTest {
 	private static UtenteManager um;
 	private Utente st,doc;
@@ -27,34 +30,24 @@ public class UtenteManagerTest {
 	}
 
 	@Test
-	public void testGetInfo() {
-		
-			
-		st = um.getInfo("etm.utente@unisa.it");
-		doc = um.getInfo("etm.docente@unisa.it");
-		
-		assertNotEquals(st,null);
+	public void testGetInfo() {	
+		assertNotEquals(um.getInfo("etm.utente@unisa.it"),null);
 
-		assertNotEquals(doc,null);
+		assertNotEquals(um.getInfo("etm.docente@unisa.it"),null);
 		
-		st=um.getInfo("questaemailnonesiste@email.it");
-		assertEquals(st,null);
+		assertEquals(um.getInfo("questaemailnonesiste@email.it"),null);
 
 
 	}
 	@Test
 	public void testCercaUtente() {
-		st = um.cercaUtente("etm.utente@unisa.it");
-		doc = um.cercaUtente("etm.docente@unisa.it");
-
-		assertNotEquals(st,null);
-		assertNotEquals(doc,null);
+		assertNotEquals(um.cercaUtente("etm.utente@unisa.it"),null);
 		
-		st=um.cercaUtente("Emailchenonesiste@email.it");
-		assertEquals(st, null);
-
-
-	}
+		assertNotEquals(um.cercaUtente("etm.docente@unisa.it"),null);
+		
+		assertEquals(um.cercaUtente("Emailchenonesiste@email.it"), null);
+}
+	
 	@Test
 	public void testModificaPassword() {
 		
@@ -93,14 +86,11 @@ public class UtenteManagerTest {
 	@Test
 	public void testCercaListaUtenteNome() {
 
-		ArrayList<Utente> lista = um.cercaListaUtenteNome("Utente");
-		assertNotEquals(lista, null);
+		assertNotEquals(um.cercaListaUtenteNome("Utente"), null);
 
-		 lista = um.cercaListaUtenteNome("Clelia");
-			assertNotEquals(lista, null);
+		assertNotEquals( um.cercaListaUtenteNome("Clelia"), null);
 	
-		lista = um.cercaListaUtenteNome("gkfoeaf");
-		assertEquals(lista, null);
+		assertEquals(um.cercaListaUtenteNome("gkfoeaf"), null);
 
 	}
 	
@@ -108,14 +98,11 @@ public class UtenteManagerTest {
 	public void testCercaListaUtenteCognome() {
 
 
-		ArrayList<Utente> lista = um.cercaListaUtenteCognome("Di Prova");
-		assertNotEquals(lista, null);
+		assertNotEquals(um.cercaListaUtenteCognome("Di Prova"), null);
 
-		lista = um.cercaListaUtenteCognome("De Felice");
-		assertNotEquals(lista, null);
+		assertNotEquals(um.cercaListaUtenteCognome("De Felice"), null);
 	
-		lista = um.cercaListaUtenteCognome("gkfoeaf");
-		assertEquals(lista, null);
+		assertEquals(um.cercaListaUtenteCognome("gkfoeaf"), null);
 
 	}
 }

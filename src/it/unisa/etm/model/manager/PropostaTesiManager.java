@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+<<<<<<< HEAD
 import java.util.List;
 
 import it.unisa.etm.model.bean.Attivita;
@@ -13,6 +14,12 @@ import it.unisa.etm.model.bean.Insegnamento;
 import it.unisa.etm.model.bean.PropostaTesi;
 import it.unisa.etm.model.bean.RichiestaPartecipazione;
 import it.unisa.etm.model.database.DatabaseManager;
+=======
+import it.unisa.etm.bean.Insegnamento;
+import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.bean.RichiestaPartecipazione;
+import it.unisa.etm.database.DatabaseManager;
+>>>>>>> 2a745450ee86215a3825235e01c4512d4d13ad89
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate alle proposte di tesi.
@@ -31,18 +38,29 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 		Connection istance=null;
 		PreparedStatement ps=null;
 		PreparedStatement ps2=null;
+		PreparedStatement ps3=null;
 		String insertSQL=null;
 		String insertSQL2=null;
+		String query=null;
+		ResultSet rs=null;
+		
 		insertSQL="UPDATE utente SET PropostaTesi_ID = (Select PropostaTesi_Id FROM richiestapartecipazione WHERE ID= ?) WHERE email=(Select utente_email FROM richiestapartecipazione WHERE ID= ?)";
-		insertSQL2="delete from RichiestaPartecipazione where id=?"; 
+		insertSQL2="delete from RichiestaPartecipazione where Utente_Email=?"; 
+		query= "Select utente_email FROM richiestapartecipazione WHERE id= ?";
 		try {
 			istance=DatabaseManager.getIstance();
+			ps3= istance.prepareStatement(query);
+			ps3.setInt(1, id);
+			rs = ps3.executeQuery();
+			rs.next();
+			String email = rs.getString(1);
+			
 			ps=istance.prepareStatement(insertSQL); 
 			ps.setInt(1, id);			
 			ps.setInt(2, id);
 			if(ps.executeUpdate()<1) return false;		
 			ps2=istance.prepareStatement(insertSQL2); 
-			ps2.setInt(1, id);
+			ps2.setString(1, email);
 			if(ps2.executeUpdate()<1) return false;
 			return true;
 		}catch (SQLException e) {
@@ -291,7 +309,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
 	public boolean modificaPropostaTesi(PropostaTesi proposta){
 		Connection connection=null;
 		PreparedStatement statement=null;
-		boolean b;
 		try {
 			connection = DatabaseManager.getIstance();
 			String SQL = "UPDATE PropostaTesi SET Titolo = ?, Ambito = ?, Tempo = ?, Descrizione = ?, Materia = ? WHERE Id = ?;";
