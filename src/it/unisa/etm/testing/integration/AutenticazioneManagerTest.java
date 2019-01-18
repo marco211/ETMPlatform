@@ -7,15 +7,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-
-<<<<<<< HEAD
-import it.unisa.etm.model.bean.Amministratore;
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
-=======
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
->>>>>>> 2a745450ee86215a3825235e01c4512d4d13ad89
 import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 

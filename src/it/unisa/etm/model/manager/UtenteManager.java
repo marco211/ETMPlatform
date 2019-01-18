@@ -5,15 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-<<<<<<< HEAD
-import java.util.List;
-
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.database.DatabaseManager;
-=======
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.database.DatabaseManager;
->>>>>>> 2a745450ee86215a3825235e01c4512d4d13ad89
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate all'utente registrato.
