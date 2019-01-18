@@ -1,4 +1,4 @@
-package it.unisa.etm.factory;
+package it.unisa.etm.model.factory;
 
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
 import it.unisa.etm.model.interfaces.AttivitaModelInterface;

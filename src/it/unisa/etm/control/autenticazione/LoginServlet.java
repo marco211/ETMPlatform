@@ -1,6 +1,10 @@
 package it.unisa.etm.control.autenticazione;
 
 import java.io.IOException;
+
+import it.unisa.etm.model.bean.Amministratore;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -8,9 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import it.unisa.etm.bean.Amministratore;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
 
 
 

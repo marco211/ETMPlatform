@@ -1,4 +1,4 @@
-package it.unisa.etm.database;
+package it.unisa.etm.model.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

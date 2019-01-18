@@ -8,9 +8,10 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
+
+import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AttivitaManager;
 /**
  * Estende HttpServlet e fornisce all'utente la funzionalit� di visualizzare lo storico delle attivit� effettuate.

@@ -7,8 +7,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-
-import it.unisa.etm.bean.Insegna;
+import it.unisa.etm.model.bean.Insegna;
 
 public class TestInsegna {
 	private static Insegna insegnaOk,insegnaNotOk;

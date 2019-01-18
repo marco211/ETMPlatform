@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ page import="java.util.*, it.unisa.etm.control.tesi.*,  it.unisa.etm.bean.* "%>  
+<%@ page import="java.util.*, it.unisa.etm.control.tesi.*,it.unisa.etm.model.bean.*"%>  
 
 <%
 Utente docente = (Utente) session.getAttribute("docente");

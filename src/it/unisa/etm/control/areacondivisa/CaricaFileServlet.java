@@ -10,10 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 import javax.servlet.annotation.*;
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.File;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
+
+import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.bean.File;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.FileManager;
 

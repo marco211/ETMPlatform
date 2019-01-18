@@ -7,8 +7,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import it.unisa.etm.bean.Consegna;
-import it.unisa.etm.factory.ManagerFactory;
+
+import it.unisa.etm.model.bean.Consegna;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
 

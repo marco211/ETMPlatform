@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="it.unisa.etm.bean.*,java.util.*"%>
+	pageEncoding="ISO-8859-1" import="it.unisa.etm.model.bean.*,java.util.*"%>
 <%
 	Amministratore admin = (Amministratore) session.getAttribute("admin");
 	Utente utente = (Utente) session.getAttribute("utente");

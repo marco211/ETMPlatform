@@ -1,6 +1,6 @@
 package it.unisa.etm.testing.integration;
 
-import it.unisa.etm.bean.Utente;
+import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.manager.AmministratoreManager;
 import it.unisa.etm.model.manager.UtenteManager;
 import org.junit.AfterClass;

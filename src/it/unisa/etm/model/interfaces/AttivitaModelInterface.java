@@ -2,7 +2,8 @@ package it.unisa.etm.model.interfaces;
 
 
 import java.util.ArrayList;
-import it.unisa.etm.bean.Attivita;
+
+import it.unisa.etm.model.bean.Attivita;
 /**
  * Metodi dedicati alle attivit� effettuate da parte degli utenti che fanno parte di un'area privata condivisa
  * @author ETM

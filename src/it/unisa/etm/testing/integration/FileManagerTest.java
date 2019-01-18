@@ -16,7 +16,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.unisa.etm.bean.File;
+import it.unisa.etm.model.bean.File;
 import it.unisa.etm.model.manager.FileManager;
 
 public class FileManagerTest {

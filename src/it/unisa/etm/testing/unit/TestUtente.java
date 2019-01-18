@@ -1,12 +1,14 @@
 package it.unisa.etm.testing.unit;
 
 import java.util.ArrayList;
-import it.unisa.etm.bean.Utente;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import it.unisa.etm.model.bean.Utente;
 public class TestUtente {
 	private static Utente studenteOk, studenteNotOk, docenteOk, docenteNotOk;
 	

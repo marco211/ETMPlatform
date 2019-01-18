@@ -3,13 +3,13 @@ package it.unisa.etm.testing.unit;
 import java.time.LocalDate;
 import java.util.logging.Logger;
 
-import it.unisa.etm.bean.Attivita;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import it.unisa.etm.model.bean.Attivita;
 
 public class TestAttivita {
 	

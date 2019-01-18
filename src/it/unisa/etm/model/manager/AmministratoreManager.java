@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import it.unisa.etm.bean.Utente;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AmministratoreModelInterface;
-import it.unisa.etm.database.DatabaseManager;
 /**
  * Classe che implementa le funzionnalita dedicate all'utente registrato come amministratore
  * @author ETM

@@ -7,8 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
+
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AmministratoreManager;
 
 @WebServlet("/VisualizzaDettagliUtenteServlet")

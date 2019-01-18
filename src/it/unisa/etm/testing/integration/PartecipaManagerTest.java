@@ -9,9 +9,9 @@ import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
-import it.unisa.etm.bean.Partecipa;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.bean.Partecipa;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 

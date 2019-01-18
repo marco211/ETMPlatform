@@ -7,11 +7,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.Insegnamento;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.RichiestaPartecipazione;
-import it.unisa.etm.database.DatabaseManager;
+
+import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.bean.Insegnamento;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.bean.RichiestaPartecipazione;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate alle proposte di tesi.

@@ -1,13 +1,13 @@
 package it.unisa.etm.testing.unit;
 
-import it.unisa.etm.bean.Amministratore;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import it.unisa.etm.model.bean.Amministratore;
 
 public class TestAmministratore {
 

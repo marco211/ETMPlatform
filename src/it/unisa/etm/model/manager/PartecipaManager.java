@@ -5,9 +5,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.unisa.etm.bean.Partecipa;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.database.DatabaseManager;
+
+import it.unisa.etm.model.bean.Partecipa;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.PartecipaModelInterface;
 /**
  * Classe che implementa le funzionalità dedicate alle partecipazioni ad una proposta di tesi.

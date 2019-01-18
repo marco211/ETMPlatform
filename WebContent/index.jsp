@@ -1,7 +1,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.bean.*, it.unisa.etm.control.autenticazione.*"%>
+<%@ page import="it.unisa.etm.model.bean.*, it.unisa.etm.control.autenticazione.*"%>
 
 <%
     Amministratore admin=(Amministratore)session.getAttribute("admin");

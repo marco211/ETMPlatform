@@ -13,7 +13,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.unisa.etm.bean.Consegna;
+import it.unisa.etm.model.bean.Consegna;
 import it.unisa.etm.model.manager.ConsegnaManager;
 
 public class ConsegnaManagerTest {

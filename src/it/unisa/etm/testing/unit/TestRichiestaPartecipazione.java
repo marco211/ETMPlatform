@@ -7,7 +7,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.unisa.etm.bean.RichiestaPartecipazione;
+import it.unisa.etm.model.bean.RichiestaPartecipazione;
 
 public class TestRichiestaPartecipazione {
 	private static RichiestaPartecipazione richiestaOk;

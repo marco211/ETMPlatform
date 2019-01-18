@@ -17,9 +17,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 
 /**
@@ -110,7 +109,6 @@ public class RegistrazioneServlet extends HttpServlet {
 		prop.put("mail.smtp.starttls.enable", "true");
 		prop.put("mail.smtp.host", "smtp.gmail.com");
 		prop.put("mail.smtp.port", "587");
-
 		Session session = Session.getDefaultInstance(prop, null);
 		Message msg = new MimeMessage(session);
 		InternetAddress sender = null;
@@ -122,7 +120,6 @@ public class RegistrazioneServlet extends HttpServlet {
 			e.printStackTrace();
 			return false;
 		}
-
 		try {
 			msg.setFrom(sender);
 			msg.setRecipient(Message.RecipientType.TO, receiver);
@@ -132,7 +129,6 @@ public class RegistrazioneServlet extends HttpServlet {
 			e.printStackTrace();
 			return false;
 		}
-
 		try {			
 			Transport transport=session.getTransport();
 			transport.connect("smtp.gmail.com", "etmplatform@gmail.com", "Prova1234");

@@ -9,8 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import it.unisa.etm.bean.File;
-import it.unisa.etm.database.DatabaseManager;
+import it.unisa.etm.model.bean.File;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.FileModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate ai file di un'area privata condivisa.

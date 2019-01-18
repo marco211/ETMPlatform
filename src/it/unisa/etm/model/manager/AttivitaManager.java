@@ -5,8 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.database.DatabaseManager;
+
+import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate alle attivita effettuate da parte degli utenti che fanno parte di un'area privata condivisa

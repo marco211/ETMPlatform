@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import it.unisa.etm.bean.Consegna;
-import it.unisa.etm.database.DatabaseManager;
+import it.unisa.etm.model.bean.Consegna;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.ConsegnaModelInterface;
 /**
  * Classe che implementa le funzionalità dedicate alle consegne di un'area privata condivisa.

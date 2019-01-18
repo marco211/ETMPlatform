@@ -1,7 +1,8 @@
 package it.unisa.etm.model.interfaces;
 
 import java.util.ArrayList;
-import it.unisa.etm.bean.File;
+
+import it.unisa.etm.model.bean.File;
 /**
  * Metodi dedicati alle operazioni svolte sui file da parte degli utenti di un'area privata condivisa.
  * @author ETM

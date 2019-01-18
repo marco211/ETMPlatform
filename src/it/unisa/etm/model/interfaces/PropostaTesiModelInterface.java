@@ -1,12 +1,14 @@
 package it.unisa.etm.model.interfaces;
 
 import java.util.List;
+
+import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.bean.Insegnamento;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.bean.RichiestaPartecipazione;
+
 import java.sql.SQLException;
 import java.util.ArrayList;
-import it.unisa.etm.bean.Attivita;
-import it.unisa.etm.bean.Insegnamento;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.RichiestaPartecipazione;
 /**
  * Metodi dedicate alle proposte di tesi.
  * @author ETM

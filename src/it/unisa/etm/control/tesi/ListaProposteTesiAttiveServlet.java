@@ -8,11 +8,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.bean.RichiestaPartecipazione;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.*;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.bean.RichiestaPartecipazione;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.factory.ManagerFactory;
 
 /**
  * Estende HttpServlet fornisce la funzionalita di visualizzare la lista delle proposte tesi attive sia del docente che per lo studente.

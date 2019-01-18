@@ -1,7 +1,7 @@
 package it.unisa.etm.model.interfaces;
 import java.util.ArrayList;
 
-import it.unisa.etm.bean.Consegna;
+import it.unisa.etm.model.bean.Consegna;
 /**
  * Metodi dedicati alle consegne relative ad un'area privata condivisa.
  * @author ETM

@@ -1,7 +1,7 @@
 package it.unisa.etm.model.interfaces;
 
-import it.unisa.etm.bean.Amministratore;
-import it.unisa.etm.bean.Utente;
+import it.unisa.etm.model.bean.Amministratore;
+import it.unisa.etm.model.bean.Utente;
 /**
  * Metodi dedicati alla registrazione e al login di un utente.
  * @author ETM

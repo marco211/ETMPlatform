@@ -1,4 +1,4 @@
-package it.unisa.etm.bean;
+package it.unisa.etm.model.bean;
 
 public class Insegna {
 

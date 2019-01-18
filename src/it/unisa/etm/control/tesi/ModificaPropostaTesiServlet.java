@@ -2,15 +2,16 @@ package it.unisa.etm.control.tesi;
 
 import java.io.IOException;
 import java.util.ArrayList;
+
+import it.unisa.etm.model.bean.Insegnamento;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import it.unisa.etm.bean.Insegnamento;
-import it.unisa.etm.bean.PropostaTesi;
-import it.unisa.etm.factory.ManagerFactory;
 
 /**
  * Estende la classe HttpServlet e fornisce all'utente registrato come docente la possibilita di aggiungere una nuova proposta di tesi.

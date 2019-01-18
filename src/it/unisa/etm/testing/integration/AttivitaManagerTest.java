@@ -11,7 +11,7 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import it.unisa.etm.bean.Attivita;
+import it.unisa.etm.model.bean.Attivita;
 import it.unisa.etm.model.manager.AttivitaManager;
 
 public class AttivitaManagerTest {

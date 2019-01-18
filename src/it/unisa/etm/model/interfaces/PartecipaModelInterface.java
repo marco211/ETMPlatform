@@ -1,8 +1,9 @@
 package it.unisa.etm.model.interfaces;
 
 import java.util.ArrayList;
-import it.unisa.etm.bean.Partecipa;
-import it.unisa.etm.bean.PropostaTesi;
+
+import it.unisa.etm.model.bean.Partecipa;
+import it.unisa.etm.model.bean.PropostaTesi;
 /**
  * Metodi dedicati alle partecipazioni degli utenti registrati come studenti determinate proposta di tesi.
  * @author ETM

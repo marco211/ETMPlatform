@@ -1,8 +1,8 @@
 package it.unisa.etm.testing.integration;
-import it.unisa.etm.bean.RichiestaPartecipazione;
-import it.unisa.etm.factory.ManagerFactory;
-import it.unisa.etm.bean.Insegnamento;
-import it.unisa.etm.bean.PropostaTesi;
+import it.unisa.etm.model.bean.Insegnamento;
+import it.unisa.etm.model.bean.PropostaTesi;
+import it.unisa.etm.model.bean.RichiestaPartecipazione;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;

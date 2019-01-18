@@ -1,7 +1,8 @@
 package it.unisa.etm.model.interfaces;
 
 import java.util.List;
-import it.unisa.etm.bean.Utente;
+
+import it.unisa.etm.model.bean.Utente;
 /**
  * Metodi per l'utente registrato come amministratore.
  * @author ETM

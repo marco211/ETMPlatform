@@ -1,12 +1,12 @@
 package it.unisa.etm.testing.unit;
 
-import it.unisa.etm.bean.PropostaTesi;
-
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertEquals;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import it.unisa.etm.model.bean.PropostaTesi;
 
 public class TestPropostaTesi {
 	private static PropostaTesi propostaOk;

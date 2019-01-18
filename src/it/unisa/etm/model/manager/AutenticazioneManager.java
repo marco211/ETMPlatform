@@ -6,9 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Logger;
 
-import it.unisa.etm.bean.Amministratore;
-import it.unisa.etm.bean.Utente;
-import it.unisa.etm.database.DatabaseManager;
+import it.unisa.etm.model.bean.Amministratore;
+import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AutenticazioneModelInterface;
 /**
  * Classe che implementa le funzionalita dedicate alla registrazione e al login.
