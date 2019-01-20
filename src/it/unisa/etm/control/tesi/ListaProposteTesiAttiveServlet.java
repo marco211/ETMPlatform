@@ -78,6 +78,8 @@ public class ListaProposteTesiAttiveServlet extends HttpServlet {
 	 * null altrimenti;
 	 */
 	private ArrayList<RichiestaPartecipazione> getRichieste(Utente utente){
+		if(utente == null) return null;
+		
 		ManagerFactory mf=new ManagerFactory();
 		PropostaTesiManager propostamanager=(PropostaTesiManager) mf.createPropostaTesiManager();
 		ArrayList<RichiestaPartecipazione> richieste=new ArrayList<RichiestaPartecipazione>();
