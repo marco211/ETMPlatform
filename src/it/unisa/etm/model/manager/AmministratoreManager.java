@@ -48,14 +48,7 @@ public class AmministratoreManager implements AmministratoreModelInterface{
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-				try{
-					if(statement!=null)
-						statement.close();
-				}catch(SQLException e) {
-					e.printStackTrace();
-					return null;
-				}
+			return null;
 		}
 		
 		return utenti;

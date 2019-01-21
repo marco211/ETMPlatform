@@ -19,6 +19,11 @@ public class TestAttivita {
 	public static void setUp() {
 		attivitaOk=new Attivita("email@unisa.it","File1",LocalDate.now(),"A",1);
 		attivitaNotOk=new Attivita("false@unisa.it","File2",LocalDate.now(),"B",2);
+		attivitaOk.setTipo("c");
+		Logger.getLogger("log").info(attivitaOk.toString());
+		attivitaOk.setTipo("v");
+		Logger.getLogger("log").info(attivitaOk.toString());
+		attivitaOk.setTipo("e");
 		Logger.getLogger("log").info(attivitaOk.toString());
 	}
 	
@@ -93,7 +98,7 @@ public class TestAttivita {
 	@Test
 	public void testGetTipo() {
 		String tipo=attivitaOk.getTipo();
-		assertEquals(tipo,"A");// tipo giusto
+		assertEquals(tipo,"e");// tipo giusto
 		
 		tipo=attivitaNotOk.getTipo();
 		assertNotEquals(tipo,"C"); // tipo sbagliato, il tipo giusto e B
@@ -129,6 +134,7 @@ public class TestAttivita {
 		attivitaNotOk.setPropostatesi_id(id);
 		assertEquals(2,attivitaNotOk.getPropostatesi_id());
 	}
+	
 	
 		
 }

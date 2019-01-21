@@ -66,17 +66,8 @@ public class Attivita implements Serializable{
 			t = "caricato";
 		else if(tipo.equals("v"))
 			t = "valutato";
-		else if(tipo.equals("e"))
-			t= "eliminato";
+		else t= "eliminato";
 		return "L'utente: "+utente_Email+" ha "+t+" il file: "+NomeFile+" il giorno: "+data+"";
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	private int id;
