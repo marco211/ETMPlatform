@@ -12,10 +12,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Estende HttpServlet e fornisce all'utente la funzionalit� 
- * di visualizzare le informazioni di un file presente nell'area privata condivisa
+ * Estende HttpServlet fornisce all'utente la funzionalita 
+ * di visualizzare le informazioni di un file presente nell'area privata condivisa.
  */
-
 @WebServlet("/VisualizzaInfoFileServlet")
 public class VisualizzaInfoFileServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
@@ -41,9 +40,6 @@ public class VisualizzaInfoFileServlet extends HttpServlet {
     view.forward(request, response);
   }
 
-  /**
-   * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-   */
   protected void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     doGet(request, response);

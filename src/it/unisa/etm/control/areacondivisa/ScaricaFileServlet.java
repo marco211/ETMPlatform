@@ -37,7 +37,6 @@ public class ScaricaFileServlet extends HttpServlet {
       throws ServletException, IOException {
     String nome = request.getParameter("nomeFile");
     int id = Integer.parseInt(request.getParameter("tesiID"));
-    int BUFFER_SIZE = 4096;
     ManagerFactory mf = new ManagerFactory();
     FileManager fm = (FileManager) mf.createFileManager();
     File file = fm.scaricaFile(id, nome);
@@ -53,8 +52,9 @@ public class ScaricaFileServlet extends HttpServlet {
     String headerKey = "Content-Disposition";
     String headerValue = String.format("attachment; filename=\"%s\"", file.getNome());
     response.setHeader(headerKey, headerValue);
-    OutputStream outStream = response.getOutputStream();          
-    byte[] buffer = new byte[BUFFER_SIZE];
+    OutputStream outStream = response.getOutputStream();   
+    int bufferSize = 4096;
+    byte[] buffer = new byte[bufferSize];
     int bytesRead = -1;
     while ((bytesRead = stream.read(buffer)) != -1) {
       outStream.write(buffer, 0, bytesRead);

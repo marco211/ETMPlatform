@@ -15,10 +15,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Estende HttpServlet, fornisce all'utente registrato come docente la 
- * funzionalit� di poter valutare un file presente nell'area privata condivisa
+ * Estende HttpServlet e fornisce all'utente registrato come docente
+ * la funzionalit� di poter valutare un file presente nell'area privata condivisa.
  */
-
 @WebServlet("/ValutaFileServlet")
 public class ValutaFileServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
