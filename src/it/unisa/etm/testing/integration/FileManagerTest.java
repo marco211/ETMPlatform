@@ -23,6 +23,9 @@ public class FileManagerTest {
   private static FileManager filem;
   private static Part filePart;
 
+  /**
+   * Setting up.
+   */
   @BeforeClass
   public static void setUp() {
     filem = new FileManager();
@@ -95,16 +98,18 @@ public class FileManagerTest {
 
   @AfterClass
   public static void tearDown() {
-    filem=null;
+    filem = null;
   }
 
 
   @Test
   public void testAggiungiFile() {
 
-    File fileTest = new File("File3",1, "descrizione File3", 24,"descrizione voto","etm.utente@unisa.it");
+    File fileTest = new File("File3",1, "descrizione File3", 24,
+        "descrizione voto","etm.utente@unisa.it");
     fileTest.setFilePart(filePart);
-    assertTrue(filem.aggiungiFile(fileTest));	//restituisce true
+
+    assertTrue(filem.aggiungiFile(fileTest));
 
     assertTrue(filem.eliminaFile(1, "File3")); //restituiscee true
 
@@ -166,6 +171,7 @@ public class FileManagerTest {
   public void testGetListaFile() {
     assertNotEquals(filem.getListaFile(1),null); //restituisce una lista file
 
-    assertEquals(filem.getListaFile(-1),null);  //restituisce null poché l'id proposta tesi non e corretto
+    //restituisce null poché l'id proposta tesi non e corretto
+    assertEquals(filem.getListaFile(-1),null); 
   }
 }
