@@ -126,7 +126,7 @@ public class PropostaTesiManagerTest {
   @Test
   public void testGetProposteTesiDocente() {
     // Restituisce la lista delle proposta correttamente
-    assertNotEquals(pm.getProposteTesiDocente(proposta.getUtenteEmail()), null);
+    assertNotEquals(pm.getProposteTesiDocente("etm.docente@unisa.it"), null);
 
     // Non restituisce la lista poichè l'email è inesistente
     assertEquals(pm.getProposteTesiDocente("emailinesistente@ciao.it"), null);
@@ -163,7 +163,7 @@ public class PropostaTesiManagerTest {
   public void testGetRichiestaStudente() {
     // Richiesta per studente corretta
 
-    assertNotEquals(pm.getRichiestaStudente(richiesta.getUtente_mail()), null);
+    assertNotEquals(pm.getRichiestaStudente("etm.utentetre@unisa.it"), null);
     // Richiesta per studente errata per l'Email
     assertEquals(pm.getRichiestaStudente("emailnonesistente"), null);
   }

@@ -19,24 +19,21 @@ import org.junit.Test;
 
 
 public class PartecipaManagerTest {
-  private static  PartecipaManager partecipaManager;
-  private static Partecipa partecipa;
+  private static PartecipaManager partecipaManager;
 
   @BeforeClass
   public static void setUp() {
     partecipaManager = (PartecipaManager) new ManagerFactory().createPartecipaManager();
-    partecipa = new Partecipa(1,"etm.utenteuno@unisa.it");
   }
 
   @AfterClass
   public static void tearDown() {
     partecipaManager = null;
-    partecipa = null;
   }
 
   @Test
   public void  testInserisciPartecipazione() {
-    assertTrue(partecipaManager.inserisciPartecipazione(2, partecipa.getUtenteEmail()));
+    assertTrue(partecipaManager.inserisciPartecipazione(3, "etm.utentetre@unisa.it"));
 
     assertFalse(partecipaManager.inserisciPartecipazione(99, "boh"));
   }

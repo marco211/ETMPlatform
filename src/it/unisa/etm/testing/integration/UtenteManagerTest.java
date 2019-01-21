@@ -46,18 +46,17 @@ public class UtenteManagerTest {
   }
 
   @Test
-  public void testModificaPassword() {
-
+  public void testModificaPassword() {    
     st = um.cercaUtente("etm.utente@unisa.it");
     doc = um.cercaUtente("etm.docente@unisa.it");
 
-    st.setPassword("prova");
-    doc.setPassword("prova");
+    //setto la stessa password per non modificare dati nel database
+    st.setPassword(st.getPassword());
+    doc.setPassword(doc.getPassword());
 
     assertTrue(um.modificaPassword(st));
     assertTrue(um.modificaPassword(doc));
-
-
+    
     st.setEmail("");
     assertFalse(um.modificaPassword(st));
 
@@ -67,14 +66,13 @@ public class UtenteManagerTest {
   public void testModificaUtente() {
     st = um.cercaUtente("etm.utente@unisa.it");
     doc = um.cercaUtente("etm.docente@unisa.it");
-
+    
     st.setMatricola("0552100552");
     doc.setUfficio("Ufficio 01");
 
     assertTrue(um.modificaUtente(st));
     assertTrue(um.modificaUtente(doc));
-
-
+    
     st.setEmail("emailfake@email.it");
     assertFalse(um.modificaUtente(st));
 

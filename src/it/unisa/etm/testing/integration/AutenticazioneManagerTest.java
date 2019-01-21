@@ -30,7 +30,7 @@ public class AutenticazioneManagerTest {
   @Test
   public void testRegistraUtente() {
     Utente u = new Utente("Nappi","1997-11-04","Domenico",
-        "s","etm.utentetre@unisa.it","ciao","0512104963","valido");
+        "s","etm.utentequattro@unisa.it","ciao","0512104963","valido");
     assertTrue(new AutenticazioneManager().registraUtente(u));
     
     u = new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Domenico",
