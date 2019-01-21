@@ -13,6 +13,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 public class AutenticazioneManagerTest {
+
   private static AutenticazioneManager autenticazioneManager;
 
   @BeforeClass
