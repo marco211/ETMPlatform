@@ -10,7 +10,12 @@ public class PropostaTesi implements Serializable {
 
   }
 
-  public PropostaTesi(String titolo, String ambito, int tempoDiSviluppo, String materie, String decrizione,
+  /**
+   * Costruttore.
+   */
+  
+  public PropostaTesi(String titolo, String ambito, int tempoDiSviluppo, 
+      String materie, String decrizione,
       String utenteEmail, boolean chiuso, boolean archiviato) {
     super();
     this.titolo = titolo;

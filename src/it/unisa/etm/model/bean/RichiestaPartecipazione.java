@@ -8,6 +8,10 @@ public class RichiestaPartecipazione {
 
   }
 
+  /**
+   * Costruttore.
+   */
+  
   public RichiestaPartecipazione(LocalDate data, int propostatesi_id, String utente_mail) {
     super();
     this.data = data;

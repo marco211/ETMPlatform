@@ -3,7 +3,8 @@ package it.unisa.etm.model.bean;
 import java.io.Serializable;
 
 /**
- * Classe bean dell'amministratore, che rappresenta l'amministratore presente nel database
+ * Classe bean dell'amministratore, che rappresenta l'amministratore 
+ * presente nel database.
  */
 
 public class Amministratore implements Serializable {
@@ -12,7 +13,11 @@ public class Amministratore implements Serializable {
   public Amministratore() {
 
   }
-
+  
+  /**
+   * Costruttore.
+   */
+  
   public Amministratore(String email, String nome, String cognome, String password) {
     this.email = email;
     this.nome = nome;

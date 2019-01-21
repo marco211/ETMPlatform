@@ -3,36 +3,41 @@ package it.unisa.etm.model.bean;
 import java.io.Serializable;
 import java.time.LocalDate;
 
-public class Attivita implements Serializable{
+public class Attivita implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public Attivita() {
 
   }
 
-  public Attivita(String utente_Email, String nomeFile, LocalDate data, String tipo, int propostatesi_id) {
+  /**
+   * Costruttore.
+   */
+  
+  public Attivita(String utenteEmail, String nomeFile, LocalDate data, 
+      String tipo, int propostaTesiId) {
     super();
-    this.utente_Email = utente_Email;
-    this.NomeFile = nomeFile;
+    this.utenteEmail = utenteEmail;
+    this.nomeFile = nomeFile;
     this.data = data;
     this.tipo = tipo;
-    this.propostatesi_id = propostatesi_id;
+    this.propostaTesiId = propostaTesiId;
   }
 
   public String getUtente_Email() {
-    return utente_Email;
+    return utenteEmail;
   }
 
-  public void setUtente_Email(String utente_Email) {
-    this.utente_Email = utente_Email;
+  public void setUtente_Email(String utenteEmail) {
+    this.utenteEmail = utenteEmail;
   }
 
   public String getNomeFile() {
-    return NomeFile;
+    return nomeFile;
   }
 
   public void setNomeFile(String nomeFile) {
-    NomeFile = nomeFile;
+    this.nomeFile = nomeFile;
   }
 
   public LocalDate getData() {
@@ -52,11 +57,11 @@ public class Attivita implements Serializable{
   }
 
   public int getPropostatesi_id() {
-    return propostatesi_id;
+    return propostaTesiId;
   }
 
-  public void setPropostatesi_id(int propostatesi_id) {
-    this.propostatesi_id = propostatesi_id;
+  public void setPropostatesi_id(int propostaTesiId) {
+    this.propostaTesiId = propostaTesiId;
   }
 
   
@@ -78,14 +83,14 @@ public class Attivita implements Serializable{
     } else {
       t = "eliminato";
     }
-    return "L'utente: " + utente_Email + " ha " + t + " il "
-        + "file: " + NomeFile + " il giorno: " + data + "";
+    return "L'utente: " + utenteEmail + " ha " + t + " il "
+        + "file: " + nomeFile + " il giorno: " + data + "";
   }
 
   private int id;
-  private String utente_Email;
-  private String NomeFile;
+  private String utenteEmail;
+  private String nomeFile;
   private LocalDate data;
   private String tipo;
-  private int propostatesi_id;
+  private int propostaTesiId;
 }

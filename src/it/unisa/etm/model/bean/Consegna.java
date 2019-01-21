@@ -9,6 +9,10 @@ public class Consegna implements Serializable {
 
   }
 
+  /**
+   * Costruttore.
+   */
+  
   public Consegna(String nome, String descrizione, String scadenza, int propostaId) {
     this.nome = nome;
     this.descrizione = descrizione;

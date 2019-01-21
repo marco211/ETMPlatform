@@ -12,6 +12,10 @@ public class File implements Serializable {
 
   }
 
+  /**
+   * Costruttore.
+   */
+  
   public File(String nome, int propostaId, String descrizione, int voto, 
       String descrizioneVoto, String email) {
     super();

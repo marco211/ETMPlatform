@@ -6,6 +6,10 @@ public class Insegna {
 
   }
 
+  /**
+   * Costruttore.
+   */
+  
   public Insegna(String utenteEmail, String insegnamentoNome) {
     super();
     this.utenteEmail = utenteEmail;
