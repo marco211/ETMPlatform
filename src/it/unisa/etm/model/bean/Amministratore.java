@@ -4,54 +4,56 @@ import java.io.Serializable;
 
 /**
  * Classe bean dell'amministratore, che rappresenta l'amministratore presente nel database
- *
  */
 
 public class Amministratore implements Serializable {
-	private static final long serialVersionUID = 1L;
-	
-	public Amministratore() {
-		
-	}
-	
-	public Amministratore(String email, String nome, String cognome, String password) {
-		this.email=email;
-		this.nome=nome;
-		this.cognome = cognome;
-		this.password = password;
-	}
-	
-	public String getPassword() {
-		return password;
-	}
+  private static final long serialVersionUID = 1L;
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+  public Amministratore() {
 
-	public String getNome() {
-		return nome;
-	}
+  }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+  public Amministratore(String email, String nome, String cognome, String password) {
+    this.email = email;
+    this.nome = nome;
+    this.cognome = cognome;
+    this.password = password;
+  }
 
-	public String getCognome() {
-		return cognome;
-	}
+  public String getPassword() {
+    return password;
+  }
 
-	public void setCognome(String cognome) {
-		this.cognome = cognome;
-	}
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-	public String getEmail() {
-		return email;
-	}
+  public String getNome() {
+    return nome;
+  }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+  public void setNome(String nome) {
+    this.nome = nome;
+  }
 
-	private String nome, cognome, email, password;
+  public String getCognome() {
+    return cognome;
+  }
+
+  public void setCognome(String cognome) {
+    this.cognome = cognome;
+  }
+
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  private String nome;
+  private String cognome;
+  private String email;
+  private String password;
 }
