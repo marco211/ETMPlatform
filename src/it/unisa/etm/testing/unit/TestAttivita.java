@@ -1,9 +1,10 @@
 package it.unisa.etm.testing.unit;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 import java.time.LocalDate;
 import java.util.logging.Logger;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
