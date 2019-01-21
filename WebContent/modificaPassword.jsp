@@ -31,7 +31,7 @@
 		integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
 		crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/registrazione.js"></script>
-
+	<script type="text/javascript" src="js/modificaPassword.js"></script>
 
 
 
@@ -46,13 +46,13 @@
 								class="img-fluid" alt="Responsive image">
 							<p>Inserisci due volte la nuova password per apportare la
 								modifica.</p>
-							<form action="ModificaPasswordServlet" method="post"
+							<form action="ModificaPasswordServlet" method="post" name="modificaPassword"
 								class="form-inline justify-content-center">
 								<div class="info-form">
 									<div class="form-group">
 										<label class="sr-only">Nuova Password</label> <input
-											type="password" name="password" class="form-control"
-											placeholder="Nuova Password"> <input type="password"
+											type="password" onchange="controlloPassword()" name="password" class="form-control"
+											placeholder="Nuova Password"> <input type="password" onchange="controlloPassword2()"
 											name="password2" class="form-control"
 											placeholder="Conferma Password">
 
@@ -60,7 +60,7 @@
 
 								</div>
 								<br>
-								<button type="submit" class="btn btn-success ">Modifica
+								<button type="submit" class="btn btn-success" onclick="return validazione()">Modifica
 									password</button>
 							</form>
 						</div>
