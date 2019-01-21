@@ -14,13 +14,10 @@ import it.unisa.etm.model.manager.AutenticazioneManager;
 
 public class AutenticazioneManagerTest {
 	private static AutenticazioneManager autenticazioneManager;
-	@SuppressWarnings("unused")
-	private static AmministratoreManager am;
 
 	@BeforeClass
 	public static void setUp() {
 		autenticazioneManager=(AutenticazioneManager) new ManagerFactory().createAutenticazioneManager();
-		am = (AmministratoreManager) new ManagerFactory().createAmministratoreManager();
 	}
 
 	@AfterClass
