@@ -1,16 +1,16 @@
 package it.unisa.etm.testing.integration;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
+import org.junit.Test;
 
 public class AutenticazioneManagerTest {
 
@@ -18,7 +18,8 @@ public class AutenticazioneManagerTest {
 
   @BeforeClass
   public static void setUp() {
-    autenticazioneManager=(AutenticazioneManager) new ManagerFactory().createAutenticazioneManager();
+    autenticazioneManager = (AutenticazioneManager) 
+        new ManagerFactory().createAutenticazioneManager();
   }
 
   @AfterClass
@@ -28,14 +29,23 @@ public class AutenticazioneManagerTest {
 
   @Test
   public void testRegistraUtente() {
-    assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Domenico","s","etm.utentetre@unisa.it","ciao","0512104963","valido")));
-    assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Docmenico","etm.docentedue@unisa.it","ciao","MMI","valido")));
-    assertTrue(new AutenticazioneManager().registraUtente(new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Docmenico","etm.docentetre@unisa.it","ciao","ETC","valido")));
+    Utente u = new Utente("Nappi","1997-11-04","Domenico",
+        "s","etm.utentetre@unisa.it","ciao","0512104963","valido");
+    assertTrue(new AutenticazioneManager().registraUtente(u));
+    
+    u = new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Domenico",
+        "etm.docentedue@unisa.it","ciao","MMI","valido");
+    assertTrue(new AutenticazioneManager().registraUtente(u));
+    
+    u = new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Domenico",
+        "etm.docentetre@unisa.it","ciao","ETC","valido");
+    assertTrue(new AutenticazioneManager().registraUtente(u));
   }
 
   @Test
   public void testGetUtente() {
-    assertNotEquals(autenticazioneManager.getUtente("etm.docente@unisa.it", "ciao"),null); //etm.docente@unisa.it è un docente registrato nel db
+    assertNotEquals(autenticazioneManager.getUtente(
+        "etm.docente@unisa.it", "ciao"),null); //etm.docente@unisa.it è un docente registrato nel db
 
     assertNotEquals(autenticazioneManager.getUtente("etm.utente@unisa.it", "ciao"), null);
 
