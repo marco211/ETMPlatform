@@ -116,12 +116,12 @@ public class Utente implements Serializable {
     this.insegnamento.add(insegnamento);
   }
 
-  public int getPropostaTesi_ID() {
+  public int getPropostaTesi_Id() {
     return propostaTesiId;
   }
 
-  public void setPropostaTesi_ID(int propostaTesi_ID) {
-    propostaTesiId = propostaTesi_ID;
+  public void setPropostaTesi_Id(int propostaTesiId) {
+    this.propostaTesiId = propostaTesiId;
   }
 
   public void setValidazione(String validazione) {

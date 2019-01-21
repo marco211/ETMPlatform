@@ -31,7 +31,7 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     Utente utente = (Utente)request.getSession().getAttribute("utente");
-    int propostaTesiId = utente.getPropostaTesi_ID();
+    int propostaTesiId = utente.getPropostaTesi_Id();
     ManagerFactory em = new ManagerFactory();
     ConsegnaManager consegna = (ConsegnaManager) em.createConsegnaManager();
     PropostaTesiManager tesi = (PropostaTesiManager) em.createPropostaTesiManager();
@@ -41,7 +41,7 @@ public class VisualizzaListaConsegneServlet extends HttpServlet {
     ArrayList<Consegna> consegne = consegna.getListaConsegne(propostaTesiId);
     request.getSession().setAttribute("listaConsegne", consegne);
     response.sendRedirect(request.getContextPath() + "/VisualizzaListaFileServlet?"
-        + "idTesi=" + utente.getPropostaTesi_ID() + "&utenteEmail=" + utente.getEmail());
+        + "idTesi=" + utente.getPropostaTesi_Id() + "&utenteEmail=" + utente.getEmail());
   }
 
 

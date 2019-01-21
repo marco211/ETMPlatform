@@ -97,6 +97,9 @@ public class RegistrazioneServlet extends HttpServlet {
     }
   }
 
+  /**
+   * Metodo sendEmail.
+   */
 
   public static boolean sendEmail(String ricevente, String testo) {
     Properties prop = System.getProperties();

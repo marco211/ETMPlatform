@@ -29,18 +29,18 @@ import javax.servlet.http.HttpServletResponse;
 public class RecuperaPasswordServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
- 
+
   public RecuperaPasswordServlet() {
     super();
   }
 
- 
+
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     doPost(request, response);
   }
 
- 
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
     String email = request.getParameter("email");
@@ -71,6 +71,10 @@ public class RecuperaPasswordServlet extends HttpServlet {
     }
   }
 
+  /**
+   * Metodo send.
+   */
+  
   public static boolean send(String ricevente, String testo) {
     Properties prop = System.getProperties();    
     prop.setProperty("mail.transport.protocol", "smtp");

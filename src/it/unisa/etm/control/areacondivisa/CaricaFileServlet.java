@@ -56,7 +56,7 @@ public class CaricaFileServlet extends HttpServlet {
     file.setFilePart(filePart);
     int tesi = 0;
     if (utente.getTipo().equals("s")) {
-      file.setPropostaTesiId(utente.getPropostaTesi_ID());
+      file.setPropostaTesiId(utente.getPropostaTesi_Id());
     } else {
       tesi = (int)request.getSession().getAttribute("numeroTesiDocente");
       file.setPropostaTesiId(tesi);
@@ -76,7 +76,7 @@ public class CaricaFileServlet extends HttpServlet {
       } else {
         RequestDispatcher requestDispatcher = 
             getServletContext().getRequestDispatcher("/VisualizzaListaFileServlet?"
-             + "idTesi=" + utente.getPropostaTesi_ID());
+             + "idTesi=" + utente.getPropostaTesi_Id());
         requestDispatcher.forward(request, response);
       }
     } else {

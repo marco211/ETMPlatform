@@ -12,11 +12,11 @@ public class RichiestaPartecipazione {
    * Costruttore.
    */
   
-  public RichiestaPartecipazione(LocalDate data, int propostatesi_id, String utente_mail) {
+  public RichiestaPartecipazione(LocalDate data, int propostaTesiId, String utenteEmail) {
     super();
     this.data = data;
-    this.propostatesi_id = propostatesi_id;
-    this.utente_mail = utente_mail;
+    this.propostaTesiId = propostaTesiId;
+    this.utenteEmail = utenteEmail;
   }
 
   public int getId() {
@@ -36,23 +36,23 @@ public class RichiestaPartecipazione {
   }
 
   public int getPropostatesi_id() {
-    return propostatesi_id;
+    return propostaTesiId;
   }
 
-  public void setPropostatesi_id(int propostatesi_id) {
-    this.propostatesi_id = propostatesi_id;
+  public void setPropostatesi_id(int propostaTesiId) {
+    this.propostaTesiId = propostaTesiId;
   }
 
   public String getUtente_mail() {
-    return utente_mail;
+    return utenteEmail;
   }
 
-  public void setUtente_mail(String utente_mail) {
-    this.utente_mail = utente_mail;
+  public void setUtente_mail(String utenteEmail) {
+    this.utenteEmail = utenteEmail;
   }
 
   private int id;
   private LocalDate data;
-  private int propostatesi_id;
-  private String utente_mail;
+  private int propostaTesiId;
+  private String utenteEmail;
 }

@@ -39,11 +39,11 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
       proposte = pt.getProposteTesiDocente(email);
       request.setAttribute("proposte", proposte);
       request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
-    } else if (utente.getTipo().equals("s") && utente.getPropostaTesi_ID() > 0) {
+    } else if (utente.getTipo().equals("s") && utente.getPropostaTesi_Id() > 0) {
       ManagerFactory em = new ManagerFactory();
       PropostaTesiManager pt = (PropostaTesiManager) em.createPropostaTesiManager();
       PropostaTesi proposta;
-      proposta = pt.getPropostaTesi(utente.getPropostaTesi_ID());
+      proposta = pt.getPropostaTesi(utente.getPropostaTesi_Id());
       request.setAttribute("proposta", proposta);
       request.getRequestDispatcher("visualizzaProfiloUtente.jsp").forward(request, response);
 
