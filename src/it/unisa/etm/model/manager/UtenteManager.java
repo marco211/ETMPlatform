@@ -125,7 +125,9 @@ public  class UtenteManager implements UtenteModelInterface{
 			ps=istance.prepareStatement(insertSQL);
 			ps.setString(1, utente.getPassword());
 			ps.setString(2, utente.getEmail());
-			if (ps.executeUpdate() == 0) return false;
+			if (ps.executeUpdate() == 0) {
+				return false;
+			}
 			return true;
 		} catch(SQLException e) {
 			return false;

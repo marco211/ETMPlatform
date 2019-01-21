@@ -27,7 +27,7 @@ public class DatabaseManager {
   private static void createConnection() throws SQLException, ClassNotFoundException {
     Class.forName("com.mysql.jdbc.Driver");
     String username = "root";//inserite la vostra username
-    String password = "root";//inserite la vostra password
+    String password = "admin";//inserite la vostra password
 
     connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/"
         + "ETM_PLATFORM?useUnicode=true&useJDBCCompliantTimezoneShift="
