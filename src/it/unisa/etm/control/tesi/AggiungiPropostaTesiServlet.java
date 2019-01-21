@@ -17,44 +17,44 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/AggiungiPropostaTesiServlet")
 public class AggiungiPropostaTesiServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public AggiungiPropostaTesiServlet() {
-        super();
+	super();
+  }
+
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	doPost(request, response);
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doPost(request, response);
-	}
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
+	request.setAttribute("insegnamenti", insegnamenti);
+	request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<Insegnamento> insegnamenti = this.getInsegnamenti();
-		request.setAttribute("insegnamenti", insegnamenti);
-		request.getRequestDispatcher("aggiungiPropostaTesi.jsp").forward(request, response);	
-	}
-	
 
-	/**
-	 *	ritorna la lista degli insegnamenti dei docenti
-	 * @param 
-	 * @return lista degli insegnamenti
-	 * <p>
-	 * null in caso di errore o che non sono prensenti insegnamenti.
-	 */
-	private ArrayList<Insegnamento> getInsegnamenti(){
-		ManagerFactory mf=new ManagerFactory();
-		PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
-		ArrayList<Insegnamento> insegnamenti=new ArrayList<Insegnamento>();
-		insegnamenti=ptm.getInsegnamenti();
-		return insegnamenti;
-	}
+    /**
+     *	ritorna la lista degli insegnamenti dei docenti
+     * @param 
+     * @return lista degli insegnamenti
+     * <p>
+     * null in caso di errore o che non sono prensenti insegnamenti.
+     */
+    private ArrayList<Insegnamento> getInsegnamenti(){
+	ManagerFactory mf=new ManagerFactory();
+	PropostaTesiManager ptm=(PropostaTesiManager) mf.createPropostaTesiManager();
+	ArrayList<Insegnamento> insegnamenti=new ArrayList<Insegnamento>();
+	insegnamenti=ptm.getInsegnamenti();
+	return insegnamenti;
+    }
 }

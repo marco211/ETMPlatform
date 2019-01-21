@@ -16,35 +16,35 @@ import it.unisa.etm.model.manager.AmministratoreManager;
  */
 @WebServlet("/ListaUtentiServlet")
 public class ListaUtentiServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
+    private static final long serialVersionUID = 1L;
+
     /**
      * @see HttpServlet#HttpServlet()
      */
     public ListaUtentiServlet() {
-        super();
+	super();
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
-			AmministratoreManager am= new AmministratoreManager();
-			ArrayList<Utente> utenti= (ArrayList<Utente>) am.getListaUtenti();
-			request.setAttribute("utenti", utenti);
-			request.getRequestDispatcher("visualizzaListaUtenti.jsp").forward(request, response);
-		}catch(Exception e) {
-			request.getRequestDispatcher("index.jsp").forward(request, response);
-			e.printStackTrace();
-		}	
-	}
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	try{
+	    AmministratoreManager am= new AmministratoreManager();
+	    ArrayList<Utente> utenti= (ArrayList<Utente>) am.getListaUtenti();
+	    request.setAttribute("utenti", utenti);
+	    request.getRequestDispatcher("visualizzaListaUtenti.jsp").forward(request, response);
+	}catch(Exception e) {
+	    request.getRequestDispatcher("index.jsp").forward(request, response);
+	    e.printStackTrace();
+	}	
+    }
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		doGet(request, response);
-	}
-	
+    /**
+     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	doGet(request, response);
+    }
+
 }
