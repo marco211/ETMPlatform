@@ -10,12 +10,19 @@ import it.unisa.etm.model.interfaces.PropostaTesiModelInterface;
 import it.unisa.etm.model.interfaces.UtenteModelInterface;
 
 public interface AbstractFactory {
-	public AmministratoreModelInterface createAmministratoreManager();
-	public AutenticazioneModelInterface createAutenticazioneManager();
-	public ConsegnaModelInterface createConsegnaManager();
-	public PropostaTesiModelInterface createPropostaTesiManager();
-	public UtenteModelInterface createUtenteManager();
-	public FileModelInterface createFileManager();
-	public PartecipaModelInterface createPartecipaManager();
-	public AttivitaModelInterface createAttivitaManager();
+  public AmministratoreModelInterface createAmministratoreManager();
+  
+  public AutenticazioneModelInterface createAutenticazioneManager();
+  
+  public ConsegnaModelInterface createConsegnaManager();
+  
+  public PropostaTesiModelInterface createPropostaTesiManager();
+  
+  public UtenteModelInterface createUtenteManager();
+  
+  public FileModelInterface createFileManager();
+  
+  public PartecipaModelInterface createPartecipaManager();
+  
+  public AttivitaModelInterface createAttivitaManager();
 }

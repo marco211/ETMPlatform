@@ -17,46 +17,46 @@ import it.unisa.etm.model.manager.PartecipaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import it.unisa.etm.model.manager.UtenteManager;
 
-public class ManagerFactory implements AbstractFactory{
+public class ManagerFactory implements AbstractFactory {
 
-	@Override
-	public AmministratoreModelInterface createAmministratoreManager() {
-		return new AmministratoreManager();
-	}
+  @Override
+  public AmministratoreModelInterface createAmministratoreManager() {
+    return new AmministratoreManager();
+  }
 
-	
-	@Override
-	public AutenticazioneModelInterface createAutenticazioneManager() {
-		return new AutenticazioneManager();
-	}
 
-	@Override
-	public ConsegnaModelInterface createConsegnaManager() {
-		return new ConsegnaManager();
-	}
+  @Override
+  public AutenticazioneModelInterface createAutenticazioneManager() {
+    return new AutenticazioneManager();
+  }
 
-	@Override
-	public PropostaTesiModelInterface createPropostaTesiManager() {
-		return new PropostaTesiManager();
-	}
+  @Override
+  public ConsegnaModelInterface createConsegnaManager() {
+    return new ConsegnaManager();
+  }
 
-	@Override
-	public UtenteModelInterface createUtenteManager() {
-		return new UtenteManager();
-	}
+  @Override
+  public PropostaTesiModelInterface createPropostaTesiManager() {
+    return new PropostaTesiManager();
+  }
 
-	@Override
-	public FileModelInterface createFileManager() {
-		return new FileManager();
-	}
+  @Override
+  public UtenteModelInterface createUtenteManager() {
+    return new UtenteManager();
+  }
 
-	@Override
-	public PartecipaModelInterface createPartecipaManager() {
-		return new PartecipaManager();
-	}
+  @Override
+  public FileModelInterface createFileManager() {
+    return new FileManager();
+  }
 
-	@Override
-	public AttivitaModelInterface createAttivitaManager() {
-		return new AttivitaManager();
-	}
+  @Override
+  public PartecipaModelInterface createPartecipaManager() {
+    return new PartecipaManager();
+  }
+
+  @Override
+  public AttivitaModelInterface createAttivitaManager() {
+    return new AttivitaManager();
+  }
 }
