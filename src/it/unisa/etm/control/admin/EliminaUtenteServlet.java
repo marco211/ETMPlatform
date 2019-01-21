@@ -1,10 +1,9 @@
 package it.unisa.etm.control.admin;
 
-import java.io.IOException;
-import java.sql.SQLException;
-
 import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AmministratoreManager;
+import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,9 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/EliminaUtenteServlet")
 public class EliminaUtenteServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;       
-    
 
- 
+
+
   public EliminaUtenteServlet() {
     super();
   }
@@ -42,23 +41,24 @@ public class EliminaUtenteServlet extends HttpServlet {
     doGet(request, response);
   }
 
- /**
-* Accede all'elenco di utenti ed elimina l'utente preso in input;
-* Il metodo ritorna un booleano.
-* @param utente da cercare
-* @return boolean: true se l'eliminazione viene eliminata con success, false altrimenti
-* @throws SQLException exception
- */
+  /**
+   * Accede all'elenco di utenti ed elimina l'utente preso in input;
+   * Il metodo ritorna un booleano.
+   * @param utente da cercare
+   * @return boolean: true se l'eliminazione viene eliminata con success, false altrimenti
+   * @throws SQLException exception
+   */
 
   private boolean eliminaUtente(String email) 
       throws SQLException {
     ManagerFactory mf = new ManagerFactory();
     AmministratoreManager am = (AmministratoreManager) mf.createAmministratoreManager();
-    if(!email.equals("")) 
-			return am.eliminaUtente(email);
-		else 
-			return false;
-	}
+    if (!email.equals("")) {
+      return am.eliminaUtente(email);
+    } else {
+      return false;
+    }
+  }
 
 }
 
