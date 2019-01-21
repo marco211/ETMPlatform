@@ -1,11 +1,11 @@
-it.unisa.etm.bean
 it.unisa.etm.control.admin
 it.unisa.etm.control.areacondivisa
 it.unisa.etm.control.autenticazione
 it.unisa.etm.control.tesi
 it.unisa.etm.control.user
-it.unisa.etm.database
-it.unisa.etm.factory
+it.unisa.etm.model.bean
+it.unisa.etm.model.database
+it.unisa.etm.model.factory
 it.unisa.etm.model.interfaces
 it.unisa.etm.model.manager
 it.unisa.etm.testing.integration
