@@ -19,12 +19,14 @@ import org.junit.Test;
 
 
 public class PropostaTesiManagerTest {
-  
+
   private static PropostaTesiManager pm;
   private static RichiestaPartecipazione richiesta;
   private static PropostaTesi proposta;
 
-
+  /**
+   * Starting up.
+   */
   @BeforeClass
   public static void setUp() {
     LocalDate date = LocalDate.now();
@@ -33,6 +35,10 @@ public class PropostaTesiManagerTest {
         "Architettura","Breve Descrizione","etm.docenteuno@unisa.it",false,false);
     richiesta = new RichiestaPartecipazione(date,1,"etm.utentedue@unisa.it");
   }
+
+  /**
+   * When the test ends.
+   */
 
   @AfterClass
   public static void tearDown() {
@@ -58,16 +64,21 @@ public class PropostaTesiManagerTest {
 
   @Test
   public void testCercaRichiestaPartecipazione() {
-    assertNotEquals(pm.cercaRichiestePartecipazione("etm.docente@unisa.it"), null);// Ritorna L'email corretta
+    // Ritorna L'email corretta
+    assertNotEquals(pm.cercaRichiestePartecipazione("etm.docente@unisa.it"), null);
 
-    assertEquals(pm.cercaRichiestePartecipazione("emailnonesiste"),null); //Ritorna Null poichè l'email è inesistente
+    //Ritorna Null poichè l'email è inesistente
+    assertEquals(pm.cercaRichiestePartecipazione("emailnonesiste"),null); 
   }
 
   @Test 
   public void testInserisciRichiestaPartecipazione() {
-    int id = richiesta.getId();
+    int id;
 
-    assertTrue(pm.inserisciRichiestaPartecipazione(richiesta)); // Inserisce la richiesta correttamente	
+    id = richiesta.getId();
+
+    // Inserisce la richiesta correttamente 
+    assertTrue(pm.inserisciRichiestaPartecipazione(richiesta)); 
 
     richiesta.setId(30);
     richiesta.setUtente_mail("ddd");
