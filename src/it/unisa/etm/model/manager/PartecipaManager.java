@@ -17,6 +17,13 @@ import java.util.ArrayList;
  */
 
 public class PartecipaManager implements PartecipaModelInterface {
+  
+  /**
+   * Metodo per inserire una partecipazione all'interno del Database.
+   * @author ETM
+   *
+   */
+  
   public boolean inserisciPartecipazione(int richiestaId, String utenteEmail) {
     String selectSql = "SELECT * FROM richiestapartecipazione WHERE id=?;";
     String insertSql = "insert into PARTECIPA (Utente_Email, PropostaTesi_Id) values (?,?);";

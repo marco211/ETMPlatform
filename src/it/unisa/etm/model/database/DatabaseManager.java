@@ -12,7 +12,12 @@ public class DatabaseManager {
   private DatabaseManager() {
     
   }
-
+  
+  /**
+ * Metodo per prendere l'istanza di una connesione al DB.
+ * @return connection
+ */
+  
   public static Connection getIstance() throws SQLException {  
     if (connection == null) {
       try {

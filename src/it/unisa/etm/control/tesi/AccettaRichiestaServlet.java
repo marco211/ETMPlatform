@@ -16,8 +16,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/AccettaRichiestaServlet")
 public class AccettaRichiestaServlet extends HttpServlet {
-  private static final long 
-      serialVersionUID = 1L;                                                                
+  private static final long serialVersionUID = 1L;
 
   public AccettaRichiestaServlet() {
     super();
@@ -26,9 +25,9 @@ public class AccettaRichiestaServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
-    int propostatesi_id = Integer.parseInt(request.getParameter("richiesta_id"));
+    int propostaTesiId = Integer.parseInt(request.getParameter("richiesta_id"));
     String utenteEmail = request.getParameter("utente_email");
-    if (this.accettaRichiestaPropostaTesi(propostatesi_id,utenteEmail)) {
+    if (this.accettaRichiestaPropostaTesi(propostaTesiId,utenteEmail)) {
       request.getSession().removeAttribute("listaPartecipazione");
       request.getRequestDispatcher("index.jsp").forward(request, response);
     } else {
