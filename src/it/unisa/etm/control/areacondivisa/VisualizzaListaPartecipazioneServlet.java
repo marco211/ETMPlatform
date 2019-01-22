@@ -37,10 +37,9 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
     list = tesi.getProposteTesiDocente(utente.getEmail());
     PartecipaManager partecipa = (PartecipaManager) em.createPartecipaManager();
     ArrayList<Partecipa> partecipazioni;
-    if(list != null) {
-    partecipazioni =  partecipa.getListaPartecipazione(list);
-    }
-    else {
+    if (list != null) {
+      partecipazioni =  partecipa.getListaPartecipazione(list);
+    } else {
       partecipazioni = new ArrayList<Partecipa>();
     }
     request.getSession().setAttribute("listaPartecipazione", partecipazioni);
