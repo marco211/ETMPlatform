@@ -107,7 +107,7 @@
 
 						<div class="form-group">
 							<a href="recuperaPassword.jsp"> <label
-								class="form-check-label" for="dropdownCheck2"> password
+								class="form-check-label" for="dropdownCheck2"> Password
 									dimenticata </label>
 							</a>
 						</div>
