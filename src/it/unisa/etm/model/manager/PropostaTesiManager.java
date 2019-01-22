@@ -62,7 +62,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
       return true;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -82,7 +81,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
       return true;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -117,7 +115,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
 
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
@@ -145,7 +142,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
       return true;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -174,7 +170,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       b = true;
       return b;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -194,7 +189,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       b = true;
       return b;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -214,7 +208,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       b = true;
       return b;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -247,7 +240,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       } 
       return proposte;
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
@@ -288,7 +280,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
 
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
@@ -321,7 +312,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       proposta.setMaterie(rs.getString(9));
       return proposta;
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
@@ -348,7 +338,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
         return true;
       }
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -396,7 +385,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       b = true;
       return b;
     } catch (SQLException e) {
-      e.printStackTrace();
       return false;
     }
   }
@@ -429,7 +417,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
 
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
@@ -452,7 +439,6 @@ public class PropostaTesiManager implements PropostaTesiModelInterface {
       }
       return insegnamenti;
     } catch (SQLException e) {
-      e.printStackTrace();
       return null;
     }
   }
