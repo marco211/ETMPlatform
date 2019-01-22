@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="it.unisa.etm.model.bean.*,java.util.*"%>
+	pageEncoding="ISO-8859-1"
+	import="it.unisa.etm.model.bean.*,java.util.*"%>
 
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
@@ -17,7 +18,7 @@
 	ArrayList<Partecipa> partecipazioni = (ArrayList<Partecipa>) session.getAttribute("listaPartecipazione");
 	@SuppressWarnings("unchecked")
 	ArrayList<PropostaTesi> listaTesi = (ArrayList<PropostaTesi>) session.getAttribute("listaTesiDocente");
-	Boolean disabilita=(Boolean)session.getAttribute("disabilita");
+	Boolean disabilita = (Boolean) session.getAttribute("disabilita");
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -31,22 +32,24 @@
 <title>ETM Platform - Area privata condivisa</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script >
- $(document).ready(function(){
-	 cambiaColore();
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function() {
+		cambiaColore();
 	});
 
-function cambiaColore(){
-	document.getElementById("areaCondivisa").className = "nav-link text-primary";
-};
+	function cambiaColore() {
+		document.getElementById("areaCondivisa").className = "nav-link text-primary";
+	};
 </script>
 </head>
 <body>
 
 	<jsp:include page="header.jsp" />
 
-	<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
+	<div
+		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C); min-height: 80vh;">
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">
@@ -55,7 +58,9 @@ function cambiaColore(){
 						<div class="form-inline mb-3 pb-3"
 							style="border-bottom: 1px solid">
 							<h5 class="card-title mb-1">Area Privata Condivisa&nbsp;</h5>
-							<% if((partecipazioni.size()>0)&&(disabilita!=null)){%>
+							<%
+								if ((partecipazioni.size() > 0) && (disabilita != null)) {
+							%>
 							<form action="VisualizzaStoricoServlet" method="get">
 								<button type="submit"
 									class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning "
@@ -78,16 +83,22 @@ function cambiaColore(){
 									<i class="fa fa-paper-plane"></i>
 								</button>
 							</form>
-							<%}%>
+							<%
+								}
+							%>
 						</div>
-						<%if((disabilita==null) &&(partecipazioni.size()>0)){ %>
+						<%
+							if ((disabilita == null) && (partecipazioni.size() > 0)) {
+						%>
 						<h5>Area disabilitata: clicca su una proposta tesi per
 							attivarla</h5>
-						<%} %>
+						<%
+							}
+						%>
 
 						<%
-								if (file != null) {
-							%>
+							if (file != null) {
+						%>
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -97,8 +108,8 @@ function cambiaColore(){
 									<th scope="col">Valutazione</th>
 								</tr>
 							</thead>
-							<%		
-									for (int i = 0; i < file.size(); i++) {
+							<%
+								for (int i = 0; i < file.size(); i++) {
 							%>
 							<tbody>
 								<tr>
@@ -109,14 +120,21 @@ function cambiaColore(){
 											<%=file.get(i).getNome()%>
 									</a></td>
 									<td><%=file.get(i).getEmail()%></td>
-									<%if(file.get(i).getEmail().equals(utente.getEmail())){ %>
+									<%
+										if (file.get(i).getEmail().equals(utente.getEmail())) {
+									%>
 									<td></td>
-									<%}
-										else if(file.get(i).getVoto()!=0) {%>
+									<%
+										} else if (file.get(i).getVoto() != 0) {
+									%>
 									<td><%=file.get(i).getVoto()%></td>
-									<%} else if(file.get(i).getVoto()==0){%>
+									<%
+										} else if (file.get(i).getVoto() == 0) {
+									%>
 									<td>Non valutato</td>
-									<%} %>
+									<%
+										}
+									%>
 								</tr>
 
 							</tbody>
@@ -137,68 +155,78 @@ function cambiaColore(){
 					<h4 class="font-italic">
 						Proposta Tesi:
 						<%
-			if(disabilita!=null){
-			
-			%>
-						<%=session.getAttribute("numeroTesiDocente") %></h4>
+						if (disabilita != null) {
+					%>
+						<%=session.getAttribute("numeroTesiDocente")%></h4>
 
 					<form action="VisualizzaDettagliTesiServlet" method="get">
 						<input type="hidden" name="propostatesi_id"
-							value="<%=session.getAttribute("numeroTesiDocente") %>">
+							value="<%=session.getAttribute("numeroTesiDocente")%>">
 						<button type="submit"
 							class="btn btn-inline my-2 my-sm-0 mx-2 bg-warning " id="AddFile">
 							<i class="fa fa-info-circle" aria-hidden="true"></i>
 						</button>
 					</form>
-					<%} %>
+					<%
+						}
+					%>
 				</div>
 				<ol class="list-unstyled mb-0">
 					<%
-			if(disabilita!=null){
-			for (int i = 0; i < partecipazioni.size(); i++) { 
-				if(partecipazioni.get(i).getPropostaTesiId()==(int)request.getSession().getAttribute("numeroTesiDocente")){
-			%>
+						if (disabilita != null) {
+							for (int i = 0; i < partecipazioni.size(); i++) {
+								if (partecipazioni.get(i)
+										.getPropostaTesiId() == (int) request.getSession().getAttribute("numeroTesiDocente")) {
+					%>
 					<li><a
 						href="VisualizzaProfiloUtenteServlet?utente_email=<%=partecipazioni.get(i).getUtenteEmail()%>"><%=partecipazioni.get(i).getUtenteEmail()%></a></li>
-					<%}} }%>
+					<%
+						}
+							}
+						}
+					%>
 				</ol>
 			</div>
 
 			<div class="p-3 card my-4" style="min-height: 40vh;">
 				<h4 class="font-italic">Aree</h4>
 				<%
-						if (partecipazioni != null) {
-					%>
+					if (partecipazioni != null) {
+				%>
 				<div class="row">
 					<div class="col">
 						<b>Proposta Tesi</b>
 					</div>
-					
+
 					<div class="col">
 						<b>Nome Proposta Tesi</b>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
-					int j=0;
-					for (int i = 0; i < partecipazioni.size(); i++) { 
-						if(partecipazioni.get(i).getPropostaTesiId()!=j){
-							j=partecipazioni.get(i).getPropostaTesiId();
+						int j = 0;
+							for (int i = 0; i < partecipazioni.size(); i++) {
+								if (partecipazioni.get(i).getPropostaTesiId() != j) {
+									j = partecipazioni.get(i).getPropostaTesiId();
 					%>
 					<div class="col">
 						<a
-							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId()%></a>
 					</div>
 					<div class="col">
-						<%for(int x=0;x<listaTesi.size();x++) {
-							if(listaTesi.get(x).getId()==j){
+						<%
+							for (int x = 0; x < listaTesi.size(); x++) {
+											if (listaTesi.get(x).getId() == j) {
 						%>
-						<%=listaTesi.get(x).getTitolo() %>
-						<%}} %>
+						<%=listaTesi.get(x).getTitolo()%>
+						<%
+							}
+										}
+						%>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
-						}
+							}
 						}
 					%>
 				</div>

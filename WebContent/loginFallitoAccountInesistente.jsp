@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
+
 
 
 <!DOCTYPE html>
@@ -52,25 +52,27 @@
 				<form action="LoginServlet" method="post">
 					<div class="form-row">
 						<div class="col">
-							<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
+							<input type="email" class="form-control mb-2 mr-sm-2"
+								name="emailLogin" placeholder="E-mail" required>
 						</div>
 						<div class="col">
-							<input type="password" class="form-control" name="passwordLogin" placeholder="Password" required>
+							<input type="password" class="form-control" name="passwordLogin"
+								placeholder="Password" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary mb-2">Login</button>
 						</div>
 					</div>
-					
+
 					<div class="form-row">
 						<div class="col-4"></div>
 						<div class="col">
 							<a href="recuperaPassword.jsp">Password dimenticata?</a>
 						</div>
-						
+
 					</div>
-					
-				</form>				
+
+				</form>
 			</li>
 
 			<li class="d-lg-none d-xl-none">
@@ -116,10 +118,13 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-					<h1>Login non riuscito</h1>
-					<h6>I dati inseriti non corrispondono a nessun account attivo</h6>
-					<h6>E-mail e password inserite non sono corrette</h6>
-					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
+				<h1>Login non riuscito</h1>
+				<h6>I dati inseriti non corrispondono a nessun account attivo</h6>
+				<h6>E-mail e password inserite non sono corrette</h6>
+				<h6>
+					<a href="http://localhost:8080/ETMPlatform/index.jsp">Torna
+						alla home</a>
+				</h6>
 			</div>
 		</div>
 	</div>

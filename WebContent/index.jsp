@@ -1,7 +1,7 @@
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page import="it.unisa.etm.model.bean.*, it.unisa.etm.control.autenticazione.*"%>
+<%@ page
+	import="it.unisa.etm.model.bean.*, it.unisa.etm.control.autenticazione.*"%>
 
 <%
     Amministratore admin=(Amministratore)session.getAttribute("admin");
@@ -91,7 +91,8 @@
 						aria-haspopup="true" aria-expanded="false">Effettua il
 						login</button>
 
-					<form class="dropdown-menu p-4" action="LoginServlet" method="post" name="login">
+					<form class="dropdown-menu p-4" action="LoginServlet" method="post"
+						name="login">
 						<div class="form-group">
 							<label for="exampleDropdownFormEmail2">E-mail</label> <input
 								type="email" class="form-control" name="emailLogin"
@@ -122,13 +123,11 @@
 		<div class="row">
 			<div class="col my-4 mx-4 d-none d-lg-block d-xl-block">
 				<div class="mx-auto my-5" style="width: 50%">
-						<img alt="load" src="img/logo_intero.png"
-						width="100%">
-						<label>ETM Platform sta per Easy Thesis Management, un 
-						acronimo che la dice lunga su questa piattaforma. 
-						Registrati subito per iniziare ad utilizzare 
-						la nostra piattaforma. Per registrarti utilizza l'email 
-						istituzionale.</label> 
+					<img alt="load" src="img/logo_intero.png" width="100%"> <label>ETM
+						Platform sta per Easy Thesis Management, un acronimo che la dice
+						lunga su questa piattaforma. Registrati subito per iniziare ad
+						utilizzare la nostra piattaforma. Per registrarti utilizza l'email
+						istituzionale.</label>
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
@@ -209,7 +208,8 @@
 						</div>
 					</div>
 
-					<div id="infoDiv" class="alert alert-danger form-group d-none" role="alert">Attenzione!</div>
+					<div id="infoDiv" class="alert alert-danger form-group d-none"
+						role="alert">Attenzione!</div>
 					<button type="button" class="btn btn-primary" name="invio"
 						onclick="validazione()">Sign in</button>
 				</form>
@@ -217,10 +217,6 @@
 			</div>
 		</div>
 	</div>
-
 	<script src="js/validazioneRegistrazione.js"></script>
-
 </body>
-
-
 </html>

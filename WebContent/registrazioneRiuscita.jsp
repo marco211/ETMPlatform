@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -22,14 +20,9 @@
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
 
-
-
 </head>
 
-
 <body>
-
-
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -52,27 +45,26 @@
 				<form action="LoginServlet" method="post">
 					<div class="form-row">
 						<div class="col">
-							<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
+							<input type="email" class="form-control mb-2 mr-sm-2"
+								name="emailLogin" placeholder="E-mail" required>
 						</div>
 						<div class="col">
-							<input type="password" class="form-control" name="passwordLogin" placeholder="Password" required>
+							<input type="password" class="form-control" name="passwordLogin"
+								placeholder="Password" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary mb-2">Login</button>
 						</div>
 					</div>
-					
+
 					<div class="form-row">
 						<div class="col-4"></div>
 						<div class="col">
 							<a href="recuperaPassword.jsp">Password dimenticata?</a>
 						</div>
-						
 					</div>
-					
-				</form>				
+				</form>
 			</li>
-
 			<li class="d-lg-none d-xl-none">
 				<div class="dropdown">
 					<button class="btn btn-secondary dropdown-toggle" type="button"
@@ -92,7 +84,6 @@
 								type="password" class="form-control" name="passwordLogin"
 								placeholder="Password" required>
 						</div>
-
 						<div class="form-group">
 							<a href="#"> <label class="form-check-label"
 								for="dropdownCheck2"> password dimenticata </label>
@@ -105,7 +96,6 @@
 		</ul>
 	</nav>
 
-
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col my-4 mx-4 d-none d-lg-block d-xl-block">
@@ -116,10 +106,14 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-					<h1>Iscrizione effettuata con successo</h1>
-					<h6>Abbiamo inviato una mail di conferma all'indirizzo e-mail da te inserito</h6>
-					<h6>Ti preghiamo di confermare la registrazione al piu presto</h6>
-					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
+				<h1>Iscrizione effettuata con successo</h1>
+				<h6>Abbiamo inviato una mail di conferma all'indirizzo e-mail
+					da te inserito</h6>
+				<h6>Ti preghiamo di confermare la registrazione al piu presto</h6>
+				<h6>
+					<a href="http://localhost:8080/ETMPlatform/index.jsp">Torna
+						alla home</a>
+				</h6>
 			</div>
 		</div>
 	</div>

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="it.unisa.etm.model.bean.*,java.util.*"%>
+	pageEncoding="ISO-8859-1"
+	import="it.unisa.etm.model.bean.*,java.util.*"%>
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
 	if (utente == null) {
@@ -34,7 +35,8 @@
 
 	<jsp:include page="header.jsp" />
 
-	<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
+	<div
+		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C); min-height: 80vh;">
 
 		<main role="main" class="container">
 		<div class="row">
@@ -89,10 +91,10 @@
 				<%
 					if (utente.getTipo().equals("d")) {
 				%>
-			<h4 class="font-italic">Aree</h4>
-					<%
-						if (partecipazioni != null) {
-					%>
+				<h4 class="font-italic">Aree</h4>
+				<%
+					if (partecipazioni != null) {
+				%>
 				<div class="row">
 					<div class="col">
 						<b>Proposta Tesi</b>
@@ -102,50 +104,54 @@
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
-					int j=0;
-					for (int i = 0; i < partecipazioni.size(); i++) { 
-						if(partecipazioni.get(i).getPropostaTesiId()!=j){
-							j=partecipazioni.get(i).getPropostaTesiId();
+						int j = 0;
+								for (int i = 0; i < partecipazioni.size(); i++) {
+									if (partecipazioni.get(i).getPropostaTesiId() != j) {
+										j = partecipazioni.get(i).getPropostaTesiId();
 					%>
 					<div class="col">
 						<a
-							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId() %></a>
+							href="VisualizzaListaFileServlet?idTesi=<%=partecipazioni.get(i).getPropostaTesiId()%>"><%=partecipazioni.get(i).getPropostaTesiId()%></a>
 					</div>
 					<div class="col">
-					<%for(int x=0;x<listaTesi.size();x++) {
-							if(listaTesi.get(x).getId()==j){
+						<%
+							for (int x = 0; x < listaTesi.size(); x++) {
+												if (listaTesi.get(x).getId() == j) {
 						%>
-							<%=listaTesi.get(x).getTitolo() %>
-						<%}} %>
+						<%=listaTesi.get(x).getTitolo()%>
+						<%
+							}
+											}
+						%>
 					</div>
 					<div class="w-100" style="border-bottom: 1px solid"></div>
 					<%
 						}
-						}
-						}
+								}
+							}
 					%>
 				</div>
 
 			</div>
 			<%
-					} else if (utente.getTipo().equals("s")) {
-				%>
+				} else if (utente.getTipo().equals("s")) {
+			%>
 			<h4 class="font-italic">To Do List</h4>
 			<ul class="list-group list-group-flush">
 				<%
-						if (consegne != null) {
-								for (int i = 0; i < consegne.size(); i++) {
-					%>
+					if (consegne != null) {
+							for (int i = 0; i < consegne.size(); i++) {
+				%>
 				<li class="list-group-item"><a href="#"> <%=consegne.get(i).getNome()%>
 				</a></li>
 				<%
+					}
 						}
-							}
-					%>
+				%>
 			</ul>
 			<%
-					}
-				%>
+				}
+			%>
 			
 		</div>
 		</aside>

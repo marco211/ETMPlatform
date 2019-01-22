@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1" import="it.unisa.etm.model.bean.*,java.util.*"%>
+	pageEncoding="ISO-8859-1"
+	import="it.unisa.etm.model.bean.*,java.util.*"%>
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
 	if (utente == null) {
@@ -34,7 +35,8 @@
 
 	<jsp:include page="header.jsp" />
 
-	<div style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);min-height: 80vh;">
+	<div
+		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C); min-height: 80vh;">
 		<main role="main" class="container">
 		<div class="row">
 			<div class="col-md-8 my-4">
@@ -59,9 +61,7 @@
 
 					</div>
 				</div>
-
 			</div>
-
 
 			<aside class="col-md-4 my-4"> <%
  	if (utente.getTipo().equals("d")) {
@@ -129,15 +129,14 @@
 						}
 					%>
 				</div>
-				</div>
+			</div>
 			<%
 				}else if (utente.getTipo().equals("s")) {
 			%>
 			<div class="p-3 card" style="min-height: 35vh;">
 				<h4 class="font-italic"><%= tesi.getTitolo() %></h4>
-					<h6><%= tesi.getDecrizione() %></h6>	
+				<h6><%= tesi.getDecrizione() %></h6>
 			</div>
-			
 			<div class="p-3 card my-4" style="min-height: 35vh;">
 				<h4 class="font-italic">To Do List</h4>
 				<%
@@ -159,26 +158,21 @@
 							<th><a
 								href="VisualizzaInfoConsegnaServlet?idConsegna=<%=consegne.get(i).getId()%>"><%=consegne.get(i).getNome()%></a></th>
 						</tr>
-
 					</tbody>
 					<%
 						}
 					%>
-					</table>
-					<%
+				</table>
+				<%
 						}
 					%>
-				
 			</div>
 			<%
 				}
-			%> 
-			</aside>
+			%> </aside>
 		</div>
 		</main>
 	</div>
-
 	<jsp:include page="footer.jsp" />
-
 </body>
 </html>

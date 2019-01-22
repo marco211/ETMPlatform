@@ -1,7 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-	
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,15 +19,9 @@
 <title>ETM Platform</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
-
-
-
 </head>
 
-
 <body>
-
-
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -48,29 +40,27 @@
 		<h3>ETM Platform</h3>
 		<ul class="nav justify-content-center">
 			<li class="nav-item d-none d-lg-block">
-
 				<form action="LoginServlet" method="post">
 					<div class="form-row">
 						<div class="col">
-							<input type="email" class="form-control mb-2 mr-sm-2" name="emailLogin" placeholder="E-mail" required>
+							<input type="email" class="form-control mb-2 mr-sm-2"
+								name="emailLogin" placeholder="E-mail" required>
 						</div>
 						<div class="col">
-							<input type="password" class="form-control" name="passwordLogin" placeholder="Password" required>
+							<input type="password" class="form-control" name="passwordLogin"
+								placeholder="Password" required>
 						</div>
 						<div class="col">
 							<button type="submit" class="btn btn-primary mb-2">Login</button>
 						</div>
 					</div>
-					
 					<div class="form-row">
 						<div class="col-4"></div>
 						<div class="col">
 							<a href="recuperaPassword.jsp">Password dimenticata?</a>
 						</div>
-						
 					</div>
-					
-				</form>				
+				</form>
 			</li>
 
 			<li class="d-lg-none d-xl-none">
@@ -116,10 +106,15 @@
 				</div>
 			</div>
 			<div class="col my-4 mx-4">
-					<h1>Registrazione non riuscita</h1>
-					<h6>Una registrazione e gia stata effettuata con l'indirizzo e-mail inserito</h6>
-					<h6>Se non si ricorda la password e possibile recuperarla tramite l'apposita sezione in alto</h6>
-					<h6> <a href="http://localhost:8080/ETMPlatform/index.jsp">Torna alla home</a> </h6>
+				<h1>Registrazione non riuscita</h1>
+				<h6>Una registrazione e gia stata effettuata con l'indirizzo
+					e-mail inserito</h6>
+				<h6>Se non si ricorda la password e possibile recuperarla
+					tramite l'apposita sezione in alto</h6>
+				<h6>
+					<a href="http://localhost:8080/ETMPlatform/index.jsp">Torna
+						alla home</a>
+				</h6>
 			</div>
 		</div>
 	</div>

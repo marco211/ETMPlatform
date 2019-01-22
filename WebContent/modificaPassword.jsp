@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,22 +47,24 @@
 								class="img-fluid" alt="Responsive image">
 							<p>Inserisci due volte la nuova password per apportare la
 								modifica.</p>
-							<form action="ModificaPasswordServlet" method="post" name="modificaPassword"
+							<form action="ModificaPasswordServlet" method="post"
+								name="modificaPassword"
 								class="form-inline justify-content-center">
 								<div class="info-form">
 									<div class="form-group">
 										<label class="sr-only">Nuova Password</label> <input
-											type="password" onchange="controlloPassword()" name="password" class="form-control"
-											placeholder="Nuova Password"> <input type="password" onchange="controlloPassword2()"
-											name="password2" class="form-control"
-											placeholder="Conferma Password">
+											type="password" onchange="controlloPassword()"
+											name="password" class="form-control"
+											placeholder="Nuova Password"> <input type="password"
+											onchange="controlloPassword2()" name="password2"
+											class="form-control" placeholder="Conferma Password">
 
 									</div>
 
 								</div>
 								<br>
-								<button type="submit" class="btn btn-success" onclick="return validazione()">Modifica
-									password</button>
+								<button type="submit" class="btn btn-success"
+									onclick="return validazione()">Modifica password</button>
 							</form>
 						</div>
 					</div>
