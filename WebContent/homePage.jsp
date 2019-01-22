@@ -73,7 +73,7 @@ function cambiaColore(){
 			<div class="col-md-12 my-4">
 			<% }%>
 				<div class="card mb-3">
-					<div class="card-body" style="height: 84vh">
+					<div class="card-body" style="min-height: 84vh">
 					<% if(admin!=null){%>
 					<div class="mx-auto" style="width:600px;">
 					<%} %>
