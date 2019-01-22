@@ -44,6 +44,10 @@ public class VisualizzaListaPartecipazioneServlet extends HttpServlet {
 
     String action = request.getParameter("action");
     if (action != null) {
+      if (partecipazioni == null) {
+        partecipazioni = new ArrayList<Partecipa>();
+        request.getSession().setAttribute("listaPartecipazione", partecipazioni);
+      }
       RequestDispatcher requestDispatcher = 
           getServletContext().getRequestDispatcher("/homePage.jsp");
       requestDispatcher.forward(request, response);
