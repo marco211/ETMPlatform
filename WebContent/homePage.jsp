@@ -67,9 +67,16 @@ function cambiaColore(){
 		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);; min-height: 81vh;">
 		<main role="main" class="container">
 		<div class="row">
+		<% if(admin==null){%>
 			<div class="col-md-8 my-4">
+			<%} else if(admin!=null) {%>
+			<div class="col-md-12 my-4">
+			<% }%>
 				<div class="card mb-3">
 					<div class="card-body" style="height: 84vh">
+					<% if(admin!=null){%>
+					<div class="mx-auto" style="width:600px;">
+					<%} %>
 						<div id="carouselExampleIndicators" class="carousel slide"
 							data-ride="carousel">
 							<ol class="carousel-indicators">
@@ -98,6 +105,9 @@ function cambiaColore(){
 								data-slide="next"> <span class="carousel-control-next-icon"
 								aria-hidden="true"></span> <span class="sr-only">Next</span>
 							</a>
+							<%if(admin!=null){ %>
+							</div>
+							<%} %>
 						</div>
 
 						<h5 class="card-title">
