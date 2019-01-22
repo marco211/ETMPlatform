@@ -200,10 +200,12 @@ if(utente==null){
     			if(utente.getTipo().equals("s")){
     				if(utente.getPropostaTesi_Id()==0){
     			if(utente.getPropostaTesi_Id()!=propostatesi.getId()) {
-    				for(RichiestaPartecipazione r : richieste2){
-    					if(r.getPropostatesi_id()==propostatesi.getId()){
-    						b2 = true;
-    					}
+    				if(richieste2!=null){
+	    				for(RichiestaPartecipazione r : richieste2){
+	    					if(r.getPropostatesi_id()==propostatesi.getId()){
+	    						b2 = true;
+	    					}
+    				}
     				}if(!b2){ %>
 					<a class="alert-link"
 						href="InviaPropostaTesiServlet?propostatesi_id=<%=propostatesi.getId() %>"
