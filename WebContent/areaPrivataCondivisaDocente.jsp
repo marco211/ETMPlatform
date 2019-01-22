@@ -99,7 +99,7 @@
 						<%
 							if (file != null) {
 						%>
-						<table class="table table-striped">
+						<table class="table table-striped ">
 							<thead style="word-wrap: break-word;">
 								<tr>
 									<th scope="col">#</th>
