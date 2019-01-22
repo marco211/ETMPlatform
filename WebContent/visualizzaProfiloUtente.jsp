@@ -261,10 +261,10 @@ function cambiaColore(){
 						</thead>
 						<tbody>
 							<tr>
-								<td scope="row" class="w-25 pt-4" style="text-align: center; word-wrap: break-word;"><a 
+								<th scope="row"><a
 									href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId()%>"><%= proposta.getTitolo() %></a>
-								</td>
-								<td style="font-size: 14px; padding: 5px; margin-right: 2px; text-align: center; word-wrap: break-word;""><%= proposta.getDecrizione() %></td>
+								</th>
+								<td style="word-wrap: break-word;"><%= proposta.getDecrizione() %></td>
 							</tr>
 						</tbody>
 						<%

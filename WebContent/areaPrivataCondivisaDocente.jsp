@@ -100,7 +100,7 @@
 							if (file != null) {
 						%>
 						<table class="table table-striped">
-							<thead>
+							<thead style="word-wrap: break-word;">
 								<tr>
 									<th scope="col">#</th>
 									<th scope="col">File</th>
@@ -111,7 +111,7 @@
 							<%
 								for (int i = 0; i < file.size(); i++) {
 							%>
-							<tbody>
+							<tbody style="word-wrap: break-word;">
 								<tr>
 									<th scope="row"><i class="fa fa-file fa"
 										aria-hidden="true"></i></th>
