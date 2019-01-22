@@ -254,17 +254,17 @@ function cambiaColore(){
 							PropostaTesi proposta = (PropostaTesi) request.getAttribute("proposta");%>
 					<table class="table table-striped">
 						<thead>
-							<tr>
+							<tr style="word-wrap: break-word;">
 								<th scope="col">Titolo</th>
 								<th scope="col">Descrizione</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<th scope="row"><a
+								<td scope="row" class="w-25 pt-4" style="text-align: center; word-wrap: break-word;"><a 
 									href="VisualizzaDettagliTesiServlet?propostatesi_id=<%=proposta.getId()%>"><%= proposta.getTitolo() %></a>
-								</th>
-								<td><%= proposta.getDecrizione() %></td>
+								</td>
+								<td style="font-size: 14px; padding: 5px; margin-right: 2px; text-align: center; word-wrap: break-word;""><%= proposta.getDecrizione() %></td>
 							</tr>
 						</tbody>
 						<%
