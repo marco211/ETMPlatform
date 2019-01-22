@@ -66,7 +66,7 @@ public class AmministratoreManager implements AmministratoreModelInterface {
     PreparedStatement prepared2 = null;
     PreparedStatement prepared3 = null;
     PreparedStatement prepared = null;
-
+    PreparedStatement put = null;
     try {
       connection = DatabaseManager.getIstance();
 
@@ -81,6 +81,7 @@ public class AmministratoreManager implements AmministratoreModelInterface {
         prepared2.executeUpdate();
         prepared1 = connection.prepareStatement("DELETE FROM Partecipa "
             + "WHERE utente_email =?;");
+        
         prepared1.setString(1, email);
         prepared1.executeUpdate();
       } else {
@@ -92,12 +93,15 @@ public class AmministratoreManager implements AmministratoreModelInterface {
 
         while (rs.next()) {
           int id = rs.getInt(1);
+          String ut = "UPDATE Utente SET PropostaTesi_id = 0 WHERE PropostaTesi_id=" + id + ";";
           prepared1 = connection.prepareStatement("DELETE FROM Partecipa "
               + "WHERE propostatesi_id =?;");
           prepared1.setInt(1, id);
           prepared1.executeUpdate();
+          put = connection.prepareStatement(ut);
+          put.executeUpdate();
         }
-
+        
         prepared3 = connection.prepareStatement("DELETE FROM Propostatesi "
             + "WHERE utente_email = ?");
         prepared3.setString(1, email);
