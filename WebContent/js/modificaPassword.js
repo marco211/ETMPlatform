@@ -31,18 +31,26 @@ function controlloPassword2(){
 
 
 function validazione(){
+	document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
+	var div = $("#infoDiv");
+	div.text("");
 	if(!controlloPassword()){
+		div.append("La password deve essere compresa tra 8 e 16 caratteri, deve contenere una lettera Maiuscola, una lettera minuscola e un numero.");
 		return false;
 	}
 	if(!controlloPassword2()){
-	return false;
+		div.append("La password deve essere compresa tra 8 e 16 caratteri, deve contenere una lettera Maiuscola, una lettera minuscola e un numero.");
+		return false;
 	}
 	var password=document.modificaPassword.password2.value;
 	var password1=document.modificaPassword.password.value;
 	if(password===password1){
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-none";
 		return true;
 	}
 	else{
+		div.append("Le password devono essere uguali.");
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 		return false;
 }
 	

@@ -47,6 +47,7 @@
 								class="img-fluid" alt="Responsive image">
 							<p>Inserisci due volte la nuova password per apportare la
 								modifica.</p>
+								
 							<form action="ModificaPasswordServlet" method="post"
 								name="modificaPassword"
 								class="form-inline justify-content-center">
@@ -66,6 +67,10 @@
 								<button type="submit" class="btn btn-success"
 									onclick="return validazione()">Modifica password</button>
 							</form>
+							<div class="col text-center mt-3">
+								<div id="infoDiv" class="alert alert-danger form-group d-none"
+									role="alert"></div>
+						
 						</div>
 					</div>
 				</div>
