@@ -108,6 +108,7 @@
 
 
 			</ul>
+			<%if(admin==null){ %>
 			<form class="form-inline my-2 my-lg-0"
 				action="CercaListaUtentiServlet" method="post" name="cercaProfilo">
 				<div class="container">
@@ -124,6 +125,7 @@
 					</button>
 				</div>
 			</form>
+			<%} %>
 			<%if(utente!=null) {%>
 			<form action="VisualizzaProfiloUtenteServlet" method="post"
 				class="d-none d-lg-block d-xl-block">

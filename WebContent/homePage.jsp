@@ -134,6 +134,7 @@ function cambiaColore(){
 				</div>
 
 			</div>
+			<% if(admin==null){%>
 			<aside class="col-md-4 my-4">
 			<div class="p-3 card">
 				<h4 class="font-italic">Tesi Recenti</h4>
@@ -141,7 +142,7 @@ function cambiaColore(){
 			</div>
 
 			</aside>
-
+			<%} %>
 		</div>
 
 		</main>
