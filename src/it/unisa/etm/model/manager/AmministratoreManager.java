@@ -93,9 +93,10 @@ public class AmministratoreManager implements AmministratoreModelInterface {
 
         while (rs.next()) {
           int id = rs.getInt(1);
-          String ut = "UPDATE Utente SET PropostaTesi_id = 0 WHERE PropostaTesi_id=" + id + ";";
           prepared1 = connection.prepareStatement("DELETE FROM Partecipa "
               + "WHERE propostatesi_id =?;");
+          String ut = "UPDATE Utente SET PropostaTesi_id = 0 "
+              + "WHERE PropostaTesi_id=" + id + ";";
           prepared1.setInt(1, id);
           prepared1.executeUpdate();
           put = connection.prepareStatement(ut);

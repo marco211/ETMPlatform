@@ -30,33 +30,89 @@ if(utente==null){
 
 	<div
 		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C); min-height: 80vh;">
+
 		<main role="main" class="container">
-
-		<div class="jumbotron jumbotron-fluid">
-			<div class="container">
-				<h5 class="card-title" style="color: #3385ff">Informazioni
-					Personali</h5>
-				<div class="row" style="border-bottom: 1px solid;"></div>
-				<h1 class="display-4"><%=utente.getNome()+" "+utente.getCognome()%></h1>
-				<p class="lead">
-					Email:
-					<%=utente.getEmail()%></p>
-				<p class="lead">
-					Matricola:
-					<%=utente.getMatricola()%></p>
-				<p class="lead">
-					Data Di Nascita:
-					<%=utente.getDataDiNascita()%></p>
-				<%if(utente.getTipo().equalsIgnoreCase("d")){ %>
-				<p class="lead">
-					Ufficio:
-					<%=utente.getUfficio()%></p>
-				<%} %>
-
-				<h4>
-					<a class="col-3" href="ListaUtentiServlet"><i
-						class="fas fa-arrow-circle-left"></i></a>
-				</h4>
+		<div class="row">
+			<div class="col-md-12 my-4">
+				<div class="col-md-12 my-4">
+					<div class="card mb-3">
+						<div class="card-body">
+							<div class="container emp-profile">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="profile-img">
+											<img alt="load" src="img/logo.png" width="100%">
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="profile-head">
+											<h5>Profilo</h5>
+											<ul class="nav nav-tabs" id="myTab" role="tablist">
+												<li class="nav-item"><a class="nav-link active"
+													id="home-tab" data-toggle="tab" href="#home" role="tab"
+													aria-controls="home" aria-selected="true">Informazioni</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-8">
+										<div class="tab-content profile-tab" id="myTabContent">
+											<div class="tab-pane fade show active" id="home"
+												role="tabpanel" aria-labelledby="home-tab">
+												<div class="row">
+													<div class="col-md-6">
+														<label>Nome</label>
+													</div>
+													<div class="col-md-6">
+														<a class="col-3"><%=utente.getNome()%></a>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Cognome</label>
+													</div>
+													<div class="col-md-6">
+														<a class="col-3"><%=utente.getCognome()%></a>
+													</div>
+												</div>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Email</label>
+													</div>
+													<div class="col-md-6">
+														<a style="font-size: 14px"><%=utente.getEmail()%></a>
+													</div>
+												</div>
+												<%if(utente.getTipo().equals("s")){%>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Matricola</label>
+													</div>
+													<div class="col-md-6">
+														<a class="col-3"><%=utente.getMatricola()%></a>
+													</div>
+												</div>
+												<% }%>
+												<%if(utente.getTipo().equals("d")){%>
+												<div class="row">
+													<div class="col-md-6">
+														<label>Ufficio</label>
+													</div>
+													<div class="col-md-6">
+														<a class="col-3"><%=utente.getUfficio()%></a>
+													</div>
+												</div>
+												<% }%>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		</main>
