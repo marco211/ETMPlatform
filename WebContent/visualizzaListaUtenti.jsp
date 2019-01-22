@@ -37,7 +37,7 @@
 		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C); min-height: 80vh;">
 		<main role="main" class="container">
 		<div class="row">
-			<div class="col-md-8 my-4">
+			<div class="col-md-12 my-4">
 				<div class="card mb-3">
 					<div class="card-body">
 						<form class="form-inline mb-3 pb-3"
