@@ -32,7 +32,6 @@ function controlloDescrizione()
 
 function validazione()
 {
-	document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 	var focused = false;
 	var div = $("#infoDiv");
 	
@@ -43,6 +42,7 @@ function validazione()
 		document.valuta.voto.focus();
 		div.append("Inserisci una valutazione");
 		focused=true;
+		document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 	}
 	else if(!controlloDescrizione())
 	{
@@ -53,15 +53,18 @@ function validazione()
 			div.append("Inserisci una descrizione");
 			document.valuta.descrizione.focus();
 			focused=true;
+			document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 		}
 		else if(c>1000)
 		{
 			div.append("La descrizione deve essere minore di mille caratteri");
 			document.valuta.descrizione.focus();
 			focused=true;
+			document.getElementById("infoDiv").className = "alert alert-danger form-group d-block";
 		}
 	}
-	if(focused=true){
+	
+	if(focused==true){
 		return false;
 	}
 	else{
