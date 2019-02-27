@@ -118,19 +118,21 @@
 
 
 
-		<!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>3.141.59</version>
 		</dependency>
+		https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
+		
 
-		<!-- https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.2</version>
 		</dependency>
+		https://mvnrepository.com/artifact/org.jacoco/jacoco-maven-plugin -->
+		
 
 		<!-- https://mvnrepository.com/artifact/com.google.googlejavaformat/google-java-format -->
 		<dependency>
