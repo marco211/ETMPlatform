@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 public class AttivitaManager implements AttivitaModelInterface {
 
+  
   @Override
   public boolean aggiungiAttivita(Attivita attivita) {
 
@@ -64,7 +65,33 @@ public class AttivitaManager implements AttivitaModelInterface {
 
   }
 
+  @Override
+  public ArrayList<Attivita> getListaAttivita(String email) {
+    try {
+      connection = DatabaseManager.getIstance();
+      prepared = connection.prepareStatement("SELECT * FROM ATTIVITA WHERE UTENTE_EMAIL=?");
+      prepared.setString(1, email);
+      rs = prepared.executeQuery();
+      ArrayList<Attivita> list = new ArrayList<Attivita>();
+      while (rs.next()) {
+        Attivita attivita = new Attivita();
+        attivita.setUtente_Email(email);
+        attivita.setNomeFile(rs.getString("NOMEFILE"));
+        attivita.setData(rs.getDate("DATA").toLocalDate());
+        attivita.setTipo(rs.getString("TIPO"));
+        attivita.setPropostatesi_id(rs.getInt("PROPOSTATESI_ID"));
+        list.add(attivita);
+      }
+      prepared.close();
+      rs.close();
+      return list;
+    } catch (SQLException e) {
+      return null;
+    }
+  }
+  
   private Connection connection;
   private PreparedStatement prepared;
   private ResultSet rs;
+ 
 }

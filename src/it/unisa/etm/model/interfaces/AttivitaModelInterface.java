@@ -26,5 +26,14 @@ public interface AttivitaModelInterface {
    *         null in caso di nessun attivitï¿½ o d'insuccesso.
    */
   public ArrayList<Attivita> getListaAttivita(int propostaTesiId);
+  
+  /**
+   * Torna una lista delle attività svolte da parte di un utente nell'area privata condivisa.
+   * @param email utente al quale mostrare le attività (notifiche)
+   * @return lista di oggetti Attivita che 
+   *         rappresentano le attivitï¿½ svolte nell'area privata condivisa
+   *         null in caso di nessun attivitï¿½ o d'insuccesso.
+   */
+  public ArrayList<Attivita> getListaAttivita(String email);
 }
 
