@@ -44,7 +44,7 @@ public class ValutaFileServlet extends HttpServlet {
     FileManager um = (FileManager) em.createFileManager();
     LocalDate data = LocalDate.now();
     Utente utente = (Utente) request.getSession().getAttribute("utente");
-    Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data, "v", id);
+    Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data, "vf", id);
     AttivitaManager am = (AttivitaManager) em.createAttivitaManager();
     um.modificaFile(id, nomeFile, voto, descrizione);
     am.aggiungiAttivita(attivita);

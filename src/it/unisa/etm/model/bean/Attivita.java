@@ -7,21 +7,24 @@ public class Attivita implements Serializable {
   private static final long serialVersionUID = 1L;
 
   public Attivita() {
-
+    super();
+    tipo = null;
+    propostaTesiId = -10;
   }
 
   /**
    * Costruttore.
    */
   
-  public Attivita(String utenteEmail, String nomeFile, LocalDate data, 
+  public Attivita(String utenteEmail, String nome, LocalDate data, 
       String tipo, int propostaTesiId) {
     super();
     this.utenteEmail = utenteEmail;
-    this.nomeFile = nomeFile;
+    this.nome = nome;
     this.data = data;
     this.tipo = tipo;
-    this.propostaTesiId = propostaTesiId;
+    if(propostaTesiId != -10) this.propostaTesiId = propostaTesiId;
+    letto = false;
   }
 
   public String getUtente_Email() {
@@ -32,12 +35,12 @@ public class Attivita implements Serializable {
     this.utenteEmail = utenteEmail;
   }
 
-  public String getNomeFile() {
-    return nomeFile;
+  public String getNome() {
+    return nome;
   }
 
-  public void setNomeFile(String nomeFile) {
-    this.nomeFile = nomeFile;
+  public void setNome(String nome) {
+    this.nome = nome;
   }
 
   public LocalDate getData() {
@@ -73,24 +76,64 @@ public class Attivita implements Serializable {
     this.id = id;
   }
 
+  public boolean getLetto() {
+    return letto;
+  }
+  
+  public void setLetto(boolean l) {
+    letto = l;
+  }
+  
+  /**
+   * af, ef, vf (aggiunto file, valutato file, caricato file)
+   * at, mt, dt (aggiunta tesi, modificato tesi, disabilitato tesi)
+   * Primo carattere indica l'operazione, secondo indica su dove viene effettuata
+   */
   @Override
   public String toString() {
-    String t = null;
-    if (tipo.equals("c")) {
-      t = "caricato";
-    } else if (tipo.equals("v")) {
-      t = "valutato";
-    } else {
-      t = "eliminato";
-    }
-    return "L'utente: " + utenteEmail + " ha " + t + " il "
-        + "file: " + nomeFile + " il giorno: " + data + "";
+    
+    
+    if(!tipo.equals(null)) {
+      char[] toDo = {tipo.charAt(0), tipo.charAt(1)}; 
+      if (toDo[1] == 'f') {
+        // operation to a file
+        
+        if(toDo[0] == 'a') {
+          return "L'utente " + utenteEmail + " ha aggiunto il file: " + 
+              nome + " il giorno: " + data + "";
+        } else if(toDo[0] == 'e') {
+          return "L'utente " + utenteEmail + " ha eliminato il file: " + 
+              nome + " il giorno: " + data + "";
+        } else if(toDo[0] == 'v') {
+          return "Il docente " + utenteEmail + " ha valutato il file: " + 
+              nome + " il giorno: " + data + "";
+        } else return "";
+        
+      } else if (toDo[1] == 't') {
+        // operation to a thesis
+        
+        if(toDo[0] == 'a') {
+          return "Il docente " + utenteEmail + " ha aggiunto una nuova proposta tesi: " + 
+              nome + "! Scoprila ora! Data: " + data;
+        } 
+        return "E' stato fatto qualcosa ad una tesi";
+      } else {
+        return "";
+      }
+      
+      
+    }else return "";
+    
+    
+    
+    
   }
 
   private int id;
   private String utenteEmail;
-  private String nomeFile;
+  private String nome;
   private LocalDate data;
   private String tipo;
   private int propostaTesiId;
+  private boolean letto;
 }

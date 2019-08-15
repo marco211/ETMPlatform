@@ -31,37 +31,15 @@ if(utente==null){
 <title>ETM Platform - Home</title>
 <link href="https://fonts.googleapis.com/css?family=Roboto"
 	rel="stylesheet">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
- $(document).ready(function(){
-	 cambiaColore();
-	 getTesiRecenti();
-	});
-
-
-  function getTesiRecenti(){
-	  var request=new XMLHttpRequest();
-		var url="TesiRecentiServlet";
-		request.onreadystatechange=function(){
-			if(request.readyState==4){
-				var val=request.responseText;
-				$("#recenti").html(val);
-			}
-		}
-		
-		request.open("GET",url,true);
-		request.send(null);
-  };
-function cambiaColore(){
-	document.getElementById("home").className = "nav-link text-primary";
-};
-</script>
 
 </head>
 <body>
-
 	<jsp:include page="header.jsp" />
+	<script
+		src="js/homepage.js"></script>
+	
+	
+
 
 	<div
 		style="background-image: linear-gradient(to bottom right, #FF8C00, #FFC04C);; min-height: 81vh;">

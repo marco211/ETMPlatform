@@ -63,23 +63,23 @@ public class TestAttivita {
   }
 
   @Test
-  public void testGetNomeFile() {
-    String nomeFile = attivitaOk.getNomeFile();
+  public void testgetNome() {
+    String nomeFile = attivitaOk.getNome();
     assertEquals(nomeFile,"File1");//nome file giusto
 
-    nomeFile = attivitaNotOk.getNomeFile();
+    nomeFile = attivitaNotOk.getNome();
     assertNotEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto e File2
   }
 
   @Test
-  public void testSetNomeFile() {
+  public void testsetNome() {
     String nomeFile = "File1";
-    attivitaOk.setNomeFile(nomeFile);
-    assertEquals("File1",attivitaOk.getNomeFile());
+    attivitaOk.setNome(nomeFile);
+    assertEquals("File1",attivitaOk.getNome());
 
     nomeFile = "File2";
-    attivitaNotOk.setNomeFile(nomeFile);
-    assertEquals("File2",attivitaNotOk.getNomeFile());
+    attivitaNotOk.setNome(nomeFile);
+    assertEquals("File2",attivitaNotOk.getNome());
   }
 
   @Test
