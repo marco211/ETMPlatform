@@ -78,23 +78,23 @@ public class AttivitaManager implements AttivitaModelInterface {
       } else if (toDo[1] == 't') {
         // operation to a thesis, should be notificated all the follower users  
         // query by user following
-        
+
         // adding thesis, checking if the user want to be notified on the adding of a thesis
         if(toDo[0] == 'a') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEAGGIUNTAPROPOSTATESI = 1");
-        
+
           // modifying thesis, checking if the user want to be notified or not
         } else if(toDo[0] == 'm') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEMODIFICAPROPOSTATESI = 1");
-          
+
           // disabilitating thesis, checking if the user want to be notified on this
         } else if(toDo[0] == 'd') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEAGGIUNTAPROPOSTATESI = 1");
         }
-        
+
         prepared.setString(1, attivita.getUtente_Email());
         rs = prepared.executeQuery();
 
@@ -166,7 +166,7 @@ public class AttivitaManager implements AttivitaModelInterface {
       Attivita attivita;
 
       int countNonLetti = 0;
-      
+
       while (rs.next()) {
         emailOfMaker = rs.getString("ATTIVITA.UTENTE_EMAIL");
         if(!email.equals(emailOfMaker)) {
@@ -180,8 +180,8 @@ public class AttivitaManager implements AttivitaModelInterface {
           attivita.setLetto(rs.getBoolean("LETTO"));
           attivita.setPropostatesi_id(rs.getInt("PROPOSTATESI_ID"));
           list.add(attivita);
-          
-        
+
+
         }
       }
 
@@ -201,7 +201,57 @@ public class AttivitaManager implements AttivitaModelInterface {
       prepared = connection.prepareStatement("UPDATE ATTIVITANOTIFICATAUTENTE SET Letto = 1 WHERE UTENTE_EMAIL=?");
       prepared.setString(1, email);
       prepared.executeUpdate();
-      
+
+      return true;
+    } catch(SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean seguiUtente(String emailSeguace, String emailSeguito, boolean addPropTesi, boolean changePropTesi, boolean disabilitaPropTesi) {
+    try {
+
+      connection = DatabaseManager.getIstance();
+
+      prepared = connection.prepareStatement("SELECT * FROM UTENTESEGUEUTENTE "
+          + "WHERE Utente_Email_Seguace = ? AND "
+          + "Utente_Email_Seguito = ?");
+
+      prepared.setString(1, emailSeguace);
+      prepared.setString(2, emailSeguito);
+
+      rs = prepared.executeQuery();
+
+      if(!rs.next()) {
+        prepared = connection.prepareStatement("INSERT INTO UTENTESEGUEUTENTE (Utente_Email_Seguace, "
+            + "Utente_Email_Seguito, SegueAggiuntaPropostaTesi, SegueModificaPropostaTesi, "
+            + "SegueDisabilitaPropostaTesi) VALUES (?,?,?,?,?)");
+
+
+        prepared.setString(1, emailSeguace);
+        prepared.setString(2, emailSeguito);
+        prepared.setBoolean(3, addPropTesi);
+        prepared.setBoolean(4, changePropTesi);
+        prepared.setBoolean(5, disabilitaPropTesi);
+      } else {
+        prepared = connection.prepareStatement("UPDATE UTENTESEGUEUTENTE "
+            + "SET SegueAggiuntaPropostaTesi = ?, "
+            + "SegueModificaPropostaTesi = ?, "  
+            + "SegueDisabilitaPropostaTesi = ? "
+            + "WHERE Utente_Email_Seguace = ? AND "
+            + "Utente_Email_Seguito = ?");
+
+        prepared.setBoolean(1, addPropTesi);
+        prepared.setBoolean(2, changePropTesi);
+        prepared.setBoolean(3, disabilitaPropTesi);
+        prepared.setString(4, emailSeguace);
+        prepared.setString(5, emailSeguito);
+      }
+
+
+      prepared.executeUpdate();
+
       return true;
     } catch(SQLException e) {
       e.printStackTrace();
