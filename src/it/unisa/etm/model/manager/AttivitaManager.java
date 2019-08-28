@@ -206,6 +206,58 @@ public class AttivitaManager implements AttivitaModelInterface {
       prepared.setString(1, email);
       prepared.executeUpdate();
 
+
+      return true;
+    } catch(SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+  public boolean seguiUtente(String emailSeguace, String emailSeguito, boolean addPropTesi, boolean changePropTesi, boolean disabilitaPropTesi) {
+    try {
+
+      connection = DatabaseManager.getIstance();
+
+      prepared = connection.prepareStatement("SELECT * FROM UTENTESEGUEUTENTE "
+          + "WHERE Utente_Email_Seguace = ? AND "
+          + "Utente_Email_Seguito = ?");
+
+      prepared.setString(1, emailSeguace);
+      prepared.setString(2, emailSeguito);
+
+      rs = prepared.executeQuery();
+
+      if(!rs.next()) {
+        prepared = connection.prepareStatement("INSERT INTO UTENTESEGUEUTENTE (Utente_Email_Seguace, "
+            + "Utente_Email_Seguito, SegueAggiuntaPropostaTesi, SegueModificaPropostaTesi, "
+            + "SegueDisabilitaPropostaTesi) VALUES (?,?,?,?,?)");
+
+
+        prepared.setString(1, emailSeguace);
+        prepared.setString(2, emailSeguito);
+        prepared.setBoolean(3, addPropTesi);
+        prepared.setBoolean(4, changePropTesi);
+        prepared.setBoolean(5, disabilitaPropTesi);
+      } else {
+        prepared = connection.prepareStatement("UPDATE UTENTESEGUEUTENTE "
+            + "SET SegueAggiuntaPropostaTesi = ?, "
+            + "SegueModificaPropostaTesi = ?, "  
+            + "SegueDisabilitaPropostaTesi = ? "
+            + "WHERE Utente_Email_Seguace = ? AND "
+            + "Utente_Email_Seguito = ?");
+
+        prepared.setBoolean(1, addPropTesi);
+        prepared.setBoolean(2, changePropTesi);
+        prepared.setBoolean(3, disabilitaPropTesi);
+        prepared.setString(4, emailSeguace);
+        prepared.setString(5, emailSeguito);
+      }
+
+
+      prepared.executeUpdate();
+
+
       return true;
     } catch(SQLException e) {
       e.printStackTrace();
