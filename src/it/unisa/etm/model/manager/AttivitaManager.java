@@ -1,6 +1,8 @@
 package it.unisa.etm.model.manager;
 
+import it.unisa.etm.model.bean.Amministratore;
 import it.unisa.etm.model.bean.Attivita;
+import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 import java.sql.Connection;
@@ -8,6 +10,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import org.hamcrest.core.IsInstanceOf;
 
 /**
  * Classe che implementa le funzionalita dedicate alle attivita effettuate da 
@@ -19,8 +23,8 @@ import java.util.ArrayList;
 public class AttivitaManager implements AttivitaModelInterface {
 
   /**
-   * Indica che qualcosa è avvenuto. Si aggiunge l'attività nel database e si notifica chi di dovere, in 
-   * base al tipo di attività
+   * Indica che qualcosa ï¿½ avvenuto. Si aggiunge l'attivitï¿½ nel database e si notifica chi di dovere, in 
+   * base al tipo di attivitï¿½
    */
   @Override
   public boolean aggiungiAttivita(Attivita attivita) {
@@ -78,23 +82,23 @@ public class AttivitaManager implements AttivitaModelInterface {
       } else if (toDo[1] == 't') {
         // operation to a thesis, should be notificated all the follower users  
         // query by user following
-        
+
         // adding thesis, checking if the user want to be notified on the adding of a thesis
         if(toDo[0] == 'a') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEAGGIUNTAPROPOSTATESI = 1");
-        
+
           // modifying thesis, checking if the user want to be notified or not
         } else if(toDo[0] == 'm') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEMODIFICAPROPOSTATESI = 1");
-          
+
           // disabilitating thesis, checking if the user want to be notified on this
         } else if(toDo[0] == 'd') {
           prepared = connection.prepareStatement("SELECT UTENTE_EMAIL_SEGUACE FROM UTENTESEGUEUTENTE "
               + "WHERE UTENTE_EMAIL_SEGUITO = ? AND SEGUEAGGIUNTAPROPOSTATESI = 1");
         }
-        
+
         prepared.setString(1, attivita.getUtente_Email());
         rs = prepared.executeQuery();
 
@@ -166,7 +170,7 @@ public class AttivitaManager implements AttivitaModelInterface {
       Attivita attivita;
 
       int countNonLetti = 0;
-      
+
       while (rs.next()) {
         emailOfMaker = rs.getString("ATTIVITA.UTENTE_EMAIL");
         if(!email.equals(emailOfMaker)) {
@@ -180,8 +184,8 @@ public class AttivitaManager implements AttivitaModelInterface {
           attivita.setLetto(rs.getBoolean("LETTO"));
           attivita.setPropostatesi_id(rs.getInt("PROPOSTATESI_ID"));
           list.add(attivita);
-          
-        
+
+
         }
       }
 
@@ -201,12 +205,47 @@ public class AttivitaManager implements AttivitaModelInterface {
       prepared = connection.prepareStatement("UPDATE ATTIVITANOTIFICATAUTENTE SET Letto = 1 WHERE UTENTE_EMAIL=?");
       prepared.setString(1, email);
       prepared.executeUpdate();
-      
+
       return true;
     } catch(SQLException e) {
       e.printStackTrace();
       return false;
     }
+  }
+
+  public ArrayList<String> getListaSeguaci(String email) {
+    
+    
+    
+    
+    ArrayList<String> utentiSeguiti = new ArrayList<String>();
+
+    try {
+      connection = DatabaseManager.getIstance();
+      prepared = connection.prepareStatement("SELECT Utente_Email_Seguito FROM UtenteSegueUtente WHERE "
+          + "Utente_Email_Seguace=?");
+      
+        prepared.setString(1, email);
+
+      rs = prepared.executeQuery();
+      
+      while(rs.next()) {
+        
+        String emailS = rs.getString("Utente_Email_Seguito");
+        
+        utentiSeguiti.add(emailS);
+        
+      }
+      
+      return utentiSeguiti;
+
+    }
+    catch (SQLException e) {
+      return null;
+    }
+
+ 
+
   }
 
 
