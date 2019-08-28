@@ -4,16 +4,20 @@
 
 <%
 	Utente utente = (Utente) session.getAttribute("utente");
-	boolean seguo = false;
-	ArrayList<String> listaSeguaci = (ArrayList<String>) session.getAttribute("listSeguaci");
+	Utente utenteToShow = (Utente) request.getAttribute("toShow");
+
 	if (utente == null)
 		utente = (Utente) session.getAttribute("admin");
 		
-	Utente utenteToShow = (Utente) request.getAttribute("toShow");
 	
-	for(int i=0; i<listaSeguaci.size(); i++) {
-		
-		if(utente.getEmail().equals(listaSeguaci.get(i))) {
+	boolean seguo = false;
+	ArrayList<String> listaSeguiti = (ArrayList<String>) request.getAttribute("listaSeguiti");
+	
+
+	
+	
+	for(int i=0; i<listaSeguiti.size(); i++) {
+		if(utenteToShow.getEmail().equals(listaSeguiti.get(i))) {
 			seguo = true;
 		}
 
@@ -39,15 +43,11 @@
 	rel="stylesheet">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-	$(document).ready(function() {
-		cambiaColore();
-	});
-
-	function cambiaColore() {
-		document.getElementById("profilo").className = "nav-link text-primary";
-	};
-</script>
+	
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
+<script src="js/profiloUtente.js"></script>
 </head>
 <body>
 
@@ -76,9 +76,9 @@
 							%>
 							<div class="btn-group" style="position: absolute; right: 5%;">
 							<%if(!seguo) { %>
-								<button class="btn btn-secondary btn-sm" type="button">Segui</button>
+								<button class="btn btn-secondary btn-sm" type="button" onclick="seguiTutto('<%=utente.getEmail()%>', '<%=utenteToShow.getEmail()%>')">Follow</button>
 								<%} else { %>
-								<button class="btn btn-secondary btn-sm" type="button">Non Seguire</button>
+								<button class="btn btn-secondary btn-sm" type="button" onclick="nonSeguire('<%=utente.getEmail()%>', '<%=utenteToShow.getEmail()%>')">Unfollow</button>
 								<%} %>	
 								
 								<button type="button"
@@ -89,10 +89,11 @@
 								</button>
 								<div class="dropdown-menu" style="width: 250px; height: 200px;">
 									<h6 class="dropdown-header">Personalizza cosa vuoi seguire</h6>
-									<a class="dropdown-item"><input type="checkbox" name="" value=""> Nuove Proposte Tesi</a> 
-									<a	class="dropdown-item"><input type="checkbox" name="" value=""> Modifica Proposta Tesi</a>
+									<a class="dropdown-item"><input id="addprop" type="checkbox" name="" value=""> Nuove Proposte Tesi</a> 
+									<a	class="dropdown-item"><input id="changeprop" type="checkbox" name="" value=""> Modifica Proposta Tesi</a>
+									<a	class="dropdown-item"><input id="disprop" type="checkbox" name="" value=""> Disabilita Proposta Tesi</a>
 									 <div class="dropdown-divider"></div>
-									  <a class="dropdown-item" style="text-align:center;"><button type="submit" class="btn btn-inline my-3 my-sm-0 bg-warning" >Conferma</button></a>
+									  <a class="dropdown-item" style="text-align:center;"><button onclick="seguiUtente('<%=utente.getEmail()%>', '<%=utenteToShow.getEmail()%>')" class="btn btn-inline my-3 my-sm-0 bg-warning">Conferma</button></a>
 
 								</div>
 							</div>
@@ -375,7 +376,6 @@
 		</main>
 	</div>
 	<jsp:include page="footer.jsp" />
-	<script
-		src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		
 </body>
 </html>

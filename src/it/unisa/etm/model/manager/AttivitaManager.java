@@ -1,8 +1,6 @@
 package it.unisa.etm.model.manager;
 
-import it.unisa.etm.model.bean.Amministratore;
 import it.unisa.etm.model.bean.Attivita;
-import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.database.DatabaseManager;
 import it.unisa.etm.model.interfaces.AttivitaModelInterface;
 import java.sql.Connection;
@@ -11,7 +9,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import org.hamcrest.core.IsInstanceOf;
 
 /**
  * Classe che implementa le funzionalita dedicate alle attivita effettuate da 
@@ -169,7 +166,6 @@ public class AttivitaManager implements AttivitaModelInterface {
       String emailOfMaker;
       Attivita attivita;
 
-      int countNonLetti = 0;
 
       while (rs.next()) {
         emailOfMaker = rs.getString("ATTIVITA.UTENTE_EMAIL");
@@ -215,6 +211,7 @@ public class AttivitaManager implements AttivitaModelInterface {
   }
 
   public boolean seguiUtente(String emailSeguace, String emailSeguito, boolean addPropTesi, boolean changePropTesi, boolean disabilitaPropTesi) {
+    
     try {
 
       connection = DatabaseManager.getIstance();
@@ -265,30 +262,30 @@ public class AttivitaManager implements AttivitaModelInterface {
     }
   }
 
-  public ArrayList<String> getListaSeguaci(String email) {
-    
-    
-    
-    
+  public ArrayList<String> getListaSeguiti(String email) {
+
+
+
+
     ArrayList<String> utentiSeguiti = new ArrayList<String>();
 
     try {
       connection = DatabaseManager.getIstance();
       prepared = connection.prepareStatement("SELECT Utente_Email_Seguito FROM UtenteSegueUtente WHERE "
           + "Utente_Email_Seguace=?");
-      
-        prepared.setString(1, email);
+
+      prepared.setString(1, email);
 
       rs = prepared.executeQuery();
-      
+
       while(rs.next()) {
-        
+
         String emailS = rs.getString("Utente_Email_Seguito");
-        
+
         utentiSeguiti.add(emailS);
-        
+
       }
-      
+
       return utentiSeguiti;
 
     }
@@ -296,12 +293,32 @@ public class AttivitaManager implements AttivitaModelInterface {
       return null;
     }
 
- 
+
 
   }
 
+  @Override
+  public boolean unfollow(String emailSeguace, String emailSeguito) {
+    try {
+      connection = DatabaseManager.getIstance();
 
-  private Connection connection;
-  private PreparedStatement prepared;
-  private ResultSet rs;
-}
+      prepared = connection.prepareStatement("DELETE FROM UTENTESEGUEUTENTE "
+          + "WHERE Utente_Email_Seguace = ? AND "
+          + "Utente_Email_Seguito = ?");
+
+      prepared.setString(1, emailSeguace);
+      prepared.setString(2, emailSeguito);
+
+      prepared.executeUpdate();
+
+      return true;
+    } catch(SQLException e) {
+      e.printStackTrace();
+      return false;
+    }
+  }
+
+    private Connection connection;
+    private PreparedStatement prepared;
+    private ResultSet rs;
+  }

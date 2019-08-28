@@ -9,7 +9,7 @@ import java.util.logging.Logger;
 public class DatabaseManager {
   private static Connection connection = null;
   private static String username = "root";
-  private static String password = "password";
+  private static String password = "root";
   
   /**
  * Metodo per prendere l'istanza di una connesione al DB.

@@ -1,32 +1,30 @@
 package it.unisa.etm.control.notifiche;
 
 import java.io.IOException;
-import java.util.ArrayList;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.StyledEditorKit.BoldAction;
 
 import com.google.gson.Gson;
 
-import it.unisa.etm.model.bean.Attivita;
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AttivitaManager;
 
 /**
- * Servlet implementation class VisualizzaNotificheServlet
+ * Servlet implementation class SeguiUtenteServlet
  */
-@WebServlet("/CaricaNotificheServlet")
-public class CaricaNotificheServlet extends HttpServlet {
+@WebServlet("/SeguiUtenteServlet")
+public class SeguiUtenteServlet extends HttpServlet {
   private static final long serialVersionUID = 1L;
 
   /**
    * @see HttpServlet#HttpServlet()
    */
-  public CaricaNotificheServlet() {
+  public SeguiUtenteServlet() {
     super();
     // TODO Auto-generated constructor stub
   }
@@ -35,41 +33,34 @@ public class CaricaNotificheServlet extends HttpServlet {
    * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
    */
   protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    Utente utente = (Utente) request.getSession().getAttribute("utente");
-    response.setContentType("application/json;charset=UTF-8");
-    /*int propostaTesiId;
-	    if (utente.getTipo().equals("d")) {
-	      propostaTesiId = (int) request.getSession().getAttribute("numeroTesiDocente");
-	    } else {
-	      propostaTesiId = Integer.parseInt(request.getParameter("propostaTesiId"));
-	    }
-	    if (propostaTesiId != 0) {*/
     ManagerFactory em = new ManagerFactory();
     AttivitaManager attivitaManager = (AttivitaManager) em.createAttivitaManager();
 
-    ArrayList<String> notifiche = new ArrayList<>();
-    ArrayList<Attivita> atts = attivitaManager.getNotifiche(utente.getEmail());
+    String tipoOp = (String) request.getParameter("tipoop");
 
-    int countNonLetti = 0;
+    String emailFollower = (String) request.getParameter("follower");
+    String emailToFollow = (String) request.getParameter("toFollow");
+    boolean addPropTesi = "true".equals(request.getParameter("addprop")) ? true : false;
+    boolean changePropTesi = "true".equals(request.getParameter("changeprop")) ? true : false;
+    boolean disabilitaPropTesi = "true".equals(request.getParameter("disprop")) ? true : false;
 
-    if(atts != null) {
-      for (Attivita at : atts) {
-        notifiche.add(at.toString());
-        notifiche.add(at.getLetto() == false? "0" : "1");
+    response.setContentType("application/json;charset=UTF-8");
 
-        if(!at.getLetto()) countNonLetti++;
+    if("delete".equals(tipoOp)) {
+      if(attivitaManager.unfollow(emailFollower, emailToFollow)) {
+
+        response.getWriter().write(new Gson().toJson("ok"));
+      } else {
+
+        response.getWriter().write(new Gson().toJson("error"));
       }
-    }
+    } else if(attivitaManager.seguiUtente(emailFollower, emailToFollow, addPropTesi, changePropTesi, disabilitaPropTesi)) {
 
-    if(notifiche.isEmpty()) {
-      response.getWriter().write(new Gson().toJson("no"));
+      response.getWriter().write(new Gson().toJson("ok"));
     } else {
-      notifiche.add(0, Integer.toString(countNonLetti));
-      response.getWriter().write(new Gson().toJson(notifiche));
+      response.getWriter().write(new Gson().toJson("error"));
+
     }
-    //}
-
-
 
   }
 

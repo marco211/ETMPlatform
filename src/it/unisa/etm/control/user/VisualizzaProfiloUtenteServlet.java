@@ -3,6 +3,7 @@ package it.unisa.etm.control.user;
 import it.unisa.etm.model.bean.PropostaTesi;
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import it.unisa.etm.model.manager.UtenteManager;
 import java.io.IOException;
@@ -12,6 +13,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 /**
@@ -29,9 +31,19 @@ public class VisualizzaProfiloUtenteServlet extends HttpServlet {
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response) 
       throws ServletException, IOException {
+    
+    AttivitaManager am = new AttivitaManager();
     String email = (String) request.getParameter("utente_email");
     Utente utente = (Utente) visualizzaProfiloUtente(email);
+    
+    HttpSession session = request.getSession();
+    Utente follower = (Utente) session.getAttribute("utente");
+    
+    ArrayList<String> listaSeguiti = am.getListaSeguiti(follower.getEmail());
+    
     request.setAttribute("toShow", utente);
+    request.setAttribute("listaSeguiti", listaSeguiti);
+    
     if (utente.getTipo().equals("d")) {
       ManagerFactory em = new ManagerFactory();
       PropostaTesiManager pt = (PropostaTesiManager) em.createPropostaTesiManager();
