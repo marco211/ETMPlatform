@@ -1,10 +1,14 @@
 package it.unisa.etm.control.tesi;
 
+import it.unisa.etm.model.bean.Attivita;
 import it.unisa.etm.model.bean.PropostaTesi;
 import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
+import it.unisa.etm.model.manager.AttivitaManager;
 import it.unisa.etm.model.manager.PropostaTesiManager;
 import java.io.IOException;
+import java.time.LocalDate;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,8 +46,13 @@ public class ConfermaModificaPropostaTesiServlet extends HttpServlet {
     String utenteEmail = utente.getEmail();
     PropostaTesi tesi = new PropostaTesi(titolo, ambito, tempo, materia, 
         descrizione, utenteEmail, false, false);
+    
+    Attivita modTesi = new Attivita(utenteEmail, titolo, LocalDate.now(), "mt", -10);
+    ManagerFactory mf = new ManagerFactory();
+    AttivitaManager am = (AttivitaManager) mf.createAttivitaManager();
+    
     tesi.setId(id);
-    if (this.modificaPropostaTesi(tesi)) {
+    if (this.modificaPropostaTesi(tesi) && am.aggiungiAttivita(modTesi)) {
       response.sendRedirect(request.getContextPath() + "/ListaProposteTesiAttiveServlet");
     } else {
       int count = 3;

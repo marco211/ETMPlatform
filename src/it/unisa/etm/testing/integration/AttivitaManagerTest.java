@@ -31,7 +31,7 @@ public class AttivitaManagerTest {
   @Test
   public void testAggiungiAttivita() {
     assertTrue(attivitaManager.aggiungiAttivita(
-        new Attivita("etm.utente@unisa.it","File1.pdf",LocalDate.now(),"A",1))); //restituisce true
+        new Attivita("etm.utente@studenti.unisa.it","File1.pdf",LocalDate.now(),"af",1))); //restituisce true
 
     //restituisce false perché aggiungiAttivita lancia una SQLException
     assertFalse(attivitaManager.aggiungiAttivita(

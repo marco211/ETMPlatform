@@ -33,7 +33,7 @@ public class PartecipaManagerTest {
 
   @Test
   public void  testInserisciPartecipazione() {
-    assertTrue(partecipaManager.inserisciPartecipazione(3, "etm.utentetre@unisa.it"));
+    assertTrue(partecipaManager.inserisciPartecipazione(3, "etm.utentetre@studenti.unisa.it"));
 
     assertFalse(partecipaManager.inserisciPartecipazione(99, "boh"));
   }

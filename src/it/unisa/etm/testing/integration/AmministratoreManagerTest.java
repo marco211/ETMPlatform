@@ -37,7 +37,7 @@ public class AmministratoreManagerTest {
 
   @Test
   public void testGetUtente() {
-    assertNotEquals(null, amministratoreManager.getUtente("etm.utente@unisa.it"));
+    assertNotEquals(null, amministratoreManager.getUtente("etm.utente@studenti.unisa.it"));
 
     //ritorna null poiché non esiste nessun utente associato alla email fakeemail@email.it
     assertEquals(amministratoreManager

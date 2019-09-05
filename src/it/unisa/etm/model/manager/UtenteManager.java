@@ -31,37 +31,40 @@ public class UtenteManager implements UtenteModelInterface {
       PreparedStatement pr = istance.prepareStatement("SELECT * FROM UTENTE WHERE EMAIL=?");
       pr.setString(1, email);
       ResultSet rs = pr.executeQuery();
-      rs.next();
-      if (rs.getString("TIPO").equals("s")) {
-        utente = new Utente();
-        utente.setNome(rs.getString("NOME"));
-        utente.setCognome(rs.getString("COGNOME"));
-        utente.setMatricola(rs.getString("MATRICOLA"));
-        utente.setTipo(rs.getString("TIPO"));
-        if (rs.getInt("PROPOSTATESI_ID") != 0) {
-          utente.setPropostaTesi_Id(rs.getInt("PROPOSTATESI_ID"));
+      if(rs.next()) {
+        if (rs.getString("TIPO").equals("s")) {
+          utente = new Utente();
+          utente.setNome(rs.getString("NOME"));
+          utente.setCognome(rs.getString("COGNOME"));
+          utente.setMatricola(rs.getString("MATRICOLA"));
+          utente.setTipo(rs.getString("TIPO"));
+          if (rs.getInt("PROPOSTATESI_ID") != 0) {
+            utente.setPropostaTesi_Id(rs.getInt("PROPOSTATESI_ID"));
+          }
+          utente.setEmail(rs.getString("EMAIL"));
+          utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+          utente.setPassword(rs.getString("PASSWORD"));
+          utente.setValidazione(rs.getString("VALIDAZIONE"));
+        } else if (rs.getString("TIPO").equals("d")) {
+          utente = new Utente();
+          utente.setNome(rs.getString("NOME"));
+          utente.setCognome(rs.getString("COGNOME"));
+          utente.setEmail(rs.getString("EMAIL"));
+          utente.setTipo(rs.getString("TIPO"));
+          utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+          utente.setPassword(rs.getString("PASSWORD"));
+          utente.setUfficio(rs.getString("UFFICIO"));
+          utente.setValidazione(rs.getString("VALIDAZIONE"));
+          PreparedStatement pr1 = istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA "
+              + "WHERE UTENTE_EMAIL=?");
+          pr1.setString(1, email);
+          ResultSet rs1 = pr1.executeQuery();
+          while (rs1.next()) {
+            utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+          }
         }
-        utente.setEmail(rs.getString("EMAIL"));
-        utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-        utente.setPassword(rs.getString("PASSWORD"));
-        utente.setValidazione(rs.getString("VALIDAZIONE"));
-      } else if (rs.getString("TIPO").equals("d")) {
-        utente = new Utente();
-        utente.setNome(rs.getString("NOME"));
-        utente.setCognome(rs.getString("COGNOME"));
-        utente.setEmail(rs.getString("EMAIL"));
-        utente.setTipo(rs.getString("TIPO"));
-        utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-        utente.setPassword(rs.getString("PASSWORD"));
-        utente.setUfficio(rs.getString("UFFICIO"));
-        utente.setValidazione(rs.getString("VALIDAZIONE"));
-        PreparedStatement pr1 = istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA "
-            + "WHERE UTENTE_EMAIL=?");
-        pr1.setString(1, email);
-        ResultSet rs1 = pr1.executeQuery();
-        while (rs1.next()) {
-          utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
-        }
+      } else {
+        return null;
       }
     } catch (SQLException e) {
       e.printStackTrace();
@@ -80,37 +83,40 @@ public class UtenteManager implements UtenteModelInterface {
       PreparedStatement pr = istance.prepareStatement("SELECT * FROM UTENTE WHERE EMAIL=?");
       pr.setString(1, email);
       ResultSet rs = pr.executeQuery();
-      rs.next();
-      if (rs.getString("TIPO").equals("s")) {
-        utente = new Utente();
-        utente.setNome(rs.getString("NOME"));
-        utente.setCognome(rs.getString("COGNOME"));
-        utente.setMatricola(rs.getString("MATRICOLA"));
-        utente.setTipo(rs.getString("TIPO"));
-        if (rs.getInt("PROPOSTATESI_ID") != 0) {
-          utente.setPropostaTesi_Id(rs.getInt("PROPOSTATESI_ID"));
-        }  
-        utente.setEmail(rs.getString("EMAIL"));
-        utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-        utente.setPassword(rs.getString("PASSWORD"));
-        utente.setValidazione(rs.getString("VALIDAZIONE"));
-      } else if (rs.getString("TIPO").equals("d")) {
-        utente = new Utente();
-        utente.setNome(rs.getString("NOME"));
-        utente.setCognome(rs.getString("COGNOME"));
-        utente.setEmail(rs.getString("EMAIL"));
-        utente.setTipo(rs.getString("TIPO"));
-        utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
-        utente.setPassword(rs.getString("PASSWORD"));
-        utente.setUfficio(rs.getString("UFFICIO"));
-        utente.setValidazione(rs.getString("VALIDAZIONE"));
-        PreparedStatement pr1 = istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA "
-            + "WHERE UTENTE_EMAIL=?");
-        pr1.setString(1, email);
-        ResultSet rs1 = pr1.executeQuery();
-        while (rs1.next()) {
-          utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+      if(rs.next()) {
+        if (rs.getString("TIPO").equals("s")) {
+          utente = new Utente();
+          utente.setNome(rs.getString("NOME"));
+          utente.setCognome(rs.getString("COGNOME"));
+          utente.setMatricola(rs.getString("MATRICOLA"));
+          utente.setTipo(rs.getString("TIPO"));
+          if (rs.getInt("PROPOSTATESI_ID") != 0) {
+            utente.setPropostaTesi_Id(rs.getInt("PROPOSTATESI_ID"));
+          }  
+          utente.setEmail(rs.getString("EMAIL"));
+          utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+          utente.setPassword(rs.getString("PASSWORD"));
+          utente.setValidazione(rs.getString("VALIDAZIONE"));
+        } else if (rs.getString("TIPO").equals("d")) {
+          utente = new Utente();
+          utente.setNome(rs.getString("NOME"));
+          utente.setCognome(rs.getString("COGNOME"));
+          utente.setEmail(rs.getString("EMAIL"));
+          utente.setTipo(rs.getString("TIPO"));
+          utente.setDataDiNascita(rs.getString("DATA_NASCITA"));
+          utente.setPassword(rs.getString("PASSWORD"));
+          utente.setUfficio(rs.getString("UFFICIO"));
+          utente.setValidazione(rs.getString("VALIDAZIONE"));
+          PreparedStatement pr1 = istance.prepareStatement("SELECT INSEGNAMENTO_NOME FROM INSEGNA "
+              + "WHERE UTENTE_EMAIL=?");
+          pr1.setString(1, email);
+          ResultSet rs1 = pr1.executeQuery();
+          while (rs1.next()) {
+            utente.setInsegnamento(rs1.getString("INSEGNAMENTO_NOME"));
+          }
         }
+      } else {
+        return null;
       }
     } catch (SQLException e) {
       e.printStackTrace();

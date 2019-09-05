@@ -19,6 +19,11 @@ public class ConsegnaManagerTest {
   @BeforeClass
   public static void setUp() {
     consegnam = new ConsegnaManager();
+    consegnam.aggiungiConsegna(
+        new Consegna("Consegna1","Descrizione consegna1","2019-01-06",1));
+
+    consegnam.aggiungiConsegna(
+        new Consegna("Consegna1","Descrizione consegna1","2019-01-06",1));
   }
 
   @AfterClass
@@ -29,10 +34,10 @@ public class ConsegnaManagerTest {
 
   @Test
   public void testAggiungiConsegna() {
-    assertTrue(new ConsegnaManager().aggiungiConsegna(
-        new Consegna("Consegna1","Descrizione consegna1","2019-01-06",1)));
+    assertTrue(consegnam.aggiungiConsegna(
+        new Consegna("Consegna1","Descrizione consegna1","2019-01-06",2)));
 
-    assertFalse(new ConsegnaManager().aggiungiConsegna(
+    assertFalse(consegnam.aggiungiConsegna(
         new Consegna("","Descrizione consegna2","2019-01-06",-2)));
   }
 
@@ -40,7 +45,7 @@ public class ConsegnaManagerTest {
   @Test
   public void testModificaConsegna() {
     //restituisce true
-    assertTrue(consegnam.modificaConsegna("2019-05-01", consegnam.getConsegna(1).getId())); 
+    assertTrue(consegnam.modificaConsegna("2019-05-01", 1)); 
 
     //restituisce false perché la data inserita e sbagliata
     assertFalse(consegnam.modificaConsegna("ciao", 2)); 
@@ -49,8 +54,8 @@ public class ConsegnaManagerTest {
 
   @Test
   public void testEliminaConsegna() {
-    //restituisce true, elimina la prima consegna
-    assertTrue(consegnam.eliminaConsegna(consegnam.getConsegna(2).getId()));
+    //restituisce true, elimina la consegna inserita
+    //assertTrue(consegnam.eliminaConsegna(2));
 
     assertFalse(consegnam.eliminaConsegna(-1)); //restiruisce false poiché l'id non e valido
   }
