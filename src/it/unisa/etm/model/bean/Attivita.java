@@ -115,8 +115,10 @@ public class Attivita implements Serializable {
         if(toDo[0] == 'a') {
           return "Il docente " + utenteEmail + " ha aggiunto una nuova proposta tesi: " + 
               nome + "! Scoprila ora! Data: " + data;
-        } 
-        return "E' stato fatto qualcosa ad una tesi";
+        } if(toDo[0] == 'm') {
+          return "Il docente " + utenteEmail + " ha modificato la tesi " + nome + "! Vedi le modifiche! Data: " + data;
+        } else return "";
+        
       } else {
         return "";
       }
