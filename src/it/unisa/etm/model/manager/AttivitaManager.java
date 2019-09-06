@@ -309,9 +309,8 @@ public class AttivitaManager implements AttivitaModelInterface {
       prepared.setString(1, emailSeguace);
       prepared.setString(2, emailSeguito);
 
-      prepared.executeUpdate();
-
-      return true;
+      if(prepared.executeUpdate() == 0) return false;
+      else return true;
     } catch(SQLException e) {
       e.printStackTrace();
       return false;

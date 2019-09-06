@@ -1,5 +1,6 @@
 package it.unisa.etm.testing.integration;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
@@ -44,5 +45,30 @@ public class AttivitaManagerTest {
     assertNotEquals(attivitaManager.getListaAttivita(1),null); //restituisce la lista
   }
 
+  //posso testare più metodi?
+  @Test
+  public void testSeguiUtente() {
+    assertTrue(attivitaManager.seguiUtente
+        ("etm.utente@studenti.unisa.it", "etm.docente@unisa.it", true, true, true));
+    
+    assertFalse(attivitaManager.seguiUtente
+        ("etminesistente@unisa.it", "etm.nonce@unisa.it", false, false, false));
+    
+    assertNotEquals(attivitaManager.getListaSeguiti("etm.docente@unisa.it"), null);
+    
+    assertTrue(attivitaManager.aggiungiAttivita(
+        new Attivita("etm.docente@unisa.it","File1.pdf",LocalDate.now(),"af",1))); //restituisce true
+    
+    assertTrue(attivitaManager.leggiNotifiche("etm.utente@studenti.unisa.it"));
+    
+    assertNotEquals(attivitaManager.getNotifiche("etm.utente@studenti.unisa.it"), null);
+    
+    assertTrue(attivitaManager.unfollow(
+        "etm.utente@studenti.unisa.it", "etm.docente@unisa.it"));
+    
+    //corrected error: unfollow wasn't returning false if the row count was 0
+    assertFalse(attivitaManager.unfollow(
+        "etminesistente@unisa.it", "etm.nonce@unisa.it"));
+  }
 
 }
