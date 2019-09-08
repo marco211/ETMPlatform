@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import it.unisa.etm.model.bean.Utente;
+import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.UtenteManager;
 
 import org.junit.AfterClass;
@@ -19,7 +20,7 @@ public class UtenteManagerTest {
 
   @BeforeClass
   public static void setUp() {
-    um = new UtenteManager();
+    um = (UtenteManager) new ManagerFactory().createUtenteManager();
   }
 
   @AfterClass
@@ -29,7 +30,7 @@ public class UtenteManagerTest {
 
   @Test
   public void testGetInfo() {
-    assertNotEquals(um.getInfo("etm.utente@unisa.it"),null);
+    assertNotEquals(um.getInfo("etm.utente@studenti.unisa.it"),null);
 
     assertNotEquals(um.getInfo("etm.docente@unisa.it"),null);
 
@@ -38,7 +39,7 @@ public class UtenteManagerTest {
   
   @Test
   public void testCercaUtente() {
-    assertNotEquals(um.cercaUtente("etm.utente@unisa.it"),null);
+    assertNotEquals(um.cercaUtente("etm.utente@studenti.unisa.it"),null);
 
     assertNotEquals(um.cercaUtente("etm.docente@unisa.it"),null);
 
@@ -47,7 +48,7 @@ public class UtenteManagerTest {
 
   @Test
   public void testModificaPassword() {    
-    st = um.cercaUtente("etm.utente@unisa.it");
+    st = um.cercaUtente("etm.utente@studenti.unisa.it");
     doc = um.cercaUtente("etm.docente@unisa.it");
 
     //setto la stessa password per non modificare dati nel database
@@ -64,7 +65,7 @@ public class UtenteManagerTest {
 
   @Test
   public void testModificaUtente() {
-    st = um.cercaUtente("etm.utente@unisa.it");
+    st = um.cercaUtente("etm.utente@studenti.unisa.it");
     doc = um.cercaUtente("etm.docente@unisa.it");
     
     st.setMatricola("0552100552");

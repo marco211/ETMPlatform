@@ -33,7 +33,8 @@ public class PropostaTesiManagerTest {
     pm = (PropostaTesiManager) new ManagerFactory().createPropostaTesiManager();
     proposta = new PropostaTesi("I sistemi Operativi", "Informatica", 20,
         "Architettura","Breve Descrizione","etm.docenteuno@unisa.it",false,false);
-    richiesta = new RichiestaPartecipazione(date,1,"etm.utentedue@unisa.it");
+    richiesta = new RichiestaPartecipazione(date,1,"etm.utentedue@studenti.unisa.it");
+    richiesta = new RichiestaPartecipazione(date,2,"etm.utentedue@studenti.unisa.it");
   }
 
   /**
@@ -51,7 +52,6 @@ public class PropostaTesiManagerTest {
   public void testAccettaRichiestaPartecipazione() {
 
     assertTrue(pm.accettaRichiestaPartecipazione(1)); //Id corretto
-
     assertFalse(pm.accettaRichiestaPartecipazione(999)); //id sbagliato
   }
 
@@ -163,7 +163,7 @@ public class PropostaTesiManagerTest {
   public void testGetRichiestaStudente() {
     // Richiesta per studente corretta
 
-    assertNotEquals(pm.getRichiestaStudente("etm.utentetre@unisa.it"), null);
+    assertNotEquals(pm.getRichiestaStudente("etm.utentetre@studenti.unisa.it"), null);
     // Richiesta per studente errata per l'Email
     assertEquals(pm.getRichiestaStudente("emailnonesistente"), null);
   }

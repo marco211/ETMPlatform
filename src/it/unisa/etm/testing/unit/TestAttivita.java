@@ -25,11 +25,11 @@ public class TestAttivita {
   public static void setUp() {
     attivitaOk = new Attivita("email@unisa.it","File1",LocalDate.now(),"A",1);
     attivitaNotOk = new Attivita("false@unisa.it","File2",LocalDate.now(),"B",2);
-    attivitaOk.setTipo("c");
+    attivitaOk.setTipo("af");
     Logger.getLogger("log").info(attivitaOk.toString());
-    attivitaOk.setTipo("v");
+    attivitaOk.setTipo("vf");
     Logger.getLogger("log").info(attivitaOk.toString());
-    attivitaOk.setTipo("e");
+    attivitaOk.setTipo("ef");
     Logger.getLogger("log").info(attivitaOk.toString());
   }
 
@@ -63,23 +63,23 @@ public class TestAttivita {
   }
 
   @Test
-  public void testGetNomeFile() {
-    String nomeFile = attivitaOk.getNomeFile();
+  public void testgetNome() {
+    String nomeFile = attivitaOk.getNome();
     assertEquals(nomeFile,"File1");//nome file giusto
 
-    nomeFile = attivitaNotOk.getNomeFile();
+    nomeFile = attivitaNotOk.getNome();
     assertNotEquals(nomeFile,"File001");//nome file sbagliato, il nome file giusto e File2
   }
 
   @Test
-  public void testSetNomeFile() {
+  public void testsetNome() {
     String nomeFile = "File1";
-    attivitaOk.setNomeFile(nomeFile);
-    assertEquals("File1",attivitaOk.getNomeFile());
+    attivitaOk.setNome(nomeFile);
+    assertEquals("File1",attivitaOk.getNome());
 
     nomeFile = "File2";
-    attivitaNotOk.setNomeFile(nomeFile);
-    assertEquals("File2",attivitaNotOk.getNomeFile());
+    attivitaNotOk.setNome(nomeFile);
+    assertEquals("File2",attivitaNotOk.getNome());
   }
 
   @Test
@@ -105,7 +105,7 @@ public class TestAttivita {
   @Test
   public void testGetTipo() {
     String tipo = attivitaOk.getTipo();
-    assertEquals(tipo,"e");// tipo giusto
+    assertEquals(tipo,"ef");// tipo giusto
 
     tipo = attivitaNotOk.getTipo();
     assertNotEquals(tipo,"C"); // tipo sbagliato, il tipo giusto e B
@@ -143,5 +143,27 @@ public class TestAttivita {
   }
 
 
-
+  @Test
+  public void testGetLetto() {
+    assertEquals(false, attivitaOk.getLetto());
+        
+  }
+  
+  @Test
+  public void testSetLetto() {
+    attivitaOk.setLetto(true);
+    assertEquals(true, attivitaOk.getLetto());
+    attivitaOk.setLetto(false);
+  }
+  
+  @Test
+  public void testGetId() {
+    
+  }
+  
+  @Test
+  public void testSetId() {
+    
+  }
+  
 }

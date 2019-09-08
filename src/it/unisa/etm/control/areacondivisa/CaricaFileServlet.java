@@ -63,7 +63,7 @@ public class CaricaFileServlet extends HttpServlet {
     }
     LocalDate data = LocalDate.now();
     Attivita attivita = new Attivita(file.getEmail(), 
-        file.getNome(), data, "c", file.getPropostaTesiId());
+        file.getNome(), data, "af", file.getPropostaTesiId());
     ManagerFactory mf = new ManagerFactory();
     FileManager fm = (FileManager) mf.createFileManager();
     AttivitaManager am = (AttivitaManager)mf.createAttivitaManager();

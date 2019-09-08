@@ -5,6 +5,7 @@ import it.unisa.etm.model.bean.Utente;
 import it.unisa.etm.model.factory.ManagerFactory;
 import it.unisa.etm.model.manager.AutenticazioneManager;
 import java.io.IOException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -40,6 +41,7 @@ public class LoginServlet extends HttpServlet {
     ManagerFactory em = new ManagerFactory();
     AutenticazioneManager am = (AutenticazioneManager) em.createAutenticazioneManager();
     Amministratore admin = am.getAdmin(email, password);
+    
     if (admin != null) {
       HttpSession session = request.getSession();
       session.setAttribute("admin", admin);
@@ -48,6 +50,8 @@ public class LoginServlet extends HttpServlet {
       Utente utente = am.getUtente(email, password);
       if (utente != null) {
         if (utente.getValidazione().equals("valido")) {
+          
+
           HttpSession session = request.getSession();
           session.setAttribute("utente", utente);
           response.sendRedirect(request.getContextPath() + "/homePage.jsp");

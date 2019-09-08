@@ -26,5 +26,17 @@ public interface AttivitaModelInterface {
    *         null in caso di nessun attivit� o d'insuccesso.
    */
   public ArrayList<Attivita> getListaAttivita(int propostaTesiId);
+  
+  public ArrayList<Attivita> getNotifiche(String email);
+  
+  public ArrayList<String> getListaSeguiti(String email);
+  
+  public boolean seguiUtente(String emailSeguace, String emailSeguito, 
+      boolean addPropTesi, boolean changePropTesi, boolean disabilitaPropTesi);
+  
+  
+  public boolean leggiNotifiche(String email);
+  
+  public boolean unfollow(String emailSeguace, String emailSeguito);
 }
 

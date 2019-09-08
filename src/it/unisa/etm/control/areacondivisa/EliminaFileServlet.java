@@ -39,7 +39,7 @@ public class EliminaFileServlet extends HttpServlet {
     FileManager um = (FileManager) em.createFileManager();
     LocalDate data = LocalDate.now();
     Utente utente = (Utente) request.getSession().getAttribute("utente");
-    Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data, "e", id);
+    Attivita attivita = new Attivita(utente.getEmail(), nomeFile, data, "ef", id);
     AttivitaManager am = (AttivitaManager) em.createAttivitaManager();
     am.aggiungiAttivita(attivita);
     um.eliminaFile(id, nomeFile);

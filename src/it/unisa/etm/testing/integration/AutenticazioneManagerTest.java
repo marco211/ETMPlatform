@@ -30,16 +30,15 @@ public class AutenticazioneManagerTest {
   @Test
   public void testRegistraUtente() {
     Utente u = new Utente("Nappi","1997-11-04","Domenico",
-        "s","etm.utentequattro@unisa.it","ciao","0512104963","valido");
-    assertTrue(new AutenticazioneManager().registraUtente(u));
+        "s","etm.utenteinesistente@unisa.it","ciao","0512104963","valido");
+    assertTrue(autenticazioneManager.registraUtente(u));
     
     u = new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Domenico",
-        "etm.docentedue@unisa.it","ciao","MMI","valido");
-    assertTrue(new AutenticazioneManager().registraUtente(u));
+        "etm.docenteinesistente@unisa.it","ciao","MMI","valido");
+    assertTrue(autenticazioneManager.registraUtente(u));
     
-    u = new Utente("Nappi","1997-11-04","Ufficiamoci","d", "Domenico",
-        "etm.docentetre@unisa.it","ciao","ETC","valido");
-    assertTrue(new AutenticazioneManager().registraUtente(u));
+    new ManagerFactory().createAmministratoreManager().eliminaUtente("etm.utenteinesistente@unisa.it");
+    new ManagerFactory().createAmministratoreManager().eliminaUtente("etm.docenteinesistente@unisa.it");
   }
 
   @Test
@@ -47,7 +46,7 @@ public class AutenticazioneManagerTest {
     assertNotEquals(autenticazioneManager.getUtente(
         "etm.docente@unisa.it", "ciao"),null); //etm.docente@unisa.it è un docente registrato nel db
 
-    assertNotEquals(autenticazioneManager.getUtente("etm.utente@unisa.it", "ciao"), null);
+    assertNotEquals(autenticazioneManager.getUtente("etm.utente@studenti.unisa.it", "ciao"), null);
 
     assertEquals(autenticazioneManager.getUtente("prova", "nonesisto"), null);
   }
