@@ -11,8 +11,9 @@
 		
 	
 	boolean seguo = false;
-	ArrayList<String> listaSeguiti = (ArrayList<String>) request.getAttribute("listaSeguiti");
 	
+	ArrayList<String> listaSeguiti = (ArrayList<String>) request.getAttribute("listaSeguiti");
+	if(listaSeguiti != null){
 
 	
 	
@@ -22,6 +23,7 @@
 		}
 
 	}
+	} 
 	
 	if (utente == null || utenteToShow == null) {
 		response.sendRedirect("./index.jsp");

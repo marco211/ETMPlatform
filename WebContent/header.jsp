@@ -195,7 +195,7 @@
 			<ul class="navbar-nav d-none d-lg-block d-xl-block">
 
 				<li class="nav-item">
-					<form action="LogoutServlet" method="post">
+					<form action="LogoutServlet" method="post" name="logout">
 						<button class="btn btn-inline my-2 my-sm-0 bg-warning"
 							type="submit">
 							<span class="fas fa-sign-out-alt form-control-feedback"></span>
