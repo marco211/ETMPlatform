@@ -1,2 +1,2 @@
 # ETMPlatform
-Web app for managing the final work of an University student
+Web app to manage the final work of a University student
